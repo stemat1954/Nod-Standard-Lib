@@ -1,0 +1,155 @@
+
+page access in AlphaByNod
+
+
+type serial_access<t><c> [incomplete] -- intrinsic
+{{
+	serial_access<t><c> is a base type for generic object 
+	collections that can be accessed serially using a
+	cursor.
+		
+	<t> is the symbolic object type and <c> is the symbolic 
+	cursor type. 
+	
+	Collections that derive from serial_access<t><c> manage
+	an ordered collection of objects where individual 
+	objects are accessed in serial order using a bespoke 
+	cursor.
+
+	Access to the collection starts by opening a cursor	
+	positioned at one end of the logical sequence. The 
+	cursor moves toward the other end in increments or 
+	steps.  A positive or negative step determines 
+	direction and resolution of the cursor. 
+	
+	Generally, a serial_access cursor must have a final 
+	inoperable state that doesn't provide access to any
+	object. The inoperable state must be distinguishable
+	from null and an inoperable cursor must be accepted by
+	all	methods.
+
+	:open_cursor( step ) creates an original cursor placed 
+	at one end of the sequence.  If step is positive, the 
+	cursor is placed on the first object and moves toward
+	the last.  If step is negative, the cursor is placed on 
+	the last object and moves toward the first.  step = 0 
+	is invalid.  The default step is one.
+
+	Note: If a collection doesn't support step < 0 or 
+	|step| > 1,  the output cursor is inoperable.
+
+	:move_cursor updates the position of a given cursor.
+	
+	:flip_cursor reverses the direction of a given cursor.
+
+	Note: If a cursor can't be flipped, the cursor will 
+	become inoperable.
+
+	:use@ returns access to the object referenced by a given
+	cursor. If the cursor is inoperable, the proxy will be
+	void.
+
+	The proxy returned by :use@ has unspecified access.
+	Permission must be specified in the call and it's 
+	verified at runtime.
+
+	A serial_access collection can be scanned in a Nod 
+	for loop.
+}}
+{
+	general
+	{
+		begin;
+
+		open_cursor ( int step [opt] )( <c> );
+
+		move_cursor ( <c> [upd] );
+
+		flip_cursor ( <c> [upd] );
+
+		use@ ( <c> ) = <t> proxy;
+	}
+
+
+	abstract  -- recap as [tbd]
+	{
+		~open_cursor ( int )( <c> );  
+
+		~move_cursor ( <c> [upd] );
+
+		~flip_cursor ( <c> [upd]);
+
+		~use@ ( <c> ) = <t> proxy; 
+	}
+
+}
+
+
+
+type direct_access<t> [incomplete] from serial_access<<t>><int>  -- intrinsic
+{{
+	direct_access<t> is a base type for uniform generic
+	object collections that can be directly accessed by
+	index.
+		
+	<t> is the symbolic object type. 
+
+	Collections that derive from direct_access<t> manage 
+	a countable set of objects where individual objects
+	are directly accessed by a numeric position index.
+
+	Valid indexes range from zero to count - 1.
+
+	:use@ returns access to an object at a given position. 
+	If the index is out of range, the result proxy will be 
+	void.
+
+	Note:  access permission is specified by caller and 
+	verified at runtime.
+
+	direct access collections are naturally ordered by index,
+	but there is no	presumption that objects with a lesser 
+	index compare less than or before objects with a greater
+	index.
+
+	Any direct_access collection can also be accessed 
+	serially through an integer cursor. This allows a 
+	direct_access collection to be used wherever a serial_
+	access collection is specified.  In particular, any
+	direct access collection can be scanned in a for-each
+	loop.
+
+}}
+{
+	general 
+	{
+		begin;
+
+		count ()( int n );
+
+		use@ ( int i ) = <t> proxy;
+	}
+
+	abstract -- recap as [tbd]
+	{
+		~count ()( int );	
+
+		~use@ ( int i ) = <t> proxy; 
+	}
+
+	abstract in serial_access<<t>><int>
+	{
+		[final] ~open_cursor ( int )( int );  
+
+		[final] ~move_cursor ( int [upd] );
+
+		[final] ~flip_cursor ( int [upd] );
+
+		[final] ~use@ ( int ) = <t> proxy; 
+	}
+}
+
+
+
+
+

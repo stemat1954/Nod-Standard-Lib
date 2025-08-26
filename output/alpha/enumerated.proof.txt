@@ -1,0 +1,16 @@
+page enumerated
+{
+	type enumerated  @10176|enumerated(4,6) --external
+	 viable = yes
+	{
+		method begin  @60960|enumerated(29,3) --external
+		 viable = yes
+
+		method get_code  @55136|enumerated(33,3) --external
+		 viable = yes
+
+		method use_code  @58048|enumerated(31,3) --external
+		 viable = yes
+	}
+}
+

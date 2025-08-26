@@ -1,0 +1,144 @@
+
+page int in AlphaByNod
+
+
+
+type int -- elementary, compatible, conventional
+{{
+	An int encapsulates the higest precision integer
+	type supported by the runtime platform.
+
+	See documentation for initial value expressions.
+
+	[upd] methods that change value also have [eval] 
+	functional equivalents that don't.
+
+	These special value expressions are recognized:
+
+		'min'
+		'max'
+
+
+	[upd] methods that have undefined results quit.
+
+	[eval] methods that have undefined results return null
+	outputs.
+
+	An int is portable. See documentation for supported
+	formats.
+
+	Format notes...  
+
+	Generic binary 'b' is supported for c compatability.
+
+	Specific binary formats include 3 common encodings
+	that differ in negative value representation (one's
+	complement, two's complement, and sign/magnitude).
+
+	Specific binary unicode formats UTF-8, UTF-16, and
+	UTF-32 are also supported. For now, presume format 
+	exprs are 'b:utf8', 'b:utf16', 'b:utf32'.  
+			
+	https://en.wikipedia.org/wiki/UTF-8
+	https://en.wikipedia.org/wiki/UTF-16
+
+	Specific binary 'b:ascii' writes a non-negative
+	value as one byte and reads the same.
+
+}}
+{
+	general 		
+	{
+		begin ( expr vex [opt] );				-- description, default '0'
+
+		begin ( int other );					-- copy
+
+		begin<#> ( word<<#>> w, expr fex );		-- word conversion
+
+		
+		begin ( mediator [upd], expr fex );		-- mediation
+
+		store ( mediator [upd], expr fex );		-- ditto
+
+
+		is_equal? ( int n )( bool );			-- equality
+				
+		is_before? ( int n )( bool );			-- ordinality ( same as is_less? )
+
+		is_less? ( int n )( bool );				-- cardinality ( same as is_before? )
+
+
+		set [upd]( int n );						-- intrinsic replace
+
+
+		-- arithmetic
+
+		add [upd]( int n );						-- add:  io <= io + n 
+		add [eval] ( int n )( int x );			
+
+		sub [upd]( int n );						-- subtract: io <= io - n
+		sub [eval] ( int n )( int x );
+
+		mul [upd]( int n );						-- multiply: io <= io * n  
+		mul [eval] ( int n )( int x );	
+
+		div [upd]( int n );						-- divide: io <= io\n (round-in)
+		div [upd]( int n )( int r );			-- divide: io <= io\n, r <= mod(io,n) 
+		div [eval]( int n )( int x, int r );	-- divide: x <= io\n (round-in), r <= mod(io,n)
+
+		neg [upd];								-- negate: io <= -io 
+		neg [eval]()( int x );
+
+				
+		-- common  
+
+		sgn [upd];								-- sign: io <= {-1,0,1}
+		sgn [eval]()( int s );
+
+		abs [upd];								-- absolute value:  io <= |io|
+		abs [eval]()( int y );	
+
+		dis [upd]( int n );						-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [eval]( int n )( int y );
+
+		ltf [upd]( int m, int b );				-- linear transform:  io <= m * io + b (aka fused multiply add)
+		ltf [eval]( int m, int b )( int y );
+
+		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ n/d (default d = 1)
+		pow [eval]( int n, int d [opt] )( int y );  
+
+		log [upd]( int b );						-- log: io <= log base b of io
+		log [eval]( int b )( int y );
+
+
+		-- other
+		
+		inc [upd];								-- increment: io <= io + 1 
+		inc [eval]()( int x );	
+
+		dec [upd];								-- decrement: io <= io - 1 
+		dec [eval]()( int x );
+
+		inf [upd];								-- inflate: io <= io + sgn(io) (to infinity)
+		inf [eval]()( int x );
+
+		def [upd];								-- deflate: io <= io - sgn(io) (to zero)
+		def [eval]()( int x );
+
+		mod [upd]( int n );						-- modulo: io <= remainder of io \ n
+		mod [eval]( int n )( int y );	
+
+		sp2 [upd]( int n );						-- scale by power of 2: io <= "io * pow( 2, n )" 
+		sp2 [eval]( int n )( int x );
+
+	}
+}
+
+
+
+
+
+
+
+
+

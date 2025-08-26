@@ -1,0 +1,78 @@
+
+page semaphore in AlphaByNod
+
+type semaphore
+{{
+	Classic counting semaphore.
+
+	Semaphores are used to synchronize concurrent threads.
+	Methods are atomic and thread-safe.  Semaphore methods 
+	don't yield or time-out like corresponding indicator
+	and lock methods.
+
+	Note: implementations use platform-dependent inter-
+	locked variable functions. 
+
+	A semaphore has an internal int counter that has a 
+	value between zero and some configurable max.
+	
+	:begin sets the initial and max counter values. The
+	initial value n must be in range 0 <= n <= max. 
+
+	Two verions of :add update the counter value by a given 
+	amount. The amount is signed and zero is superfluous. 
+	Both methods enforce the counter value so that it 
+	remains in it's configured range.
+
+	:add_wait "spins" in a loop until the counter can be
+	successfully updated (without going out of range). 
+
+	Note:  If the app's synchronization strategy is flawed, 
+	:add_wait may never return.
+
+	:add_no_wait tries once to update the counter and 
+	returns with an indication. A false indication means
+	the new value would exceed the counter's configured
+	range so it wasn't changed.
+	
+	A semaphore can be used to implement various kinds of
+	locks, signals, and counters.  Information is readily
+	available online.  Generally, synchronization patterns
+	pair methods so that one method waits to add while
+	another doesn't wait in opposition (coordination).
+
+	binary signal:
+
+		s:begin( '0', '1' );	-- initially '0', max = '1'
+		s:add_wait( '-1' );		-- one thread waits for '1' to set '0'
+		s:add_no_wait( '1' );	-- another thread adds '1' (ignore output, don't care if already '1')
+
+	binary lock:
+
+		l:begin( '0', '1' );		-- initially '0', max = '1'
+		l:add_wait( '1' );			-- one thread waits for '0' to set '1'
+		l:add_no_wait( '-1' );		-- same thread adds '-1' (ignore output, trust it works )
+
+	resource counter:
+
+		x:begin( '0', max );		  -- initally '0' with some max number of resources
+		x:add_wait( '-1' );			  -- consumer thread waits for a resouce to consume one 
+		x:add_no_wait( '1' );		  -- provider thread provides one resource (ignore output, trust it works)
+		x:add_no_wait( '1' )( bool ); -- provider thread provides one resource (check output, verify 'true')
+
+
+	See stock\toggle for a standard binary semaphore.
+}}
+{
+	general
+	{
+		begin ( int n, int max [opt] );  -- default = int_max
+				
+		add_wait [upd]( int n );		
+
+		add_no_wait [upd]( int n )( bool );
+	}
+}
+
+
+

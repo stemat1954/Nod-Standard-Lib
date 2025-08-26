@@ -1,0 +1,2565 @@
+adhoc appendix
+{
+	type $12<13>( array<unicode> )  @55056|$appendix(,) --internal
+	 from (direct)-> type $14<13>( direct_access<unicode> )  @55440|$appendix(,)
+	 viable = yes
+	{
+		method begin  @05136|$appendix(,) --external
+		 viable = yes
+
+		method begin  @02640|$appendix(,) --external
+		 viable = yes
+
+		method begin  @19280|$appendix(,) --external
+		 viable = yes
+
+		method begin<c>  @07216|$appendix(,) --external
+		 viable = no
+
+		method begin<c>  @03056|$appendix(,) --external
+		 viable = no
+
+		method copy  @19696|$appendix(,) --external
+		 viable = yes
+
+		method copy  @20112|$appendix(,) --external
+		 viable = yes
+
+		method delete  @03888|$appendix(,) --external
+		 viable = yes
+
+		nom type direct  @51360|$appendix(,) --internal
+		 viable = yes
+		 equivalent: (direct)-> type $14<13>( direct_access<unicode> )  @55440|$appendix(,)
+
+		method insert  @20528|$appendix(,) --external
+		 viable = yes
+
+		method insert  @20944|$appendix(,) --external
+		 viable = yes
+
+		method insert  @21360|$appendix(,) --external
+		 viable = yes
+
+		method insert  @23024|$appendix(,) --external
+		 viable = yes
+
+		method insert  @21776|$appendix(,) --external
+		 viable = yes
+
+		method insert  @25936|$appendix(,) --external
+		 viable = yes
+
+		method insert<c>  @22192|$appendix(,) --external
+		 viable = no
+
+		method insert<c>  @22608|$appendix(,) --external
+		 viable = no
+
+		method insert<c>  @23440|$appendix(,) --external
+		 viable = no
+
+		method insert<c>  @23856|$appendix(,) --external
+		 viable = no
+
+		method rank  @24272|$appendix(,) --external
+		 viable = yes
+
+		method resize  @24688|$appendix(,) --external
+		 viable = yes
+
+		nom type same_type  @51104|$appendix(,) --internal
+		 viable = yes
+		 equivalent: (direct)-> type $12<13>( array<unicode> )  @55056|$appendix(,)
+
+		nom type serial<c>  @53152|$appendix(,) --internal
+		 viable = no
+		 equivalent: ("serial_access<unicode><c>")-> type serial_access<t><c>  @54704|access(5,6)
+
+		method shrink  @25104|$appendix(,) --external
+		 viable = yes
+
+		method store  @10544|$appendix(,) --external
+		 viable = yes
+
+		method take  @25520|$appendix(,) --external
+		 viable = yes
+
+		method take  @09712|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~count  @40944|$appendix(,) --fraternal
+		 key = direct_access<t>-0
+		 viable = yes
+
+		abstract method ~use@  @41936|$appendix(,) --fraternal
+		 key = direct_access<t>-1
+		 viable = yes
+	}
+
+	type $12<4>( array<ascii> )  @54672|$appendix(,) --internal
+	 from (direct)-> type $14<4>( direct_access<ascii> )  @56976|$appendix(,)
+	 viable = yes
+	{
+		method begin  @28848|$appendix(,) --external
+		 viable = yes
+
+		method begin  @38000|$appendix(,) --external
+		 viable = yes
+
+		method begin  @35504|$appendix(,) --external
+		 viable = yes
+
+		method begin<c>  @32592|$appendix(,) --external
+		 viable = no
+
+		method begin<c>  @29264|$appendix(,) --external
+		 viable = no
+
+		method copy  @29680|$appendix(,) --external
+		 viable = yes
+
+		method copy  @35920|$appendix(,) --external
+		 viable = yes
+
+		method delete  @38832|$appendix(,) --external
+		 viable = yes
+
+		nom type direct  @53408|$appendix(,) --internal
+		 viable = yes
+		 equivalent: (direct)-> type $14<4>( direct_access<ascii> )  @56976|$appendix(,)
+
+		method insert  @40496|$appendix(,) --external
+		 viable = yes
+
+		method insert  @38416|$appendix(,) --external
+		 viable = yes
+
+		method insert  @30096|$appendix(,) --external
+		 viable = yes
+
+		method insert  @36752|$appendix(,) --external
+		 viable = yes
+
+		method insert  @35088|$appendix(,) --external
+		 viable = yes
+
+		method insert  @30512|$appendix(,) --external
+		 viable = yes
+
+		method insert<c>  @30928|$appendix(,) --external
+		 viable = no
+
+		method insert<c>  @33840|$appendix(,) --external
+		 viable = no
+
+		method insert<c>  @37168|$appendix(,) --external
+		 viable = no
+
+		method insert<c>  @31344|$appendix(,) --external
+		 viable = no
+
+		method rank  @31760|$appendix(,) --external
+		 viable = yes
+
+		method resize  @32176|$appendix(,) --external
+		 viable = yes
+
+		nom type same_type  @53920|$appendix(,) --internal
+		 viable = yes
+		 equivalent: (direct)-> type $12<4>( array<ascii> )  @54672|$appendix(,)
+
+		nom type serial<c>  @54176|$appendix(,) --internal
+		 viable = no
+		 equivalent: ("serial_access<ascii><c>")-> type serial_access<t><c>  @54704|access(5,6)
+
+		method shrink  @36336|$appendix(,) --external
+		 viable = yes
+
+		method store  @39248|$appendix(,) --external
+		 viable = yes
+
+		method take  @39664|$appendix(,) --external
+		 viable = yes
+
+		method take  @33008|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~count  @47888|$appendix(,) --fraternal
+		 key = direct_access<t>-0
+		 viable = yes
+
+		abstract method ~use@  @46896|$appendix(,) --fraternal
+		 key = direct_access<t>-1
+		 viable = yes
+	}
+
+	type $14<13>( direct_access<unicode> )  @55440|$appendix(,) --internal
+	 from (direct)-> type $8<13><5>( serial_access<unicode><int> )  @49680|$appendix(,)
+	 viable = yes
+	{
+		method begin  @26352|$appendix(,) --external
+		 viable = yes
+
+		method count  @10128|$appendix(,) --external
+		 viable = yes
+
+		method use@  @26768|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~count  @42432|$appendix(,) --fraternal
+		 key = direct_access<t>-0
+		 viable = yes
+
+		abstract method ~flip_cursor  @38960|$appendix(,) --fraternal
+		 key = serial_access<t><c>-2
+		 viable = yes
+
+		abstract method ~move_cursor  @48880|$appendix(,) --fraternal
+		 key = serial_access<t><c>-1
+		 viable = yes
+
+		abstract method ~open_cursor  @42928|$appendix(,) --fraternal
+		 key = serial_access<t><c>-0
+		 viable = yes
+
+		abstract method ~use@  @37968|$appendix(,) --fraternal
+		 key = direct_access<t>-1
+		 viable = yes
+
+		abstract method ~use@  @35488|$appendix(,) --fraternal
+		 key = serial_access<t><c>-3
+		 viable = yes
+	}
+
+	type $14<4>( direct_access<ascii> )  @56976|$appendix(,) --internal
+	 from (direct)-> type $8<4><5>( serial_access<ascii><int> )  @50064|$appendix(,)
+	 viable = yes
+	{
+		method begin  @40080|$appendix(,) --external
+		 viable = yes
+
+		method count  @33424|$appendix(,) --external
+		 viable = yes
+
+		method use@  @34256|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~count  @40448|$appendix(,) --fraternal
+		 key = direct_access<t>-0
+		 viable = yes
+
+		abstract method ~flip_cursor  @46400|$appendix(,) --fraternal
+		 key = serial_access<t><c>-2
+		 viable = yes
+
+		abstract method ~move_cursor  @39456|$appendix(,) --fraternal
+		 key = serial_access<t><c>-1
+		 viable = yes
+
+		abstract method ~open_cursor  @41440|$appendix(,) --fraternal
+		 key = serial_access<t><c>-0
+		 viable = yes
+
+		abstract method ~use@  @47392|$appendix(,) --fraternal
+		 key = direct_access<t>-1
+		 viable = yes
+
+		abstract method ~use@  @39952|$appendix(,) --fraternal
+		 key = serial_access<t><c>-3
+		 viable = yes
+	}
+
+	method $16<17>( fwrite<request> )  @31056|$appendix(,) --internal
+	 enclosing type = mediator
+	 viable = yes
+
+	method $18<$8<7><9>>( as_base<serial_access<node1><list_cursor>> )  @42928|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<19>( as_base<channel> )  @29808|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<20>( as_base<async_channel_reader> )  @22320|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<21>( as_base<async_channel_writer> )  @32304|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<25>( as_base<enumerated> )  @21488|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<29>( as_base<sync_channel_writer> )  @45008|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<31>( as_base<list> )  @41680|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<32>( as_base<sync_read_only_channel> )  @47504|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<33>( as_base<sync_read_write_channel> )  @48336|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<34>( as_base<mediator> )  @37104|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	method $18<7>( as_base<node1> )  @35856|$appendix(,) --internal
+	 enclosing type = object
+	 viable = yes
+
+	type $1<10>( <channel_report>enumerator )  @53904|$appendix(,) --internal
+	 viable = yes
+	{
+		method enumerate  @17616|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $1<11>( <utf>enumerator )  @50448|$appendix(,) --internal
+	 viable = yes
+	{
+		method enumerate  @18864|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $1<2>( <expr>enumerator )  @54288|$appendix(,) --internal
+	 viable = yes
+	{
+		method enumerate  @61872|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $1<41>( <match_mode>enumerator )  @17312|$appendix(,) --internal
+	 viable = yes
+	{
+		method enumerate  @48752|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $1<4>( <ascii>enumerator )  @56592|$appendix(,) --internal
+	 viable = yes
+	{
+		method enumerate  @36384|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $1<5>( <int>enumerator )  @52752|$appendix(,) --internal
+	 viable = yes
+	{
+		method enumerate  @38464|$appendix(,) --external
+		 viable = yes
+	}
+
+	subroutine $22<13>( fix<unicode> )  @09936|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @49376|$appendix(,) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+			object b  @47776|$appendix(,) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+			proxy ~o  @10176|$appendix(,) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @51936|console(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @49376|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @51936|console(,)
+			IF
+			 condition: (direct)-> object (anon)  @51936|console(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @10176|$appendix(,)
+				 right: ("a")-> object a  @49376|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @10176|$appendix(,)
+				 right: ("b")-> object b  @47776|$appendix(,)
+			}
+		}
+	}
+
+	subroutine $22<23>( fix<string> )  @09136|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @00096|$appendix(,) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object b  @49312|$appendix(,) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			proxy ~o  @54496|$appendix(,) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @00736|channel(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @00096|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @00736|channel(,)
+			IF
+			 condition: (direct)-> object (anon)  @00736|channel(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @54496|$appendix(,)
+				 right: ("a")-> object a  @00096|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @54496|$appendix(,)
+				 right: ("b")-> object b  @49312|$appendix(,)
+			}
+		}
+	}
+
+	subroutine $22<24>( fix<etm> )  @12736|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @01056|$appendix(,) --internal
+			 type: ("etm")-> type etm  @10944|etm(5,6)
+
+			object b  @52192|$appendix(,) --internal
+			 type: ("etm")-> type etm  @10944|etm(5,6)
+
+			proxy ~o  @54800|$appendix(,) --internal
+			 type: ("etm")-> type etm  @10944|etm(5,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @49952|channel(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @01056|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @49952|channel(,)
+			IF
+			 condition: (direct)-> object (anon)  @49952|channel(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @54800|$appendix(,)
+				 right: ("a")-> object a  @01056|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @54800|$appendix(,)
+				 right: ("b")-> object b  @52192|$appendix(,)
+			}
+		}
+	}
+
+	subroutine $22<2>( fix<expr> )  @15136|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @50336|$appendix(,) --internal
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+
+			object b  @59296|$appendix(,) --internal
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+
+			proxy ~o  @07184|$appendix(,) --internal
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @51616|text_mediator(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @50336|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @51616|text_mediator(,)
+			IF
+			 condition: (direct)-> object (anon)  @51616|text_mediator(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @07184|$appendix(,)
+				 right: ("a")-> object a  @50336|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @07184|$appendix(,)
+				 right: ("b")-> object b  @59296|$appendix(,)
+			}
+		}
+	}
+
+	subroutine $22<41>( fix<match_mode> )  @14336|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @11360|$appendix(,) --internal
+			 type: ("match_mode")-> enum type match_mode  @18384|text_mediator(5,11)
+
+			object b  @16800|$appendix(,) --internal
+			 type: ("match_mode")-> enum type match_mode  @18384|text_mediator(5,11)
+
+			proxy ~o  @03232|$appendix(,) --internal
+			 type: ("match_mode")-> enum type match_mode  @18384|text_mediator(5,11)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @05920|text_mediator(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @11360|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @05920|text_mediator(,)
+			IF
+			 condition: (direct)-> object (anon)  @05920|text_mediator(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @03232|$appendix(,)
+				 right: ("a")-> object a  @11360|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @03232|$appendix(,)
+				 right: ("b")-> object b  @16800|$appendix(,)
+			}
+		}
+	}
+
+	subroutine $22<42>( fix<sign> )  @13136|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @07520|$appendix(,) --internal
+			 type: ("sign")-> enum type sign  @41472|conventional(103,11)
+
+			object b  @13920|$appendix(,) --internal
+			 type: ("sign")-> enum type sign  @41472|conventional(103,11)
+
+			proxy ~o  @25968|$appendix(,) --internal
+			 type: ("sign")-> enum type sign  @41472|conventional(103,11)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @03680|text_mediator(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @07520|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @03680|text_mediator(,)
+			IF
+			 condition: (direct)-> object (anon)  @03680|text_mediator(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @25968|$appendix(,)
+				 right: ("a")-> object a  @07520|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @25968|$appendix(,)
+				 right: ("b")-> object b  @13920|$appendix(,)
+			}
+		}
+	}
+
+	subroutine $22<5>( fix<int> )  @12336|$appendix(,) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @01376|$appendix(,) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object b  @01696|$appendix(,) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			proxy ~o  @08960|$appendix(,) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @02016|channel(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("a")-> object a  @01376|$appendix(,)
+			 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+			 output: (direct)-> object (anon)  @02016|channel(,)
+			IF
+			 condition: (direct)-> object (anon)  @02016|channel(,)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @08960|$appendix(,)
+				 right: ("a")-> object a  @01376|$appendix(,)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @08960|$appendix(,)
+				 right: ("b")-> object b  @01696|$appendix(,)
+			}
+		}
+	}
+
+	method $27<'8'>( begin<'8'> )  @28560|$appendix(,) --internal
+	 enclosing type = int
+	 viable = yes
+
+	method $30<7>( begin<node1> )  @37936|$appendix(,) --internal
+	 enclosing type = $6<7> (op<node1>)
+	 viable = yes
+
+	method $35<13>( read_one<unicode> )  @46672|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object c  @54176|$appendix(,) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+			object io  @60896|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @49056|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object (anon)  @49056|$appendix(,)
+			 method: ("begin")-> method begin  @49760|int(59,3)
+			 input: ("io")-> object io  @60896|$appendix(,)
+			 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+			CALL --initial, fundamental
+			 lead: ("c")-> object c  @54176|$appendix(,)
+			 method: ("begin")-> method begin  @39520|unicode(30,3)
+			 input: (direct)-> object (anon)  @49056|$appendix(,)
+		}
+	}
+
+	method $35<4>( read_one<ascii> )  @45424|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object c  @61216|$appendix(,) --internal
+			 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+			object io  @54496|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @59616|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object (anon)  @59616|$appendix(,)
+			 method: ("begin")-> method begin  @49760|int(59,3)
+			 input: ("io")-> object io  @54496|$appendix(,)
+			 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+			CALL --initial, fundamental
+			 lead: ("c")-> object c  @61216|$appendix(,)
+			 method: ("begin")-> method begin  @13264|ascii(110,3)
+			 input: (direct)-> object (anon)  @59616|$appendix(,)
+		}
+	}
+
+	method $36<13>( read_sequence<unicode> )  @45840|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object arr  @54816|$appendix(,) --internal
+			 type: (direct)-> type $12<13>( array<unicode> )  @55056|$appendix(,)
+
+			object delim  @45536|$appendix(,) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+			object io  @50016|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			CALL --initial, fundamental
+			 lead: ("arr")-> object arr  @54816|$appendix(,)
+			 method: ("begin")-> method begin  @05136|$appendix(,)
+			 input: (pending)->
+			MAKE
+			 object: (direct)-> object (anon)  @59936|$appendix(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("io")-> object io  @50016|$appendix(,)
+			 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+			 output: (direct)-> object (anon)  @59936|$appendix(,)
+			IF
+			 condition: (direct)-> object (anon)  @59936|$appendix(,)
+			{
+				true branch: RETURN --to caller
+			}
+			MAKE
+			 object: (direct)-> object dn  @61856|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			MAKE
+			 proxy: (direct)-> proxy (anon)  @00496|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			 permission: [eval]
+			CALL --fundamental
+			 lead: ("delim")-> object delim  @45536|$appendix(,)
+			 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+			 result: (direct)-> proxy (anon)  @00496|text_mediator(,)
+			CALL --initial, fundamental
+			 lead: (direct)-> object dn  @61856|$appendix(,)
+			 method: ("begin")-> method begin  @56416|int(54,3)
+			 input: (direct)-> proxy (anon)  @00496|text_mediator(,)
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object xn  @56096|$appendix(,)
+					 type: ("int")-> type int  @54576|int(6,6)
+					CALL --initial, fundamental
+					 lead: (direct)-> object xn  @56096|$appendix(,)
+					 method: ("begin")-> method begin  @49760|int(59,3)
+					 input: ("io")-> object io  @50016|$appendix(,)
+					 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+					MAKE
+					 object: (direct)-> object (anon)  @52896|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("xn")-> object xn  @56096|$appendix(,)
+					 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+					 input: ("dn")-> object dn  @61856|$appendix(,)
+					 output: (direct)-> object (anon)  @52896|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @52896|$appendix(,)
+					{
+						true branch: RETURN --to caller
+					}
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @04752|text_mediator(,)
+					 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+					 permission: [init]
+					CALL --fundamental
+					 lead: ("arr")-> object arr  @54816|$appendix(,)
+					 method: ("insert")-> method insert  @20944|$appendix(,)
+					 input: (pending)->
+					 result: (direct)-> proxy (anon)  @04752|text_mediator(,)
+					CALL --initial, fundamental
+					 lead: (direct)-> proxy (anon)  @04752|text_mediator(,)
+					 method: ("begin")-> method begin  @39520|unicode(30,3)
+					 input: ("xn")-> object xn  @56096|$appendix(,)
+					MAKE
+					 object: (direct)-> object (anon)  @62176|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("io")-> object io  @50016|$appendix(,)
+					 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+					 output: (direct)-> object (anon)  @62176|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @62176|$appendix(,)
+					{
+						true branch: RETURN --to caller
+					}
+				}
+			}
+		}
+	}
+
+	method $36<4>( read_sequence<ascii> )  @35024|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object arr  @55136|$appendix(,) --internal
+			 type: (direct)-> type $12<4>( array<ascii> )  @54672|$appendix(,)
+
+			object delim  @55776|$appendix(,) --internal
+			 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+			object io  @56736|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			CALL --initial, fundamental
+			 lead: ("arr")-> object arr  @55136|$appendix(,)
+			 method: ("begin")-> method begin  @28848|$appendix(,)
+			 input: (pending)->
+			MAKE
+			 object: (direct)-> object (anon)  @62496|$appendix(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("io")-> object io  @56736|$appendix(,)
+			 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+			 output: (direct)-> object (anon)  @62496|$appendix(,)
+			IF
+			 condition: (direct)-> object (anon)  @62496|$appendix(,)
+			{
+				true branch: RETURN --to caller
+			}
+			MAKE
+			 object: (direct)-> object dn  @49696|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			MAKE
+			 proxy: (direct)-> proxy (anon)  @05056|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			 permission: [eval]
+			CALL --fundamental
+			 lead: ("delim")-> object delim  @55776|$appendix(,)
+			 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+			 result: (direct)-> proxy (anon)  @05056|text_mediator(,)
+			CALL --initial, fundamental
+			 lead: (direct)-> object dn  @49696|$appendix(,)
+			 method: ("begin")-> method begin  @56416|int(54,3)
+			 input: (direct)-> proxy (anon)  @05056|text_mediator(,)
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object xn  @45856|$appendix(,)
+					 type: ("int")-> type int  @54576|int(6,6)
+					CALL --initial, fundamental
+					 lead: (direct)-> object xn  @45856|$appendix(,)
+					 method: ("begin")-> method begin  @49760|int(59,3)
+					 input: ("io")-> object io  @56736|$appendix(,)
+					 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+					MAKE
+					 object: (direct)-> object (anon)  @53216|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("xn")-> object xn  @45856|$appendix(,)
+					 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+					 input: ("dn")-> object dn  @49696|$appendix(,)
+					 output: (direct)-> object (anon)  @53216|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @53216|$appendix(,)
+					{
+						true branch: RETURN --to caller
+					}
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @05360|text_mediator(,)
+					 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+					 permission: [init]
+					CALL --fundamental
+					 lead: ("arr")-> object arr  @55136|$appendix(,)
+					 method: ("insert")-> method insert  @38416|$appendix(,)
+					 input: (pending)->
+					 result: (direct)-> proxy (anon)  @05360|text_mediator(,)
+					CALL --initial, fundamental
+					 lead: (direct)-> proxy (anon)  @05360|text_mediator(,)
+					 method: ("begin")-> method begin  @13264|ascii(110,3)
+					 input: ("xn")-> object xn  @45856|$appendix(,)
+					MAKE
+					 object: (direct)-> object (anon)  @46816|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("io")-> object io  @56736|$appendix(,)
+					 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+					 output: (direct)-> object (anon)  @46816|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @46816|$appendix(,)
+					{
+						true branch: RETURN --to caller
+					}
+				}
+			}
+		}
+	}
+
+	method $37<5>( begin<int> )  @46256|$appendix(,) --internal
+	 enclosing type = string
+	 viable = yes
+
+	method $38<5>( begin<int> )  @47920|$appendix(,) --internal
+	 enclosing type = expr
+	 viable = yes
+
+	method $39<13>( read_sequence<unicode> )  @38768|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object arr  @63456|$appendix(,) --internal
+			 type: (direct)-> type $12<13>( array<unicode> )  @55056|$appendix(,)
+
+			object io  @63776|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+
+			object q  @64096|$appendix(,) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+		}
+
+		BLOCK --domain
+		{
+			CALL --initial, fundamental
+			 lead: ("arr")-> object arr  @63456|$appendix(,)
+			 method: ("begin")-> method begin  @05136|$appendix(,)
+			 input: (pending)->
+			MAKE
+			 object: (direct)-> object (anon)  @47136|$appendix(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("io")-> object io  @63776|$appendix(,)
+			 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+			 output: (direct)-> object (anon)  @47136|$appendix(,)
+			IF
+			 condition: (direct)-> object (anon)  @47136|$appendix(,)
+			{
+				true branch: RETURN --to caller
+			}
+			MAKE
+			 proxy: (direct)-> proxy ~q  @05664|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			 permission: [eval]
+			CALL
+			 subroutine: (direct)-> subroutine $22<5>( fix<int> )  @12336|$appendix(,)
+			 input: ("q")-> object q  @64096|$appendix(,)
+			 input: ("int_max")-> object int_max  @10640|conventional(32,2)
+			 result: (direct)-> proxy ~q  @05664|text_mediator(,)
+			MAKE
+			 object: (direct)-> object n  @62816|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object n  @62816|$appendix(,)
+			 method: ("begin")-> method begin  @58080|int(52,3)
+			 input: (pending)->
+			LOOP
+			 condition: (direct)-> object (anon)  @64416|text_mediator(,)
+			{
+				condition branch: BLOCK --???
+				{
+					MAKE
+					 object: (direct)-> object (anon)  @64416|text_mediator(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("n")-> object n  @62816|$appendix(,)
+					 method: ("is_less?")-> method is_less?  @64736|int(68,3)
+					 input: ("~q")-> proxy ~q  @05664|text_mediator(,)
+					 output: (direct)-> object (anon)  @64416|text_mediator(,)
+				}
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object xn  @46176|$appendix(,)
+					 type: ("int")-> type int  @54576|int(6,6)
+					CALL --initial, fundamental
+					 lead: (direct)-> object xn  @46176|$appendix(,)
+					 method: ("begin")-> method begin  @49760|int(59,3)
+					 input: ("io")-> object io  @63776|$appendix(,)
+					 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @00800|text_mediator(,)
+					 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+					 permission: [init]
+					CALL --fundamental
+					 lead: ("arr")-> object arr  @63456|$appendix(,)
+					 method: ("insert")-> method insert  @20944|$appendix(,)
+					 input: (pending)->
+					 result: (direct)-> proxy (anon)  @00800|text_mediator(,)
+					CALL --initial, fundamental
+					 lead: (direct)-> proxy (anon)  @00800|text_mediator(,)
+					 method: ("begin")-> method begin  @39520|unicode(30,3)
+					 input: ("xn")-> object xn  @46176|$appendix(,)
+					MAKE
+					 object: (direct)-> object (anon)  @63136|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("io")-> object io  @63776|$appendix(,)
+					 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+					 output: (direct)-> object (anon)  @63136|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @63136|$appendix(,)
+					{
+						true branch: RETURN --to caller
+					}
+					CALL --fundamental
+					 lead: ("n")-> object n  @62816|$appendix(,)
+					 method: ("inc")-> method inc  @16240|int(116,3)
+				}
+			}
+		}
+	}
+
+	method $39<4>( read_sequence<ascii> )  @43760|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object arr  @10400|$appendix(,) --internal
+			 type: (direct)-> type $12<4>( array<ascii> )  @54672|$appendix(,)
+
+			object io  @04640|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+
+			object q  @01760|$appendix(,) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+		}
+
+		BLOCK --domain
+		{
+			CALL --initial, fundamental
+			 lead: ("arr")-> object arr  @10400|$appendix(,)
+			 method: ("begin")-> method begin  @28848|$appendix(,)
+			 input: (pending)->
+			MAKE
+			 object: (direct)-> object (anon)  @64736|$appendix(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("io")-> object io  @04640|$appendix(,)
+			 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+			 output: (direct)-> object (anon)  @64736|$appendix(,)
+			IF
+			 condition: (direct)-> object (anon)  @64736|$appendix(,)
+			{
+				true branch: RETURN --to caller
+			}
+			MAKE
+			 proxy: (direct)-> proxy ~q  @01104|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			 permission: [eval]
+			CALL
+			 subroutine: (direct)-> subroutine $22<5>( fix<int> )  @12336|$appendix(,)
+			 input: ("q")-> object q  @01760|$appendix(,)
+			 input: ("int_max")-> object int_max  @10640|conventional(32,2)
+			 result: (direct)-> proxy ~q  @01104|text_mediator(,)
+			MAKE
+			 object: (direct)-> object n  @65056|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object n  @65056|$appendix(,)
+			 method: ("begin")-> method begin  @58080|int(52,3)
+			 input: (pending)->
+			LOOP
+			 condition: (direct)-> object (anon)  @02400|text_mediator(,)
+			{
+				condition branch: BLOCK --???
+				{
+					MAKE
+					 object: (direct)-> object (anon)  @02400|text_mediator(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("n")-> object n  @65056|$appendix(,)
+					 method: ("is_less?")-> method is_less?  @64736|int(68,3)
+					 input: ("~q")-> proxy ~q  @01104|text_mediator(,)
+					 output: (direct)-> object (anon)  @02400|text_mediator(,)
+				}
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object xn  @65376|$appendix(,)
+					 type: ("int")-> type int  @54576|int(6,6)
+					CALL --initial, fundamental
+					 lead: (direct)-> object xn  @65376|$appendix(,)
+					 method: ("begin")-> method begin  @49760|int(59,3)
+					 input: ("io")-> object io  @04640|$appendix(,)
+					 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @02624|text_mediator(,)
+					 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+					 permission: [init]
+					CALL --fundamental
+					 lead: ("arr")-> object arr  @10400|$appendix(,)
+					 method: ("insert")-> method insert  @38416|$appendix(,)
+					 input: (pending)->
+					 result: (direct)-> proxy (anon)  @02624|text_mediator(,)
+					CALL --initial, fundamental
+					 lead: (direct)-> proxy (anon)  @02624|text_mediator(,)
+					 method: ("begin")-> method begin  @13264|ascii(110,3)
+					 input: ("xn")-> object xn  @65376|$appendix(,)
+					MAKE
+					 object: (direct)-> object (anon)  @10720|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("io")-> object io  @04640|$appendix(,)
+					 method: ("rp_end?")-> method rp_end?  @28368|mediator(350,3)
+					 output: (direct)-> object (anon)  @10720|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @10720|$appendix(,)
+					{
+						true branch: RETURN --to caller
+					}
+					CALL --fundamental
+					 lead: ("n")-> object n  @65056|$appendix(,)
+					 method: ("inc")-> method inc  @16240|int(116,3)
+				}
+			}
+		}
+	}
+
+	type $3<'1'>( word<'1'> )  @51984|$appendix(,) --internal
+	 viable = yes
+	{
+		method adc  @28480|$appendix(,) --external
+		 viable = yes
+
+		method adc  @41376|$appendix(,) --external
+		 viable = yes
+
+		method add  @38880|$appendix(,) --external
+		 viable = yes
+
+		method add  @42208|$appendix(,) --external
+		 viable = yes
+
+		method and  @39296|$appendix(,) --external
+		 viable = yes
+
+		method and  @40960|$appendix(,) --external
+		 viable = yes
+
+		method asr  @28896|$appendix(,) --external
+		 viable = yes
+
+		method asr  @32640|$appendix(,) --external
+		 viable = yes
+
+		method begin  @33888|$appendix(,) --external
+		 viable = yes
+
+		method begin  @41792|$appendix(,) --external
+		 viable = yes
+
+		method begin  @28064|$appendix(,) --external
+		 viable = yes
+
+		method begin  @37632|$appendix(,) --external
+		 viable = yes
+
+		method begin  @35552|$appendix(,) --external
+		 viable = yes
+
+		method begin<#n>  @39712|$appendix(,) --external
+		 viable = no
+
+		method is_before?  @31392|$appendix(,) --external
+		 viable = yes
+
+		method is_equal?  @29312|$appendix(,) --external
+		 viable = yes
+
+		method is_less?  @37216|$appendix(,) --external
+		 viable = yes
+
+		method is_zero?  @36800|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @33056|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @31808|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @34304|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @34720|$appendix(,) --external
+		 viable = yes
+
+		method nand  @35136|$appendix(,) --external
+		 viable = yes
+
+		method nand  @38048|$appendix(,) --external
+		 viable = yes
+
+		method neg  @40128|$appendix(,) --external
+		 viable = yes
+
+		method neg  @29728|$appendix(,) --external
+		 viable = yes
+
+		method nor  @43040|$appendix(,) --external
+		 viable = yes
+
+		method nor  @26816|$appendix(,) --external
+		 viable = yes
+
+		method not  @30144|$appendix(,) --external
+		 viable = yes
+
+		method not  @43456|$appendix(,) --external
+		 viable = yes
+
+		method or  @27232|$appendix(,) --external
+		 viable = yes
+
+		method or  @43872|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @30560|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @27648|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @48032|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @47616|$appendix(,) --external
+		 viable = yes
+
+		method rol  @44288|$appendix(,) --external
+		 viable = yes
+
+		method rol  @44704|$appendix(,) --external
+		 viable = yes
+
+		method ror  @45120|$appendix(,) --external
+		 viable = yes
+
+		method ror  @45536|$appendix(,) --external
+		 viable = yes
+
+		method set  @50528|$appendix(,) --external
+		 viable = yes
+
+		method store  @45952|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @46368|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @46784|$appendix(,) --external
+		 viable = yes
+
+		method xor  @47200|$appendix(,) --external
+		 viable = yes
+
+		method xor  @50112|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $3<'16'>( word<'16'> )  @52368|$appendix(,) --internal
+	 viable = yes
+	{
+		method adc  @48448|$appendix(,) --external
+		 viable = yes
+
+		method adc  @51776|$appendix(,) --external
+		 viable = yes
+
+		method add  @53024|$appendix(,) --external
+		 viable = yes
+
+		method add  @48864|$appendix(,) --external
+		 viable = yes
+
+		method and  @49280|$appendix(,) --external
+		 viable = yes
+
+		method and  @49696|$appendix(,) --external
+		 viable = yes
+
+		method asr  @50944|$appendix(,) --external
+		 viable = yes
+
+		method asr  @51360|$appendix(,) --external
+		 viable = yes
+
+		method begin  @52192|$appendix(,) --external
+		 viable = yes
+
+		method begin  @52608|$appendix(,) --external
+		 viable = yes
+
+		method begin  @53856|$appendix(,) --external
+		 viable = yes
+
+		method begin  @54272|$appendix(,) --external
+		 viable = yes
+
+		method begin  @59264|$appendix(,) --external
+		 viable = yes
+
+		method begin<#n>  @58848|$appendix(,) --external
+		 viable = no
+
+		method is_before?  @55104|$appendix(,) --external
+		 viable = yes
+
+		method is_equal?  @63008|$appendix(,) --external
+		 viable = yes
+
+		method is_less?  @60512|$appendix(,) --external
+		 viable = yes
+
+		method is_zero?  @65088|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @60928|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @57600|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @58016|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @64672|$appendix(,) --external
+		 viable = yes
+
+		method nand  @61344|$appendix(,) --external
+		 viable = yes
+
+		method nand  @53440|$appendix(,) --external
+		 viable = yes
+
+		method neg  @59680|$appendix(,) --external
+		 viable = yes
+
+		method neg  @54688|$appendix(,) --external
+		 viable = yes
+
+		method nor  @55936|$appendix(,) --external
+		 viable = yes
+
+		method nor  @55520|$appendix(,) --external
+		 viable = yes
+
+		method not  @58432|$appendix(,) --external
+		 viable = yes
+
+		method not  @60096|$appendix(,) --external
+		 viable = yes
+
+		method or  @56352|$appendix(,) --external
+		 viable = yes
+
+		method or  @56768|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @63840|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @57184|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @61760|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @62176|$appendix(,) --external
+		 viable = yes
+
+		method rol  @62592|$appendix(,) --external
+		 viable = yes
+
+		method rol  @63424|$appendix(,) --external
+		 viable = yes
+
+		method ror  @64256|$appendix(,) --external
+		 viable = yes
+
+		method ror  @06848|$appendix(,) --external
+		 viable = yes
+
+		method set  @09344|$appendix(,) --external
+		 viable = yes
+
+		method store  @12256|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @13088|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @10176|$appendix(,) --external
+		 viable = yes
+
+		method xor  @02272|$appendix(,) --external
+		 viable = yes
+
+		method xor  @15168|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $3<'32'>( word<'32'> )  @53136|$appendix(,) --internal
+	 viable = yes
+	{
+		method adc  @05184|$appendix(,) --external
+		 viable = yes
+
+		method adc  @10592|$appendix(,) --external
+		 viable = yes
+
+		method add  @12672|$appendix(,) --external
+		 viable = yes
+
+		method add  @03936|$appendix(,) --external
+		 viable = yes
+
+		method and  @09760|$appendix(,) --external
+		 viable = yes
+
+		method and  @06016|$appendix(,) --external
+		 viable = yes
+
+		method asr  @06432|$appendix(,) --external
+		 viable = yes
+
+		method asr  @11424|$appendix(,) --external
+		 viable = yes
+
+		method begin  @13920|$appendix(,) --external
+		 viable = yes
+
+		method begin  @11008|$appendix(,) --external
+		 viable = yes
+
+		method begin  @04352|$appendix(,) --external
+		 viable = yes
+
+		method begin  @11840|$appendix(,) --external
+		 viable = yes
+
+		method begin  @14336|$appendix(,) --external
+		 viable = yes
+
+		method begin<#n>  @13504|$appendix(,) --external
+		 viable = no
+
+		method is_before?  @15584|$appendix(,) --external
+		 viable = yes
+
+		method is_equal?  @04768|$appendix(,) --external
+		 viable = yes
+
+		method is_less?  @07264|$appendix(,) --external
+		 viable = yes
+
+		method is_zero?  @14752|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @16000|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @02688|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @07680|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @16416|$appendix(,) --external
+		 viable = yes
+
+		method nand  @00192|$appendix(,) --external
+		 viable = yes
+
+		method nand  @08512|$appendix(,) --external
+		 viable = yes
+
+		method neg  @16832|$appendix(,) --external
+		 viable = yes
+
+		method neg  @08096|$appendix(,) --external
+		 viable = yes
+
+		method nor  @00608|$appendix(,) --external
+		 viable = yes
+
+		method nor  @17248|$appendix(,) --external
+		 viable = yes
+
+		method not  @05600|$appendix(,) --external
+		 viable = yes
+
+		method not  @03520|$appendix(,) --external
+		 viable = yes
+
+		method or  @08928|$appendix(,) --external
+		 viable = yes
+
+		method or  @03104|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @01024|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @17664|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @01440|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @18080|$appendix(,) --external
+		 viable = yes
+
+		method rol  @01856|$appendix(,) --external
+		 viable = yes
+
+		method rol  @18496|$appendix(,) --external
+		 viable = yes
+
+		method ror  @20160|$appendix(,) --external
+		 viable = yes
+
+		method ror  @25152|$appendix(,) --external
+		 viable = yes
+
+		method set  @22240|$appendix(,) --external
+		 viable = yes
+
+		method store  @18912|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @19328|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @19744|$appendix(,) --external
+		 viable = yes
+
+		method xor  @21824|$appendix(,) --external
+		 viable = yes
+
+		method xor  @20576|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $3<'4'>( word<'4'> )  @49296|$appendix(,) --internal
+	 viable = yes
+	{
+		method adc  @20992|$appendix(,) --external
+		 viable = yes
+
+		method adc  @21408|$appendix(,) --external
+		 viable = yes
+
+		method add  @22656|$appendix(,) --external
+		 viable = yes
+
+		method add  @23072|$appendix(,) --external
+		 viable = yes
+
+		method and  @23488|$appendix(,) --external
+		 viable = yes
+
+		method and  @23904|$appendix(,) --external
+		 viable = yes
+
+		method asr  @24320|$appendix(,) --external
+		 viable = yes
+
+		method asr  @24736|$appendix(,) --external
+		 viable = yes
+
+		method begin  @25568|$appendix(,) --external
+		 viable = yes
+
+		method begin  @25984|$appendix(,) --external
+		 viable = yes
+
+		method begin  @26400|$appendix(,) --external
+		 viable = yes
+
+		method begin  @49872|$appendix(,) --external
+		 viable = yes
+
+		method begin  @44880|$appendix(,) --external
+		 viable = yes
+
+		method begin<#n>  @49040|$appendix(,) --external
+		 viable = no
+
+		method is_before?  @53200|$appendix(,) --external
+		 viable = yes
+
+		method is_equal?  @42384|$appendix(,) --external
+		 viable = yes
+
+		method is_less?  @53616|$appendix(,) --external
+		 viable = yes
+
+		method is_zero?  @48208|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @41136|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @48624|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @56944|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @51952|$appendix(,) --external
+		 viable = yes
+
+		method nand  @49456|$appendix(,) --external
+		 viable = yes
+
+		method nand  @54032|$appendix(,) --external
+		 viable = yes
+
+		method neg  @50288|$appendix(,) --external
+		 viable = yes
+
+		method neg  @45712|$appendix(,) --external
+		 viable = yes
+
+		method nor  @46128|$appendix(,) --external
+		 viable = yes
+
+		method nor  @55280|$appendix(,) --external
+		 viable = yes
+
+		method not  @46544|$appendix(,) --external
+		 viable = yes
+
+		method not  @54448|$appendix(,) --external
+		 viable = yes
+
+		method or  @54864|$appendix(,) --external
+		 viable = yes
+
+		method or  @50704|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @44464|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @45296|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @55696|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @44048|$appendix(,) --external
+		 viable = yes
+
+		method rol  @57776|$appendix(,) --external
+		 viable = yes
+
+		method rol  @42800|$appendix(,) --external
+		 viable = yes
+
+		method ror  @56112|$appendix(,) --external
+		 viable = yes
+
+		method ror  @52368|$appendix(,) --external
+		 viable = yes
+
+		method set  @47376|$appendix(,) --external
+		 viable = yes
+
+		method store  @51536|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @52784|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @56528|$appendix(,) --external
+		 viable = yes
+
+		method xor  @57360|$appendix(,) --external
+		 viable = yes
+
+		method xor  @41552|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $3<'64'>( word<'64'> )  @53520|$appendix(,) --internal
+	 viable = yes
+	{
+		method adc  @46960|$appendix(,) --external
+		 viable = yes
+
+		method adc  @58192|$appendix(,) --external
+		 viable = yes
+
+		method add  @47792|$appendix(,) --external
+		 viable = yes
+
+		method add  @51120|$appendix(,) --external
+		 viable = yes
+
+		method and  @41968|$appendix(,) --external
+		 viable = yes
+
+		method and  @58608|$appendix(,) --external
+		 viable = yes
+
+		method asr  @59024|$appendix(,) --external
+		 viable = yes
+
+		method asr  @59440|$appendix(,) --external
+		 viable = yes
+
+		method begin  @43216|$appendix(,) --external
+		 viable = yes
+
+		method begin  @43632|$appendix(,) --external
+		 viable = yes
+
+		method begin  @59856|$appendix(,) --external
+		 viable = yes
+
+		method begin  @60272|$appendix(,) --external
+		 viable = yes
+
+		method begin  @61936|$appendix(,) --external
+		 viable = yes
+
+		method begin<#n>  @62352|$appendix(,) --external
+		 viable = no
+
+		method is_before?  @60688|$appendix(,) --external
+		 viable = yes
+
+		method is_equal?  @61104|$appendix(,) --external
+		 viable = yes
+
+		method is_less?  @61520|$appendix(,) --external
+		 viable = yes
+
+		method is_zero?  @00144|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @00560|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @62768|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @63184|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @63600|$appendix(,) --external
+		 viable = yes
+
+		method nand  @64016|$appendix(,) --external
+		 viable = yes
+
+		method nand  @64432|$appendix(,) --external
+		 viable = yes
+
+		method neg  @64848|$appendix(,) --external
+		 viable = yes
+
+		method neg  @65264|$appendix(,) --external
+		 viable = yes
+
+		method nor  @00976|$appendix(,) --external
+		 viable = yes
+
+		method nor  @01392|$appendix(,) --external
+		 viable = yes
+
+		method not  @01808|$appendix(,) --external
+		 viable = yes
+
+		method not  @12624|$appendix(,) --external
+		 viable = yes
+
+		method or  @15120|$appendix(,) --external
+		 viable = yes
+
+		method or  @14704|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @13872|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @10960|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @03472|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @08048|$appendix(,) --external
+		 viable = yes
+
+		method rol  @09296|$appendix(,) --external
+		 viable = yes
+
+		method rol  @06800|$appendix(,) --external
+		 viable = yes
+
+		method ror  @08464|$appendix(,) --external
+		 viable = yes
+
+		method ror  @13040|$appendix(,) --external
+		 viable = yes
+
+		method set  @02224|$appendix(,) --external
+		 viable = yes
+
+		method store  @04304|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @13456|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @12208|$appendix(,) --external
+		 viable = yes
+
+		method xor  @17200|$appendix(,) --external
+		 viable = yes
+
+		method xor  @18032|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $3<'8'>( word<'8'> )  @55824|$appendix(,) --internal
+	 viable = yes
+	{
+		method adc  @49808|$appendix(,) --external
+		 viable = yes
+
+		method adc  @61040|$appendix(,) --external
+		 viable = yes
+
+		method add  @58128|$appendix(,) --external
+		 viable = yes
+
+		method add  @48144|$appendix(,) --external
+		 viable = yes
+
+		method and  @53552|$appendix(,) --external
+		 viable = yes
+
+		method and  @53968|$appendix(,) --external
+		 viable = yes
+
+		method asr  @48976|$appendix(,) --external
+		 viable = yes
+
+		method asr  @56880|$appendix(,) --external
+		 viable = yes
+
+		method begin  @62288|$appendix(,) --external
+		 viable = yes
+
+		method begin  @57296|$appendix(,) --external
+		 viable = yes
+
+		method begin  @57712|$appendix(,) --external
+		 viable = yes
+
+		method begin  @58960|$appendix(,) --external
+		 viable = yes
+
+		method begin  @47728|$appendix(,) --external
+		 viable = yes
+
+		method begin<#n>  @59792|$appendix(,) --external
+		 viable = no
+
+		method is_before?  @60208|$appendix(,) --external
+		 viable = yes
+
+		method is_equal?  @49392|$appendix(,) --external
+		 viable = yes
+
+		method is_less?  @46064|$appendix(,) --external
+		 viable = yes
+
+		method is_zero?  @62704|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @46480|$appendix(,) --external
+		 viable = yes
+
+		method lsl  @63120|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @01328|$appendix(,) --external
+		 viable = yes
+
+		method lsr  @63536|$appendix(,) --external
+		 viable = yes
+
+		method nand  @63952|$appendix(,) --external
+		 viable = yes
+
+		method nand  @64368|$appendix(,) --external
+		 viable = yes
+
+		method neg  @64784|$appendix(,) --external
+		 viable = yes
+
+		method neg  @65200|$appendix(,) --external
+		 viable = yes
+
+		method nor  @00080|$appendix(,) --external
+		 viable = yes
+
+		method nor  @00496|$appendix(,) --external
+		 viable = yes
+
+		method not  @03824|$appendix(,) --external
+		 viable = yes
+
+		method not  @00912|$appendix(,) --external
+		 viable = yes
+
+		method or  @01744|$appendix(,) --external
+		 viable = yes
+
+		method or  @02160|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @02576|$appendix(,) --external
+		 viable = yes
+
+		method rcl  @02992|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @05904|$appendix(,) --external
+		 viable = yes
+
+		method rcr  @05488|$appendix(,) --external
+		 viable = yes
+
+		method rol  @03408|$appendix(,) --external
+		 viable = yes
+
+		method rol  @04240|$appendix(,) --external
+		 viable = yes
+
+		method ror  @04656|$appendix(,) --external
+		 viable = yes
+
+		method ror  @05072|$appendix(,) --external
+		 viable = yes
+
+		method set  @35968|$appendix(,) --external
+		 viable = yes
+
+		method store  @30976|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @33472|$appendix(,) --external
+		 viable = yes
+
+		method xnor  @32224|$appendix(,) --external
+		 viable = yes
+
+		method xor  @42624|$appendix(,) --external
+		 viable = yes
+
+		method xor  @40544|$appendix(,) --external
+		 viable = yes
+	}
+
+	method $40<23>( copy_pattern<string> )  @35440|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object io  @13600|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+
+			object pattern  @05280|$appendix(,) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object tm  @05600|$appendix(,) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @04960|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: ("pattern")-> object pattern  @05280|$appendix(,)
+			 method: ("get_length")-> method get_length  @33696|string(68,3)
+			 output: (direct)-> object (anon)  @04960|text_mediator(,)
+			MAKE
+			 object: (direct)-> object (anon)  @01440|text_mediator(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: (direct)-> object (anon)  @04960|text_mediator(,)
+			 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+			 input: ("zero")-> object zero  @08080|conventional(34,2)
+			 output: (direct)-> object (anon)  @01440|text_mediator(,)
+			IF
+			 condition: (direct)-> object (anon)  @01440|text_mediator(,)
+			{
+				true branch: RETURN --to isolate (quit)
+				 trace: (direct)-> object (anon)  @07200|$appendix(,)
+					trace branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object (anon)  @07200|$appendix(,)
+						 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+						MAKE
+						 proxy: (direct)-> proxy (anon)  @01408|$appendix(,)
+						 type: ("fault")-> type fault  @53808|fault(49,6)
+						 permission: [init]
+						CALL --initial, fundamental
+						 lead: (direct)-> object (anon)  @07200|$appendix(,)
+						 method: ("begin")-> method begin  @23152|$appendix(,)
+						 result: (direct)-> proxy (anon)  @01408|$appendix(,)
+						MAKE
+						 literal: (direct)-> literal (anon)  @08480|$appendix(,)
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 literal: (direct)-> literal (anon)  @06560|$appendix(,)
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 object: (direct)-> object (anon)  @11040|$appendix(,)
+						 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+						CALL --initial
+						 lead: (direct)-> object (anon)  @11040|$appendix(,)
+						 method: ("begin")-> method begin  @57968|fault(5,11)
+						 input: (direct)-> literal (anon)  @08480|$appendix(,)
+						CALL --initial, fundamental
+						 lead: (direct)-> proxy (anon)  @01408|$appendix(,)
+						 method: ("begin")-> method begin  @35888|fault(97,3)
+						 input: (direct)-> object (anon)  @11040|$appendix(,)
+						 input: (direct)-> literal (anon)  @06560|$appendix(,)
+					}
+			}
+			CALL
+			 lead: ("io")-> object io  @13600|$appendix(,)
+			 method: ("spawn")-> method spawn  @07984|text_mediator(187,3)
+			 output: ("tm")-> object tm  @05600|$appendix(,)
+			CALL
+			 lead: ("tm")-> object tm  @05600|$appendix(,)
+			 method: ("write")-> method write  @27120|text_mediator(258,3)
+			 input: ("pattern")-> object pattern  @05280|$appendix(,)
+		}
+	}
+
+	method $40<2>( copy_pattern<expr> )  @37520|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object io  @02720|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+
+			object pattern  @16160|$appendix(,) --internal
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+
+			object tm  @12640|$appendix(,) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @13280|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: ("pattern")-> object pattern  @16160|$appendix(,)
+			 method: ("get_length")-> method get_length  @30896|expr(98,3)
+			 output: (direct)-> object (anon)  @13280|text_mediator(,)
+			MAKE
+			 object: (direct)-> object (anon)  @03040|text_mediator(,)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: (direct)-> object (anon)  @13280|text_mediator(,)
+			 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+			 input: ("zero")-> object zero  @08080|conventional(34,2)
+			 output: (direct)-> object (anon)  @03040|text_mediator(,)
+			IF
+			 condition: (direct)-> object (anon)  @03040|text_mediator(,)
+			{
+				true branch: RETURN --to isolate (quit)
+				 trace: (direct)-> object (anon)  @12960|$appendix(,)
+					trace branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object (anon)  @12960|$appendix(,)
+						 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+						MAKE
+						 proxy: (direct)-> proxy (anon)  @02928|$appendix(,)
+						 type: ("fault")-> type fault  @53808|fault(49,6)
+						 permission: [init]
+						CALL --initial, fundamental
+						 lead: (direct)-> object (anon)  @12960|$appendix(,)
+						 method: ("begin")-> method begin  @23152|$appendix(,)
+						 result: (direct)-> proxy (anon)  @02928|$appendix(,)
+						MAKE
+						 literal: (direct)-> literal (anon)  @12000|$appendix(,)
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 literal: (direct)-> literal (anon)  @02080|$appendix(,)
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 object: (direct)-> object (anon)  @15200|$appendix(,)
+						 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+						CALL --initial
+						 lead: (direct)-> object (anon)  @15200|$appendix(,)
+						 method: ("begin")-> method begin  @57968|fault(5,11)
+						 input: (direct)-> literal (anon)  @12000|$appendix(,)
+						CALL --initial, fundamental
+						 lead: (direct)-> proxy (anon)  @02928|$appendix(,)
+						 method: ("begin")-> method begin  @35888|fault(97,3)
+						 input: (direct)-> object (anon)  @15200|$appendix(,)
+						 input: (direct)-> literal (anon)  @02080|$appendix(,)
+					}
+			}
+			CALL
+			 lead: ("io")-> object io  @02720|$appendix(,)
+			 method: ("spawn")-> method spawn  @07984|text_mediator(187,3)
+			 output: ("tm")-> object tm  @12640|$appendix(,)
+			CALL
+			 lead: ("tm")-> object tm  @12640|$appendix(,)
+			 method: ("write")-> method write  @27952|text_mediator(263,3)
+			 input: ("pattern")-> object pattern  @16160|$appendix(,)
+		}
+	}
+
+	method $43<13>( write_one<unicode> )  @38352|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object c  @09440|$appendix(,) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+			object io  @04320|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 proxy: (direct)-> proxy (anon)  @36912|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			 permission: [eval]
+			CALL --fundamental
+			 lead: ("c")-> object c  @09440|$appendix(,)
+			 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+			 result: (direct)-> proxy (anon)  @36912|text_mediator(,)
+			CALL --fundamental
+			 lead: (direct)-> proxy (anon)  @36912|text_mediator(,)
+			 method: ("store")-> method store  @58496|int(61,3)
+			 input: ("io")-> object io  @04320|$appendix(,)
+			 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+		}
+	}
+
+	method $43<4>( write_one<ascii> )  @39184|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object c  @01120|$appendix(,) --internal
+			 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+			object io  @08800|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 proxy: (direct)-> proxy (anon)  @34480|text_mediator(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			 permission: [eval]
+			CALL --fundamental
+			 lead: ("c")-> object c  @01120|$appendix(,)
+			 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+			 result: (direct)-> proxy (anon)  @34480|text_mediator(,)
+			CALL --fundamental
+			 lead: (direct)-> proxy (anon)  @34480|text_mediator(,)
+			 method: ("store")-> method store  @58496|int(61,3)
+			 input: ("io")-> object io  @08800|$appendix(,)
+			 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+		}
+	}
+
+	method $44<13><5>( write_sequence<unicode><int> )  @39600|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object io  @08160|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+
+			object source  @09120|$appendix(,) --internal
+			 type: (direct)-> type $8<13><5>( serial_access<unicode><int> )  @49680|$appendix(,)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @06240|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: ("source")-> object source  @09120|$appendix(,)
+			 method: ("open_cursor")-> method open_cursor  @28432|$appendix(,)
+			 input: (pending)->
+			 output: (direct)-> object (anon)  @06240|$appendix(,)
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 proxy: (direct)-> proxy ~c  @26272|text_mediator(,)
+					 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+					 permission: [eval]
+					CALL --fundamental
+					 lead: ("source")-> object source  @09120|$appendix(,)
+					 method: ("use@")-> method use@  @37584|$appendix(,)
+					 input: (direct)-> object (anon)  @06240|$appendix(,)
+					 result: (direct)-> proxy ~c  @26272|text_mediator(,)
+					MAKE
+					 analog: (direct)-> analog (anon)  @21152|$appendix(,)
+					 type: ("analog")-> type analog  @19040|analog(5,6)
+					MAKE
+					 object: (direct)-> object (anon)  @07840|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: (direct)-> analog (anon)  @21152|$appendix(,)
+					 method: ("is_void?")-> method is_void?  @29840|analog(23,3)
+					 output: (direct)-> object (anon)  @07840|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @07840|$appendix(,)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @29008|text_mediator(,)
+					 type: ("int")-> type int  @54576|int(6,6)
+					 permission: [eval]
+					CALL --fundamental
+					 lead: ("~c")-> proxy ~c  @26272|text_mediator(,)
+					 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+					 result: (direct)-> proxy (anon)  @29008|text_mediator(,)
+					CALL --fundamental
+					 lead: (direct)-> proxy (anon)  @29008|text_mediator(,)
+					 method: ("store")-> method store  @58496|int(61,3)
+					 input: ("io")-> object io  @08160|$appendix(,)
+					 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+					CALL --fundamental
+					 lead: ("source")-> object source  @09120|$appendix(,)
+					 method: ("move_cursor")-> method move_cursor  @28016|$appendix(,)
+					 input: (direct)-> object (anon)  @06240|$appendix(,)
+				}
+			}
+		}
+	}
+
+	method $44<4><5>( write_sequence<ascii><int> )  @40848|$appendix(,) --internal
+	 enclosing type = text_mediator
+	 viable = yes
+	{
+
+		given
+		{
+			object io  @12320|$appendix(,) --internal
+			 type: (direct)-> type text_mediator  @45840|text_mediator(40,6)
+
+			object source  @14240|$appendix(,) --internal
+			 type: (direct)-> type $8<4><5>( serial_access<ascii><int> )  @50064|$appendix(,)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @09760|$appendix(,)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: ("source")-> object source  @14240|$appendix(,)
+			 method: ("open_cursor")-> method open_cursor  @22736|$appendix(,)
+			 input: (pending)->
+			 output: (direct)-> object (anon)  @09760|$appendix(,)
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 proxy: (direct)-> proxy ~c  @30832|text_mediator(,)
+					 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+					 permission: [eval]
+					CALL --fundamental
+					 lead: ("source")-> object source  @14240|$appendix(,)
+					 method: ("use@")-> method use@  @20656|$appendix(,)
+					 input: (direct)-> object (anon)  @09760|$appendix(,)
+					 result: (direct)-> proxy ~c  @30832|text_mediator(,)
+					MAKE
+					 analog: (direct)-> analog (anon)  @16544|$appendix(,)
+					 type: ("analog")-> type analog  @19040|analog(5,6)
+					MAKE
+					 object: (direct)-> object (anon)  @10080|$appendix(,)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: (direct)-> analog (anon)  @16544|$appendix(,)
+					 method: ("is_void?")-> method is_void?  @29840|analog(23,3)
+					 output: (direct)-> object (anon)  @10080|$appendix(,)
+					IF
+					 condition: (direct)-> object (anon)  @10080|$appendix(,)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @37216|text_mediator(,)
+					 type: ("int")-> type int  @54576|int(6,6)
+					 permission: [eval]
+					CALL --fundamental
+					 lead: ("~c")-> proxy ~c  @30832|text_mediator(,)
+					 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+					 result: (direct)-> proxy (anon)  @37216|text_mediator(,)
+					CALL --fundamental
+					 lead: (direct)-> proxy (anon)  @37216|text_mediator(,)
+					 method: ("store")-> method store  @58496|int(61,3)
+					 input: ("io")-> object io  @12320|$appendix(,)
+					 input: ("io.codepoint_fex")-> object codepoint_fex  @50016|text_mediator(710,3)
+					CALL --fundamental
+					 lead: ("source")-> object source  @14240|$appendix(,)
+					 method: ("move_cursor")-> method move_cursor  @30640|$appendix(,)
+					 input: (direct)-> object (anon)  @09760|$appendix(,)
+				}
+			}
+		}
+	}
+
+	type $6<15>( op<object> )  @50832|$appendix(,) --internal
+	 viable = yes
+	{
+		method begin  @28976|$appendix(,) --external
+		 viable = yes
+
+		method begin  @24816|$appendix(,) --external
+		 viable = yes
+
+		method begin<xt>  @25232|$appendix(,) --external
+		 viable = no
+
+		method begin<xt>  @25648|$appendix(,) --external
+		 viable = no
+
+		method begin<xt>  @21904|$appendix(,) --external
+		 viable = no
+
+		method deref  @31472|$appendix(,) --external
+		 viable = yes
+
+		method is_before<xt>?  @26064|$appendix(,) --external
+		 viable = no
+
+		method is_equal<xt>?  @31888|$appendix(,) --external
+		 viable = no
+
+		method store  @21072|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $6<26>( alpha\op<fault> )  @51600|$appendix(,) --internal
+	 viable = yes
+	{
+		method begin  @23152|$appendix(,) --external
+		 viable = yes
+
+		method begin  @23984|$appendix(,) --external
+		 viable = yes
+
+		method begin<xt>  @23568|$appendix(,) --external
+		 viable = no
+
+		method begin<xt>  @24400|$appendix(,) --external
+		 viable = no
+
+		method begin<xt>  @26480|$appendix(,) --external
+		 viable = no
+
+		method deref  @26896|$appendix(,) --external
+		 viable = yes
+
+		method is_before<xt>?  @27312|$appendix(,) --external
+		 viable = no
+
+		method is_equal<xt>?  @27728|$appendix(,) --external
+		 viable = no
+
+		method store  @28144|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $6<7>( op<node1> )  @51216|$appendix(,) --internal
+	 viable = yes
+	{
+		method begin  @04720|$appendix(,) --external
+		 viable = yes
+
+		method begin  @07632|$appendix(,) --external
+		 viable = yes
+
+		method begin<xt>  @18448|$appendix(,) --external
+		 viable = no
+
+		method begin<xt>  @05552|$appendix(,) --external
+		 viable = no
+
+		method begin<xt>  @11376|$appendix(,) --external
+		 viable = no
+
+		method deref  @15536|$appendix(,) --external
+		 viable = yes
+
+		method is_before<xt>?  @08880|$appendix(,) --external
+		 viable = no
+
+		method is_equal<xt>?  @16784|$appendix(,) --external
+		 viable = no
+
+		method store  @16368|$appendix(,) --external
+		 viable = yes
+	}
+
+	type $8<13><5>( serial_access<unicode><int> )  @49680|$appendix(,) --internal
+	 viable = yes
+	{
+		method begin  @27184|$appendix(,) --external
+		 viable = yes
+
+		method flip_cursor  @27600|$appendix(,) --external
+		 viable = yes
+
+		method move_cursor  @28016|$appendix(,) --external
+		 viable = yes
+
+		method open_cursor  @28432|$appendix(,) --external
+		 viable = yes
+
+		method use@  @37584|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~flip_cursor  @36976|$appendix(,) --fraternal
+		 key = serial_access<t><c>-2
+		 viable = yes
+
+		abstract method ~move_cursor  @43424|$appendix(,) --fraternal
+		 key = serial_access<t><c>-1
+		 viable = yes
+
+		abstract method ~open_cursor  @44912|$appendix(,) --fraternal
+		 key = serial_access<t><c>-0
+		 viable = yes
+
+		abstract method ~use@  @43920|$appendix(,) --fraternal
+		 key = serial_access<t><c>-3
+		 viable = yes
+	}
+
+	type $8<4><5>( serial_access<ascii><int> )  @50064|$appendix(,) --internal
+	 viable = yes
+	{
+		method begin  @34672|$appendix(,) --external
+		 viable = yes
+
+		method flip_cursor  @30224|$appendix(,) --external
+		 viable = yes
+
+		method move_cursor  @30640|$appendix(,) --external
+		 viable = yes
+
+		method open_cursor  @22736|$appendix(,) --external
+		 viable = yes
+
+		method use@  @20656|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~flip_cursor  @44416|$appendix(,) --fraternal
+		 key = serial_access<t><c>-2
+		 viable = yes
+
+		abstract method ~move_cursor  @35984|$appendix(,) --fraternal
+		 key = serial_access<t><c>-1
+		 viable = yes
+
+		abstract method ~open_cursor  @34000|$appendix(,) --fraternal
+		 key = serial_access<t><c>-0
+		 viable = yes
+
+		abstract method ~use@  @50864|$appendix(,) --fraternal
+		 key = serial_access<t><c>-3
+		 viable = yes
+	}
+
+	type $8<7><9>( serial_access<node1><list_cursor> )  @56208|$appendix(,) --internal
+	 viable = yes
+	{
+		method begin  @05968|$appendix(,) --external
+		 viable = yes
+
+		method flip_cursor  @06384|$appendix(,) --external
+		 viable = yes
+
+		method move_cursor  @14288|$appendix(,) --external
+		 viable = yes
+
+		method open_cursor  @15952|$appendix(,) --external
+		 viable = yes
+
+		method use@  @11792|$appendix(,) --external
+		 viable = yes
+
+		abstract method ~flip_cursor  @50368|$appendix(,) --fraternal
+		 key = serial_access<t><c>-2
+		 viable = yes
+
+		abstract method ~move_cursor  @49376|$appendix(,) --fraternal
+		 key = serial_access<t><c>-1
+		 viable = yes
+
+		abstract method ~open_cursor  @38464|$appendix(,) --fraternal
+		 key = serial_access<t><c>-0
+		 viable = yes
+
+		abstract method ~use@  @45904|$appendix(,) --fraternal
+		 key = serial_access<t><c>-3
+		 viable = yes
+	}
+}
+

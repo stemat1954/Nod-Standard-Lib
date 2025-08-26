@@ -1,0 +1,10 @@
+page enumerator
+{
+	type <t>enumerator  @10560|enumerator(4,6) --external
+	 viable = no
+	{
+		method enumerate  @60544|enumerator(23,3) --external
+		 viable = yes
+	}
+}
+

@@ -1,0 +1,28 @@
+page typeid
+{
+	subroutine get_typeid<t>  @64848|typeid(5,12) --external
+	 viable = no
+
+	type typeid  @08496|typeid(8,6) --external
+	 viable = yes
+	{
+		method begin  @37440|typeid(47,3) --external
+		 viable = yes
+
+		method begin  @37856|typeid(49,3) --external
+		 viable = yes
+
+		method is_before?  @39104|typeid(57,3) --external
+		 viable = yes
+
+		method is_equal?  @43264|typeid(55,3) --external
+		 viable = yes
+
+		method selects<t>?  @38688|typeid(53,3) --external
+		 viable = no
+
+		method store  @38272|typeid(51,3) --external
+		 viable = yes
+	}
+}
+

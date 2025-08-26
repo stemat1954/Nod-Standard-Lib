@@ -1,0 +1,277 @@
+
+page conventional in StockByNod
+
+{{
+	Useful types, subroutines, operations, and constants
+	that comprise a conventional Nod dialect. 
+}}
+
+
+
+
+common -- compatible pseudo null 
+{
+	addr no_addr:begin [const];	 
+	
+	handle no_handle:begin [const];		
+}
+
+
+common -- bool
+{
+	bool true:begin( 'true' ) [const];
+
+	bool false:begin( 'false' ) [const];
+}
+
+
+common -- int
+{
+	int int_min:begin( 'min' ) [const];
+
+	int int_max:begin( 'max' ) [const];
+
+	int zero:begin( '0' ) [const];
+
+	int one:begin( '1' ) [const];
+
+	int two:begin( '2' ) [const];
+
+	int three:begin( '3' ) [const];
+
+	int four:begin( '4' ) [const];
+
+	int five:begin( '5' ) [const];
+
+	int six:begin( '6' ) [const];
+
+	int seven:begin( '7' ) [const];
+
+	int eight:begin( '8' ) [const];
+
+	int nine:begin( '9' ) [const];
+
+	int ten:begin( '10' ) [const];
+
+	int neg_one:begin( '-1' ) [const];
+}
+	
+common -- fp2
+{
+	fp2 fp2_max:begin( 'max' ) [const];
+
+	fp2 fp2_min:begin( 'min' ) [const];
+
+	fp2 fp2_epsilon:begin( 'epsilon' ) [const];
+
+	fp2 fp2_nan:begin( 'nan' ) [const];
+
+	fp2 fp2_infinity:begin( '+infinity' ) [const];
+}
+
+
+common -- fp10
+{
+	fp10 fp10_max:begin( 'max' ) [const];
+
+	fp10 fp10_min:begin( 'min' ) [const];
+
+	fp10 fp10_epsilon:begin( 'epsilon' ) [const];
+
+	fp10 fp10_nan:begin( 'nan' ) [const];
+
+	fp10 fp10_infinity:begin( '+infinity' ) [const];
+}
+
+
+nom type
+{
+	double<t> = array<<t>><'2'>;
+	triple<t> = array<<t>><'3'>;
+	quad<t> = array<<t>><'4'>;
+
+	word1  = word<'1'>;		-- bit
+	word4  = word<'4'>;		-- nibble
+	word8  = word<'8'>;		-- byte
+	word16 = word<'16'>;	-- byte2
+	word32 = word<'32'>;	-- byte4
+	word64 = word<'64'>;	-- byte8
+}
+
+
+
+enum type sign ( 'zero', 'positive', 'negative' );
+
+
+subroutine -- selectors
+{
+	choose ( bool a?, object a [opt], object b [opt] ) = object proxy ~o 
+	{{
+		This subroutine selector chooses from two given
+		inputs a and b based on the value of a given bool
+		a?.  If a? is true, then a is chosen.  Otherwise, 
+		b is chosen.
+
+		a nd b are not evaluated and may be null.
+
+		The result proxy is indefinite and virtual, so type
+		and access must be resolved on the call-side. This
+		allows for general utility at the expense of runtime 
+		validation.
+		
+		Example:
+
+		  choose( citrus?, apple, orange )[eval]:as<fruit>
+
+		  choose( ok?, 'no error', 'failed' ):as_actual<expr>
+	}}
+	{
+		if ( a? ) ~o -> a else ~o -> b;
+	}
+
+
+	fix<t> ( <t> a [opt], <t> b [opt] ) = <t> proxy [eval] ~o
+	{{
+		This subroutine selector is used to "fix" inputs
+		that may be	null. Conceptually, the second input 
+		fixes the first input if it's null.  However, the
+		second input can also be null, so the result proxy
+		may still reference a null object.
+
+		Example:
+
+		  fix( offset, zero ) ~offset;
+	}}
+	{
+		if ( "is_not_null?( a )" ) ~o -> a else ~o -> b;
+	}
+}
+
+
+subroutine	-- string conversion
+{{
+	These subroutines convert between alpha strings and 
+	c-compatible strings.
+	
+	c-compatible strings are null-terminated, use platform 
+	encoding, and are referenced by heap addr. 
+}}
+{
+	alpha_to_cstr ( string )( addr )  -- orphan addr
+	{
+		text_mediator:begin( platform_utf, platform_endian ):write( given\string ):add_zero():detach()( given\addr );  -- ignore size
+	}
+
+	cstr_to_alpha ( addr )( string ) -- string owns addr
+	{
+		given\string:begin( given\addr, platform_utf, platform_endian );
+	}
+}
+
+
+subroutine  --  coroutines
+{
+	std_copy<t> ( <t> a )( <t> b ) -- from a to b using <t> copy
+	{
+		b:begin( a );
+	}
+
+	std_take<t> ( <t> a [upd] )( <t> b )  -- from a to b using <t> take
+	{
+		b:begin( *a );
+	}
+
+	std_before<t> ( <t> a, <t> b )( bool yes ) -- a before b ? using <t> is_before?
+	{
+		a:is_before?( b )( yes );
+	}
+
+}
+
+
+
+{{
+	Equality operators are backed by :is_equal?.
+
+	Ordinal operators are backed by :is_before?.
+
+	Cardinal operators are backed by :is_less?.
+
+	Logical operators are backed by :and, :or, :xor, :not.
+
+	Arithmetic operators are backed by :add, :sub, :mul,
+	:div, :neg, :pow, :dot.
+
+
+	Following example demonstrates how operations and 
+	formulas reduce code.  These are equivalent bool
+	object expressions:
+
+		"a |before| b"
+		"before?( a, b )"
+		a:before?( b )( =bool )
+
+
+		"( a |before| b ) |and| ( b |before| c )"
+		"and( before?( a, b ), before?( b, c ) )"
+		a:before?( b )( =bool ):and( b:before?( c )( =bool ) )
+}}
+
+
+operation	-- equality  
+{
+	"a |=| b"		= "is_equal?( a, b )";
+	"a |not=| b"	= "not( is_equal?( a, b ) )";
+}
+
+
+operation	-- ordinality
+{
+	"a |before| b"		= "is_before?( a, b )";		
+	"a |after| b"		= "is_before?( b, a )";
+	"a |par| b"			= "not( or( is_before?( a, b ), is_before?( b, a ) ) )";
+}
+
+
+operation	-- cardinality 
+{
+	"a |<| b"		= "is_less?( a, b )";
+	"a |>| b"		= "is_less?( b, a )";
+
+	"a |not<| b"	= "not( is_less?( a, b ) )";
+	"a |>=| b"		= "not( is_less?( a, b ) )";
+
+	"a |not>| b"	= "not( is_less?( b, a ) )";
+	"a |<=| b"		= "not( is_less?( b, a ) )";  
+}
+
+
+operation	-- logical 
+{
+	"a |and| b"		= "and( a, b )";
+	"a |or| b"		= "or( a, b )";
+	"a |xor| b"		= "xor( a, b )";
+	"a |nand| b"	= "not( and( a, b ) )";
+	"a |nor| b"		= "not( or( a, b ) )";
+	"a |xnor| b"	= "not( xor( a, b ) )";
+}
+
+
+operation	-- arithmetic
+{
+	"-a"			= "neg( a )";
+
+	"a + b"			= "add( a, b )";
+	"a - b"			= "sub( a, b )";
+	"a * b"			= "mul( a, b )";
+	"a / b"			= "div( a, b )";
+
+	"a |^| b"		= "pow( a, b )";
+	"a |.| b"		= "dot( a, b )";
+}
+
+
+
+
+
+

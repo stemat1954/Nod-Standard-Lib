@@ -1,0 +1,39 @@
+
+page trace in AlphaByNod
+
+
+type trace -- instrisic,restricted
+{{	
+	A trace is a source code locator.
+
+	Type trace is restricted.  It can't be created,
+	subtyped, or used in another type instance. 
+
+	Trace objects are created by the compiler when an
+	application quits.  If an application specifies an 
+	object type in the quit	expression, the HGM creates
+	the specified object and attaches it to the trace
+	object along with source location info.
+
+	Note: See alpha\fault for example of quit object type.
+
+	location is a formatted expr that includes book name,
+	page name, and line number.  Currently, the precise
+	format is undefined.
+
+	A trace object can be accessed via a disruption proxy
+	named ~disruption that is only visible in a trap block.
+	See alpha\disruption for details.
+
+}}
+{
+	general 
+	{
+		use_location = expr proxy [eval];
+
+		get_location ()( expr );
+
+		use_quit_object = object proxy [eval];
+	}
+}
+

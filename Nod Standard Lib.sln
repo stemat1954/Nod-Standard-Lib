@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alpha", "Alpha", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Alpha\access.nod = Alpha\access.nod
+		Alpha\addr.nod = Alpha\addr.nod
+		Alpha\analog.nod = Alpha\analog.nod
+		Alpha\array.nod = Alpha\array.nod
+		Alpha\ascii.nod = Alpha\ascii.nod
+		Alpha\bool.nod = Alpha\bool.nod
+		Alpha\complex.nod = Alpha\complex.nod
+		Alpha\counter.nod = Alpha\counter.nod
+		Alpha\disruption.nod = Alpha\disruption.nod
+		Alpha\entry.nod = Alpha\entry.nod
+		Alpha\enumerated.nod = Alpha\enumerated.nod
+		Alpha\enumerator.nod = Alpha\enumerator.nod
+		Alpha\etm.nod = Alpha\etm.nod
+		Alpha\expr.nod = Alpha\expr.nod
+		Alpha\extra.nod = Alpha\extra.nod
+		Alpha\fault.nod = Alpha\fault.nod
+		Alpha\float.nod = Alpha\float.nod
+		Alpha\handle.nod = Alpha\handle.nod
+		Alpha\indicator.nod = Alpha\indicator.nod
+		Alpha\int.nod = Alpha\int.nod
+		Alpha\lock.nod = Alpha\lock.nod
+		Alpha\math.nod = Alpha\math.nod
+		Alpha\matrix.nod = Alpha\matrix.nod
+		Alpha\mediator.nod = Alpha\mediator.nod
+		Alpha\monitor.nod = Alpha\monitor.nod
+		Alpha\object.nod = Alpha\object.nod
+		Alpha\op.nod = Alpha\op.nod
+		Alpha\semaphore.nod = Alpha\semaphore.nod
+		Alpha\signal.nod = Alpha\signal.nod
+		Alpha\string.nod = Alpha\string.nod
+		Alpha\thread.nod = Alpha\thread.nod
+		Alpha\timer.nod = Alpha\timer.nod
+		Alpha\trace.nod = Alpha\trace.nod
+		Alpha\typeid.nod = Alpha\typeid.nod
+		Alpha\unicode.nod = Alpha\unicode.nod
+		Alpha\utc.nod = Alpha\utc.nod
+		Alpha\vector.nod = Alpha\vector.nod
+		Alpha\word.nod = Alpha\word.nod
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kernel", "Kernel", "{E0271E2E-3244-4CC9-8F92-AED5DA75DE59}"
+	ProjectSection(SolutionItems) = preProject
+		Kernel\channel.nod = Kernel\channel.nod
+		Kernel\console.nod = Kernel\console.nod
+		Kernel\heap.nod = Kernel\heap.nod
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stock", "Stock", "{F427C3C9-C9A4-46B8-9816-6F8B3C24748C}"
+	ProjectSection(SolutionItems) = preProject
+		Stock\channel.nod = Stock\channel.nod
+		Stock\console.nod = Stock\console.nod
+		Stock\conventional.nod = Stock\conventional.nod
+		Stock\list.nod = Stock\list.nod
+		Stock\system.nod = Stock\system.nod
+		Stock\text_channel.nod = Stock\text_channel.nod
+		Stock\text_mediator.nod = Stock\text_mediator.nod
+		Stock\toggle.nod = Stock\toggle.nod
+		Stock\ucdb.nod = Stock\ucdb.nod
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MoreInfo", "MoreInfo", "{B689CE4A-A5EC-473F-BD7D-892230B32CC9}"
+	ProjectSection(SolutionItems) = preProject
+		MoreInfo\crude_type.nod = MoreInfo\crude_type.nod
+		MoreInfo\enum_type.nod = MoreInfo\enum_type.nod
+		MoreInfo\Nod.g4 = MoreInfo\Nod.g4
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{11914058-D381-4A57-9417-C19AC0267AE9}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\demo1.nod = Examples\demo1.nod
+		Examples\hello.nod = Examples\hello.nod
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20C5070B-D278-422D-B259-E340ADD7C2D1}
+	EndGlobalSection
+EndGlobal

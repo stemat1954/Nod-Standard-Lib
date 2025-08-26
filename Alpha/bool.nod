@@ -1,0 +1,56 @@
+
+page bool in AlphaByNod
+
+
+type bool  -- elementary, intrinsic, compatible, conventional
+{{
+	A bool object encapsulates a boolean logic value.
+		
+	Type bool has special status in Nod.  bool objects 
+	are evaluated in imperative forms to control execution.
+
+	A bool can be initialized with a literal vex of	'true'
+	or 'false'. Interpretation is obvious.
+
+	A bool value is portable. See documentation for
+	supported formats.
+
+	Generic binary 'b' is supported for c compatability.
+
+}}
+{
+	general
+	{
+		begin ( expr vex [opt] );	-- original, default = 'false'
+
+		begin ( bool other );		-- copy
+
+		begin ( mediator [upd], expr fex );	
+		store ( mediator [upd], expr fex );
+
+		is_equal? ( bool other )( bool );
+	
+		and [upd]( bool other );
+		and	[eval]( bool other )( bool );
+
+		or [upd]( bool other );
+		or [eval]( bool other )( bool );
+
+		xor [upd]( bool other );
+		xor	[eval]( bool other )( bool );
+
+		not [upd];
+		not	[eval]()( bool );
+
+		nand [upd]( bool other );
+		nand [eval]( bool other )( bool );
+
+		nor [upd]( bool other );
+		nor [eval]( bool other )( bool );
+
+		xnor [upd]( bool other );
+		xnor [eval]( bool other )( bool );
+	}
+
+}
+

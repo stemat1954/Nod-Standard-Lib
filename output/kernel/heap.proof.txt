@@ -1,0 +1,21 @@
+page heap
+{
+	subroutine heap_alloc  @36688|heap(23,2) --external
+	 viable = yes
+
+	subroutine heap_copy  @35088|heap(32,2) --external
+	 viable = yes
+
+	subroutine heap_copy  @35888|heap(34,2) --external
+	 viable = yes
+
+	subroutine heap_free  @34688|heap(27,2) --external
+	 viable = yes
+
+	subroutine heap_realloc  @37888|heap(25,2) --external
+	 viable = yes
+
+	subroutine heap_size  @30288|heap(30,2) --external
+	 viable = yes
+}
+

@@ -1,0 +1,3835 @@
+page channel
+{
+	type async_channel_reader  @06576|channel(497,6) --external
+	 viable = yes
+	{
+		method begin  @36064|channel(501,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @58640|channel(501,3) --internal
+				 type: (direct)-> type async_channel_reader  @06576|channel(497,6)
+			}
+
+			BLOCK --domain
+			{
+			}
+		}
+
+		method read  @27328|channel(505,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hq  @47440|channel(505,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @47120|channel(505,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @53200|channel(505,3) --internal
+				 type: (direct)-> type async_channel_reader  @06576|channel(497,6)
+
+				object med  @45520|channel(505,3) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+
+				object note  @50320|channel(505,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object report  @55120|channel(505,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @56080|channel(505,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object offset  @58960|channel(507,18)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @45520|channel(505,3)
+				 method: ("get_wp")-> method get_wp  @30032|mediator(359,3)
+				 output: (direct)-> object offset  @58960|channel(507,18)
+				MAKE
+				 object: (direct)-> object rsize  @57360|channel(507,44)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @45520|channel(505,3)
+				 method: ("get_size")-> method get_size  @26704|mediator(333,3)
+				 output: (direct)-> object rsize  @57360|channel(507,44)
+				CALL --fundamental
+				 lead: (direct)-> object rsize  @57360|channel(507,44)
+				 method: ("sub")-> method sub  @65152|int(79,3)
+				 input: ("offset")-> object offset  @58960|channel(507,18)
+				MAKE
+				 object: (direct)-> object (anon)  @48400|channel(508,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("zero")-> object zero  @08080|conventional(34,2)
+				 method: ("is_less?")-> method is_less?  @64736|int(68,3)
+				 input: ("rsize")-> object rsize  @57360|channel(507,44)
+				 output: (direct)-> object (anon)  @48400|channel(508,10)
+				IF
+				 condition: (direct)-> object (anon)  @48400|channel(508,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object pdata  @45840|channel(510,19)
+						 type: ("addr")-> type addr  @39232|addr(4,6)
+						MAKE
+						 object: (direct)-> object (anon)  @59920|channel(510,8)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --fundamental
+						 lead: ("med")-> object med  @45520|channel(505,3)
+						 method: ("detach")-> method detach  @09232|mediator(319,3)
+						 output: (direct)-> object pdata  @45840|channel(510,19)
+						 output: (direct)-> object (anon)  @59920|channel(510,8)
+						MAKE
+						 object: (direct)-> object deficit  @49040|channel(511,53)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --virtual
+						 lead: ("io")-> object io  @53200|channel(505,3)
+						 method: ("~read")-> abstract method ~read  @29040|channel(522,3)
+						 input: ("id")-> object id  @47120|channel(505,3)
+						 input: ("hq")-> object hq  @47440|channel(505,3)
+						 input: ("seek")-> object seek  @56080|channel(505,3)
+						 input: ("pdata")-> object pdata  @45840|channel(510,19)
+						 input: ("offset")-> object offset  @58960|channel(507,18)
+						 input: ("rsize")-> object rsize  @57360|channel(507,44)
+						 output: (direct)-> object deficit  @49040|channel(511,53)
+						 output: ("report")-> object report  @55120|channel(505,3)
+						 output: ("note")-> object note  @50320|channel(505,3)
+						MAKE
+						 object: (direct)-> object (anon)  @56400|channel(512,13)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: ("deficit")-> object deficit  @49040|channel(511,53)
+						 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+						 input: ("rsize")-> object rsize  @57360|channel(507,44)
+						 output: (direct)-> object (anon)  @56400|channel(512,13)
+						MAKE
+						 object: (direct)-> object (anon)  @60240|channel(512,13)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: (direct)-> object (anon)  @56400|channel(512,13)
+						 method: ("not")-> method not  @30096|bool(43,3)
+						 output: (direct)-> object (anon)  @60240|channel(512,13)
+						MAKE
+						 literal: (direct)-> literal (anon)  @60560|channel(,) --'pending'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 object: (direct)-> object (anon)  @50960|channel(512,43)
+						 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+						CALL --initial
+						 lead: (direct)-> object (anon)  @50960|channel(512,43)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @60560|channel(,)
+						MAKE
+						 object: (direct)-> object (anon)  @46160|channel(512,43)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL
+						 lead: ("report")-> object report  @55120|channel(505,3)
+						 method: ("is_equal?")-> method is_equal?  @54384|channel(160,11)
+						 input: (direct)-> object (anon)  @50960|channel(512,43)
+						 output: (direct)-> object (anon)  @46160|channel(512,43)
+						MAKE
+						 object: (direct)-> object (anon)  @52880|channel(512,43)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: (direct)-> object (anon)  @46160|channel(512,43)
+						 method: ("not")-> method not  @30096|bool(43,3)
+						 output: (direct)-> object (anon)  @52880|channel(512,43)
+						MAKE
+						 object: (direct)-> object (anon)  @50000|channel(512,11)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: (direct)-> object (anon)  @60240|channel(512,13)
+						 method: ("or")-> method or  @32592|bool(37,3)
+						 input: (direct)-> object (anon)  @52880|channel(512,43)
+						 output: (direct)-> object (anon)  @50000|channel(512,11)
+						IF
+						 condition: (direct)-> object (anon)  @50000|channel(512,11)
+						{
+							true branch: BLOCK --domain
+							{
+								MAKE
+								 literal: (direct)-> literal (anon)  @51280|channel(,) --'r'
+								 type: ("expr")-> type expr  @11328|expr(5,6)
+								MAKE
+								 object: (direct)-> object (anon)  @14480|channel(512,72)
+								 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+								CALL --initial, fundamental
+								 lead: (direct)-> object (anon)  @14480|channel(512,72)
+								 method: ("begin")-> method begin  @15760|ascii(108,3)
+								 input: (direct)-> literal (anon)  @51280|channel(,)
+								CALL
+								 subroutine: ("update_mediator")-> subroutine update_mediator  @64400|channel(148,2)
+								 input: ("med")-> object med  @45520|channel(505,3)
+								 input: ("pdata")-> object pdata  @45840|channel(510,19)
+								 input: ("offset")-> object offset  @58960|channel(507,18)
+								 input: ("rsize")-> object rsize  @57360|channel(507,44)
+								 input: ("deficit")-> object deficit  @49040|channel(511,53)
+								 input: (direct)-> object (anon)  @14480|channel(512,72)
+							}
+						}
+					}
+					false branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @12560|channel(,) --'good'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("report")-> object report  @55120|channel(505,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @12560|channel(,)
+					}
+				}
+			}
+		}
+
+		abstract method ~read  @29040|channel(522,3) --fraternal
+		 key = async_channel_reader-0
+		 viable = yes
+	}
+
+	type async_channel_writer  @41232|channel(527,6) --external
+	 viable = yes
+	{
+		method begin  @35232|channel(531,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @11600|channel(531,3) --internal
+				 type: (direct)-> type async_channel_writer  @41232|channel(527,6)
+			}
+
+			BLOCK --domain
+			{
+			}
+		}
+
+		method write  @19840|channel(535,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hq  @07440|channel(535,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @16080|channel(535,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @19920|channel(535,3) --internal
+				 type: (direct)-> type async_channel_writer  @41232|channel(527,6)
+
+				object med  @07760|channel(535,3) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+
+				object note  @04560|channel(535,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object report  @17360|channel(535,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @11920|channel(535,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object offset  @04240|channel(537,18)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @07760|channel(535,3)
+				 method: ("get_rp")-> method get_rp  @29616|mediator(344,3)
+				 output: (direct)-> object offset  @04240|channel(537,18)
+				MAKE
+				 object: (direct)-> object rsize  @08080|channel(537,44)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @07760|channel(535,3)
+				 method: ("get_size")-> method get_size  @26704|mediator(333,3)
+				 output: (direct)-> object rsize  @08080|channel(537,44)
+				CALL --fundamental
+				 lead: (direct)-> object rsize  @08080|channel(537,44)
+				 method: ("sub")-> method sub  @65152|int(79,3)
+				 input: ("offset")-> object offset  @04240|channel(537,18)
+				MAKE
+				 object: (direct)-> object (anon)  @19280|channel(538,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("zero")-> object zero  @08080|conventional(34,2)
+				 method: ("is_less?")-> method is_less?  @64736|int(68,3)
+				 input: ("rsize")-> object rsize  @08080|channel(537,44)
+				 output: (direct)-> object (anon)  @19280|channel(538,10)
+				IF
+				 condition: (direct)-> object (anon)  @19280|channel(538,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object pdata  @18320|channel(540,19)
+						 type: ("addr")-> type addr  @39232|addr(4,6)
+						MAKE
+						 object: (direct)-> object (anon)  @11280|channel(540,8)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --fundamental
+						 lead: ("med")-> object med  @07760|channel(535,3)
+						 method: ("detach")-> method detach  @09232|mediator(319,3)
+						 output: (direct)-> object pdata  @18320|channel(540,19)
+						 output: (direct)-> object (anon)  @11280|channel(540,8)
+						MAKE
+						 object: (direct)-> object deficit  @13520|channel(541,54)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --virtual
+						 lead: ("io")-> object io  @19920|channel(535,3)
+						 method: ("~write")-> abstract method ~write  @27552|channel(552,3)
+						 input: ("id")-> object id  @16080|channel(535,3)
+						 input: ("hq")-> object hq  @07440|channel(535,3)
+						 input: ("seek")-> object seek  @11920|channel(535,3)
+						 input: ("pdata")-> object pdata  @18320|channel(540,19)
+						 input: ("offset")-> object offset  @04240|channel(537,18)
+						 input: ("rsize")-> object rsize  @08080|channel(537,44)
+						 output: (direct)-> object deficit  @13520|channel(541,54)
+						 output: ("report")-> object report  @17360|channel(535,3)
+						 output: ("note")-> object note  @04560|channel(535,3)
+						MAKE
+						 object: (direct)-> object (anon)  @04880|channel(542,13)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: ("deficit")-> object deficit  @13520|channel(541,54)
+						 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+						 input: ("rsize")-> object rsize  @08080|channel(537,44)
+						 output: (direct)-> object (anon)  @04880|channel(542,13)
+						MAKE
+						 object: (direct)-> object (anon)  @19600|channel(542,13)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: (direct)-> object (anon)  @04880|channel(542,13)
+						 method: ("not")-> method not  @30096|bool(43,3)
+						 output: (direct)-> object (anon)  @19600|channel(542,13)
+						MAKE
+						 literal: (direct)-> literal (anon)  @08400|channel(,) --'pending'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 object: (direct)-> object (anon)  @05200|channel(542,43)
+						 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+						CALL --initial
+						 lead: (direct)-> object (anon)  @05200|channel(542,43)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @08400|channel(,)
+						MAKE
+						 object: (direct)-> object (anon)  @13840|channel(542,43)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL
+						 lead: ("report")-> object report  @17360|channel(535,3)
+						 method: ("is_equal?")-> method is_equal?  @54384|channel(160,11)
+						 input: (direct)-> object (anon)  @05200|channel(542,43)
+						 output: (direct)-> object (anon)  @13840|channel(542,43)
+						MAKE
+						 object: (direct)-> object (anon)  @08720|channel(542,43)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: (direct)-> object (anon)  @13840|channel(542,43)
+						 method: ("not")-> method not  @30096|bool(43,3)
+						 output: (direct)-> object (anon)  @08720|channel(542,43)
+						MAKE
+						 object: (direct)-> object (anon)  @09040|channel(542,11)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: (direct)-> object (anon)  @19600|channel(542,13)
+						 method: ("or")-> method or  @32592|bool(37,3)
+						 input: (direct)-> object (anon)  @08720|channel(542,43)
+						 output: (direct)-> object (anon)  @09040|channel(542,11)
+						IF
+						 condition: (direct)-> object (anon)  @09040|channel(542,11)
+						{
+							true branch: BLOCK --domain
+							{
+								MAKE
+								 literal: (direct)-> literal (anon)  @17680|channel(,) --'w'
+								 type: ("expr")-> type expr  @11328|expr(5,6)
+								MAKE
+								 object: (direct)-> object (anon)  @09360|channel(542,72)
+								 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+								CALL --initial, fundamental
+								 lead: (direct)-> object (anon)  @09360|channel(542,72)
+								 method: ("begin")-> method begin  @15760|ascii(108,3)
+								 input: (direct)-> literal (anon)  @17680|channel(,)
+								CALL
+								 subroutine: ("update_mediator")-> subroutine update_mediator  @64400|channel(148,2)
+								 input: ("med")-> object med  @07760|channel(535,3)
+								 input: ("pdata")-> object pdata  @18320|channel(540,19)
+								 input: ("offset")-> object offset  @04240|channel(537,18)
+								 input: ("rsize")-> object rsize  @08080|channel(537,44)
+								 input: ("deficit")-> object deficit  @13520|channel(541,54)
+								 input: (direct)-> object (anon)  @09360|channel(542,72)
+							}
+						}
+					}
+					false branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @14800|channel(,) --'good'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("report")-> object report  @17360|channel(535,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @14800|channel(,)
+					}
+				}
+			}
+		}
+
+		abstract method ~write  @27552|channel(552,3) --fraternal
+		 key = async_channel_writer-0
+		 viable = yes
+	}
+
+	type async_read_only_channel  @47376|channel(634,6) --external
+	 from ("channel")-> type channel  @05808|channel(193,6)
+	 from ("async_channel_reader")-> type async_channel_reader  @06576|channel(497,6)
+	 viable = yes
+	{
+		method begin  @20256|channel(638,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @46816|channel(638,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @46496|channel(638,3) --internal
+				 type: (direct)-> type async_read_only_channel  @47376|channel(634,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @52672|channel(640,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @46496|channel(638,3)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @52672|channel(640,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @52672|channel(640,6)
+				 method: ("begin")-> method begin  @28576|channel(261,3)
+				 input: ("hch")-> object hch  @46816|channel(638,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @52976|channel(641,6)
+				 type: ("async_channel_reader")-> type async_channel_reader  @06576|channel(497,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @46496|channel(638,3)
+				 method: (direct)-> method $18<20>( as_base<async_channel_reader> )  @22320|$appendix(,)
+				 result: (direct)-> proxy (anon)  @52976|channel(641,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @52976|channel(641,6)
+				 method: ("begin")-> method begin  @36064|channel(501,3)
+			}
+		}
+
+		method end  @36688|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @14560|channel(,) --internal
+				 type: (direct)-> type async_read_only_channel  @47376|channel(634,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @29312|channel(,)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @14560|channel(,)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @29312|channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @29312|channel(,)
+				 method: (direct)-> method end  @34400|channel(338,3)
+			}
+		}
+
+		abstract method ~read  @21600|channel(647,11) --fraternal
+		 key = async_channel_reader-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @59936|channel(647,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object hq  @52256|channel(647,11) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @55776|channel(647,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @55136|channel(647,11) --internal
+				 type: (direct)-> type async_read_only_channel  @47376|channel(634,6)
+
+				object note  @48736|channel(647,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @53536|channel(647,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @58656|channel(647,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @60576|channel(647,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @48096|channel(647,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @57376|channel(647,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @53280|channel(649,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @55136|channel(647,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @53280|channel(649,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @49056|channel(,) --'r'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @63072|channel(649,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @63072|channel(649,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @49056|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @53280|channel(649,6)
+				 method: ("execute_async")-> method execute_async  @20672|channel(302,3)
+				 input: ("id")-> object id  @55776|channel(647,11)
+				 input: ("hq")-> object hq  @52256|channel(647,11)
+				 input: (direct)-> object (anon)  @63072|channel(649,23)
+				 input: ("seek")-> object seek  @48096|channel(647,11)
+				 input: ("pdata")-> object pdata  @58656|channel(647,11)
+				 input: ("offset")-> object offset  @53536|channel(647,11)
+				 input: ("size")-> object size  @57376|channel(647,11)
+				 output: ("deficit")-> object deficit  @59936|channel(647,11)
+				 output: ("report")-> object report  @60576|channel(647,11)
+				 output: ("note")-> object note  @48736|channel(647,11)
+			}
+		}
+	}
+
+	type async_read_write_channel  @43152|channel(678,6) --external
+	 from ("channel")-> type channel  @05808|channel(193,6)
+	 from ("async_channel_reader")-> type async_channel_reader  @06576|channel(497,6)
+	 from ("async_channel_writer")-> type async_channel_writer  @41232|channel(527,6)
+	 viable = yes
+	{
+		method begin  @37312|channel(682,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @01952|channel(682,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @00992|channel(682,3) --internal
+				 type: (direct)-> type async_read_write_channel  @43152|channel(678,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @53584|channel(684,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @00992|channel(682,3)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @53584|channel(684,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @53584|channel(684,6)
+				 method: ("begin")-> method begin  @28576|channel(261,3)
+				 input: ("hch")-> object hch  @01952|channel(682,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @50240|channel(685,6)
+				 type: ("async_channel_reader")-> type async_channel_reader  @06576|channel(497,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @00992|channel(682,3)
+				 method: (direct)-> method $18<20>( as_base<async_channel_reader> )  @22320|$appendix(,)
+				 result: (direct)-> proxy (anon)  @50240|channel(685,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @50240|channel(685,6)
+				 method: ("begin")-> method begin  @36064|channel(501,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @53888|channel(686,6)
+				 type: ("async_channel_writer")-> type async_channel_writer  @41232|channel(527,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @00992|channel(682,3)
+				 method: (direct)-> method $18<21>( as_base<async_channel_writer> )  @32304|$appendix(,)
+				 result: (direct)-> proxy (anon)  @53888|channel(686,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @53888|channel(686,6)
+				 method: ("begin")-> method begin  @35232|channel(531,3)
+			}
+		}
+
+		method end  @40016|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @00160|channel(,) --internal
+				 type: (direct)-> type async_read_write_channel  @43152|channel(678,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @32352|channel(,)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @00160|channel(,)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @32352|channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @32352|channel(,)
+				 method: (direct)-> method end  @34400|channel(338,3)
+			}
+		}
+
+		abstract method ~read  @26064|channel(692,11) --fraternal
+		 key = async_channel_reader-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @01312|channel(692,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object hq  @63968|channel(692,11) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @59488|channel(692,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @59808|channel(692,11) --internal
+				 type: (direct)-> type async_read_write_channel  @43152|channel(678,6)
+
+				object note  @64288|channel(692,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @00672|channel(692,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @60128|channel(692,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @62368|channel(692,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @61088|channel(692,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @58848|channel(692,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @55712|channel(694,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @59808|channel(692,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @55712|channel(694,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @60448|channel(,) --'r'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @59872|channel(694,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @59872|channel(694,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @60448|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @55712|channel(694,6)
+				 method: ("execute_async")-> method execute_async  @20672|channel(302,3)
+				 input: ("id")-> object id  @59488|channel(692,11)
+				 input: ("hq")-> object hq  @63968|channel(692,11)
+				 input: (direct)-> object (anon)  @59872|channel(694,23)
+				 input: ("seek")-> object seek  @61088|channel(692,11)
+				 input: ("pdata")-> object pdata  @60128|channel(692,11)
+				 input: ("offset")-> object offset  @00672|channel(692,11)
+				 input: ("size")-> object size  @58848|channel(692,11)
+				 output: ("deficit")-> object deficit  @01312|channel(692,11)
+				 output: ("report")-> object report  @62368|channel(692,11)
+				 output: ("note")-> object note  @64288|channel(692,11)
+			}
+		}
+
+		abstract method ~write  @33504|channel(701,11) --fraternal
+		 key = async_channel_writer-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @61408|channel(701,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object hq  @64608|channel(701,11) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @58208|channel(701,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @60768|channel(701,11) --internal
+				 type: (direct)-> type async_read_write_channel  @43152|channel(678,6)
+
+				object note  @62688|channel(701,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @01632|channel(701,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @02912|channel(701,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @02592|channel(701,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @02272|channel(701,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @63008|channel(701,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @49936|channel(703,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @60768|channel(701,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @49936|channel(703,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @57888|channel(,) --'w'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @50272|channel(703,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @50272|channel(703,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @57888|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @49936|channel(703,6)
+				 method: ("execute_async")-> method execute_async  @20672|channel(302,3)
+				 input: ("id")-> object id  @58208|channel(701,11)
+				 input: ("hq")-> object hq  @64608|channel(701,11)
+				 input: (direct)-> object (anon)  @50272|channel(703,23)
+				 input: ("seek")-> object seek  @02272|channel(701,11)
+				 input: ("pdata")-> object pdata  @02912|channel(701,11)
+				 input: ("offset")-> object offset  @01632|channel(701,11)
+				 input: ("size")-> object size  @63008|channel(701,11)
+				 output: ("deficit")-> object deficit  @61408|channel(701,11)
+				 output: ("report")-> object report  @02592|channel(701,11)
+				 output: ("note")-> object note  @62688|channel(701,11)
+			}
+		}
+	}
+
+	type async_write_only_channel  @46608|channel(656,6) --external
+	 from ("channel")-> type channel  @05808|channel(193,6)
+	 from ("async_channel_writer")-> type async_channel_writer  @41232|channel(527,6)
+	 viable = yes
+	{
+		method begin  @36896|channel(660,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @57696|channel(660,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @50336|channel(660,3) --internal
+				 type: (direct)-> type async_write_only_channel  @46608|channel(656,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @54192|channel(662,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @50336|channel(660,3)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @54192|channel(662,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @54192|channel(662,6)
+				 method: ("begin")-> method begin  @28576|channel(261,3)
+				 input: ("hch")-> object hch  @57696|channel(660,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @56016|channel(663,6)
+				 type: ("async_channel_writer")-> type async_channel_writer  @41232|channel(527,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @50336|channel(660,3)
+				 method: (direct)-> method $18<21>( as_base<async_channel_writer> )  @32304|$appendix(,)
+				 result: (direct)-> proxy (anon)  @56016|channel(663,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @56016|channel(663,6)
+				 method: ("begin")-> method begin  @35232|channel(531,3)
+			}
+		}
+
+		method end  @33776|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @14880|channel(,) --internal
+				 type: (direct)-> type async_write_only_channel  @46608|channel(656,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @35088|channel(,)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @14880|channel(,)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @35088|channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @35088|channel(,)
+				 method: (direct)-> method end  @34400|channel(338,3)
+			}
+		}
+
+		abstract method ~write  @33008|channel(669,11) --fraternal
+		 key = async_channel_writer-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @55456|channel(669,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object hq  @50976|channel(669,11) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @50656|channel(669,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @50016|channel(669,11) --internal
+				 type: (direct)-> type async_write_only_channel  @46608|channel(656,6)
+
+				object note  @57056|channel(669,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @56096|channel(669,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @51616|channel(669,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @56736|channel(669,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @51296|channel(669,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @54496|channel(669,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @56320|channel(671,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @50016|channel(669,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @56320|channel(671,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @59168|channel(,) --'w'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @65312|channel(671,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @65312|channel(671,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @59168|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @56320|channel(671,6)
+				 method: ("execute_async")-> method execute_async  @20672|channel(302,3)
+				 input: ("id")-> object id  @50656|channel(669,11)
+				 input: ("hq")-> object hq  @50976|channel(669,11)
+				 input: (direct)-> object (anon)  @65312|channel(671,23)
+				 input: ("seek")-> object seek  @51296|channel(669,11)
+				 input: ("pdata")-> object pdata  @51616|channel(669,11)
+				 input: ("offset")-> object offset  @56096|channel(669,11)
+				 input: ("size")-> object size  @54496|channel(669,11)
+				 output: ("deficit")-> object deficit  @55456|channel(669,11)
+				 output: ("report")-> object report  @56736|channel(669,11)
+				 output: ("note")-> object note  @57056|channel(669,11)
+			}
+		}
+	}
+
+	type channel  @05808|channel(193,6) --external
+	 viable = yes
+	{
+		method begin  @28576|channel(261,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @05536|channel(261,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @09696|channel(261,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL --initial, fundamental
+				 lead: ("io.hch")-> object hch  @04560|channel(364,3)
+				 method: ("begin")-> method begin  @51008|handle(25,3)
+				 input: ("hch")-> object hch  @05536|channel(261,3)
+				CALL --initial
+				 lead: ("io.lock")-> object lock  @05200|channel(365,3)
+				 method: ("begin")-> method begin  @39184|toggle(37,3)
+				CALL --initial, fundamental
+				 lead: ("io.open")-> object open  @05520|channel(366,3)
+				 method: ("begin")-> method begin  @21056|bool(26,3)
+				 input: ("true")-> object true  @06480|conventional(22,2)
+			}
+		}
+
+		method check  @31072|channel(274,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @07776|channel(274,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+
+				object note  @09376|channel(274,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL
+				 lead: ("io.lock")-> object lock  @05200|channel(365,3)
+				 method: ("wait")-> method wait  @56464|toggle(42,3)
+				MAKE
+				 object: (direct)-> object (anon)  @04256|channel(277,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("io.open")-> object open  @05520|channel(366,3)
+				 method: ("not")-> method not  @30096|bool(43,3)
+				 output: (direct)-> object (anon)  @04256|channel(277,10)
+				IF
+				 condition: (direct)-> object (anon)  @04256|channel(277,10)
+				{
+					true branch: CALL --initial, fundamental
+					 lead: ("note")-> object note  @09376|channel(274,3)
+					 method: ("begin")-> method begin  @21216|string(59,3)
+					 input: ("io.note")-> object note  @07760|channel(367,3)
+				}
+				CALL
+				 lead: ("io.lock")-> object lock  @05200|channel(365,3)
+				 method: ("release")-> method release  @45648|toggle(47,3)
+			}
+		}
+
+		method close  @30240|channel(268,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @11936|channel(268,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+
+				object note  @06816|channel(268,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object other  @10656|channel(268,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy ~note  @49632|channel(270,4)
+				 type: ("string")-> type string  @09264|string(4,6)
+				 permission: [eval]
+				CALL
+				 subroutine: (direct)-> subroutine $22<23>( fix<string> )  @09136|$appendix(,)
+				 input: ("note")-> object note  @06816|channel(268,3)
+				 input: ("normal_close")-> object normal_close  @04240|channel(357,3)
+				 result: (direct)-> proxy ~note  @49632|channel(270,4)
+				CALL
+				 lead: (direct)-> object io  @11936|channel(268,3)
+				 method: ("internal_close")-> method internal_close  @31488|channel(318,3)
+				 input: ("~note")-> proxy ~note  @49632|channel(270,4)
+				 output: ("other")-> object other  @10656|channel(268,3)
+			}
+		}
+
+		method end  @34400|channel(338,3) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @40720|channel(338,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+			}
+
+			BLOCK --domain
+			{
+				IF
+				 condition: ("io.open")-> object open  @05520|channel(366,3)
+				{
+					true branch: CALL --compatible
+					 subroutine: ("kernel\channel_close")-> subroutine channel_close  @33488|channel(190,2)
+					 input: ("io.hch")-> object hch  @04560|channel(364,3)
+				}
+			}
+		}
+
+		method execute_async  @20672|channel(302,3) --fraternal
+		 viable = yes
+		{
+
+			given
+			{
+				object action  @33360|channel(302,3) --internal
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+				object deficit  @30800|channel(302,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object hq  @34000|channel(302,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object id  @40080|channel(302,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @32400|channel(302,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+
+				object note  @34320|channel(302,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @33040|channel(302,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @28880|channel(302,3) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @40400|channel(302,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @37840|channel(302,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @35280|channel(302,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL
+				 lead: ("io")-> object io  @32400|channel(302,3)
+				 method: ("check")-> method check  @31072|channel(274,3)
+				 output: ("note")-> object note  @34320|channel(302,3)
+				MAKE
+				 object: (direct)-> object (anon)  @29200|channel(305,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("note")-> object note  @34320|channel(302,3)
+				 method: ("is_null?")-> method is_null?  @19968|object(36,3)
+				 output: (direct)-> object (anon)  @29200|channel(305,10)
+				IF
+				 condition: (direct)-> object (anon)  @29200|channel(305,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object (anon)  @43280|channel(307,21)
+						 type: ("request")-> type request  @05040|channel(16,13)
+						CALL --initial
+						 lead: (direct)-> object (anon)  @43280|channel(307,21)
+						 method: ("begin")-> method begin  @32320|channel(42,3)
+						 input: ("action")-> object action  @33360|channel(302,3)
+						 input: ("pdata")-> object pdata  @28880|channel(302,3)
+						 input: ("offset")-> object offset  @33040|channel(302,3)
+						 input: ("size")-> object size  @35280|channel(302,3)
+						 input: ("seek")-> object seek  @37840|channel(302,3)
+						 input: ("id")-> object id  @40080|channel(302,3)
+						MAKE
+						 object: (direct)-> object pr  @32080|channel(307,79)
+						 type: ("addr")-> type addr  @39232|addr(4,6)
+						CALL
+						 subroutine: ("format_request")-> subroutine format_request  @02064|channel(137,2)
+						 input: (direct)-> object (anon)  @43280|channel(307,21)
+						 output: (direct)-> object pr  @32080|channel(307,79)
+						CALL --compatible
+						 subroutine: ("kernel\channel_async_io")-> subroutine channel_async_io  @31888|channel(188,2)
+						 input: ("io.hch")-> object hch  @04560|channel(364,3)
+						 input: ("pr")-> object pr  @32080|channel(307,79)
+						 input: ("hq")-> object hq  @34000|channel(302,3)
+						CALL
+						 lead: ("io")-> object io  @32400|channel(302,3)
+						 method: ("finish")-> method finish  @25664|channel(343,3)
+						 input: ("pr")-> object pr  @32080|channel(307,79)
+						 output: ("deficit")-> object deficit  @30800|channel(302,3)
+						 output: ("report")-> object report  @40400|channel(302,3)
+						 output: ("note")-> object note  @34320|channel(302,3)
+					}
+					false branch: BLOCK --domain
+					{
+						CALL --initial, fundamental
+						 lead: ("deficit")-> object deficit  @30800|channel(302,3)
+						 method: ("begin")-> method begin  @56416|int(54,3)
+						 input: ("size")-> object size  @35280|channel(302,3)
+						MAKE
+						 literal: (direct)-> literal (anon)  @39440|channel(,) --'closed'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("report")-> object report  @40400|channel(302,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @39440|channel(,)
+					}
+				}
+			}
+		}
+
+		method execute_sync  @31904|channel(285,3) --fraternal
+		 viable = yes
+		{
+
+			given
+			{
+				object action  @08096|channel(285,3) --internal
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+				object deficit  @37200|channel(285,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @10016|channel(285,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+
+				object note  @42000|channel(285,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @44560|channel(285,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @04896|channel(285,3) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @31760|channel(285,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @04576|channel(285,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @43920|channel(285,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @08416|channel(285,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL
+				 lead: ("io")-> object io  @10016|channel(285,3)
+				 method: ("check")-> method check  @31072|channel(274,3)
+				 output: ("note")-> object note  @42000|channel(285,3)
+				MAKE
+				 object: (direct)-> object (anon)  @31440|channel(288,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("note")-> object note  @42000|channel(285,3)
+				 method: ("is_null?")-> method is_null?  @19968|object(36,3)
+				 output: (direct)-> object (anon)  @31440|channel(288,10)
+				IF
+				 condition: (direct)-> object (anon)  @31440|channel(288,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object (anon)  @33680|channel(290,27)
+						 type: ("etm")-> type etm  @10944|etm(5,6)
+						CALL --initial, fundamental
+						 lead: (direct)-> object (anon)  @33680|channel(290,27)
+						 method: ("begin")-> method begin  @58880|etm(71,3)
+						 input: ("int_max")-> object int_max  @10640|conventional(32,2)
+						MAKE
+						 proxy: (direct)-> proxy ~wait  @56624|channel(290,5)
+						 type: ("etm")-> type etm  @10944|etm(5,6)
+						 permission: [eval]
+						CALL
+						 subroutine: (direct)-> subroutine $22<24>( fix<etm> )  @12736|$appendix(,)
+						 input: ("wait")-> object wait  @08416|channel(285,3)
+						 input: (direct)-> object (anon)  @33680|channel(290,27)
+						 result: (direct)-> proxy ~wait  @56624|channel(290,5)
+						MAKE
+						 object: (direct)-> object (anon)  @39760|channel(291,21)
+						 type: ("request")-> type request  @05040|channel(16,13)
+						CALL --initial
+						 lead: (direct)-> object (anon)  @39760|channel(291,21)
+						 method: ("begin")-> method begin  @32320|channel(42,3)
+						 input: ("action")-> object action  @08096|channel(285,3)
+						 input: ("pdata")-> object pdata  @04896|channel(285,3)
+						 input: ("offset")-> object offset  @44560|channel(285,3)
+						 input: ("size")-> object size  @43920|channel(285,3)
+						 input: ("seek")-> object seek  @04576|channel(285,3)
+						 input: (pending)->
+						MAKE
+						 object: (direct)-> object pr  @37520|channel(291,81)
+						 type: ("addr")-> type addr  @39232|addr(4,6)
+						CALL
+						 subroutine: ("format_request")-> subroutine format_request  @02064|channel(137,2)
+						 input: (direct)-> object (anon)  @39760|channel(291,21)
+						 output: (direct)-> object pr  @37520|channel(291,81)
+						MAKE
+						 proxy: (direct)-> proxy (anon)  @49328|channel(292,46)
+						 type: ("int")-> type int  @54576|int(6,6)
+						 permission: [eval]
+						CALL --fundamental
+						 lead: ("~wait")-> proxy ~wait  @56624|channel(290,5)
+						 method: ("as_int")-> method as_int  @16288|etm(84,3)
+						 result: (direct)-> proxy (anon)  @49328|channel(292,46)
+						CALL --compatible
+						 subroutine: ("kernel\channel_sync_io")-> subroutine channel_sync_io  @37088|channel(186,2)
+						 input: ("io.hch")-> object hch  @04560|channel(364,3)
+						 input: ("pr")-> object pr  @37520|channel(291,81)
+						 input: (direct)-> proxy (anon)  @49328|channel(292,46)
+						CALL
+						 lead: ("io")-> object io  @10016|channel(285,3)
+						 method: ("finish")-> method finish  @25664|channel(343,3)
+						 input: ("pr")-> object pr  @37520|channel(291,81)
+						 output: ("deficit")-> object deficit  @37200|channel(285,3)
+						 output: ("report")-> object report  @31760|channel(285,3)
+						 output: ("note")-> object note  @42000|channel(285,3)
+					}
+					false branch: BLOCK --domain
+					{
+						CALL --initial, fundamental
+						 lead: ("deficit")-> object deficit  @37200|channel(285,3)
+						 method: ("begin")-> method begin  @56416|int(54,3)
+						 input: ("size")-> object size  @43920|channel(285,3)
+						MAKE
+						 literal: (direct)-> literal (anon)  @39120|channel(,) --'closed'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("report")-> object report  @31760|channel(285,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @39120|channel(,)
+					}
+				}
+			}
+		}
+
+		method finish  @25664|channel(343,3) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @34960|channel(343,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @34640|channel(343,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+
+				object note  @38160|channel(343,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object pr  @31120|channel(343,3) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @35600|channel(343,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @36240|channel(345,28)
+				 type: ("request")-> type request  @05040|channel(16,13)
+				CALL
+				 subroutine: ("restore_request")-> subroutine restore_request  @63200|channel(142,2)
+				 input: ("pr")-> object pr  @31120|channel(343,3)
+				 output: (direct)-> object (anon)  @36240|channel(345,28)
+				CALL
+				 lead: (direct)-> object (anon)  @36240|channel(345,28)
+				 method: ("get_group2")-> method get_group2  @33984|channel(77,3)
+				 output: ("deficit")-> object deficit  @34960|channel(343,3)
+				 output: ("report")-> object report  @35600|channel(343,3)
+				 output: ("note")-> object note  @38160|channel(343,3)
+				MAKE
+				 literal: (direct)-> literal (anon)  @36560|channel(,) --'error'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @36880|channel(346,10)
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+				CALL --initial
+				 lead: (direct)-> object (anon)  @36880|channel(346,10)
+				 method: ("begin")-> method begin  @51888|channel(160,11)
+				 input: (direct)-> literal (anon)  @36560|channel(,)
+				MAKE
+				 object: (direct)-> object (anon)  @42320|channel(346,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL
+				 lead: ("report")-> object report  @35600|channel(343,3)
+				 method: ("is_equal?")-> method is_equal?  @54384|channel(160,11)
+				 input: (direct)-> object (anon)  @36880|channel(346,10)
+				 output: (direct)-> object (anon)  @42320|channel(346,10)
+				IF
+				 condition: (direct)-> object (anon)  @42320|channel(346,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 proxy: (direct)-> proxy ~note  @50544|channel(348,5)
+						 type: ("string")-> type string  @09264|string(4,6)
+						 permission: [eval]
+						CALL
+						 subroutine: (direct)-> subroutine $22<23>( fix<string> )  @09136|$appendix(,)
+						 input: ("note")-> object note  @38160|channel(343,3)
+						 input: ("unspecified_error")-> object unspecified_error  @11920|channel(359,3)
+						 result: (direct)-> proxy ~note  @50544|channel(348,5)
+						MAKE
+						 object: (direct)-> object og_note  @29520|channel(349,33)
+						 type: ("string")-> type string  @09264|string(4,6)
+						CALL
+						 lead: ("io")-> object io  @34640|channel(343,3)
+						 method: ("internal_close")-> method internal_close  @31488|channel(318,3)
+						 input: ("~note")-> proxy ~note  @50544|channel(348,5)
+						 output: (direct)-> object og_note  @29520|channel(349,33)
+						MAKE
+						 object: (direct)-> object (anon)  @38480|channel(350,11)
+						 type: ("bool")-> type bool  @08256|bool(5,6)
+						CALL --fundamental
+						 lead: ("og_note")-> object og_note  @29520|channel(349,33)
+						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+						 output: (direct)-> object (anon)  @38480|channel(350,11)
+						IF
+						 condition: (direct)-> object (anon)  @38480|channel(350,11)
+						{
+							true branch: BLOCK --domain
+							{
+								CALL --terminal, fundamental
+								 lead: ("note")-> object note  @38160|channel(343,3)
+								 method: ("recycle")-> method recycle  @22464|object(60,3)
+								CALL --initial, fundamental
+								 lead: ("note")-> object note  @38160|channel(343,3)
+								 method: ("begin")-> method begin  @21216|string(59,3)
+								 input: ("og_note")-> object og_note  @29520|channel(349,33)
+							}
+						}
+					}
+				}
+			}
+		}
+
+		method internal_close  @31488|channel(318,3) --fraternal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @32720|channel(318,3) --internal
+				 type: (direct)-> type channel  @05808|channel(193,6)
+
+				object note  @35920|channel(318,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object other  @42960|channel(318,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL
+				 lead: ("io.lock")-> object lock  @05200|channel(365,3)
+				 method: ("wait")-> method wait  @56464|toggle(42,3)
+				IF
+				 condition: ("io.open")-> object open  @05520|channel(366,3)
+				{
+					true branch: BLOCK --domain
+					{
+						CALL --fundamental
+						 lead: ("io.open")-> object open  @05520|channel(366,3)
+						 method: ("not")-> method not  @31344|bool(42,3)
+						CALL --initial, fundamental
+						 lead: ("io.note")-> object note  @07760|channel(367,3)
+						 method: ("begin")-> method begin  @21216|string(59,3)
+						 input: ("note")-> object note  @35920|channel(318,3)
+						CALL
+						 lead: ("io.lock")-> object lock  @05200|channel(365,3)
+						 method: ("release")-> method release  @45648|toggle(47,3)
+						CALL --compatible
+						 subroutine: ("kernel\channel_close")-> subroutine channel_close  @33488|channel(190,2)
+						 input: ("io.hch")-> object hch  @04560|channel(364,3)
+					}
+					false branch: BLOCK --domain
+					{
+						CALL
+						 lead: ("io.lock")-> object lock  @05200|channel(365,3)
+						 method: ("release")-> method release  @45648|toggle(47,3)
+						CALL --initial, fundamental
+						 lead: ("other")-> object other  @42960|channel(318,3)
+						 method: ("begin")-> method begin  @21216|string(59,3)
+						 input: ("io.note")-> object note  @07760|channel(367,3)
+					}
+				}
+			}
+		}
+
+		common
+		{
+			subroutine $start1  @64048|channel(,) --internal
+			 viable = yes
+			{
+
+				given
+				{
+				}
+
+				BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object normal_close  @04240|channel(357,3) --'normal close'
+					 type: ("string")-> type string  @09264|string(4,6)
+					MAKE
+					 literal: (direct)-> literal (anon)  @38800|channel(,) --'normal close'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL --initial, fundamental
+					 lead: (direct)-> object normal_close  @04240|channel(357,3)
+					 method: ("begin")-> method begin  @26208|string(57,3)
+					 input: (direct)-> literal (anon)  @38800|channel(,)
+					 input: (pending)->
+					 input: (pending)->
+					MAKE
+					 object: (direct)-> object unspecified_error  @11920|channel(359,3) --'unspecified channel error'
+					 type: ("string")-> type string  @09264|string(4,6)
+					MAKE
+					 literal: (direct)-> literal (anon)  @41040|channel(,) --'unspecified channel error'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL --initial, fundamental
+					 lead: (direct)-> object unspecified_error  @11920|channel(359,3)
+					 method: ("begin")-> method begin  @26208|string(57,3)
+					 input: (direct)-> literal (anon)  @41040|channel(,)
+					 input: (pending)->
+					 input: (pending)->
+				}
+			}
+
+			object normal_close  @04240|channel(357,3) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object unspecified_error  @11920|channel(359,3) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+		}
+
+
+		instance
+		{
+			object hch  @04560|channel(364,3) --internal
+			 type: ("handle")-> type handle  @55728|handle(5,6)
+
+			object lock  @05200|channel(365,3) --internal
+			 type: ("toggle")-> type toggle  @44304|toggle(5,6)
+
+			object note  @07760|channel(367,3) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object open  @05520|channel(366,3) --internal
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+		}
+
+	}
+
+	enum type channel_report  @24832|channel(160,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'good' = 0
+	    'pending' = 1
+	    'busy' = 2
+	    'closed' = 3
+	    'retry' = 4
+	    'end' = 5
+	    'error' = 6
+	    'other' = 7
+	}
+	{
+		method begin  @51888|channel(160,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object expr  @02128|channel(160,11) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+
+				object io  @64784|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @01168|channel(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: (direct)-> enumerator $index  @14496|channel(,)
+				 method: ("enumerate")-> method enumerate  @61872|$appendix(,)
+				 input: (direct)-> object expr  @02128|channel(160,11)
+				 output: (direct)-> object (anon)  @01168|channel(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @10784|channel(,)
+				 type: ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @64784|channel(160,11)
+				 method: (direct)-> method $18<25>( as_base<enumerated> )  @21488|$appendix(,)
+				 result: (direct)-> proxy (anon)  @10784|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> proxy (anon)  @10784|channel(,)
+				 method: ("begin")-> method begin  @60960|enumerated(29,3)
+				 input: (direct)-> object (anon)  @01168|channel(,)
+				CALL --initial, fundamental
+				 lead: ("io.expr")-> object expr  @09280|channel(,)
+				 method: ("begin")-> method begin  @38800|expr(88,3)
+				 input: (direct)-> object expr  @02128|channel(160,11)
+			}
+		}
+
+		method begin  @47312|channel(160,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object channel_report  @02448|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+
+				object io  @65424|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @12208|channel(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object channel_report  @02448|channel(160,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @12208|channel(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @13216|channel(,)
+				 type: ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @65424|channel(160,11)
+				 method: (direct)-> method $18<25>( as_base<enumerated> )  @21488|$appendix(,)
+				 result: (direct)-> proxy (anon)  @13216|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> proxy (anon)  @13216|channel(,)
+				 method: ("begin")-> method begin  @60960|enumerated(29,3)
+				 input: (direct)-> proxy (anon)  @12208|channel(,)
+				CALL --initial, fundamental
+				 lead: ("io.expr")-> object expr  @09280|channel(,)
+				 method: ("begin")-> method begin  @38800|expr(88,3)
+				 input: ("channel_report.expr")-> object expr  @09280|channel(,)
+			}
+		}
+
+		method get_token  @54800|channel(160,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object expr  @63824|channel(160,11) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+
+				object io  @62864|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+			}
+
+			BLOCK --domain
+			{
+				CALL --initial, fundamental
+				 lead: (direct)-> object expr  @63824|channel(160,11)
+				 method: ("begin")-> method begin  @38800|expr(88,3)
+				 input: ("io.expr")-> object expr  @09280|channel(,)
+			}
+		}
+
+		method is_before?  @55632|channel(160,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object bool  @03088|channel(160,11) --internal
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+
+				object channel_report  @03728|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+
+				object io  @02768|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @53696|channel(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object channel_report  @03728|channel(160,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @53696|channel(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @16608|channel(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object io  @02768|channel(160,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @16608|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> proxy (anon)  @16608|channel(,)
+				 method: ("is_before?")-> method is_before?  @55584|int(66,3)
+				 input: (direct)-> proxy (anon)  @53696|channel(,)
+				 output: (direct)-> object bool  @03088|channel(160,11)
+			}
+		}
+
+		method is_equal?  @54384|channel(160,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object bool  @65104|channel(160,11) --internal
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+
+				object channel_report  @62224|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+
+				object io  @61584|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @19648|channel(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object channel_report  @62224|channel(160,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @19648|channel(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @16912|channel(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object io  @61584|channel(160,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @16912|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> proxy (anon)  @16912|channel(,)
+				 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+				 input: (direct)-> proxy (anon)  @19648|channel(,)
+				 output: (direct)-> object bool  @65104|channel(160,11)
+			}
+		}
+
+		method use_token  @52304|channel(160,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @63184|channel(160,11) --internal
+				 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+
+				proxy ~t  @17216|channel(160,11) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+			}
+
+			BLOCK --domain
+			{
+				JOIN
+				 left: (direct)-> proxy ~t  @17216|channel(160,11)
+				 right: ("io.expr")-> object expr  @09280|channel(,)
+			}
+		}
+
+		common
+		{
+			enumerator $index  @14496|channel(,) --internal
+			 type: (direct)-> type $1<2>( <expr>enumerator )  @54288|$appendix(,)
+
+			subroutine $start1  @63248|channel(,) --internal
+			 viable = yes
+			{
+
+				given
+				{
+				}
+
+				BLOCK --domain
+				{
+					MAKE
+					 enumerator: ("near\$index")-> enumerator $index  @14496|channel(,)
+					 type: (direct)-> type $1<2>( <expr>enumerator )  @54288|$appendix(,)
+				}
+			}
+		}
+
+
+		instance
+		{
+			object expr  @09280|channel(,) --internal
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+		}
+
+	}
+
+	subroutine format_request  @02064|channel(137,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object pr  @41840|channel(137,2) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object r  @41520|channel(137,2) --internal
+			 type: ("request")-> type request  @05040|channel(16,13)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @42480|channel(139,3)
+			 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object (anon)  @42480|channel(139,3)
+			 method: ("begin")-> method begin  @24208|mediator(307,3)
+			 input: (pending)->
+			 input: (pending)->
+			MAKE
+			 literal: (direct)-> literal (anon)  @43440|channel(,) --'b'
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+			CALL --fundamental
+			 lead: (direct)-> object (anon)  @42480|channel(139,3)
+			 method: (direct)-> method $16<17>( fwrite<request> )  @31056|$appendix(,)
+			 input: ("r")-> object r  @41520|channel(137,2)
+			 input: (direct)-> literal (anon)  @43440|channel(,)
+			MAKE
+			 object: (direct)-> object (anon)  @37360|channel(139,43)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: (direct)-> object (anon)  @42480|channel(139,3)
+			 method: ("detach")-> method detach  @09232|mediator(319,3)
+			 output: ("pr")-> object pr  @41840|channel(137,2)
+			 output: (direct)-> object (anon)  @37360|channel(139,43)
+		}
+	}
+
+	type request  @05040|channel(16,13) --internal
+	 viable = yes
+	{
+		subroutine ascii_to_word  @02864|channel(107,3) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object a  @38960|channel(107,3) --internal
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+				object w  @40240|channel(107,3) --internal
+				 type: (direct)-> type $3<'8'>( word<'8'> )  @55824|$appendix(,)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @02192|channel(109,14)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: ("a")-> object a  @38960|channel(107,3)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @02192|channel(109,14)
+				MAKE
+				 literal: (direct)-> literal (anon)  @39920|channel(,) --'b:ascii'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: ("w")-> object w  @40240|channel(107,3)
+				 method: ("begin")-> method begin  @57296|$appendix(,)
+				 input: (direct)-> proxy (anon)  @02192|channel(109,14)
+				 input: (direct)-> literal (anon)  @39920|channel(,)
+			}
+		}
+
+		method begin  @33568|channel(28,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @55136|channel(28,3) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+			}
+
+			BLOCK --domain
+			{
+				CALL --initial, fundamental
+				 lead: ("io.action")-> object action  @06400|channel(116,3)
+				 method: ("begin")-> method begin  @62288|$appendix(,)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.pdata")-> object pdata  @07040|channel(117,3)
+				 method: ("begin")-> method begin  @61504|addr(34,3)
+				CALL --initial, fundamental
+				 lead: ("io.offset")-> object offset  @09600|channel(118,3)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.size")-> object size  @08640|channel(119,3)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.seek")-> object seek  @08000|channel(121,3)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.id")-> object id  @09920|channel(120,3)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.deficit")-> object deficit  @06720|channel(122,3)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.report")-> object report  @08320|channel(123,3)
+				 method: ("begin")-> method begin  @62288|$appendix(,)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.pnote")-> object pnote  @08960|channel(124,3)
+				 method: ("begin")-> method begin  @61504|addr(34,3)
+			}
+		}
+
+		method begin  @32320|channel(42,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object action  @56096|channel(42,3) --internal
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+				object id  @35856|channel(42,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @55776|channel(42,3) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object offset  @51936|channel(42,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @50336|channel(42,3) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object seek  @35536|channel(42,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @51616|channel(42,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 literal: (direct)-> literal (anon)  @36496|channel(,) --'r'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @28816|channel(44,12)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @28816|channel(44,12)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @36496|channel(,)
+				MAKE
+				 object: (direct)-> object (anon)  @31376|channel(44,12)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("action")-> object action  @56096|channel(42,3)
+				 method: ("is_equal?")-> method is_equal?  @12432|ascii(124,3)
+				 input: (direct)-> object (anon)  @28816|channel(44,12)
+				 output: (direct)-> object (anon)  @31376|channel(44,12)
+				MAKE
+				 object: (direct)-> object (anon)  @36176|channel(44,12)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @31376|channel(44,12)
+				 method: ("not")-> method not  @30096|bool(43,3)
+				 output: (direct)-> object (anon)  @36176|channel(44,12)
+				MAKE
+				 literal: (direct)-> literal (anon)  @30096|channel(,) --'w'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @31696|channel(44,40)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @31696|channel(44,40)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @30096|channel(,)
+				MAKE
+				 object: (direct)-> object (anon)  @29136|channel(44,40)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("action")-> object action  @56096|channel(42,3)
+				 method: ("is_equal?")-> method is_equal?  @12432|ascii(124,3)
+				 input: (direct)-> object (anon)  @31696|channel(44,40)
+				 output: (direct)-> object (anon)  @29136|channel(44,40)
+				MAKE
+				 object: (direct)-> object (anon)  @32336|channel(44,40)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @29136|channel(44,40)
+				 method: ("not")-> method not  @30096|bool(43,3)
+				 output: (direct)-> object (anon)  @32336|channel(44,40)
+				MAKE
+				 object: (direct)-> object (anon)  @35216|channel(44,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @36176|channel(44,12)
+				 method: ("and")-> method and  @21888|bool(34,3)
+				 input: (direct)-> object (anon)  @32336|channel(44,40)
+				 output: (direct)-> object (anon)  @35216|channel(44,10)
+				IF
+				 condition: (direct)-> object (anon)  @35216|channel(44,10)
+				{
+					true branch: RETURN --to isolate (quit)
+					 trace: (direct)-> object (anon)  @30416|channel(,)
+						trace branch: BLOCK --domain
+						{
+							MAKE
+							 object: (direct)-> object (anon)  @30416|channel(,)
+							 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+							MAKE
+							 proxy: (direct)-> proxy (anon)  @13520|channel(,)
+							 type: ("fault")-> type fault  @53808|fault(49,6)
+							 permission: [init]
+							CALL --initial, fundamental
+							 lead: (direct)-> object (anon)  @30416|channel(,)
+							 method: ("begin")-> method begin  @23152|$appendix(,)
+							 result: (direct)-> proxy (anon)  @13520|channel(,)
+							MAKE
+							 literal: (direct)-> literal (anon)  @29456|channel(,) --'bug'
+							 type: ("expr")-> type expr  @11328|expr(5,6)
+							MAKE
+							 literal: (direct)-> literal (anon)  @30736|channel(,) --'invalid i/o action'
+							 type: ("expr")-> type expr  @11328|expr(5,6)
+							MAKE
+							 object: (direct)-> object (anon)  @02336|channel(44,78)
+							 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+							CALL --initial
+							 lead: (direct)-> object (anon)  @02336|channel(44,78)
+							 method: ("begin")-> method begin  @57968|fault(5,11)
+							 input: (direct)-> literal (anon)  @29456|channel(,)
+							CALL --initial, fundamental
+							 lead: (direct)-> proxy (anon)  @13520|channel(,)
+							 method: ("begin")-> method begin  @35888|fault(97,3)
+							 input: (direct)-> object (anon)  @02336|channel(44,78)
+							 input: (direct)-> literal (anon)  @30736|channel(,)
+						}
+				}
+				CALL
+				 subroutine: ("ascii_to_word")-> subroutine ascii_to_word  @02864|channel(107,3)
+				 input: ("action")-> object action  @56096|channel(42,3)
+				 output: ("io.action")-> object action  @06400|channel(116,3)
+				CALL --initial, fundamental
+				 lead: ("io.pdata")-> object pdata  @07040|channel(117,3)
+				 method: ("begin")-> method begin  @61920|addr(36,3)
+				 input: ("pdata")-> object pdata  @50336|channel(42,3)
+				CALL --initial, fundamental
+				 lead: ("io.offset")-> object offset  @09600|channel(118,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("offset")-> object offset  @51936|channel(42,3)
+				CALL --initial, fundamental
+				 lead: ("io.size")-> object size  @08640|channel(119,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("size")-> object size  @51616|channel(42,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @09264|channel(49,19)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL
+				 subroutine: (direct)-> subroutine $22<5>( fix<int> )  @12336|$appendix(,)
+				 input: ("seek")-> object seek  @35536|channel(42,3)
+				 input: ("zero")-> object zero  @08080|conventional(34,2)
+				 result: (direct)-> proxy (anon)  @09264|channel(49,19)
+				CALL --initial, fundamental
+				 lead: ("io.seek")-> object seek  @08000|channel(121,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: (direct)-> proxy (anon)  @09264|channel(49,19)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @11392|channel(50,17)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL
+				 subroutine: (direct)-> subroutine $22<5>( fix<int> )  @12336|$appendix(,)
+				 input: ("id")-> object id  @35856|channel(42,3)
+				 input: ("zero")-> object zero  @08080|conventional(34,2)
+				 result: (direct)-> proxy (anon)  @11392|channel(50,17)
+				CALL --initial, fundamental
+				 lead: ("io.id")-> object id  @09920|channel(120,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: (direct)-> proxy (anon)  @11392|channel(50,17)
+				CALL --initial, fundamental
+				 lead: ("io.deficit")-> object deficit  @06720|channel(122,3)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.report")-> object report  @08320|channel(123,3)
+				 method: ("begin")-> method begin  @62288|$appendix(,)
+				 input: (pending)->
+				CALL --initial, fundamental
+				 lead: ("io.pnote")-> object pnote  @08960|channel(124,3)
+				 method: ("begin")-> method begin  @61504|addr(34,3)
+			}
+		}
+
+		method begin  @22336|channel(56,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object fex  @32656|channel(56,3) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+
+				object io  @31056|channel(56,3) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object mediator  @32016|channel(56,3) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 literal: (direct)-> literal (anon)  @32976|channel(,) --'b'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @33296|channel(,)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object fex  @32656|channel(56,3)
+				 method: ("is_equal?")-> method is_equal?  @30480|expr(94,3)
+				 input: (direct)-> literal (anon)  @32976|channel(,)
+				 input: (pending)->
+				 output: (direct)-> object (anon)  @33296|channel(,)
+				IF
+				 condition: (direct)-> object fex  @32656|channel(56,3)
+				{
+					true branch: CALL
+					 lead: (direct)-> object io  @31056|channel(56,3)
+					 method: ("fread_format")-> method fread_format  @51056|channel(128,9)
+					 input: (direct)-> object mediator  @32016|channel(56,3)
+					false branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @33616|channel(,) --'format'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 literal: (direct)-> literal (anon)  @29776|channel(,) --'unknown format'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						RETURN --to isolate (quit)
+						 trace: (direct)-> object (anon)  @34576|channel(,)
+							trace branch: BLOCK --domain
+							{
+								MAKE
+								 object: (direct)-> object (anon)  @34576|channel(,)
+								 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+								MAKE
+								 proxy: (direct)-> proxy (anon)  @13824|channel(,)
+								 type: ("fault")-> type fault  @53808|fault(49,6)
+								 permission: [init]
+								CALL --initial, fundamental
+								 lead: (direct)-> object (anon)  @34576|channel(,)
+								 method: ("begin")-> method begin  @23152|$appendix(,)
+								 result: (direct)-> proxy (anon)  @13824|channel(,)
+								MAKE
+								 object: (direct)-> object (anon)  @53472|channel(,)
+								 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+								CALL --initial
+								 lead: (direct)-> object (anon)  @53472|channel(,)
+								 method: ("begin")-> method begin  @57968|fault(5,11)
+								 input: (direct)-> literal (anon)  @33616|channel(,)
+								CALL --initial, fundamental
+								 lead: (direct)-> proxy (anon)  @13824|channel(,)
+								 method: ("begin")-> method begin  @35888|fault(97,3)
+								 input: (direct)-> object (anon)  @53472|channel(,)
+								 input: (direct)-> literal (anon)  @29776|channel(,)
+							}
+					}
+				}
+			}
+		}
+
+		format format  @21424|channel(128,9) --internal
+		{
+			(direct)-> object action  @06400|channel(116,3)
+			(direct)-> object pdata  @07040|channel(117,3)
+			(direct)-> object offset  @09600|channel(118,3)
+			(direct)-> object size  @08640|channel(119,3)
+			(direct)-> object id  @09920|channel(120,3)
+			(direct)-> object seek  @08000|channel(121,3)
+			(direct)-> object deficit  @06720|channel(122,3)
+			(direct)-> object report  @08320|channel(123,3)
+			(direct)-> object pnote  @08960|channel(124,3)
+		}
+
+		method fread_format  @51056|channel(128,9) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @40560|channel(128,9) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object mediator  @42800|channel(128,9) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL --fundamental
+				 lead: (direct)-> object mediator  @42800|channel(128,9)
+				 method: ("enable_auto_align")-> method enable_auto_align  @09648|mediator(324,3)
+				MAKE
+				 literal: (direct)-> literal (anon)  @40880|channel(,) --'b'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object action  @06400|channel(116,3)
+				 method: ("begin")-> method begin  @47728|$appendix(,)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object pdata  @07040|channel(117,3)
+				 method: ("begin")-> method begin  @62336|addr(38,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object offset  @09600|channel(118,3)
+				 method: ("begin")-> method begin  @49760|int(59,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object size  @08640|channel(119,3)
+				 method: ("begin")-> method begin  @49760|int(59,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object id  @09920|channel(120,3)
+				 method: ("begin")-> method begin  @49760|int(59,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object seek  @08000|channel(121,3)
+				 method: ("begin")-> method begin  @49760|int(59,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object deficit  @06720|channel(122,3)
+				 method: ("begin")-> method begin  @49760|int(59,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object report  @08320|channel(123,3)
+				 method: ("begin")-> method begin  @47728|$appendix(,)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> object pnote  @08960|channel(124,3)
+				 method: ("begin")-> method begin  @62336|addr(38,3)
+				 input: (direct)-> object mediator  @42800|channel(128,9)
+				 input: (direct)-> literal (anon)  @40880|channel(,)
+			}
+		}
+
+		method fwrite_format  @51472|channel(128,9) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @43120|channel(128,9) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object mediator  @42160|channel(128,9) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL --fundamental
+				 lead: (direct)-> object mediator  @42160|channel(128,9)
+				 method: ("enable_auto_align")-> method enable_auto_align  @09648|mediator(324,3)
+				MAKE
+				 literal: (direct)-> literal (anon)  @38640|channel(,) --'b'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object action  @06400|channel(116,3)
+				 method: ("store")-> method store  @30976|$appendix(,)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object pdata  @07040|channel(117,3)
+				 method: ("store")-> method store  @62752|addr(40,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object offset  @09600|channel(118,3)
+				 method: ("store")-> method store  @58496|int(61,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object size  @08640|channel(119,3)
+				 method: ("store")-> method store  @58496|int(61,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object id  @09920|channel(120,3)
+				 method: ("store")-> method store  @58496|int(61,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object seek  @08000|channel(121,3)
+				 method: ("store")-> method store  @58496|int(61,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object deficit  @06720|channel(122,3)
+				 method: ("store")-> method store  @58496|int(61,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object report  @08320|channel(123,3)
+				 method: ("store")-> method store  @30976|$appendix(,)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object pnote  @08960|channel(124,3)
+				 method: ("store")-> method store  @62752|addr(40,3)
+				 input: (direct)-> object mediator  @42160|channel(128,9)
+				 input: (direct)-> literal (anon)  @38640|channel(,)
+			}
+		}
+
+		method get_group1  @22752|channel(66,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object action  @03088|channel(66,3) --internal
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+				object id  @61904|channel(66,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @61584|channel(66,3) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object offset  @62864|channel(66,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @01168|channel(66,3) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object seek  @02128|channel(66,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @03728|channel(66,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL
+				 subroutine: ("word_to_ascii")-> subroutine word_to_ascii  @01264|channel(102,3)
+				 input: ("io.action")-> object action  @06400|channel(116,3)
+				 output: ("action")-> object action  @03088|channel(66,3)
+				CALL --initial, fundamental
+				 lead: ("pdata")-> object pdata  @01168|channel(66,3)
+				 method: ("begin")-> method begin  @61920|addr(36,3)
+				 input: ("io.pdata")-> object pdata  @07040|channel(117,3)
+				CALL --initial, fundamental
+				 lead: ("offset")-> object offset  @62864|channel(66,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("io.offset")-> object offset  @09600|channel(118,3)
+				CALL --initial, fundamental
+				 lead: ("size")-> object size  @03728|channel(66,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("io.size")-> object size  @08640|channel(119,3)
+				CALL --initial, fundamental
+				 lead: ("seek")-> object seek  @02128|channel(66,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("io.seek")-> object seek  @08000|channel(121,3)
+				CALL --initial, fundamental
+				 lead: ("id")-> object id  @61904|channel(66,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("io.id")-> object id  @09920|channel(120,3)
+			}
+		}
+
+		method get_group2  @33984|channel(77,3) --external
+		 viable = yes
+		{
+
+			common
+			{
+				enumerator $index  @49872|channel(,) --internal
+				 type: (direct)-> type $1<4>( <ascii>enumerator )  @56592|$appendix(,)
+
+				subroutine $start1  @58848|channel(,) --internal
+				 viable = yes
+				{
+
+					given
+					{
+					}
+
+					BLOCK --domain
+					{
+						MAKE
+						 enumerator: (direct)-> enumerator $index  @49872|channel(,)
+						 type: (direct)-> type $1<4>( <ascii>enumerator )  @56592|$appendix(,)
+					}
+				}
+			}
+
+
+			given
+			{
+				object cr  @01808|channel(77,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object deficit  @01488|channel(77,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @02448|channel(77,3) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object note  @02768|channel(77,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+			}
+
+			BLOCK --domain
+			{
+				CALL --initial, fundamental
+				 lead: ("deficit")-> object deficit  @01488|channel(77,3)
+				 method: ("begin")-> method begin  @56416|int(54,3)
+				 input: ("io.deficit")-> object deficit  @06720|channel(122,3)
+				MAKE
+				 object: (direct)-> object (anon)  @00528|channel(80,42)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL
+				 subroutine: ("word_to_ascii")-> subroutine word_to_ascii  @01264|channel(102,3)
+				 input: ("io.report")-> object report  @08320|channel(123,3)
+				 output: (direct)-> object (anon)  @00528|channel(80,42)
+				SELECT
+				 selector: (direct)-> object (anon)  @00528|channel(80,42)
+				 enumerator: (direct)-> enumerator $index  @49872|channel(,)
+				 'NUL' -> branch 0
+				 'p' -> branch 1
+				 'b' -> branch 2
+				 'c' -> branch 3
+				 'r' -> branch 4
+				 'e' -> branch 5
+				 'x' -> branch 6
+				{
+
+					branch 0: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @62544|channel(,) --'good'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @62544|channel(,)
+					}
+
+					branch 1: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @00848|channel(,) --'pending'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @00848|channel(,)
+					}
+
+					branch 2: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @63504|channel(,) --'busy'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @63504|channel(,)
+					}
+
+					branch 3: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @64144|channel(,) --'closed'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @64144|channel(,)
+					}
+
+					branch 4: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @65104|channel(,) --'retry'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @65104|channel(,)
+					}
+
+					branch 5: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @65424|channel(,) --'end'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @65424|channel(,)
+					}
+
+					branch 6: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @00208|channel(,) --'error'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @00208|channel(,)
+					}
+
+					default branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @62224|channel(,) --'other'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("cr")-> object cr  @01808|channel(77,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @62224|channel(,)
+					}
+				}
+				MAKE
+				 object: (direct)-> object (anon)  @39280|channel(91,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("io.pnote")-> object pnote  @08960|channel(124,3)
+				 method: ("is_equal?")-> method is_equal?  @63168|addr(42,3)
+				 input: ("no_addr")-> object no_addr  @10000|conventional(14,2)
+				 output: (direct)-> object (anon)  @39280|channel(91,10)
+				MAKE
+				 object: (direct)-> object (anon)  @44720|channel(91,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @39280|channel(91,10)
+				 method: ("not")-> method not  @30096|bool(43,3)
+				 output: (direct)-> object (anon)  @44720|channel(91,10)
+				IF
+				 condition: (direct)-> object (anon)  @44720|channel(91,10)
+				{
+					true branch: BLOCK --domain
+					{
+						CALL
+						 subroutine: ("cstr_to_alpha")-> subroutine cstr_to_alpha  @01664|conventional(165,2)
+						 input: ("io.pnote")-> object pnote  @08960|channel(124,3)
+						 output: ("note")-> object note  @02768|channel(77,3)
+						CALL --terminal, fundamental
+						 lead: ("io.pnote")-> object pnote  @08960|channel(124,3)
+						 method: ("recycle")-> method recycle  @22464|object(60,3)
+						CALL --initial, fundamental
+						 lead: ("io.pnote")-> object pnote  @08960|channel(124,3)
+						 method: ("begin")-> method begin  @61920|addr(36,3)
+						 input: ("no_addr")-> object no_addr  @10000|conventional(14,2)
+					}
+				}
+			}
+		}
+
+		method store  @23168|channel(61,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object fex  @34896|channel(61,3) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+
+				object io  @33936|channel(61,3) --internal
+				 type: (direct)-> type request  @05040|channel(16,13)
+
+				object mediator  @34256|channel(61,3) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 literal: (direct)-> literal (anon)  @64464|channel(,) --'b'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @63824|channel(,)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object fex  @34896|channel(61,3)
+				 method: ("is_equal?")-> method is_equal?  @30480|expr(94,3)
+				 input: (direct)-> literal (anon)  @64464|channel(,)
+				 input: (pending)->
+				 output: (direct)-> object (anon)  @63824|channel(,)
+				IF
+				 condition: (direct)-> object fex  @34896|channel(61,3)
+				{
+					true branch: CALL
+					 lead: (direct)-> object io  @33936|channel(61,3)
+					 method: ("fwrite_format")-> method fwrite_format  @51472|channel(128,9)
+					 input: (direct)-> object mediator  @34256|channel(61,3)
+					false branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @63184|channel(,) --'format'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 literal: (direct)-> literal (anon)  @03408|channel(,) --'unknown format'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						RETURN --to isolate (quit)
+						 trace: (direct)-> object (anon)  @64784|channel(,)
+							trace branch: BLOCK --domain
+							{
+								MAKE
+								 object: (direct)-> object (anon)  @64784|channel(,)
+								 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+								MAKE
+								 proxy: (direct)-> proxy (anon)  @15952|channel(,)
+								 type: ("fault")-> type fault  @53808|fault(49,6)
+								 permission: [init]
+								CALL --initial, fundamental
+								 lead: (direct)-> object (anon)  @64784|channel(,)
+								 method: ("begin")-> method begin  @23152|$appendix(,)
+								 result: (direct)-> proxy (anon)  @15952|channel(,)
+								MAKE
+								 object: (direct)-> object (anon)  @02656|channel(,)
+								 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+								CALL --initial
+								 lead: (direct)-> object (anon)  @02656|channel(,)
+								 method: ("begin")-> method begin  @57968|fault(5,11)
+								 input: (direct)-> literal (anon)  @63184|channel(,)
+								CALL --initial, fundamental
+								 lead: (direct)-> proxy (anon)  @15952|channel(,)
+								 method: ("begin")-> method begin  @35888|fault(97,3)
+								 input: (direct)-> object (anon)  @02656|channel(,)
+								 input: (direct)-> literal (anon)  @03408|channel(,)
+							}
+					}
+				}
+			}
+		}
+
+		subroutine word_to_ascii  @01264|channel(102,3) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object a  @38320|channel(102,3) --internal
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+				object w  @39600|channel(102,3) --internal
+				 type: (direct)-> type $3<'8'>( word<'8'> )  @55824|$appendix(,)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @37680|channel(104,13)
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @41200|channel(,) --'b:ascii'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @37680|channel(104,13)
+				 method: (direct)-> method $27<'8'>( begin<'8'> )  @28560|$appendix(,)
+				 input: ("w")-> object w  @39600|channel(102,3)
+				 input: (direct)-> literal (anon)  @41200|channel(,)
+				CALL --initial, fundamental
+				 lead: ("a")-> object a  @38320|channel(102,3)
+				 method: ("begin")-> method begin  @13264|ascii(110,3)
+				 input: (direct)-> object (anon)  @37680|channel(104,13)
+			}
+		}
+
+		instance
+		{
+			object action  @06400|channel(116,3) --internal
+			 type: (direct)-> type $3<'8'>( word<'8'> )  @55824|$appendix(,)
+
+			object deficit  @06720|channel(122,3) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object id  @09920|channel(120,3) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object offset  @09600|channel(118,3) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object pdata  @07040|channel(117,3) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object pnote  @08960|channel(124,3) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object report  @08320|channel(123,3) --internal
+			 type: (direct)-> type $3<'8'>( word<'8'> )  @55824|$appendix(,)
+
+			object seek  @08000|channel(121,3) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object size  @08640|channel(119,3) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+		}
+
+	}
+
+	subroutine restore_request  @63200|channel(142,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object pr  @43760|channel(142,2) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object r  @44080|channel(142,2) --internal
+			 type: ("request")-> type request  @05040|channel(16,13)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object m  @37040|channel(144,3)
+			 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object m  @37040|channel(144,3)
+			 method: ("begin")-> method begin  @24208|mediator(307,3)
+			 input: (pending)->
+			 input: (pending)->
+			CALL --fundamental
+			 lead: (direct)-> object m  @37040|channel(144,3)
+			 method: ("attach")-> method attach  @25872|mediator(321,3)
+			 input: ("pr")-> object pr  @43760|channel(142,2)
+			 input: ("sizeof_request")-> object sizeof_request  @07360|channel(7,2)
+			MAKE
+			 literal: (direct)-> literal (anon)  @44400|channel(,) --'b'
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+			CALL --initial
+			 lead: ("r")-> object r  @44080|channel(142,2)
+			 method: ("begin")-> method begin  @22336|channel(56,3)
+			 input: ("m")-> object m  @37040|channel(144,3)
+			 input: (direct)-> literal (anon)  @44400|channel(,)
+		}
+	}
+
+	type sync_channel_reader  @06192|channel(372,6) --external
+	 viable = yes
+	{
+		method begin  @26496|channel(402,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @41360|channel(402,3) --internal
+				 type: (direct)-> type sync_channel_reader  @06192|channel(372,6)
+
+				object wait  @41680|channel(402,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @42640|channel(404,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("wait")-> object wait  @41680|channel(402,3)
+				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+				 output: (direct)-> object (anon)  @42640|channel(404,10)
+				IF
+				 condition: (direct)-> object (anon)  @42640|channel(404,10)
+				{
+					true branch: CALL --initial, fundamental
+					 lead: ("io.wait")-> object wait  @06800|channel(428,3)
+					 method: ("begin")-> method begin  @56800|etm(73,3)
+					 input: ("wait")-> object wait  @41680|channel(402,3)
+				}
+			}
+		}
+
+		method read  @19424|channel(407,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @43600|channel(407,3) --internal
+				 type: (direct)-> type sync_channel_reader  @06192|channel(372,6)
+
+				object med  @44240|channel(407,3) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+
+				object note  @49360|channel(407,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object report  @30480|channel(407,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @29840|channel(407,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @30160|channel(407,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object offset  @57680|channel(409,18)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @44240|channel(407,3)
+				 method: ("get_wp")-> method get_wp  @30032|mediator(359,3)
+				 output: (direct)-> object offset  @57680|channel(409,18)
+				MAKE
+				 object: (direct)-> object rsize  @55440|channel(409,44)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @44240|channel(407,3)
+				 method: ("get_size")-> method get_size  @26704|mediator(333,3)
+				 output: (direct)-> object rsize  @55440|channel(409,44)
+				CALL --fundamental
+				 lead: (direct)-> object rsize  @55440|channel(409,44)
+				 method: ("sub")-> method sub  @65152|int(79,3)
+				 input: ("offset")-> object offset  @57680|channel(409,18)
+				MAKE
+				 object: (direct)-> object (anon)  @59280|channel(410,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("zero")-> object zero  @08080|conventional(34,2)
+				 method: ("is_less?")-> method is_less?  @64736|int(68,3)
+				 input: ("rsize")-> object rsize  @55440|channel(409,44)
+				 output: (direct)-> object (anon)  @59280|channel(410,10)
+				IF
+				 condition: (direct)-> object (anon)  @59280|channel(410,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object pdata  @57040|channel(412,19)
+						 type: ("addr")-> type addr  @39232|addr(4,6)
+						MAKE
+						 object: (direct)-> object (anon)  @51920|channel(412,8)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --fundamental
+						 lead: ("med")-> object med  @44240|channel(407,3)
+						 method: ("detach")-> method detach  @09232|mediator(319,3)
+						 output: (direct)-> object pdata  @57040|channel(412,19)
+						 output: (direct)-> object (anon)  @51920|channel(412,8)
+						MAKE
+						 proxy: (direct)-> proxy (anon)  @15344|channel(413,15)
+						 type: ("etm")-> type etm  @10944|etm(5,6)
+						 permission: [eval]
+						CALL
+						 subroutine: (direct)-> subroutine $22<24>( fix<etm> )  @12736|$appendix(,)
+						 input: ("wait")-> object wait  @30160|channel(407,3)
+						 input: ("io.wait")-> object wait  @06800|channel(428,3)
+						 result: (direct)-> proxy (anon)  @15344|channel(413,15)
+						MAKE
+						 object: (direct)-> object deficit  @46480|channel(413,67)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --virtual
+						 lead: ("io")-> object io  @43600|channel(407,3)
+						 method: ("~read")-> abstract method ~read  @19616|channel(423,3)
+						 input: (direct)-> proxy (anon)  @15344|channel(413,15)
+						 input: ("seek")-> object seek  @29840|channel(407,3)
+						 input: ("pdata")-> object pdata  @57040|channel(412,19)
+						 input: ("offset")-> object offset  @57680|channel(409,18)
+						 input: ("rsize")-> object rsize  @55440|channel(409,44)
+						 output: (direct)-> object deficit  @46480|channel(413,67)
+						 output: ("report")-> object report  @30480|channel(407,3)
+						 output: ("note")-> object note  @49360|channel(407,3)
+						MAKE
+						 literal: (direct)-> literal (anon)  @60880|channel(,) --'r'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 object: (direct)-> object (anon)  @53520|channel(414,5)
+						 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+						CALL --initial, fundamental
+						 lead: (direct)-> object (anon)  @53520|channel(414,5)
+						 method: ("begin")-> method begin  @15760|ascii(108,3)
+						 input: (direct)-> literal (anon)  @60880|channel(,)
+						CALL
+						 subroutine: ("update_mediator")-> subroutine update_mediator  @64400|channel(148,2)
+						 input: ("med")-> object med  @44240|channel(407,3)
+						 input: ("pdata")-> object pdata  @57040|channel(412,19)
+						 input: ("offset")-> object offset  @57680|channel(409,18)
+						 input: ("rsize")-> object rsize  @55440|channel(409,44)
+						 input: ("deficit")-> object deficit  @46480|channel(413,67)
+						 input: (direct)-> object (anon)  @53520|channel(414,5)
+					}
+					false branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @51600|channel(,) --'good'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("report")-> object report  @30480|channel(407,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @51600|channel(,)
+					}
+				}
+			}
+		}
+
+		abstract method ~read  @19616|channel(423,3) --fraternal
+		 key = sync_channel_reader-0
+		 viable = yes
+
+		instance
+		{
+			object wait  @06800|channel(428,3) --internal
+			 type: ("etm")-> type etm  @10944|etm(5,6)
+		}
+
+	}
+
+	type sync_channel_writer  @08112|channel(433,6) --external
+	 viable = yes
+	{
+		method begin  @21088|channel(463,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @46800|channel(463,3) --internal
+				 type: (direct)-> type sync_channel_writer  @08112|channel(433,6)
+
+				object wait  @53840|channel(463,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @56720|channel(465,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("wait")-> object wait  @53840|channel(463,3)
+				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+				 output: (direct)-> object (anon)  @56720|channel(465,10)
+				IF
+				 condition: (direct)-> object (anon)  @56720|channel(465,10)
+				{
+					true branch: CALL --initial, fundamental
+					 lead: ("io.wait")-> object wait  @11280|channel(491,3)
+					 method: ("begin")-> method begin  @56800|etm(73,3)
+					 input: ("wait")-> object wait  @53840|channel(463,3)
+				}
+			}
+		}
+
+		method write  @34816|channel(468,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @59600|channel(468,3) --internal
+				 type: (direct)-> type sync_channel_writer  @08112|channel(433,6)
+
+				object med  @58320|channel(468,3) --internal
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+
+				object note  @52240|channel(468,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object report  @55760|channel(468,3) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @54800|channel(468,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @47760|channel(468,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object offset  @52560|channel(470,18)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @58320|channel(468,3)
+				 method: ("get_rp")-> method get_rp  @29616|mediator(344,3)
+				 output: (direct)-> object offset  @52560|channel(470,18)
+				MAKE
+				 object: (direct)-> object rsize  @54480|channel(470,44)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: ("med")-> object med  @58320|channel(468,3)
+				 method: ("get_size")-> method get_size  @26704|mediator(333,3)
+				 output: (direct)-> object rsize  @54480|channel(470,44)
+				CALL --fundamental
+				 lead: (direct)-> object rsize  @54480|channel(470,44)
+				 method: ("sub")-> method sub  @65152|int(79,3)
+				 input: ("offset")-> object offset  @52560|channel(470,18)
+				MAKE
+				 object: (direct)-> object (anon)  @45200|channel(471,10)
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				CALL --fundamental
+				 lead: ("zero")-> object zero  @08080|conventional(34,2)
+				 method: ("is_less?")-> method is_less?  @64736|int(68,3)
+				 input: ("rsize")-> object rsize  @54480|channel(470,44)
+				 output: (direct)-> object (anon)  @45200|channel(471,10)
+				IF
+				 condition: (direct)-> object (anon)  @45200|channel(471,10)
+				{
+					true branch: BLOCK --domain
+					{
+						MAKE
+						 object: (direct)-> object pdata  @58000|channel(473,19)
+						 type: ("addr")-> type addr  @39232|addr(4,6)
+						MAKE
+						 object: (direct)-> object (anon)  @54160|channel(473,8)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --fundamental
+						 lead: ("med")-> object med  @58320|channel(468,3)
+						 method: ("detach")-> method detach  @09232|mediator(319,3)
+						 output: (direct)-> object pdata  @58000|channel(473,19)
+						 output: (direct)-> object (anon)  @54160|channel(473,8)
+						MAKE
+						 proxy: (direct)-> proxy (anon)  @11696|channel(474,16)
+						 type: ("etm")-> type etm  @10944|etm(5,6)
+						 permission: [eval]
+						CALL
+						 subroutine: (direct)-> subroutine $22<24>( fix<etm> )  @12736|$appendix(,)
+						 input: ("wait")-> object wait  @47760|channel(468,3)
+						 input: ("io.wait")-> object wait  @11280|channel(491,3)
+						 result: (direct)-> proxy (anon)  @11696|channel(474,16)
+						MAKE
+						 object: (direct)-> object deficit  @49680|channel(474,68)
+						 type: ("int")-> type int  @54576|int(6,6)
+						CALL --virtual
+						 lead: ("io")-> object io  @59600|channel(468,3)
+						 method: ("~write")-> abstract method ~write  @31024|channel(485,3)
+						 input: (direct)-> proxy (anon)  @11696|channel(474,16)
+						 input: ("seek")-> object seek  @54800|channel(468,3)
+						 input: ("pdata")-> object pdata  @58000|channel(473,19)
+						 input: ("offset")-> object offset  @52560|channel(470,18)
+						 input: ("rsize")-> object rsize  @54480|channel(470,44)
+						 output: (direct)-> object deficit  @49680|channel(474,68)
+						 output: ("report")-> object report  @55760|channel(468,3)
+						 output: ("note")-> object note  @52240|channel(468,3)
+						MAKE
+						 literal: (direct)-> literal (anon)  @48720|channel(,) --'w'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						MAKE
+						 object: (direct)-> object (anon)  @48080|channel(475,5)
+						 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+						CALL --initial, fundamental
+						 lead: (direct)-> object (anon)  @48080|channel(475,5)
+						 method: ("begin")-> method begin  @15760|ascii(108,3)
+						 input: (direct)-> literal (anon)  @48720|channel(,)
+						CALL
+						 subroutine: ("update_mediator")-> subroutine update_mediator  @64400|channel(148,2)
+						 input: ("med")-> object med  @58320|channel(468,3)
+						 input: ("pdata")-> object pdata  @58000|channel(473,19)
+						 input: ("offset")-> object offset  @52560|channel(470,18)
+						 input: ("rsize")-> object rsize  @54480|channel(470,44)
+						 input: ("deficit")-> object deficit  @49680|channel(474,68)
+						 input: (direct)-> object (anon)  @48080|channel(475,5)
+					}
+					false branch: BLOCK --domain
+					{
+						MAKE
+						 literal: (direct)-> literal (anon)  @50640|channel(,) --'good'
+						 type: ("expr")-> type expr  @11328|expr(5,6)
+						CALL --initial
+						 lead: ("report")-> object report  @55760|channel(468,3)
+						 method: ("begin")-> method begin  @51888|channel(160,11)
+						 input: (direct)-> literal (anon)  @50640|channel(,)
+					}
+				}
+			}
+		}
+
+		abstract method ~write  @31024|channel(485,3) --fraternal
+		 key = sync_channel_writer-0
+		 viable = yes
+
+		instance
+		{
+			object wait  @11280|channel(491,3) --internal
+			 type: ("etm")-> type etm  @10944|etm(5,6)
+		}
+
+	}
+
+	type sync_read_only_channel  @43920|channel(560,6) --external
+	 from ("channel")-> type channel  @05808|channel(193,6)
+	 from ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+	 viable = yes
+	{
+		method begin  @36480|channel(564,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @05520|channel(564,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @16720|channel(564,3) --internal
+				 type: (direct)-> type sync_read_only_channel  @43920|channel(560,6)
+
+				object wait  @15120|channel(564,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @12000|channel(566,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @16720|channel(564,3)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @12000|channel(566,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @12000|channel(566,6)
+				 method: ("begin")-> method begin  @28576|channel(261,3)
+				 input: ("hch")-> object hch  @05520|channel(564,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @09568|channel(567,6)
+				 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @16720|channel(564,3)
+				 method: (direct)-> method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,)
+				 result: (direct)-> proxy (anon)  @09568|channel(567,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @09568|channel(567,6)
+				 method: ("begin")-> method begin  @26496|channel(402,3)
+				 input: ("wait")-> object wait  @15120|channel(564,3)
+			}
+		}
+
+		method end  @44176|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @15520|channel(,) --internal
+				 type: (direct)-> type sync_read_only_channel  @43920|channel(560,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @33872|channel(,)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @15520|channel(,)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @33872|channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @33872|channel(,)
+				 method: (direct)-> method end  @34400|channel(338,3)
+			}
+		}
+
+		abstract method ~read  @25072|channel(573,11) --fraternal
+		 key = sync_channel_reader-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @06480|channel(573,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @05840|channel(573,11) --internal
+				 type: (direct)-> type sync_read_only_channel  @43920|channel(560,6)
+
+				object note  @10000|channel(573,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @06160|channel(573,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @09680|channel(573,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @06800|channel(573,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @18640|channel(573,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @15760|channel(573,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @12240|channel(573,11) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @09872|channel(575,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @05840|channel(573,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @09872|channel(575,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @18000|channel(,) --'r'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @02976|channel(575,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @02976|channel(575,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @18000|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @09872|channel(575,6)
+				 method: ("execute_sync")-> method execute_sync  @31904|channel(285,3)
+				 input: ("wait")-> object wait  @12240|channel(573,11)
+				 input: (direct)-> object (anon)  @02976|channel(575,23)
+				 input: ("seek")-> object seek  @18640|channel(573,11)
+				 input: ("pdata")-> object pdata  @09680|channel(573,11)
+				 input: ("offset")-> object offset  @06160|channel(573,11)
+				 input: ("size")-> object size  @15760|channel(573,11)
+				 output: ("deficit")-> object deficit  @06480|channel(573,11)
+				 output: ("report")-> object report  @06800|channel(573,11)
+				 output: ("note")-> object note  @10000|channel(573,11)
+			}
+		}
+	}
+
+	type sync_read_write_channel  @45072|channel(603,6) --external
+	 from ("channel")-> type channel  @05808|channel(193,6)
+	 from ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+	 from ("sync_channel_writer")-> type sync_channel_writer  @08112|channel(433,6)
+	 viable = yes
+	{
+		method begin  @27744|channel(607,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @54816|channel(607,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @49376|channel(607,3) --internal
+				 type: (direct)-> type sync_read_write_channel  @45072|channel(603,6)
+
+				object wait  @45856|channel(607,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @14432|channel(609,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @49376|channel(607,3)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @14432|channel(609,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @14432|channel(609,6)
+				 method: ("begin")-> method begin  @28576|channel(261,3)
+				 input: ("hch")-> object hch  @54816|channel(607,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @14128|channel(610,6)
+				 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @49376|channel(607,3)
+				 method: (direct)-> method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,)
+				 result: (direct)-> proxy (anon)  @14128|channel(610,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @14128|channel(610,6)
+				 method: ("begin")-> method begin  @26496|channel(402,3)
+				 input: ("wait")-> object wait  @45856|channel(607,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @12304|channel(611,6)
+				 type: ("sync_channel_writer")-> type sync_channel_writer  @08112|channel(433,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @49376|channel(607,3)
+				 method: (direct)-> method $18<29>( as_base<sync_channel_writer> )  @45008|$appendix(,)
+				 result: (direct)-> proxy (anon)  @12304|channel(611,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @12304|channel(611,6)
+				 method: ("begin")-> method begin  @21088|channel(463,3)
+				 input: ("wait")-> object wait  @45856|channel(607,3)
+			}
+		}
+
+		method end  @40432|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @16480|channel(,) --internal
+				 type: (direct)-> type sync_read_write_channel  @45072|channel(603,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @28096|channel(,)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @16480|channel(,)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @28096|channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @28096|channel(,)
+				 method: (direct)-> method end  @34400|channel(338,3)
+			}
+		}
+
+		abstract method ~read  @31520|channel(617,11) --fraternal
+		 key = sync_channel_reader-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @58336|channel(617,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @46176|channel(617,11) --internal
+				 type: (direct)-> type sync_read_write_channel  @45072|channel(603,6)
+
+				object note  @52896|channel(617,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @59296|channel(617,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @58016|channel(617,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @52576|channel(617,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @47456|channel(617,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @51936|channel(617,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @45216|channel(617,11) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @10480|channel(619,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @46176|channel(617,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @10480|channel(619,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @47136|channel(,) --'r'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @03296|channel(619,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @03296|channel(619,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @47136|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @10480|channel(619,6)
+				 method: ("execute_sync")-> method execute_sync  @31904|channel(285,3)
+				 input: ("wait")-> object wait  @45216|channel(617,11)
+				 input: (direct)-> object (anon)  @03296|channel(619,23)
+				 input: ("seek")-> object seek  @47456|channel(617,11)
+				 input: ("pdata")-> object pdata  @58016|channel(617,11)
+				 input: ("offset")-> object offset  @59296|channel(617,11)
+				 input: ("size")-> object size  @51936|channel(617,11)
+				 output: ("deficit")-> object deficit  @58336|channel(617,11)
+				 output: ("report")-> object report  @52576|channel(617,11)
+				 output: ("note")-> object note  @52896|channel(617,11)
+			}
+		}
+
+		abstract method ~write  @20112|channel(625,11) --fraternal
+		 key = sync_channel_writer-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @60256|channel(625,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @53856|channel(625,11) --internal
+				 type: (direct)-> type sync_read_write_channel  @45072|channel(603,6)
+
+				object note  @59616|channel(625,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @48416|channel(625,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @45536|channel(625,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @53216|channel(625,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @47776|channel(625,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @58976|channel(625,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @54176|channel(625,11) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @08352|channel(627,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @53856|channel(625,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @08352|channel(627,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @60896|channel(,) --'w'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @03616|channel(627,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @03616|channel(627,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @60896|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @08352|channel(627,6)
+				 method: ("execute_sync")-> method execute_sync  @31904|channel(285,3)
+				 input: ("wait")-> object wait  @54176|channel(625,11)
+				 input: (direct)-> object (anon)  @03616|channel(627,23)
+				 input: ("seek")-> object seek  @47776|channel(625,11)
+				 input: ("pdata")-> object pdata  @45536|channel(625,11)
+				 input: ("offset")-> object offset  @48416|channel(625,11)
+				 input: ("size")-> object size  @58976|channel(625,11)
+				 output: ("deficit")-> object deficit  @60256|channel(625,11)
+				 output: ("report")-> object report  @53216|channel(625,11)
+				 output: ("note")-> object note  @59616|channel(625,11)
+			}
+		}
+	}
+
+	type sync_write_only_channel  @46992|channel(582,6) --external
+	 from ("channel")-> type channel  @05808|channel(193,6)
+	 from ("sync_channel_writer")-> type sync_channel_writer  @08112|channel(433,6)
+	 viable = yes
+	{
+		method begin  @26912|channel(586,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object hch  @07120|channel(586,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @12880|channel(586,3) --internal
+				 type: (direct)-> type sync_write_only_channel  @46992|channel(582,6)
+
+				object wait  @10320|channel(586,3) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @11088|channel(588,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @12880|channel(586,3)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @11088|channel(588,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @11088|channel(588,6)
+				 method: ("begin")-> method begin  @28576|channel(261,3)
+				 input: ("hch")-> object hch  @07120|channel(586,3)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @12608|channel(589,6)
+				 type: ("sync_channel_writer")-> type sync_channel_writer  @08112|channel(433,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @12880|channel(586,3)
+				 method: (direct)-> method $18<29>( as_base<sync_channel_writer> )  @45008|$appendix(,)
+				 result: (direct)-> proxy (anon)  @12608|channel(589,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @12608|channel(589,6)
+				 method: ("begin")-> method begin  @21088|channel(463,3)
+				 input: ("wait")-> object wait  @10320|channel(586,3)
+			}
+		}
+
+		method end  @34608|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @17120|channel(,) --internal
+				 type: (direct)-> type sync_write_only_channel  @46992|channel(582,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @33264|channel(,)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @17120|channel(,)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @33264|channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @33264|channel(,)
+				 method: (direct)-> method end  @34400|channel(338,3)
+			}
+		}
+
+		abstract method ~write  @25568|channel(595,11) --fraternal
+		 key = sync_channel_writer-0
+		 viable = yes
+		{
+
+			given
+			{
+				object deficit  @18960|channel(595,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object io  @10640|channel(595,11) --internal
+				 type: (direct)-> type sync_write_only_channel  @46992|channel(582,6)
+
+				object note  @49696|channel(595,11) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object offset  @17040|channel(595,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object pdata  @16400|channel(595,11) --internal
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+
+				object report  @15440|channel(595,11) --internal
+				 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+				object seek  @10960|channel(595,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object size  @13200|channel(595,11) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object wait  @14160|channel(595,11) --internal
+				 type: ("etm")-> type etm  @10944|etm(5,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @14736|channel(597,6)
+				 type: ("channel")-> type channel  @05808|channel(193,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @10640|channel(595,11)
+				 method: (direct)-> method $18<19>( as_base<channel> )  @29808|$appendix(,)
+				 result: (direct)-> proxy (anon)  @14736|channel(597,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @56416|channel(,) --'w'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				MAKE
+				 object: (direct)-> object (anon)  @03936|channel(597,23)
+				 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @03936|channel(597,23)
+				 method: ("begin")-> method begin  @15760|ascii(108,3)
+				 input: (direct)-> literal (anon)  @56416|channel(,)
+				CALL
+				 lead: (direct)-> proxy (anon)  @14736|channel(597,6)
+				 method: ("execute_sync")-> method execute_sync  @31904|channel(285,3)
+				 input: ("wait")-> object wait  @14160|channel(595,11)
+				 input: (direct)-> object (anon)  @03936|channel(597,23)
+				 input: ("seek")-> object seek  @10960|channel(595,11)
+				 input: ("pdata")-> object pdata  @16400|channel(595,11)
+				 input: ("offset")-> object offset  @17040|channel(595,11)
+				 input: ("size")-> object size  @13200|channel(595,11)
+				 output: ("deficit")-> object deficit  @18960|channel(595,11)
+				 output: ("report")-> object report  @15440|channel(595,11)
+				 output: ("note")-> object note  @49696|channel(595,11)
+			}
+		}
+	}
+
+	subroutine update_mediator  @64400|channel(148,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object action  @01488|channel(148,2) --internal
+			 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+
+			object deficit  @64144|channel(148,2) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object med  @38000|channel(148,2) --internal
+			 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+
+			object offset  @00208|channel(148,2) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object pdata  @63504|channel(148,2) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object size  @00528|channel(148,2) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object dsize  @01808|channel(150,3)
+			 type: ("int")-> type int  @54576|int(6,6)
+			MAKE
+			 object: (direct)-> object (anon)  @03408|channel(150,21)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: ("offset")-> object offset  @00208|channel(148,2)
+			 method: ("add")-> method add  @60576|int(77,3)
+			 input: ("size")-> object size  @00528|channel(148,2)
+			 output: (direct)-> object (anon)  @03408|channel(150,21)
+			CALL --initial, fundamental
+			 lead: (direct)-> object dsize  @01808|channel(150,3)
+			 method: ("begin")-> method begin  @56416|int(54,3)
+			 input: (direct)-> object (anon)  @03408|channel(150,21)
+			CALL --fundamental
+			 lead: ("med")-> object med  @38000|channel(148,2)
+			 method: ("attach")-> method attach  @25872|mediator(321,3)
+			 input: ("pdata")-> object pdata  @63504|channel(148,2)
+			 input: ("dsize")-> object dsize  @01808|channel(150,3)
+			MAKE
+			 object: (direct)-> object cp  @61904|channel(152,3)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object cp  @61904|channel(152,3)
+			 method: ("begin")-> method begin  @56416|int(54,3)
+			 input: ("dsize")-> object dsize  @01808|channel(150,3)
+			CALL --fundamental
+			 lead: (direct)-> object cp  @61904|channel(152,3)
+			 method: ("sub")-> method sub  @65152|int(79,3)
+			 input: ("deficit")-> object deficit  @64144|channel(148,2)
+			MAKE
+			 literal: (direct)-> literal (anon)  @00848|channel(,) --'w'
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+			MAKE
+			 object: (direct)-> object (anon)  @64464|channel(153,9)
+			 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object (anon)  @64464|channel(153,9)
+			 method: ("begin")-> method begin  @15760|ascii(108,3)
+			 input: (direct)-> literal (anon)  @00848|channel(,)
+			MAKE
+			 object: (direct)-> object (anon)  @62544|channel(153,9)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("action")-> object action  @01488|channel(148,2)
+			 method: ("is_equal?")-> method is_equal?  @12432|ascii(124,3)
+			 input: (direct)-> object (anon)  @64464|channel(153,9)
+			 output: (direct)-> object (anon)  @62544|channel(153,9)
+			IF
+			 condition: (direct)-> object (anon)  @62544|channel(153,9)
+			{
+				true branch: CALL --fundamental
+				 lead: ("med")-> object med  @38000|channel(148,2)
+				 method: ("set_rp")-> method set_rp  @12560|mediator(336,3)
+				 input: ("cp")-> object cp  @61904|channel(152,3)
+				false branch: CALL --fundamental
+				 lead: ("med")-> object med  @38000|channel(148,2)
+				 method: ("set_wp")-> method set_wp  @28784|mediator(353,3)
+				 input: ("cp")-> object cp  @61904|channel(152,3)
+			}
+		}
+	}
+
+	subroutine update_mediator_async  @02464|channel(183,12) --external
+	 viable = yes
+	{
+
+		given
+		{
+			object id  @08736|channel(183,12) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object med  @10976|channel(183,12) --internal
+			 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+
+			object note  @07136|channel(183,12) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object preq  @07456|channel(183,12) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object report  @11296|channel(183,12) --internal
+			 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object req  @05856|channel(185,27)
+			 type: ("request")-> type request  @05040|channel(16,13)
+			CALL
+			 subroutine: ("restore_request")-> subroutine restore_request  @63200|channel(142,2)
+			 input: ("preq")-> object preq  @07456|channel(183,12)
+			 output: (direct)-> object req  @05856|channel(185,27)
+			MAKE
+			 object: (direct)-> object action  @11616|channel(186,20)
+			 type: ("ascii")-> type ascii  @21216|ascii(5,6)
+			MAKE
+			 object: (direct)-> object pdata  @05216|channel(186,34)
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+			MAKE
+			 object: (direct)-> object offset  @10336|channel(186,46)
+			 type: ("int")-> type int  @54576|int(6,6)
+			MAKE
+			 object: (direct)-> object size  @06176|channel(186,58)
+			 type: ("int")-> type int  @54576|int(6,6)
+			MAKE
+			 object: (direct)-> object seek  @06496|channel(186,68)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL
+			 lead: ("req")-> object req  @05856|channel(185,27)
+			 method: ("get_group1")-> method get_group1  @22752|channel(66,3)
+			 output: (direct)-> object action  @11616|channel(186,20)
+			 output: (direct)-> object pdata  @05216|channel(186,34)
+			 output: (direct)-> object offset  @10336|channel(186,46)
+			 output: (direct)-> object size  @06176|channel(186,58)
+			 output: (direct)-> object seek  @06496|channel(186,68)
+			 output: ("id")-> object id  @08736|channel(183,12)
+			MAKE
+			 object: (direct)-> object deficit  @09056|channel(187,20)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL
+			 lead: ("req")-> object req  @05856|channel(185,27)
+			 method: ("get_group2")-> method get_group2  @33984|channel(77,3)
+			 output: (direct)-> object deficit  @09056|channel(187,20)
+			 output: ("report")-> object report  @11296|channel(183,12)
+			 output: ("note")-> object note  @07136|channel(183,12)
+			CALL
+			 subroutine: ("update_mediator")-> subroutine update_mediator  @64400|channel(148,2)
+			 input: ("med")-> object med  @10976|channel(183,12)
+			 input: ("pdata")-> object pdata  @05216|channel(186,34)
+			 input: ("offset")-> object offset  @10336|channel(186,46)
+			 input: ("size")-> object size  @06176|channel(186,58)
+			 input: ("deficit")-> object deficit  @09056|channel(187,20)
+			 input: ("action")-> object action  @11616|channel(186,20)
+		}
+	}
+
+	common
+	{
+		subroutine $start1  @65248|channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object sizeof_request  @07360|channel(7,2)
+				 type: ("int")-> type int  @54576|int(6,6)
+			}
+		}
+
+		subroutine $start2  @33088|channel(9,2) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @53216|channel(11,3)
+				 type: ("mediator")-> type mediator  @56496|mediator(21,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object (anon)  @53216|channel(11,3)
+				 method: ("begin")-> method begin  @24208|mediator(307,3)
+				 input: (pending)->
+				 input: (pending)->
+				MAKE
+				 object: (direct)-> object (anon)  @54496|channel(11,35)
+				 type: ("request")-> type request  @05040|channel(16,13)
+				CALL --initial
+				 lead: (direct)-> object (anon)  @54496|channel(11,35)
+				 method: ("begin")-> method begin  @33568|channel(28,3)
+				MAKE
+				 literal: (direct)-> literal (anon)  @51296|channel(,) --'b'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @53216|channel(11,3)
+				 method: (direct)-> method $16<17>( fwrite<request> )  @31056|$appendix(,)
+				 input: (direct)-> object (anon)  @54496|channel(11,35)
+				 input: (direct)-> literal (anon)  @51296|channel(,)
+				CALL --fundamental
+				 lead: (direct)-> object (anon)  @53216|channel(11,3)
+				 method: ("get_size")-> method get_size  @26704|mediator(333,3)
+				 output: ("sizeof_request")-> object sizeof_request  @07360|channel(7,2)
+			}
+		}
+
+		object sizeof_request  @07360|channel(7,2) --internal
+		 type: ("int")-> type int  @54576|int(6,6)
+	}
+
+}
+

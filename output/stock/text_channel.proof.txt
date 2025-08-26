@@ -1,0 +1,827 @@
+page text_channel
+{
+	subroutine evaluate_transfer  @00464|text_channel(94,2) --internal
+	 viable = yes
+	{
+
+		common
+		{
+			enumerator $index  @27440|text_channel(,) --internal
+			 type: (direct)-> type $1<10>( <channel_report>enumerator )  @53904|$appendix(,)
+
+			subroutine $start1  @52240|text_channel(,) --internal
+			 viable = yes
+			{
+
+				given
+				{
+				}
+
+				BLOCK --domain
+				{
+					MAKE
+					 enumerator: (direct)-> enumerator $index  @27440|text_channel(,)
+					 type: (direct)-> type $1<10>( <channel_report>enumerator )  @53904|$appendix(,)
+				}
+			}
+		}
+
+
+		given
+		{
+			object cr  @15072|text_channel(94,2) --internal
+			 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+
+			object error  @22432|text_channel(94,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object note  @10592|text_channel(94,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+		}
+
+		BLOCK --domain
+		{
+			SELECT
+			 selector: ("cr")-> object cr  @15072|text_channel(94,2)
+			 enumerator: (direct)-> enumerator $index  @27440|text_channel(,)
+			 'retry' -> branch 0
+			 'closed' -> branch 0
+			 'error' -> branch 1
+			{
+
+				branch 0: BLOCK --domain
+				{
+					MAKE
+					 literal: (direct)-> literal (anon)  @19552|text_channel(,) --'channel closed'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL --initial, fundamental
+					 lead: ("error")-> object error  @22432|text_channel(94,2)
+					 method: ("begin")-> method begin  @26208|string(57,3)
+					 input: (direct)-> literal (anon)  @19552|text_channel(,)
+					 input: (pending)->
+					 input: (pending)->
+				}
+
+				branch 1: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object tm  @19872|text_channel(107,5)
+					 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+					MAKE
+					 literal: (direct)-> literal (anon)  @20512|text_channel(,) --'channel error ['
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL --initial
+					 lead: (direct)-> object tm  @19872|text_channel(107,5)
+					 method: ("begin")-> method begin  @22960|text_mediator(117,3)
+					 input: (direct)-> literal (anon)  @20512|text_channel(,)
+					MAKE
+					 object: (direct)-> object (anon)  @09632|text_channel(108,11)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("note")-> object note  @10592|text_channel(94,2)
+					 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+					 output: (direct)-> object (anon)  @09632|text_channel(108,11)
+					IF
+					 condition: (direct)-> object (anon)  @09632|text_channel(108,11)
+					{
+						true branch: CALL
+						 lead: ("tm")-> object tm  @19872|text_channel(107,5)
+						 method: ("write")-> method write  @27120|text_mediator(258,3)
+						 input: ("note")-> object note  @10592|text_channel(94,2)
+					}
+					MAKE
+					 literal: (direct)-> literal (anon)  @21472|text_channel(,) --']'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL
+					 lead: ("tm")-> object tm  @19872|text_channel(107,5)
+					 method: ("write")-> method write  @27952|text_mediator(263,3)
+					 input: (direct)-> literal (anon)  @21472|text_channel(,)
+					CALL
+					 lead: ("tm")-> object tm  @19872|text_channel(107,5)
+					 method: ("detach")-> method detach  @06736|text_mediator(124,3)
+					 output: ("error")-> object error  @22432|text_channel(94,2)
+				}
+
+				default branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object (anon)  @16032|text_channel(115,5)
+					 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+					MAKE
+					 literal: (direct)-> literal (anon)  @19232|text_channel(,) --'unexpected channel report ['
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL --initial
+					 lead: (direct)-> object (anon)  @16032|text_channel(115,5)
+					 method: ("begin")-> method begin  @22960|text_mediator(117,3)
+					 input: (direct)-> literal (anon)  @19232|text_channel(,)
+					MAKE
+					 proxy: (direct)-> proxy (anon)  @63584|text_channel(115,67)
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					 permission: [eval]
+					CALL
+					 lead: ("cr")-> object cr  @15072|text_channel(94,2)
+					 method: ("use_token")-> method use_token  @52304|channel(160,11)
+					 result: (direct)-> proxy (anon)  @63584|text_channel(115,67)
+					CALL
+					 lead: (direct)-> object (anon)  @16032|text_channel(115,5)
+					 method: ("write")-> method write  @27952|text_mediator(263,3)
+					 input: (direct)-> proxy (anon)  @63584|text_channel(115,67)
+					MAKE
+					 literal: (direct)-> literal (anon)  @23392|text_channel(,) --']'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					CALL
+					 lead: (direct)-> object (anon)  @16032|text_channel(115,5)
+					 method: ("write")-> method write  @27952|text_mediator(263,3)
+					 input: (direct)-> literal (anon)  @23392|text_channel(,)
+					CALL
+					 lead: (direct)-> object (anon)  @16032|text_channel(115,5)
+					 method: ("detach")-> method detach  @06736|text_mediator(124,3)
+					 output: ("error")-> object error  @22432|text_channel(94,2)
+				}
+			}
+		}
+	}
+
+	subroutine read_channel  @03664|text_channel(68,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object error  @13152|text_channel(68,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object reader  @20832|text_channel(68,2) --internal
+			 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+
+			object tm  @16352|text_channel(68,2) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object report  @11872|text_channel(72,24)
+					 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+					MAKE
+					 object: (direct)-> object note  @18272|text_channel(72,47)
+					 type: ("string")-> type string  @09264|string(4,6)
+					CALL
+					 lead: ("reader")-> object reader  @20832|text_channel(68,2)
+					 method: ("read")-> method read  @19424|channel(407,3)
+					 input: ("tm")-> object tm  @16352|text_channel(68,2)
+					 input: (pending)->
+					 input: (pending)->
+					 output: (direct)-> object report  @11872|text_channel(72,24)
+					 output: (direct)-> object note  @18272|text_channel(72,47)
+					MAKE
+					 literal: (direct)-> literal (anon)  @14112|text_channel(,) --'good'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					MAKE
+					 object: (direct)-> object (anon)  @11552|text_channel(74,10)
+					 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+					CALL --initial
+					 lead: (direct)-> object (anon)  @11552|text_channel(74,10)
+					 method: ("begin")-> method begin  @51888|channel(160,11)
+					 input: (direct)-> literal (anon)  @14112|text_channel(,)
+					MAKE
+					 object: (direct)-> object (anon)  @17952|text_channel(74,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL
+					 lead: ("report")-> object report  @11872|text_channel(72,24)
+					 method: ("is_equal?")-> method is_equal?  @54384|channel(160,11)
+					 input: (direct)-> object (anon)  @11552|text_channel(74,10)
+					 output: (direct)-> object (anon)  @17952|text_channel(74,10)
+					IF
+					 condition: (direct)-> object (anon)  @17952|text_channel(74,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+					CALL
+					 subroutine: ("evaluate_transfer")-> subroutine evaluate_transfer  @00464|text_channel(94,2)
+					 input: ("report")-> object report  @11872|text_channel(72,24)
+					 input: ("note")-> object note  @18272|text_channel(72,47)
+					 output: ("error")-> object error  @13152|text_channel(68,2)
+					MAKE
+					 object: (direct)-> object (anon)  @14432|text_channel(77,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("error")-> object error  @13152|text_channel(68,2)
+					 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+					 output: (direct)-> object (anon)  @14432|text_channel(77,10)
+					IF
+					 condition: (direct)-> object (anon)  @14432|text_channel(77,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+				}
+			}
+		}
+	}
+
+	subroutine read_channel_chr  @00064|text_channel(56,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object error  @13472|text_channel(56,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object reader  @23712|text_channel(56,2) --internal
+			 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+
+			object tm  @20192|text_channel(56,2) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			CALL
+			 lead: ("tm")-> object tm  @20192|text_channel(56,2)
+			 method: ("reserve")-> method reserve  @23376|text_mediator(135,3)
+			CALL
+			 subroutine: ("read_channel")-> subroutine read_channel  @03664|text_channel(68,2)
+			 input: ("reader")-> object reader  @23712|text_channel(56,2)
+			 input: ("tm")-> object tm  @20192|text_channel(56,2)
+			 output: ("error")-> object error  @13472|text_channel(56,2)
+			MAKE
+			 object: (direct)-> object (anon)  @21152|text_channel(60,9)
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+			CALL --fundamental
+			 lead: ("error")-> object error  @13472|text_channel(56,2)
+			 method: ("is_null?")-> method is_null?  @19968|object(36,3)
+			 output: (direct)-> object (anon)  @21152|text_channel(60,9)
+			IF
+			 condition: (direct)-> object (anon)  @21152|text_channel(60,9)
+			{
+				true branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object again  @13792|text_channel(62,18)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL
+					 lead: ("tm")-> object tm  @20192|text_channel(56,2)
+					 method: ("reserve")-> method reserve  @23792|text_mediator(146,3)
+					 output: (direct)-> object again  @13792|text_channel(62,18)
+					IF
+					 condition: ("again")-> object again  @13792|text_channel(62,18)
+					{
+						true branch: CALL
+						 subroutine: ("read_channel")-> subroutine read_channel  @03664|text_channel(68,2)
+						 input: ("reader")-> object reader  @23712|text_channel(56,2)
+						 input: ("tm")-> object tm  @20192|text_channel(56,2)
+						 output: ("error")-> object error  @13472|text_channel(56,2)
+					}
+				}
+			}
+		}
+	}
+
+	subroutine read_channel_str  @62400|text_channel(28,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object error  @18912|text_channel(28,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object q  @48752|text_channel(28,2) --internal
+			 type: ("int")-> type int  @54576|int(6,6)
+
+			object reader  @47472|text_channel(28,2) --internal
+			 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+
+			object tm  @48432|text_channel(28,2) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object need  @17312|text_channel(30,3)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --initial, fundamental
+			 lead: (direct)-> object need  @17312|text_channel(30,3)
+			 method: ("begin")-> method begin  @56416|int(54,3)
+			 input: ("q")-> object q  @48752|text_channel(28,2)
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					CALL
+					 subroutine: ("read_channel_chr")-> subroutine read_channel_chr  @00064|text_channel(56,2)
+					 input: ("reader")-> object reader  @47472|text_channel(28,2)
+					 input: ("tm")-> object tm  @48432|text_channel(28,2)
+					 output: ("error")-> object error  @18912|text_channel(28,2)
+					MAKE
+					 object: (direct)-> object (anon)  @16672|text_channel(34,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("error")-> object error  @18912|text_channel(28,2)
+					 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+					 output: (direct)-> object (anon)  @16672|text_channel(34,10)
+					IF
+					 condition: (direct)-> object (anon)  @16672|text_channel(34,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+					CALL --fundamental
+					 lead: ("need")-> object need  @17312|text_channel(30,3)
+					 method: ("dec")-> method dec  @17488|int(119,3)
+					MAKE
+					 object: (direct)-> object (anon)  @17632|text_channel(37,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("need")-> object need  @17312|text_channel(30,3)
+					 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+					 input: ("zero")-> object zero  @08080|conventional(34,2)
+					 output: (direct)-> object (anon)  @17632|text_channel(37,10)
+					IF
+					 condition: (direct)-> object (anon)  @17632|text_channel(37,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+				}
+			}
+		}
+	}
+
+	subroutine read_channel_str  @03264|text_channel(41,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object c  @22112|text_channel(41,2) --internal
+			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+			object error  @18592|text_channel(41,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object reader  @15392|text_channel(41,2) --internal
+			 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+
+			object tm  @10272|text_channel(41,2) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object mark  @09312|text_channel(43,16)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: ("tm")-> object tm  @10272|text_channel(41,2)
+			 method: ("get_rp")-> method get_rp  @29616|mediator(344,3)
+			 output: (direct)-> object mark  @09312|text_channel(43,16)
+			CALL --fundamental
+			 lead: ("tm")-> object tm  @10272|text_channel(41,2)
+			 method: ("set_rp_end")-> method set_rp_end  @13392|mediator(340,3)
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					CALL
+					 subroutine: ("read_channel_chr")-> subroutine read_channel_chr  @00064|text_channel(56,2)
+					 input: ("reader")-> object reader  @15392|text_channel(41,2)
+					 input: ("tm")-> object tm  @10272|text_channel(41,2)
+					 output: ("error")-> object error  @18592|text_channel(41,2)
+					MAKE
+					 object: (direct)-> object (anon)  @11232|text_channel(47,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("error")-> object error  @18592|text_channel(41,2)
+					 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+					 output: (direct)-> object (anon)  @11232|text_channel(47,10)
+					IF
+					 condition: (direct)-> object (anon)  @11232|text_channel(47,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+					MAKE
+					 object: (direct)-> object c2  @24672|text_channel(49,15)
+					 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+					CALL
+					 lead: ("tm")-> object tm  @10272|text_channel(41,2)
+					 method: ("read")-> method read  @28784|text_mediator(284,3)
+					 output: (direct)-> object c2  @24672|text_channel(49,15)
+					MAKE
+					 object: (direct)-> object (anon)  @12512|text_channel(50,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("c2")-> object c2  @24672|text_channel(49,15)
+					 method: ("is_equal?")-> method is_equal?  @41184|unicode(44,3)
+					 input: ("c")-> object c  @22112|text_channel(41,2)
+					 output: (direct)-> object (anon)  @12512|text_channel(50,10)
+					IF
+					 condition: (direct)-> object (anon)  @12512|text_channel(50,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+				}
+			}
+			CALL --fundamental
+			 lead: ("tm")-> object tm  @10272|text_channel(41,2)
+			 method: ("set_rp")-> method set_rp  @12560|mediator(336,3)
+			 input: ("mark")-> object mark  @09312|text_channel(43,16)
+		}
+	}
+
+	type read_only_text_channel  @48528|text_channel(123,6) --external
+	 from ("sync_read_only_channel")-> type sync_read_only_channel  @43920|channel(560,6)
+	 viable = yes
+	{
+		method begin  @14224|text_channel(127,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object h  @24032|text_channel(127,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @21792|text_channel(127,3) --internal
+				 type: (direct)-> type read_only_text_channel  @48528|text_channel(123,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @38416|text_channel(129,6)
+				 type: ("sync_read_only_channel")-> type sync_read_only_channel  @43920|channel(560,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @21792|text_channel(127,3)
+				 method: (direct)-> method $18<32>( as_base<sync_read_only_channel> )  @47504|$appendix(,)
+				 result: (direct)-> proxy (anon)  @38416|text_channel(129,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @38416|text_channel(129,6)
+				 method: ("begin")-> method begin  @36480|channel(564,3)
+				 input: ("h")-> object h  @24032|text_channel(127,3)
+				 input: (pending)->
+			}
+		}
+
+		method end  @34192|text_channel(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @20000|text_channel(,) --internal
+				 type: (direct)-> type read_only_text_channel  @48528|text_channel(123,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @37520|text_channel(,)
+				 type: ("sync_read_only_channel")-> type sync_read_only_channel  @43920|channel(560,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @20000|text_channel(,)
+				 method: (direct)-> method $18<32>( as_base<sync_read_only_channel> )  @47504|$appendix(,)
+				 result: (direct)-> proxy (anon)  @37520|text_channel(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @37520|text_channel(,)
+				 method: (direct)-> method end  @44176|channel(,)
+			}
+		}
+
+		method read  @17136|text_channel(132,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object error  @25312|text_channel(132,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object io  @24352|text_channel(132,3) --internal
+				 type: (direct)-> type read_only_text_channel  @48528|text_channel(123,6)
+
+				object q  @08352|text_channel(132,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object tm  @24992|text_channel(132,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @33552|text_channel(134,25)
+				 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @24352|text_channel(132,3)
+				 method: (direct)-> method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,)
+				 result: (direct)-> proxy (anon)  @33552|text_channel(134,25)
+				CALL
+				 subroutine: ("read_channel_str")-> subroutine read_channel_str  @62400|text_channel(28,2)
+				 input: (direct)-> proxy (anon)  @33552|text_channel(134,25)
+				 input: ("tm")-> object tm  @24992|text_channel(132,3)
+				 input: ("q")-> object q  @08352|text_channel(132,3)
+				 output: ("error")-> object error  @25312|text_channel(132,3)
+			}
+		}
+
+		method read  @07568|text_channel(137,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object c  @08992|text_channel(137,3) --internal
+				 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+				object error  @25952|text_channel(137,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object io  @08672|text_channel(137,3) --internal
+				 type: (direct)-> type read_only_text_channel  @48528|text_channel(123,6)
+
+				object tm  @25632|text_channel(137,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @38720|text_channel(139,25)
+				 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @08672|text_channel(137,3)
+				 method: (direct)-> method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,)
+				 result: (direct)-> proxy (anon)  @38720|text_channel(139,25)
+				CALL
+				 subroutine: ("read_channel_str")-> subroutine read_channel_str  @03264|text_channel(41,2)
+				 input: (direct)-> proxy (anon)  @38720|text_channel(139,25)
+				 input: ("tm")-> object tm  @25632|text_channel(137,3)
+				 input: ("c")-> object c  @08992|text_channel(137,3)
+				 output: ("error")-> object error  @25952|text_channel(137,3)
+			}
+		}
+	}
+
+	type read_write_text_channel  @48912|text_channel(145,6) --external
+	 from ("sync_read_write_channel")-> type sync_read_write_channel  @45072|channel(603,6)
+	 viable = yes
+	{
+		method begin  @17552|text_channel(149,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object handle  @26592|text_channel(149,3) --internal
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+
+				object io  @26272|text_channel(149,3) --internal
+				 type: (direct)-> type read_write_text_channel  @48912|text_channel(145,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @35984|text_channel(151,6)
+				 type: ("sync_read_write_channel")-> type sync_read_write_channel  @45072|channel(603,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @26272|text_channel(149,3)
+				 method: (direct)-> method $18<33>( as_base<sync_read_write_channel> )  @48336|$appendix(,)
+				 result: (direct)-> proxy (anon)  @35984|text_channel(151,6)
+				CALL --initial
+				 lead: (direct)-> proxy (anon)  @35984|text_channel(151,6)
+				 method: ("begin")-> method begin  @27744|channel(607,3)
+				 input: ("given\handle")-> object handle  @26592|text_channel(149,3)
+				 input: (pending)->
+			}
+		}
+
+		method end  @49168|console(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @20320|console(,) --internal
+				 type: (direct)-> type read_write_text_channel  @48912|text_channel(145,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @28400|console(,)
+				 type: ("sync_read_write_channel")-> type sync_read_write_channel  @45072|channel(603,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @20320|console(,)
+				 method: (direct)-> method $18<33>( as_base<sync_read_write_channel> )  @48336|$appendix(,)
+				 result: (direct)-> proxy (anon)  @28400|console(,)
+				CALL --terminal
+				 lead: (direct)-> proxy (anon)  @28400|console(,)
+				 method: (direct)-> method end  @40432|channel(,)
+			}
+		}
+
+		method read  @17968|text_channel(154,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object error  @27872|text_channel(154,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object io  @26912|text_channel(154,3) --internal
+				 type: (direct)-> type read_write_text_channel  @48912|text_channel(145,6)
+
+				object q  @27552|text_channel(154,3) --internal
+				 type: ("int")-> type int  @54576|int(6,6)
+
+				object tm  @27232|text_channel(154,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @36288|text_channel(156,25)
+				 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @26912|text_channel(154,3)
+				 method: (direct)-> method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,)
+				 result: (direct)-> proxy (anon)  @36288|text_channel(156,25)
+				CALL
+				 subroutine: ("read_channel_str")-> subroutine read_channel_str  @62400|text_channel(28,2)
+				 input: (direct)-> proxy (anon)  @36288|text_channel(156,25)
+				 input: ("tm")-> object tm  @27232|text_channel(154,3)
+				 input: ("q")-> object q  @27552|text_channel(154,3)
+				 output: ("error")-> object error  @27872|text_channel(154,3)
+			}
+		}
+
+		method read  @09232|text_channel(159,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object c  @36512|text_channel(159,3) --internal
+				 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+
+				object error  @35552|text_channel(159,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object io  @28192|text_channel(159,3) --internal
+				 type: (direct)-> type read_write_text_channel  @48912|text_channel(145,6)
+
+				object tm  @28512|text_channel(159,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @36896|text_channel(161,25)
+				 type: ("sync_channel_reader")-> type sync_channel_reader  @06192|channel(372,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @28192|text_channel(159,3)
+				 method: (direct)-> method $18<28>( as_base<sync_channel_reader> )  @29392|$appendix(,)
+				 result: (direct)-> proxy (anon)  @36896|text_channel(161,25)
+				CALL
+				 subroutine: ("read_channel_str")-> subroutine read_channel_str  @03264|text_channel(41,2)
+				 input: (direct)-> proxy (anon)  @36896|text_channel(161,25)
+				 input: ("tm")-> object tm  @28512|text_channel(159,3)
+				 input: ("c")-> object c  @36512|text_channel(159,3)
+				 output: ("error")-> object error  @35552|text_channel(159,3)
+			}
+		}
+
+		method write  @06320|text_channel(164,3) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object error  @33632|text_channel(164,3) --internal
+				 type: ("string")-> type string  @09264|string(4,6)
+
+				object io  @40032|text_channel(164,3) --internal
+				 type: (direct)-> type read_write_text_channel  @48912|text_channel(145,6)
+
+				object tm  @32032|text_channel(164,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @37200|text_channel(166,22)
+				 type: ("sync_channel_writer")-> type sync_channel_writer  @08112|channel(433,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: ("io")-> object io  @40032|text_channel(164,3)
+				 method: (direct)-> method $18<29>( as_base<sync_channel_writer> )  @45008|$appendix(,)
+				 result: (direct)-> proxy (anon)  @37200|text_channel(166,22)
+				CALL
+				 subroutine: ("write_channel")-> subroutine write_channel  @62800|text_channel(81,2)
+				 input: (direct)-> proxy (anon)  @37200|text_channel(166,22)
+				 input: ("tm")-> object tm  @32032|text_channel(164,3)
+				 output: ("error")-> object error  @33632|text_channel(164,3)
+			}
+		}
+	}
+
+	subroutine write_channel  @62800|text_channel(81,2) --internal
+	 viable = yes
+	{
+
+		given
+		{
+			object error  @10912|text_channel(81,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+
+			object tm  @15712|text_channel(81,2) --internal
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+
+			object writer  @16992|text_channel(81,2) --internal
+			 type: ("sync_channel_writer")-> type sync_channel_writer  @08112|channel(433,6)
+		}
+
+		BLOCK --domain
+		{
+			LOOP --unconditional
+			{
+				iteration branch: BLOCK --domain
+				{
+					MAKE
+					 object: (direct)-> object report  @12192|text_channel(85,25)
+					 type: ("channel_report")-> enum type channel_report  @24832|channel(160,11)
+					MAKE
+					 object: (direct)-> object note  @22752|text_channel(85,48)
+					 type: ("string")-> type string  @09264|string(4,6)
+					CALL
+					 lead: ("writer")-> object writer  @16992|text_channel(81,2)
+					 method: ("write")-> method write  @34816|channel(468,3)
+					 input: ("tm")-> object tm  @15712|text_channel(81,2)
+					 input: (pending)->
+					 input: (pending)->
+					 output: (direct)-> object report  @12192|text_channel(85,25)
+					 output: (direct)-> object note  @22752|text_channel(85,48)
+					MAKE
+					 literal: (direct)-> literal (anon)  @14752|text_channel(,) --'good'
+					 type: ("expr")-> type expr  @11328|expr(5,6)
+					MAKE
+					 object: (direct)-> object (anon)  @23072|text_channel(87,10)
+					 type: (direct)-> enum type channel_report  @24832|channel(160,11)
+					CALL --initial
+					 lead: (direct)-> object (anon)  @23072|text_channel(87,10)
+					 method: ("begin")-> method begin  @51888|channel(160,11)
+					 input: (direct)-> literal (anon)  @14752|text_channel(,)
+					MAKE
+					 object: (direct)-> object (anon)  @09952|text_channel(87,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL
+					 lead: ("report")-> object report  @12192|text_channel(85,25)
+					 method: ("is_equal?")-> method is_equal?  @54384|channel(160,11)
+					 input: (direct)-> object (anon)  @23072|text_channel(87,10)
+					 output: (direct)-> object (anon)  @09952|text_channel(87,10)
+					IF
+					 condition: (direct)-> object (anon)  @09952|text_channel(87,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+					CALL
+					 subroutine: ("evaluate_transfer")-> subroutine evaluate_transfer  @00464|text_channel(94,2)
+					 input: ("report")-> object report  @12192|text_channel(85,25)
+					 input: ("note")-> object note  @22752|text_channel(85,48)
+					 output: ("error")-> object error  @10912|text_channel(81,2)
+					MAKE
+					 object: (direct)-> object (anon)  @12832|text_channel(90,10)
+					 type: ("bool")-> type bool  @08256|bool(5,6)
+					CALL --fundamental
+					 lead: ("error")-> object error  @10912|text_channel(81,2)
+					 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
+					 output: (direct)-> object (anon)  @12832|text_channel(90,10)
+					IF
+					 condition: (direct)-> object (anon)  @12832|text_channel(90,10)
+					{
+						true branch: RETURN --to loop (escape)
+					}
+				}
+			}
+		}
+	}
+}
+

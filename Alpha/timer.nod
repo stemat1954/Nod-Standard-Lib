@@ -1,0 +1,86 @@
+
+page timer in AlphaByNod
+
+
+type timer from indicator
+{{
+	A timer is a real-time indicator.
+
+	Note:  See alpha\indicator for more info.
+
+	:begin sets optional execution mode. If input auto 
+	is 'true' or null, execution mode is auto-reset.  
+	Otherwise execution mode is manual-reset.
+
+	A timer has two configurable times: first tick
+	time and regular (periodic) tick time, and it has
+	a third time called start tick which is the time
+	that a timer is started by method :start.
+	
+	:set_first sets the first tick time. One version 
+	specifies an elpased time relative to start time, 
+	whike another specifies	a definite utc time.
+	
+	:set_repeat sets the regular repeat tick time. It
+	also sets first tick time to the same value if it
+	hasn't already been set.
+
+	If the  first tick time is definite and it's already 
+	past start time, the timer ticks immediately. Other-
+	wse, the first tick occurs at the specified time.
+	
+	If the first tick time is an elapsed time, the timer
+	ticks when the specified time elapses after :start.
+
+	If the first tick time hasn't been set by either
+	:set_first or :set_repeat, then the first tick time
+	occurs immediately (before :start returns).
+
+	If :set_repeat is called to set a regular periodic
+	repeat time, the timer will continue to tick at regular
+	intervals after the first tick, until the timer is
+	cancelled. Otherwise, the timer ticks only once.
+
+	If execution mode is automatic-reset, :wait and :test 
+	automatically reset the timer indication if it's set. 
+	Otherwise, the indication must be manually reset by
+	calling :reset.
+	
+	:cancel prevents a timer from ticking and clears the 
+	indication.
+
+	If :start is called again without an intervening 
+	:cancel, the timer is automatically cancelled first.
+			
+	Both timed and untimed :wait can be called, but timed
+	:wait amounts to waiting on two timers.  
+
+	indicator:reset clears the release state without
+	affecting time settings or the next tick.
+
+
+	timer t:begin:start;  -- trivial and useless (tick once immediately)
+
+	timer t:begin:set_first( 'today 9:00' as utc ):start;  -- tick once at 9am today
+
+	timer t:begin:set_repeat( '1 sec' ):start;  -- start ticking every second
+
+	timer t:begin:set_first( '5 sec' as etm ):set_repeat( '1 sec' ):start;  -- start ticking in 5 secs, then every 1 sec
+
+}}
+{
+	general
+	{
+		begin ( bool auto [opt] );
+
+		set_first [upd]( etm );
+
+		set_first [upd]( utc );
+
+		set_repeat [upd]( etm );
+
+		start [upd];
+
+		cancel [upd];
+	}
+}

@@ -1,0 +1,14 @@
+page entry
+{
+	type entry  @09792|entry(4,6) --external
+	 viable = yes
+	{
+		method begin  @54720|entry(40,3) --external
+		 viable = yes
+
+		abstract method ~run  @18080|entry(45,3) --fraternal
+		 key = entry-0
+		 viable = yes
+	}
+}
+

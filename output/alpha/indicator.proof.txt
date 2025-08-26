@@ -1,0 +1,19 @@
+page indicator
+{
+	type indicator  @54192|indicator(5,6) --external
+	 viable = yes
+	{
+		method reset  @49344|indicator(73,3) --external
+		 viable = yes
+
+		method test  @57248|indicator(71,3) --external
+		 viable = yes
+
+		method use_handle  @59744|indicator(75,3) --external
+		 viable = yes
+
+		method wait  @53504|indicator(69,3) --external
+		 viable = yes
+	}
+}
+

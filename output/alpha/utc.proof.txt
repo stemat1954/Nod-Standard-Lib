@@ -1,0 +1,72 @@
+page utc
+{
+	type utc  @05424|utc(31,6) --external
+	 viable = yes
+	{
+		method add  @22688|utc(159,3) --external
+		 viable = yes
+
+		method add  @23936|utc(160,3) --external
+		 viable = yes
+
+		method analyze  @21856|utc(157,3) --external
+		 viable = yes
+
+		method begin  @28512|utc(137,3) --external
+		 viable = yes
+
+		method begin  @18528|utc(139,3) --external
+		 viable = yes
+
+		method begin  @21440|utc(141,3) --external
+		 viable = yes
+
+		method begin  @23104|utc(143,3) --external
+		 viable = yes
+
+		method is_before?  @27264|utc(150,3) --external
+		 viable = yes
+
+		method is_equal?  @26016|utc(148,3) --external
+		 viable = yes
+
+		method is_less?  @22272|utc(152,3) --external
+		 viable = yes
+
+		method store  @23520|utc(145,3) --external
+		 viable = yes
+
+		method sub  @17280|utc(162,3) --external
+		 viable = yes
+
+		method update  @16448|utc(155,3) --external
+		 viable = yes
+	}
+
+	type utc_offset  @10800|utc(5,6) --external
+	 viable = yes
+	{
+		method begin  @41600|utc(15,3) --external
+		 viable = yes
+
+		method get_first  @44096|utc(19,3) --external
+		 viable = yes
+
+		method get_second  @28096|utc(23,3) --external
+		 viable = yes
+
+		method use_first  @43680|utc(17,3) --external
+		 viable = yes
+
+		method use_second  @18112|utc(21,3) --external
+		 viable = yes
+	}
+
+	common
+	{
+		object utc_origin  @46624|utc(28,8) --external
+		 type: ("utc_offset")-> type utc_offset  @10800|utc(5,6)
+	}
+
+}
+

@@ -1,0 +1,41 @@
+
+crude type thing
+{
+	gadget;  -- unnamed
+	int		width;
+	int		height; 
+}
+
+
+
+type thing  -- fabricated from crude type def
+{
+	general method
+	{
+		begin
+		{
+		}
+
+		use_gadget [eval] = gadget proxy [eval,init] ~gadget
+		{
+			~gadget -> io.gadget;
+		}
+
+		use_width [eval] = int proxy [eval,init] ~width
+		{
+			~width -> io.width;
+		}
+
+		use_height [eval] = int proxy [eval,init] ~height
+		{
+			~height -> io.height;
+		}
+	}
+
+	instance
+	{
+		gadget;
+		int		width;
+		int		height;
+	}
+}

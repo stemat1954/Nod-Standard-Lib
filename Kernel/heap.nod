@@ -1,0 +1,37 @@
+
+page heap in KernelByNod [compatible]
+
+
+subroutine
+{{
+	This subroutine group provides low-level access	to the 
+	application global memory heap.
+
+	Given:
+
+		bp	- block pointer (addr)
+		s	- size in bytes
+		i,j - byte offset from bp
+
+	If allocation or reallocation fails, bp will compare
+	equal to no_addr on return.
+	
+	The other routines quit if given invalid or inconsistent
+	args.
+}}
+{
+	heap_alloc ( int s, addr bp [upd] );
+
+	heap_realloc ( int s, addr bp [upd] );
+
+	heap_free ( addr bp [upd] );
+
+
+	heap_size ( addr bp, int s [upd] );    
+
+	heap_copy ( addr bp, int i, int s, int j );				-- intra-block
+
+	heap_copy ( addr bp, int i, int s, addr bp2, int j );	-- inter-block
+
+}
+

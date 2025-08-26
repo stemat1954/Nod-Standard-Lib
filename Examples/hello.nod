@@ -1,0 +1,106 @@
+page hello in ExamplesByNod
+
+
+
+subroutine hello 
+{{
+	This is an example of a minimal subroutine entry point.
+	It displays 'Hello World!" on the system console and returns.
+}}
+{
+	sys:use_console:write( 'Hello World!' );
+}
+
+
+
+subroutine main ( signal active [upd], signal stop )()( extra )
+{{
+	This is an example of a general subroutine entry point. 
+	
+	"n - Hello World!" is displayed on the system console 
+	every second (where	n is the tick count) until the run-
+	time platform indicates stop.
+
+	Note: extras are ignored and disruptions aren't trapped.
+	A more general example would recognize extras and trap
+	disruptions.
+}}
+{
+	-- event identitiers
+	int stop_id:begin( zero );
+	int timer_id:begin( one );
+
+	-- timer and tick counter
+	timer rhythm:begin:set_repeat( '1 sec' as etm );
+	int tick:begin;
+
+	-- event monitor
+	monitor events:begin:add( stop, stop_id ):add( rhythm, timer_id );  -- stop has highest priority
+
+	active:indicate;  -- ready
+
+	rhythm:start; 
+	loop
+	{
+		events:wait()( int id );
+		
+		if ( "id |=| stop_id" ) return;
+
+		-- timer tick
+
+		text_mediator:begin:fwrite( tick:inc ):write( ' - Hello World!' ):detach()( string greeting );
+		sys:use_console:write( greeting );  
+	}
+}
+
+
+type main_thread from entry
+{{
+	Most real applications will write a type definition
+	like this to define the main thread.  Real apps will
+	have an instance and a more elaborate ~run method.  
+
+	The internal application startup routine creates an 
+	instance of this type, then calls ~run. 
+
+	Simple applications can choose to write a subroutine
+	entry point in lieu of an entry subtype (examples above).
+	
+	If a subroutine	entry is preferred, the startup routine
+	uses an internal entry type definition similar to this
+	example	to host the subroutine.
+}}
+{
+	general method
+	{
+		begin ()()( extra )
+		{
+			io:as_base<entry>:begin;
+		}
+	}
+
+	abstract method in entry
+	{
+		~run [upd]( signal active [upd], signal stop, op<object> pobj [opt] )
+		{
+			active:indicate;
+			string report;
+			isolate
+			{
+				-- unremark one of these calls:
+
+				--hello;  
+				--main( *active, stop );  
+
+				report:begin( 'normal exit' );
+			}
+			trap
+			{
+				~disruption:use_trace( zero ):use_location is ~loc;
+				text_mediator tm:begin( 'abnormal exit, quit location = ' ):write( ~loc );
+				tm:detach()( report );
+			}
+			sys:use_console:write( report ); 
+		}
+	}
+}

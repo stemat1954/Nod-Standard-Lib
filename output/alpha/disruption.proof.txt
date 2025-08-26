@@ -1,0 +1,22 @@
+page disruption
+{
+	type disruption  @09408|disruption(5,6) --external
+	 from ("direct_access<trace>")-> type direct_access<t>  @05520|access(89,6)
+	 viable = yes
+	{
+		method count  @59712|disruption(40,3) --external
+		 viable = yes
+
+		method use@  @60128|disruption(42,3) --external
+		 viable = yes
+
+		abstract method ~count  @22544|disruption(47,11) --fraternal
+		 key = -0
+		 viable = yes
+
+		abstract method ~use@  @17088|disruption(49,11) --fraternal
+		 key = -0
+		 viable = yes
+	}
+}
+

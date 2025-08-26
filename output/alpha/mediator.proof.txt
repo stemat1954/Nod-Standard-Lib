@@ -1,0 +1,206 @@
+page mediator
+{
+	enum type endian  @23376|mediator(5,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'little-endian' = 0
+	    'big-endian' = 1
+	}
+	{
+		method begin  @63792|mediator(5,11) --external
+		 viable = yes
+
+		method begin  @62544|mediator(5,11) --external
+		 viable = yes
+
+		method get_token  @04496|mediator(5,11) --external
+		 viable = yes
+
+		method is_before?  @00752|mediator(5,11) --external
+		 viable = yes
+
+		method is_equal?  @62960|mediator(5,11) --external
+		 viable = yes
+
+		method use_token  @65456|mediator(5,11) --external
+		 viable = yes
+	}
+
+	type mediator  @56496|mediator(21,6) --external
+	 viable = yes
+	{
+		method attach  @25872|mediator(321,3) --external
+		 viable = yes
+
+		method begin  @24208|mediator(307,3) --external
+		 viable = yes
+
+		method begin  @11728|mediator(309,3) --external
+		 viable = yes
+
+		method begin  @24624|mediator(311,3) --external
+		 viable = yes
+
+		method copy  @36688|mediator(397,3) --external
+		 viable = yes
+
+		method dec_indent  @30864|mediator(366,3) --external
+		 viable = yes
+
+		method detach  @09232|mediator(319,3) --external
+		 viable = yes
+
+		method enable_auto_align  @09648|mediator(324,3) --external
+		 viable = yes
+
+		method fread<t>  @34608|mediator(385,3) --external
+		 viable = no
+
+		method fread<t>  @35024|mediator(387,3) --external
+		 viable = no
+
+		method fwrite<t>  @35440|mediator(390,3) --external
+		 viable = no
+
+		method fwrite<t>  @35856|mediator(392,3) --external
+		 viable = no
+
+		method get_endian  @25040|mediator(314,3) --external
+		 viable = yes
+
+		method get_indent  @31280|mediator(368,3) --external
+		 viable = yes
+
+		method get_rp  @29616|mediator(344,3) --external
+		 viable = yes
+
+		method get_size  @26704|mediator(333,3) --external
+		 viable = yes
+
+		method get_utf  @25456|mediator(316,3) --external
+		 viable = yes
+
+		method get_wp  @30032|mediator(359,3) --external
+		 viable = yes
+
+		method inc_indent  @30448|mediator(364,3) --external
+		 viable = yes
+
+		method move  @36272|mediator(395,3) --external
+		 viable = yes
+
+		method read_checksum  @37104|mediator(382,3) --external
+		 viable = yes
+
+		method read_new_line  @34192|mediator(373,3) --external
+		 viable = yes
+
+		method read_nul  @33776|mediator(377,3) --external
+		 viable = yes
+
+		method rp_end?  @28368|mediator(350,3) --external
+		 viable = yes
+
+		method rp_first?  @27536|mediator(346,3) --external
+		 viable = yes
+
+		method rp_last?  @27952|mediator(348,3) --external
+		 viable = yes
+
+		method set_rp  @12560|mediator(336,3) --external
+		 viable = yes
+
+		method set_rp_end  @13392|mediator(340,3) --external
+		 viable = yes
+
+		method set_rp_last  @27120|mediator(338,3) --external
+		 viable = yes
+
+		method set_rp_mod  @10896|mediator(342,3) --external
+		 viable = yes
+
+		method set_size  @26288|mediator(327,3) --external
+		 viable = yes
+
+		method set_size_rp  @12144|mediator(331,3) --external
+		 viable = yes
+
+		method set_size_wp  @10064|mediator(329,3) --external
+		 viable = yes
+
+		method set_wp  @28784|mediator(353,3) --external
+		 viable = yes
+
+		method set_wp_end  @29200|mediator(355,3) --external
+		 viable = yes
+
+		method set_wp_mod  @32528|mediator(357,3) --external
+		 viable = yes
+
+		method wp_end?  @32112|mediator(361,3) --external
+		 viable = yes
+
+		method write_checksum  @37520|mediator(380,3) --external
+		 viable = yes
+
+		method write_new_line  @31696|mediator(371,3) --external
+		 viable = yes
+
+		method write_nul  @33360|mediator(375,3) --external
+		 viable = yes
+
+		abstract method ~fread  @63328|mediator(403,3) --fraternal
+		 key = mediator-0
+		 viable = yes
+
+		abstract method ~fwrite  @02256|mediator(405,3) --fraternal
+		 key = mediator-1
+		 viable = yes
+	}
+
+	enum type utf  @23792|mediator(7,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'UTF-8' = 0
+	    'UTF-16' = 1
+	    'UTF-32' = 2
+	}
+	{
+		method begin  @03248|mediator(7,11) --external
+		 viable = yes
+
+		method begin  @01584|mediator(7,11) --external
+		 viable = yes
+
+		method get_token  @02416|mediator(7,11) --external
+		 viable = yes
+
+		method is_before?  @57136|mediator(7,11) --external
+		 viable = yes
+
+		method is_equal?  @02832|mediator(7,11) --external
+		 viable = yes
+
+		method use_token  @02000|mediator(7,11) --external
+		 viable = yes
+	}
+
+	common
+	{
+		object default_endian  @29056|mediator(15,2) --external
+		 type: ("endian")-> enum type endian  @23376|mediator(5,11)
+
+		object default_utf  @29376|mediator(16,2) --external
+		 type: ("utf")-> enum type utf  @23792|mediator(7,11)
+
+		object platform_endian  @61504|mediator(12,2) --external
+		 type: ("endian")-> enum type endian  @23376|mediator(5,11)
+
+		object platform_utf  @28736|mediator(13,2) --external
+		 type: ("utf")-> enum type utf  @23792|mediator(7,11)
+	}
+
+}
+

@@ -1,0 +1,41 @@
+page monitor in AlphaByNod
+
+type monitor 
+{{
+	A monitor is a configurable indicator panel.
+ 		
+	Individual indicators are added to a monitor in priority
+	order.  Each indicator has an application assigned id. 
+	Indicators are bound to the monitor using an internal 
+	handle, so they must remain in scope while joined to 
+	the monitor.
+		
+	:wait returns when any indicator is in a release state,
+	subject to a given time limit.  If more than one 
+	indicator is in a release state, the highest priority
+	indicator releases the wait.  An output identifies 
+	which indicator released the wait.  If time expires,
+	the output is null. If no time limit is given, :wait
+	does not expire.
+		
+	Note: Any side effect of waiting on an individual
+	indicator will be reproduced if, and only if an
+	indicator is identified.  In particular, an indicator's
+	release state is reset only if it's identified.
+}}
+
+{
+	general 
+	{
+		begin;
+
+		add [upd]( indicator, int id );
+
+		delete [upd]( int id );
+
+		move [upd]( int id, int d );
+
+		wait ( etm [opt] )( int id );	
+	}
+
+}

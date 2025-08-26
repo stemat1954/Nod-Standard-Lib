@@ -1,0 +1,114 @@
+
+page expr in AlphaByNod
+
+
+type expr -- intrinsic, conventional
+{{
+	An expr is a source code literal.
+		
+	Exprs are ascii character strings that have no inherent 
+	meaning in Nod.  Applications use exprs to define 
+	object values, define tokens, identify external formats,
+	and to otherwise create lexical elements that can be
+	expressed in source code.
+
+	In Nod, a sequence of characters enclosed by single 
+	quotes is a lexical literal, i.e. literal expression. 
+	The compiler automatically creates and initializes an 
+	expr object from a literal expression by copying data
+	from the source file to the object instance.  Printable 
+	characters are generally copied	as-is while non-
+	printable characters are ignored.  The caret ^ has 
+	special significance.
+	
+	The caret ^ character denotes insertion of a character
+	that cannot otherwise be copied directly from the source
+	expr: i.e. a single quote, any unprintable character, or
+	the caret itself.
+
+	The caret sub-expressions are ^^ , ^', and ^nnn	where
+	nnn is a decimal value between 000 and 255. Note that 
+	any	decimal value greater than 127 is not standard ascii 
+	and conversion to unicode may or may not be supported
+	(see below).
+
+	When an expr object is initialized, the compiler strips
+	outer quotes and any editor inserted control characters.
+	In particular, carriage return (CR), line feed (LF), and
+	TAB are stripped.  Then, any caret sub-expression is 
+	replaced by the special character it represents. 
+		
+	Note:  CR, LF, and TAB are common editor inserted 
+	control chars that are interpreted as source code
+	formatting, not part of the expr proper. If an appli-
+	cation wants to embed these chars, a caret can be used 
+	to insert the decimal value.  Spaces after CR and LF 
+	should be avoided because they ARE retained and	mimic
+	tabs when displayed at the start of a new line.
+
+	Applications can synthesize exprs using any serial_
+	access<ascii> source.
+		
+	In a very general way, exprs provide a way to extend
+	the language.  Types can invent their own unique 
+	literal expressions, documenting or publishing the
+	syntax and semantics.  
+		
+	The Nod compiler doesn't know anything about expr
+	syntax or semantics, so object methods take over the
+	task of parsing and compilation.  Expr errors are
+	generally runtime, not compile-time, errors.
+
+	Note:  However, the Nod compiler is capable of
+	executing certain :begin( expr ) methods at compile
+	time to pre-initialize objects and catch failures.
+
+	All expr methods have [eval] intent. Once an expr has
+	been initialized, it cannot be changed.
+
+	Several methods are provided for expr analysis: 
+	:get_length(), :is_equal? and :is_before?, :extract, 
+	:find, and :scan.
+	
+	:extract methods extract ascii character objects. See
+	alpha\ascii for details.
+	
+	Expressions are portable. The format expr (fex) specifies
+	both encoding and delimitation.  Encoding can be either
+	8-bit ascii (ignore mediator utf) or mediator utf. 
+	Several forms pf delimitiation are supported.
+}}
+{
+	nom type serial<c> = serial_access<ascii><<c>>;
+
+	general 	
+	{
+		begin<c> ( serial<<c>> source );  -- synthetic
+
+		begin ( expr other );	-- copy
+
+		begin ( mediator [upd], expr fex );	
+
+		store ( mediator [upd], expr fex ) ;
+
+		is_equal? ( expr other, int q [opt] )( bool ); 
+
+		is_before? ( expr other )( bool );
+
+		get_length ()( int );
+
+		extract ( int i, int q )( expr );	-- sub-expression
+
+		extract ( int i )( ascii );	 -- one char 
+
+		extract ( int i [opt], int q [opt] )( array<ascii> );  -- multiple chars
+
+		find ( expr other, int i [upd] )( bool );
+
+		scan ( int i [upd] ) with stop? ( expr, int i )( bool );
+	}
+}
+
+
+
+

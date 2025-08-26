@@ -1,0 +1,51 @@
+
+page disruption in AlphaByNod
+
+
+type disruption from direct_access<trace>  -- intrinsic, restricted
+{{
+	A disruption is a trap information object.
+
+	A global disruption object is automatically created 
+	when an application quits during normal execution. It
+	persists until execution is trapped without another
+	quit.
+
+	Every time an application quits, a trace is added to 
+	the internal disruption object. 
+
+	Note:  See alpha\trace for details.
+
+	trace objects can be counted and accessed using direct_
+	access methods.
+		
+	The current disruption object can only be referenced 
+	from a trap block using proxy alias ~disruption.  This 
+	alias only exists in the local scope of a trap block 
+	and all the usual proxy rules apply. The disruption	
+	proxy has [eval] permission which implies that individual
+	trace proxies also have [eval] permission.
+
+	Trace objects occur in quit order.  Thus, the original
+	trace is first (index = 0).  The first trace always
+	exists, but trying to access a trace that doesn't exist
+	will return a void proxy.
+	
+	A disruption is not portable. 
+	
+}}
+{
+	general  -- similar in direct_access<trace>
+	{
+		count ()( int );
+
+		use@ ( int i ) = trace proxy [eval]; 
+	}
+
+	abstract in direct_access<trace>
+	{
+		[final] ~count ()( int n );
+
+		[final] ~use@ ( int i ) = object proxy;
+	}
+}

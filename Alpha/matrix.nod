@@ -1,0 +1,128 @@
+
+page matrix in AlphaByNod
+
+
+type matrix<t><#r><#c>
+{{
+	rectangular algebraic matrix.
+	
+	numeric type <t> ( int, fp2, fp10, cplx )
+
+	<#r> rows (height), <#c> columns (width)
+
+	Use sq_matrix<t><#n> when <#r> and <#c> are same.
+
+	When filling a matrix from a serial source, columns are
+	filled row-wise (row-by-row).  If the source is exhaust-
+	ed before the matrix is filled, remaining entries will
+	be zero.  The source type must be numeric. If it differs
+	from the matrix type, it's converted and possibly rounded.
+}}
+{
+	nom type same_type = matrix<<t>><<#r>><<#c>>;  
+
+	nom type row_vector = vector<<t>><<#c>>;
+
+	nom type col_vector = vector<<t>><<#r>>;
+
+	nom type co_matrix<#n> = matrix<<t>><<#c>><<#n>>; --  #n cols
+
+	nom type dot_matrix<#n> = matrix<<t>><<#r>><<#n>>;  -- #n cols
+
+
+
+	general method
+	{
+
+		begin;									-- zero matrix
+
+		begin ( same_type other );				-- copy
+
+		begin<xt><c> ( serial_access<<xt>><<c>> source ); -- fill, see notes
+		
+		begin ( mediator m [upd], expr fex );	-- mediation
+
+		store ( mediator m [upd], expr fex );	-- mediation
+
+	
+		is_zero? ()( bool );
+	
+
+		set_row [upd]( int i, row_vector rv );
+
+		get_row [eval]( int i )( row_vector rv );
+
+
+		set_col [upd]( int j, col_vector cv );
+
+		get_col [eval]( int j )( col_vector cv );
+
+		
+		set_entry [upd]( int i, int j, <t> n );
+
+		get_entry [eval]( int i, int j )( <t> n );
+
+		use_entry [eval]( int i, int j ) = <t> proxy [eval,init];
+
+
+		add [upd]( same_type m );					-- add:  io <= io + m 
+		add [eval]( same_type m1 )( same_type m2 );
+
+		sub [upd]( same_type m );					-- subtract: io <= io - m
+		sub [eval]( same_type m1 )( same_type m2 );
+
+		mul [upd]( <t> n );							-- multiply: io <= io * n 
+		mul [eval]( <t> n )( same_type m );
+
+		div [upd]( <t> n );							-- divide: io <= io / n 
+		div [eval]( <t> n )( same_type m ); 
+
+		neg [upd];									-- negate: io <= -io
+		neg [eval]()( same_type m );
+				
+		dot<#n> [eval]( co_matrix<<#n>> m1 )( dot_matrix<<#n>> m2 );  -- dot product: m2 <= io dot m1 
+
+		dot [eval]( row_vector v1 )( col_vector v2 );  -- dot product: v2 <= io dot v1 
+
+	}
+
+}
+
+
+type sq_matrix<t><#> from matrix<<t>><<#>><<#>>
+{{
+	square algebraic matrix
+
+}}
+{
+	nom type same_type = sq_matrix<<t>><<#>>;
+
+	nom type co_vector = vector<<t>><<#>>;
+
+
+	general method
+	{
+		begin;								-- zero matrix
+
+		begin ( same_type other );			-- copy
+
+		begin<xt><c> ( serial_access<<xt>><<c>> source );	-- fill
+
+		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
+
+		store ( mediator m [upd], expr fex )()( extra );	-- mediation
+				
+
+		is_diag? ()( bool );
+
+		is_ident? ()( bool );
+
+
+		set_diag [upd]( co_vector v [opt] );	-- default = identity
+
+		get_diag [eval]()( co_vector v );
+
+
+		invert [eval]()( same_type m );		-- null if not invertible
+	}
+}

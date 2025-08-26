@@ -1,0 +1,572 @@
+
+page list in StockByNod
+
+{{
+	public types on this page...
+
+	link1	
+	node1
+
+	list  
+
+	list<t>  - typed list
+	stack<t>  - typed stack	
+	queue<t>  -	typed queue
+}}
+
+
+
+nom type link1 = op<node1>;
+
+
+type node1 [incomplete]
+{{
+	A node1 is a base type for nodes in a one way linked
+	list (list)
+}}
+{
+	general method
+	{
+		begin  -- null link1
+		{
+		}
+
+		get_next ()( link1 )
+		{
+			if ( "is_not_null?( io.next )" ) given\link1:begin( io.next );
+		}
+
+		set_next [upd]( link1 )
+		{
+			io.next <= given\link1;
+		}
+
+		unlink [upd]
+		{
+			io.next:recycle;
+		}
+	}
+
+	instance
+	{
+		link1	next [opt];
+	}
+}
+
+
+[page] type list_cursor
+{{
+	cursor is inoperable if io.link1 is null.
+}}
+{
+
+	general
+	{
+		begin ( link1 [opt] )
+		{
+			if ( "is_not_null?( given\link1 )" ) io.link1:begin( given\link1 );
+		}
+
+		move [upd]
+		{
+			if ( "is_not_null?( io.link1 )" ) 
+			{
+				io.link1:deref:get_next()( link1 next );
+				io.link1:recycle;
+				if ( "is_not_null?( next )" ) io.link1:begin( next );
+			}
+		}
+
+		flip [upd]  -- not supported
+		{
+			io.link1:recycle;  
+		}
+
+		use_node = node1 proxy  ~n
+		{
+			if ( "is_not_null?( io.link1 )" ) ~n -> io.link1:deref; 
+		}
+	}
+
+	instance
+	{
+		link1 [opt];
+	}
+}
+
+
+
+type list from serial_access<node1><list_cursor>
+{{
+	One-way linked list with untyped nodes.
+
+	There are five named list positions: "front", "first",
+	"last",	"current", and "next".  
+
+	front is a nominal position before the first node.
+	It always exists in principle.  The other positions
+	designate nodes that may or may not exist.  If the 
+	list has at least one node, first and last exist and
+	are well-defined.  
+	
+	Generally, the next node follows the current position.
+	If the last node is current, the next node doesn't 
+	exist.  If the front position is current, next refers 
+	to the first node.
+
+	The current node can be set using :go methods. 
+
+	:go_front makes the front position current.
+	
+	:go_first makes the first node current if it exists.
+
+	:go_last makes the last node current if it exists.
+
+	:go_next makes the next node current if it exists.
+
+	:go_here makes a given node current.  The given node
+	link must reference a node in the list.  Use :get_next
+	or :get_current to get a valid link.
+
+	NOTE! This method can really screw things up if the
+	link doesn't reference a node in the list.
+
+	:insert and :remove_next are the essential methods 
+	used to build a list.  
+
+	:insert adds a node after the current node.  The
+	current position doesn't change.  The given link should
+	point to a new (unlinked) node, but the method clears
+	the node link just in case.
+
+	NOTE! It's possible to re-insert (move) a node in the
+	list if it's removed before reinserting.  Failure to
+	properly unlink a node that was previously linked in
+	the same (or any other) list will make a real mess of
+	things.
+
+	:remove_next removes the next node from the list if it
+	exists. It does this by linking the current node to 
+	the node after the next node, if it exists.  current 
+	position doesn't change.
+	
+	A constant list can be traversed using :get	methods.
+	:get methods copy a named link if it exists. Once a 
+	named link is copied, the list is traversed by calling 
+
+		:deref:get_next()( link1 next )
+
+	until next is null.
+
+	Note: A list can also be traversed using a serial_
+	access cursor or Nod for-loop.
+}}
+{
+	general method
+	{
+		begin  -- original empty
+		{
+			io:as_base<serial_access<node1><list_cursor>>:begin;
+		}
+
+		begin ( list other [upd] )  -- take 
+		{
+			if ( "is_not_null?( other.first )" )
+			{
+				-- ignore current in other
+				io.first:begin( *other.first );  
+				io.last:begin( *other.last );
+				other.current:recycle;  -- go front
+			}
+		}
+
+		is_empty? ()( bool yes )
+		{
+			io.first:is_null?()( yes );
+		}
+		
+		get_first ()( link1 )
+		{
+			if ( "is_not_null?( io.first )" ) given\link1:begin( io.first );
+		}
+
+		get_last ()( link1 )
+		{
+			if ( "is_not_null?( io.last )" ) given\link1:begin( io.last );
+		}
+
+		get_current ()( link1 )
+		{
+			if ( "is_not_null?( io.current )" ) given\link1:begin( io.current );
+		}
+
+		get_next ()( link1 ) 
+		{
+			if ( "is_not_null?( io.current )" ) io.current:deref:get_next()( given\link1 );
+		}
+		
+
+		go_front [upd]  -- before first
+		{
+			io.current:recycle;
+		}
+
+		go_first [upd]
+		{
+			if ( "is_not_null?( io.first )" ) io.current <= io.first;
+		}
+
+		go_last [upd]
+		{
+			if ( "is_not_null?( io.last )" ) io.current <= io.last;
+		}
+
+		go_next [upd]
+		{
+			if ( "is_null?( io.current )" )
+			{
+				if ( "is_not_null?( io.first )" ) io.current <= io.first;
+			}
+			else
+			{
+				io.current:deref:get_next()( link1 nl ); 
+				if ( "is_not_null?( nl )" ) io.current <= nl;
+			}
+		}
+
+		go_here [upd]( link1 )  
+		{
+			io.current <= given\link1;
+		}
+				
+		insert [upd]( link1 )  -- after current  
+		{
+			given\link1:deref[upd]:unlink;  -- just in case
+			if ( "is_not_null?( io.current )" )  
+			{
+				-- after current
+				io.current:deref[upd]:get_next()( link1 before ):set_next( given\link1 ); 
+				if ( "is_null?( before )" )
+					io.last <= given\link1 
+				else
+					given\link1:deref[upd]:set_next( before );
+			}
+			else if ( "is_not_null?( io.first )" )
+			{
+				-- front (before first)
+				given\link1:deref[upd]:set_next( io.first );
+				io.first <= given\link1;
+			}
+			else 
+			{
+				-- first and only node
+				io.first:begin( given\link1 );
+				io.last:begin( given\link1 );
+			}
+		}
+
+		remove_next [upd]
+		{
+			if ( "is_not_null?( io.current )" ) 
+			{
+				-- node after current
+				io.current:deref:get_next()( link1 next );
+				if ( "is_not_null?( next )" ) 
+				{
+					next:deref[upd]:get_next()( link1 next_next ):unlink;
+					if ( "is_null?( next_next )" )
+						io.last <= io.current -- new last
+					else 
+						io.current:deref[upd]:set_next( next_next );
+				}
+			}
+			else if ( "is_not_null?( io.first )" ) 
+			{
+				-- first node
+				io.first:deref[upd]:get_next()( link1 next_next ):unlink;
+				if ( "is_null?( next_next )" )
+				{
+					-- list is empty now
+					io.first:recycle;
+					io.last:recycle;
+				}
+				else
+				{
+					io.first <= next_next;  -- new first
+				}
+			}
+		}
+	}
+
+
+	abstract in serial_access<node1><list_cursor>
+	{
+		[final] ~open_cursor ( int step )( list_cursor c )
+		{	
+			if ( "step |=| one" ) c:begin( io.first ) else c:begin;
+		}  
+
+		[final] ~move_cursor ( list_cursor c [upd] )
+		{
+			c:move;
+		}
+
+		[final] ~flip_cursor ( list_cursor c [upd] )
+		{
+			c:flip;
+		}
+
+		[final] ~use@ ( list_cursor c ) = node1 proxy ~n   
+		{
+			~n -> c:use_node;
+		}
+	}
+	
+	instance
+	{
+		link1 first   [opt];
+		link1 last    [opt];
+		link1 current [opt];  
+	}
+}
+
+
+-- typed lists
+
+	
+[page] type <t>node1 from ( <t>, node1 )
+{{
+	synthetic typed node1
+}}
+{
+	general method	begin = <t> proxy [init] ~base
+	{
+		io:as_base<node1>:begin;
+		~base -> io:as_base<<t>>;
+	}
+}
+
+
+type list<t> from list
+{
+	nom type list_t = list<<t>>;
+
+	nom type t_node1 = <<t>>node1;
+
+
+	general method
+	{
+		begin  -- empty
+		{
+			io:as_base<list>:begin;
+		}
+
+		begin ( list_t other [upd] ) -- take
+		{
+			io:as_base<list>:begin( *other:as_base<list> );
+		}
+
+
+		begin ( list_t other )  -- with <t> copy
+		{
+			for each ( node1 proxy ~n in other )  
+			{
+				link1 nl:begin<t_node1>:begin is <t> proxy [init] ~new_t;
+				~new_t:begin( ~n:as<<t>> );  
+				io:as_base<list>:insert( nl ):go_next;
+			}
+		}
+
+		begin ( list_t other ) with copier ( <t> )( <t> ) -- with copier
+		{
+			for each ( node1 proxy ~n in other ) 
+			{
+				link1 nl:begin<t_node1>:begin is <t> proxy [init] ~new_t;  
+				
+				copier( ~n:as<<t>> )( ~new_t );
+				io:as_base<list>:insert( nl ):go_next;
+			}
+		}
+
+		insert [upd] = <t> proxy [init] ~t  -- after current
+		{
+			~t -> link1 nl:begin<t_node1>:begin; -- null
+			io:as_base<list>:insert( nl );
+		}
+
+		use_first = <t> proxy [eval,init] ~t  -- may be void
+		{
+			io:as_base<list>:get_first()( link1 nl );
+			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+		}
+
+		use_last = <t> proxy [eval,init] ~t -- may be void
+		{
+			io:as_base<list>:get_last()( link1 nl );
+			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+		}
+
+		use_current = <t> proxy [eval,init] ~t -- may be void
+		{
+			io:as_base<list>:get_current()( link1 nl );
+			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+		}
+
+		use_next = <t> proxy [eval,init] ~t -- may be void
+		{
+			io:as_base<list>:get_next()( link1 nl );
+			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+		}
+
+		remove_next [upd] ()( <t> next ) with copier ( <t> )( <t> )
+		{
+			io:as_base<list>:get_next()( link1 nl );
+			if ( "is_not_null?( nl )" ) 
+			{
+				copier( nl:deref:as<<t>> )( next );
+				io:as_base<list>:remove_next;
+			}
+		}
+				
+		remove_next [upd] ()( <t> next ) with taker ( <t> [upd] )( <t> )
+		{
+			io:as_base<list>:get_next()( link1 nl );
+			if ( "is_not_null?( nl )" ) 
+			{
+				taker( *nl:deref:as<<t>> )( next );
+				io:as_base<list>:remove_next;
+			}
+		}
+	}
+}
+
+
+type stack<t> 
+{{
+	last-in-first-out (lifo) list
+
+	front is current and doesn't change.
+
+	first is on top.
+
+	push = insert after front, access new first member
+
+	pop = remove first
+}}
+{
+	nom type stack_t = stack<<t>>;
+
+	general method
+	{
+		begin  -- empty
+		{
+			io.list:begin;
+		}
+
+		begin ( stack_t other [upd] ) -- take
+		{
+			io.list:begin( *other.list );
+		}
+
+		begin ( stack_t other ) with copier ( <t> )( <t> ) -- copy
+		{
+			io.list:begin( other.list ) with copier;
+		}
+
+
+		is_empty? ()( bool yes )
+		{
+			io.list:is_empty?()( yes );
+		}
+
+		push [upd] = <t> proxy [init]  ~t
+		{
+			~t -> io.list:insert;
+		}
+
+		pop [upd ]
+		{
+			io.list:remove_next;
+		}
+		
+		use_top = <t> proxy [eval,init] ~t  -- top 
+		{
+			~t -> io.list:use_first;
+		}
+	}
+
+	instance
+	{
+		list<<t>> list;
+	}
+}
+
+
+
+type queue<t> 
+{{
+	first-in-first-out (fifo) list
+
+	push = insert after last, access new last member 
+
+	pull = copy/take and remove first
+
+}}
+{
+	nom type queue_t = queue<<t>>;
+
+	general method
+	{
+		begin  -- empty
+		{
+			io.list:begin;
+		}
+
+		begin ( queue_t other [upd] ) -- take
+		{
+			io.list:begin( *other.list );
+		}
+
+		begin ( queue_t other ) with copier ( <t> )( <t> ) -- copy
+		{
+			io.list:begin( other.list ) with copier;
+		}
+
+		is_empty? ()( bool yes )
+		{
+			io.list:is_empty?()( yes );
+		}
+
+		push [upd] = <t> proxy [init] ~t 
+		{
+			~t -> io.list:go_last:insert;
+		}
+
+
+		pull [upd]()( <t> first ) with copier ( <t> )( <t> )
+		{
+			if ( io.list:is_empty?()( =bool ):not )
+				io.list:go_front:remove_next()( first ) with copier;
+		}
+
+		pull [upd]()( <t> first ) with taker ( <t> [upd] )( <t> )
+		{
+			if ( io.list:is_empty?()( =bool ):not )
+				io.list:go_front:remove_next()( first ) with taker;
+		}
+
+		use_first = <t> proxy [eval,init] ~t 
+		{
+			~t -> io.list:use_first;
+		}
+	}
+
+	instance
+	{
+		list<<t>> list;
+	}
+}
+
+
+
+

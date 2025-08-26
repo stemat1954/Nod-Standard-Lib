@@ -1,0 +1,202 @@
+
+page op in AlphaByNod
+
+
+type op<t>   -- intrinsic
+{{
+	An op<t> object is an "object pointer" object that 
+	creates and/or accesses an object in heap memory.
+
+	An op<t> is used to create an object at runtime in heap
+	memory. The type of object created must be a complete
+	type, but in general, the op adhoc type can be any 
+	related (possibly incomplete) type.  
+
+	Logically, an op<t> is a runtime reference object. That
+	is, the binding of op<t> to object is made at runtime.
+	In this sense, op<t> is similar to a proxy.  However, 
+	op<t> is a first class object with methods (proxies
+	aren't) and access to an op<t>'s bound object requires
+	an explicit accessor call, while access to a proxy's
+	bound object is implicit. Furthermore, an op<t> is 
+	always bound to an object in heap memory, while a proxy
+	may be bound to any object.
+	
+	The op<t> object accessor method is called :deref. Like 
+	other accessors, :deref returns a result proxy which
+	can be used in any object context as a reference to 
+	the heap object. Thus, logically, there are two levels
+	of indirection to get to the object.
+	
+	Note:  In a sense, :deref converts an op<t> into a proxy. 
+	The conversion is optimized and may in fact be nominal.
+	
+ 	The proxy returned by :deref has [upd] permission and 
+	is often followed by :as<t> or as_actual<t> to access
+	the bound object as a subtype.  However, as_actual<t>
+	will only be good if <t> is the original object type.
+
+	The heap object bound to an op<t> is created when the 
+	op<t> is initialized. The new object is null and it must
+	be initialized before it can be used.  
+	
+	:begin returns an [init] proxy which allows the new
+	null object to be initialized immediately:
+	
+		op<thing> pt:begin:begin;
+
+	This expression creates and initializes an op<thing> 
+	named pt, then initializes the new heap object using
+	default :begin.  
+
+	Here are the equivalent expressions written out:
+	
+		op<thing> pt;	-- define null pt
+		pt:begin is thing proxy [init] ~t; -- init pt
+		~t:begin;	-- init ~t
+
+	The overt proxy spec is optional clarification.
+
+
+	It's important to distinquish between a null op<t> and
+	a possibly null heap object accessed by the op<t>.  A 
+	null op<t> can't be used, but a properly initialized 
+	op<t> can always be used and the object it accesses may
+	or may not be null.
+	
+	An op<t> can be initialized by copying an existing 
+	compatible op<t>. When op<t> is copied, the new op<t>
+	is bound to the same heap object and it provides access
+	to some (possibly different) typed (external) subobject
+	of the actual heap object.
+	
+	The object accessed by op<t> is automatically deleted
+	when all op<t> that reference the object are deleted.
+	
+	Note:  It's common to say that the object accessed by
+	an op<t> is "reference counted."
+
+	Note:  Copying op<t> and reference counting is thread-
+	safe. op<t> is essential for sharing objects between
+	threads.
+
+	An existing op<t> is compatible with another op<u>
+	if the two adhoc types are related.
+	
+	For example:
+
+
+	type thing
+	{
+		general method foo [eval];
+	}
+
+	type widget from thing
+	{
+		general method goo [eval];
+	}
+
+	subroutine foo
+	{
+		op<widget> wp:begin:begin; -- new op to actual widget
+		op<thing> tp:begin( wp );  -- copy wp
+
+		wp:deref:foo;	-- ok (foo is inherited)
+		wp:deref:goo;	-- ok
+
+		tp:deref:foo;	-- ok
+		tp:deref:goo;	-- error! (goo not a thing method)
+		tp:deref:as<widget>:goo;  -- ok after type translation
+	}
+		
+
+	In general, two types are related and compatible if 
+	they occur in a common type hierarchy.
+
+	      A
+	     / \
+		B   C
+
+	In this (bottom-up) hierarchy, A derives from B and C.
+	A, B, and C are all related.  Note that B and C are
+	related through A, but are otherwise not related.
+
+	If ap is an op<> to an actual object of type A,
+
+		op<A> ap:begin:begin;
+
+	then 
+
+		op<B> bp:begin( ap );
+		op<C> cp:begin( ap );
+
+		op<B> bp2:begin( cp );
+		op<C> cp2:begin( bp );
+
+	are all legit and refer to the same actual object bound
+	to ap.
+
+	This works because 
+
+	  ap:deref:as_base<B>
+	  ap:deref:as_base<C>
+	  bp:deref:as<A>
+	  cp:deref:as<A>
+	  bp:deref:as<C>
+	  cp:deref:as<B>
+
+	are all legit and return valid proxies.
+
+	op<t> can be used to create logically heterogenous arrays.
+	They're also essential for creating dynamically linked
+	object collections like trees, lists, and networks.
+	
+	op<t> is generally portable if <t> is portable.  The 
+	given mediator must be adapted to implement a specific 
+	sharing scheme.
+
+	op<t> can be compared using standard methods. Cross type
+	comparisions are allowed, even if the op<t> is copy-
+	incompatible.  Comparisons are based on heap address, so
+	equal op<t> reference the same heap object.  Furthermore, 
+	if a:before?(b) is false and b:before?(a) is false, then
+	a and b are par equal ( "a |par| b" is true).
+		
+	Note:  Par equality is persistent provided op<t> is 
+	properly restored. However, ordinality is a completely 
+	transient property and any ordered collection of op<t>
+	is only ordered for a single runtime session.
+
+	Note: In some applications, it may be preferable to
+	compare op<t> by passing the comparison on to the common
+	object.  A general solution is too complicated.  For
+	particular scenarios, an application can define a new
+	type that encapsulates an op<t> and provides the desired
+	pass-through methods.
+
+}}
+{
+	general 
+	{
+		begin = <t> proxy [init];			-- access new <t> object, complete <t> (may quit)
+		
+		begin<xt> = <xt> proxy [init];		-- access new <xt> object, <xt> related to <t> (may quit)
+
+		begin<xt> ( op<<xt>> );				-- copy compatible op, <xt> related to <t> (may quit)
+
+		begin<xt> ( op<<xt>> [upd] );		-- take compatible op, <xt> related to <t> (may quit)
+
+
+		begin ( mediator [upd], expr fex )()( extra );	-- requires adapted mediator (may quit)
+
+		store ( mediator [upd], expr fex )()( extra );  -- requires adapted mediator (may quit)
+
+
+		deref = <t> proxy [upd];			-- always works (never void)
+
+		is_equal<xt>? ( op<<xt>> )( bool );
+
+		is_before<xt>? ( op<<xt>> )( bool );
+	}
+}
+

@@ -1,0 +1,260 @@
+
+page float in AlphaByNod
+
+{{
+	fp2 and fp10 are two distinct floating point types 
+	with esentially the same api. 
+	
+	Note: fp2 and fp10 are NOT adhoc configurations of a 
+	single generic type.
+
+	fp2 is always supported by hardware and should be used
+	for most purposes when decimal precision isn't required.
+	
+	fp10 is usually implemented in software and it should
+	only be used in applications that need precise decimal
+	fractions or powers of 10, such as financial and 
+	accounting applications.
+
+	These special values expressions are recognized:
+
+		'min'
+		'max'
+		'epsilon'
+		'+infinity'
+		'-infinity'
+		'nan' 
+
+		
+	Methods that have undefined results yield 'nan' or one
+	of the infinity values.
+	
+	See math.nod for built-in functional subroutines
+	for numeric types.
+
+}}
+
+
+type fp2 -- elementary, compatible, conventional
+{{
+	fp2 is a base-2 floating point number.  
+	
+	fp2 numbers can exactly represent any number that is
+	a power of two, subject to inherent limits of exponent
+	and fraction (mantissa).
+}}
+{
+
+	general
+	{
+		begin ( expr vex [opt] );				-- description, default = 0
+
+		begin ( fp2 n );						-- copy
+
+		begin ( fp10 n );						-- fp10 conversion
+
+		begin ( int n );						-- int conversion
+
+		begin<#n> ( word<<#n>> w, expr fex );	-- word conversion
+
+
+		begin ( mediator [upd], expr fex );		-- mediation
+
+		store ( mediator [upd], expr fex );		-- mediation
+
+
+		is_equal? ( fp2 n )( bool );			-- equality
+		
+		is_before? ( fp2 n )( bool );			-- ordinality (same as is_less?)
+
+		is_less? ( fp2 n )( bool );				-- cardinality (same as is_before?)
+
+
+		set [upd]( fp2 n );						-- intrinsic replace
+
+		
+		-- arithmetic
+		
+		add [upd]( fp2 n );						-- add: io <= io + n 
+		add [eval]( fp2 n )( fp2 x );	
+
+		sub [upd]( fp2 n );						-- subtract: io <= io - n 
+		sub [eval]( fp2 n )( fp2 x );
+
+		mul [upd]( fp2 n );						-- multiply: io <= io * n
+		mul [eval]( fp2 n )( fp2 x );		
+
+		div [upd]( fp2 n );						-- divide: io <= io / n 
+		div [eval]( fp2 n )( fp2 x );
+			
+		neg [upd];								-- negate: io <= -io 
+		neg [eval]()( fp2 x );
+		
+		
+		-- common 
+	
+		sgn [eval]()( int n );					-- sign:  n <= {-1,0,1}
+
+		abs [upd];								-- abs value: io <= |io|
+		abs [eval]()( fp2 y );
+
+		dis [upd]( fp2 n );						-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [eval]( fp2 n )( fp2 y );
+
+		ltf [upd]( fp2 m, fp2 b );				-- linear transform: io <= ( m * io ) + b  (aka fused multiply add) 
+		ltf [eval]( fp2 m, fp2 b )( fp2 y );
+
+		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ (n/d) (rational exponent) (default d = 1)
+		pow [eval]( int n, int d [opt] )( fp2 y );
+
+		pow [upd]( fp2 n );						-- power: io <= io ^ n (real exponent) 
+		pow [eval]( fp2 n )( fp2 y );
+
+		log [upd]( fp2 b [opt] );				-- log: io <= log base b of io ( default b = euler's number, i.e. natural log)
+		log [eval]( fp2 b [opt] )( fp2 y );
+
+
+		-- other
+
+		sp2 [upd]( int n );						-- scale by power 2: io <= io * ( 2 ^ n ) 
+		sp2 [eval]( int n )( fp2 x );
+
+		rpu [upd]( fp2 p [opt] );				-- round to precision, adjust up (more) (default p = 1.0)
+		rpu [eval]( fp2 p [opt] )( fp2 x );
+		rpu [eval]()( int x );					-- p = 1.0, int output
+
+		rpd [upd]( fp2 p [opt] );				-- round to precision, adjust down (less)
+		rpd [eval]( fp2 p [opt] )( fp2 x );
+		rpd [eval]()( int x );
+
+		rpi [upd]( fp2 p [opt] );				-- round to precision, adjust in (toward zero)
+		rpi [eval]( fp2 p [opt] )( fp2 x );
+		rpi [eval]()( int x );
+
+		rpo [upd]( fp2 p [opt] );				-- round to precision, adjust out (away from zero)
+		rpo [eval]( fp2 p [opt] )( fp2 x );
+		rpo [eval]()( int x );
+		
+		rpn [upd]( fp2 p [opt] );				-- round to precision, adjust near (closest with .5 round out)
+		rpn [eval]( fp2 p [opt] )( fp2 x );	
+		rpn [eval]()( int x );	
+
+		rpn [upd]( fp2 p [opt] ) with helper ( fp2 v, fp2 p )( fp2 x );	-- round to precision, adjust near (closest with .5 helper) 
+		rpn [eval]( fp2 p [opt] )( fp2 x ) with helper ( fp2 v, fp2 p )( fp2 x );
+		rpn [eval]()( int x ) with helper ( fp2 v, fp2 p )( fp2 x );
+	
+	}
+
+}
+
+
+type fp10 -- elementary, compatible, conventional
+{{
+	fp10 is a base-10 floating point number.  
+	
+	fp10 numbers can exactly represent any number that is
+	a power of ten, subject to inherent limits of exponent
+	and fraction (mantissa).
+}}
+{
+
+	general
+	{
+		begin ( expr vex [opt] );				-- description, default = 0
+
+		begin ( fp10 x );						-- copy
+
+		begin ( fp2 x );						-- fp2 conversion
+
+		begin ( int n );						-- int conversion
+
+		begin<#n> ( word<<#n>> w, expr fex );	-- word conversion
+
+
+		begin ( mediator [upd], expr fex );		-- mediation
+
+		store ( mediator [upd], expr fex );		-- mediation
+
+
+		is_equal? ( fp10 n )( bool );			-- equality
+		
+		is_before? ( fp10 n )( bool );			-- ordinality (same as is_less?)
+
+		is_less? ( fp10 n )( bool );			-- cardinality (same as is_before?)
+
+		
+		set [upd]( fp10 n );					-- intrinsic replace
+
+		
+		-- arithmetic
+
+		add [upd]( fp10 n );					-- add: io <= io + n 
+		add [eval]( fp10 n )( fp10 x );	
+
+		sub [upd]( fp10 n );					-- subtract: io <= io - n 
+		sub [eval]( fp10 n )( fp10 x );
+
+		mul [upd]( fp10 n );					-- multiply: io <= io * n
+		mul [eval]( fp10 n )( fp10 x );		
+
+		div [upd]( fp10 n );					-- divide: io <= io / n 
+		div [eval]( fp10 n )( fp10 x );
+			
+		neg [upd];								-- negate: io <= -io 
+		neg [eval]()( fp10 x );
+				
+
+		-- common
+
+		sgn [eval]()( int n );					-- sign:  n <= {-1,0,1}
+
+		abs [upd];								-- abs value: io <= |io|
+		abs [eval]()( fp10 y );
+
+		dis [upd]( fp10 n );					-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [eval]( fp10 n )( fp10 y );
+
+		ltf [upd]( fp10 m, fp10 b );			-- linear transform: io <= ( m * io ) + b  (aka fused multiply add) 
+		ltf [eval]( fp10 m, fp10 b )( fp10 y );
+
+		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ (n/d) (rational exponent) (default d = 1)
+		pow [eval]( int n, int d [opt] )( fp10 y );
+
+		pow [upd]( fp10 n );					-- power: io <= io ^ n (real exponent)
+		pow [eval]( fp10 n )( fp10 y );
+
+		log [upd]( fp10 b [opt] );				-- log: io <= log base b of io (default b = euler's number, e.g, natural log)
+		log [eval]( fp10 b [opt] )( fp10 y );
+		
+
+		-- other
+
+		sp10 [upd]( int n );					-- scale by power of 10: io <= io * ( 10 ^ n ) 
+		sp10 [eval]( int n )( fp10 x );
+
+		rpu [upd]( fp10 p [opt] );				-- round to precision, adjust up (more) (default p = 1.0)
+		rpu [eval]( fp10 p [opt] )( fp10 x );
+		rpu [eval]()( int x );					-- p = 1.0, int output
+
+		rpd [upd]( fp10 p [opt] );				-- round to precision, adjust down (less)
+		rpd [eval]( fp10 p [opt] )( fp10 x );
+		rpd [eval]()( int x );
+
+		rpi [upd]( fp10 p [opt] );				-- round to precision, adjust in (toward zero)
+		rpi [eval]( fp10 p [opt] )( fp10 x );
+		rpi [eval]()( int x );
+
+		rpo [upd]( fp10 p [opt] );				-- round to precision, adjust out (away from zero)
+		rpo [eval]( fp10 p [opt] )( fp10 x );
+		rpo [eval]()( int x );
+		
+		rpn [upd]( fp10 p [opt] );				-- round to precision, adjust near (closest with .5 round out)
+		rpn [eval]( fp10 p [opt] )( fp10 x );	
+		rpn [eval]()( int x );	
+
+		rpn [upd]( fp10 p [opt] ) with helper ( fp10 v, fp10 p )( fp10 x );	-- round to precision, adjust near (closest with .5 helper) 
+		rpn [eval]( fp10 p [opt] )( fp10 x ) with helper ( fp10 v, fp10 p )( fp10 x );
+		rpn [eval]()( int x ) with helper ( fp10 v, fp10 p )( fp10 x );
+	}
+}
+

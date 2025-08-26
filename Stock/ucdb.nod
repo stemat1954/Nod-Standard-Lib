@@ -1,0 +1,24 @@
+page ucdb in StockByNod
+
+{{
+	This page is a temporary stand-in for ucdb standard book
+}}
+
+
+common
+{
+	word16 unicode_bom_FEFF:begin( 'x:FEFF' ) [const];
+
+	word16 unicode_bom_FFFE:begin( 'x:FFFE' ) [const];
+}
+
+
+type ucdb  
+{
+	general method begin
+	{
+	}
+}
+
+
+common ucdb the_ucdb:begin [const];

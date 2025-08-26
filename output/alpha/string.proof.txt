@@ -1,0 +1,56 @@
+page string
+{
+	type string  @09264|string(4,6) --external
+	 viable = yes
+	{
+		method begin  @16640|string(53,3) --external
+		 viable = yes
+
+		method begin  @26208|string(57,3) --external
+		 viable = yes
+
+		method begin  @21216|string(59,3) --external
+		 viable = yes
+
+		method begin  @22880|string(61,3) --external
+		 viable = yes
+
+		method begin<c>  @12896|string(55,3) --external
+		 viable = no
+
+		method extract  @30784|string(76,3) --external
+		 viable = yes
+
+		method extract  @27456|string(78,3) --external
+		 viable = yes
+
+		method extract  @21632|string(80,3) --external
+		 viable = yes
+
+		method find  @28288|string(82,3) --external
+		 viable = yes
+
+		method get_encoding  @27040|string(66,3) --external
+		 viable = yes
+
+		method get_length  @33696|string(68,3) --external
+		 viable = yes
+
+		method is_before?  @23296|string(73,3) --external
+		 viable = yes
+
+		method is_equal?  @32448|string(71,3) --external
+		 viable = yes
+
+		method scan  @31200|string(84,3) --external
+		 viable = yes
+
+		nom type serial<c>  @10384|string(49,11) --internal
+		 viable = no
+		 equivalent: ("serial_access<unicode><c>")-> type serial_access<t><c>  @54704|access(5,6)
+
+		method store  @33280|string(63,3) --external
+		 viable = yes
+	}
+}
+

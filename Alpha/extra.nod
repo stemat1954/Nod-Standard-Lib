@@ -1,0 +1,59 @@
+
+page extra in AlphaByNod
+
+
+type extra from direct_access<object> -- intrinsic, restricted
+{{
+	extra is a collective type that represents a uniform
+	set of unspecified objects given in a procedure call
+	after inputs and outputs.
+	
+	Note: an extra collection is logically similar to an
+	array of objects, but array<object> isn't a valid type
+	because	type object isn't complete.
+
+	The compiler automatically creates and initializes an 
+	extra collection.
+		
+	Applications must use runtime methods to determine the
+	number and type of objects in the collection. 
+
+	An extra collection is a first class object that can be 
+	given as a regular input to another procedure. 
+	
+	If an extra collection is forwarded as an extra in 
+	another call, the compiler will consolidate the collection
+	with other extras in the call.  
+
+	:use@ gives unspecified access permission to an extra
+	object in given order. Access permission must be stated
+	in the call and it's verified at runtime.
+
+	Some applications may need to delete extra objects 
+	before forwarding.  :delete removes a specified number 
+	of objects in given order (left-to-right).  
+
+	given\extra:use@( i )[eval]:as<thing>
+	given\extra:use@( i )[upd]:as<thing>
+	given\extra:use@( i )[init]:as_actual<thing> 
+}}
+{
+	general
+	{
+		delete [upd]( int q [opt] );  -- q objects from front
+	}
+
+	general  -- similar in direct_access<object>
+	{
+		count ()( int );
+
+		use@ ( int i ) = object proxy; 
+	}
+
+	abstract in direct_access<object>
+	{
+		[final] ~count ()( int n );
+
+		[final] ~use@ ( int i ) = object proxy;
+	}
+}

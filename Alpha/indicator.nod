@@ -1,0 +1,78 @@
+
+page indicator in AlphaByNod
+
+
+type indicator  -- restricted
+{{
+	An indicator is a waitable thread synchronizer.
+		
+	An indicator is internally abstract and restricted. 
+	The only allowed derivations are alpha\signal, 
+	alpha\counter, and alpha\timer.
+
+	An indicator is used to coordinate cooperating threads.
+	Using a shared indicator, one thread can wait with a 
+	time limit (yield) until another thread releases it.
+
+	Note: This is two-sided thread coordination. One side
+	waits/yields while the other side indicates/releases. 
+	Multiple threads can share an indicator on both sides.
+	Compare to one-sided lock coordination. See alpha\lock.
+		
+	The indicator release condition is determined by the 
+	derived indicator. See subtype definitions for details.
+
+	:wait returns when a given time elapses or when the
+	indicator is in a release state.  The calling thread
+	may yield if the indicator is not already in a release 
+	state when the method is called.
+
+	If given wait time is null, a default time is used.
+	Default times are specified when the derived indicator 
+	is initialized.
+
+	Note: The default time for derived inidicators is
+	also null, which implies "no time-out".  If :wait is
+	called with a null time and the default time is also
+	null, then :wait only returns when the indicator is in
+	a release state, and the output is necessarily 'true'. 
+	Thus, a simple call to :wait with no givens usually 
+	means an indefinite wait until the indicator releases,
+	but technically it means a default wait that ignores
+	the output condition.
+
+	:test evaluates the indicator's release state and
+	returns immediately.  It doesn't yield.  A bool output 
+	is 'true' if the indicator is in a release state, other-
+	wise it's 'false'.
+
+	Note:  It doesn't make sense to call :test without an
+	output.
+
+	:wait and :test may or may not reset the release state,
+	depending on the derived indicator's execution mode.
+	See subtype definitions for details.
+
+	:wait with zero time doesn't yield and it's logically
+	equivalent to :test. Likewise, :test is logically
+	equivalent to :wait with zero time.
+
+	:reset clears the release state.  This method is used
+	by types that don't automatically reset.
+
+	:use_handle returns the indicator's internal system
+	resource handle for transfer to kernel subroutines.
+}}
+{
+	general 
+	{
+		wait [upd]( etm [opt] )( bool );	
+
+		test ()( bool );
+
+		reset [upd];
+
+		use_handle = handle proxy [eval];
+	}
+}
+

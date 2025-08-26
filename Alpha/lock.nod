@@ -1,0 +1,188 @@
+
+page lock in AlphaByNod
+
+
+type lock
+{{
+	A lock is a thread access synchronizer.
+
+	A lock is used to coordinate access to an object (or
+	objects) shared by concurrent threads. A lock provides
+	methods that support a simple mutual exclusion protocol
+	that must be followed by all threads to avoid data
+	corruption and/or invalid results.  
+
+	Note:  A semaphore can also be used to coordinate access
+	to instance data. The main difference between a 
+	semaphore and a lock is that lock methods yield until 
+	they can change the lock state, while a semaphore is an
+	application variable that doesn't yield.
+		
+	When designing an interface for objects that are shared
+	by multiple threads, an ACID compliant interface is best
+	practice.  If an interface is ACID compliant, methods 
+	automatically coordinate access to the instance.
+
+	Note: ACID = Atomic, Consistent, Isolated, Durable.
+
+	If an ACID method has [eval] intent, it can be called
+	by multiple threads simultaneously.  That is, multiple 
+	calls to an [eval] method can overlap without causing
+	corruption or unexpected results.
+		
+	If an ACID method has [upd] intent, it can only	be
+	called when a thread has exclusive access to the object.
+	That is, other threads must be locked out while a [upd]
+	method is making changes.
+
+	A [upd] method uses :set and :reset to control access to 
+	an object.  The lock must be :set before changes are made, 
+	and :reset after changes are complete.
+
+	Note:  :set and :reset have [upd] primary intent.
+		
+	An [eval] method uses :hold and :release to control 
+	access to an object.  :hold prevents the lock from 
+	being :set and :release reverses the effect.
+
+	Note: :hold and :release have [eval] primary intent.
+	This allows the [eval] ACID method to hold the lock
+	without conflict. Multiple threads can :hold a lock, 
+	allowing simultaneous [eval] calls on an object.
+		
+	Two versions of :set and :hold are provided.  One 
+	quits if time expires while the other always returns
+	with an output indicator. The indicator is true if
+	access is granted and false if not (time expired).
+
+	Time limits are generally optional.  If a limit is
+	not given (it's null), a default limit is used. A
+	default is given at :begin time.  Limits can be zero,
+	but zero should not	be given to :begin unless specific
+	limits are always given at access time.
+
+	
+	Things to consider...
+
+	A lock may protect all or part of an instance. An
+	instance may have independent states that require no
+	lock, or multiple locks.  The "domain of protection"
+	is determined by the application. 
+		
+	Suggestion:  Create sub-instances for each indepen-
+	dently controlled state, and name each lock after the 
+	sub-instance it controls.  Or better still, create 
+	separate types for each independent state.
+		
+	The possibility that methods may fail while	access-
+	ing a locked object is a very important design 
+	consideration.  A robust application must have a 
+	strategy for dealing with this situation.
+		
+	If a [upd] ACID method fails while it has an object 
+	locked, an application must either (1) undo partial 
+	changes and unlock the object with no net changes, or 
+	(2) do nothing and let the lock stand (i.e don't :reset
+	the lock), preventing future access to a  partially 
+	modified object.
+		
+	The ideal solution may be option (1) which allows
+	all application threads to continue and gives the
+	application some flexibility in recovering from the
+	failure. But it's also the most difficult to imple-
+	ment in general.  Most ACID database applications 
+	provide this kind of solution.
+
+	Note:  Option (1) is trivial for [eval] methods
+	because there aren't any changes to roll back.  Best 
+	practice for [eval] methods is to isolate failures 
+	and always :release locks before returning using a
+	protocol that allows the caller to determine if the
+	method was successful or not.
+
+	An alternative approach is option (2) which prevents
+	further access to partially modified data and ulti-
+	mately causes all threads that access the object to 
+	fail because they time out while trying to access it.
+	This option is the "nuclear" option, but it's relative-
+	ly easy to implement.
+
+			
+	Some applications may be able to implement option
+	(1) in special cases, and that may be the preferred
+	solution, but keep in mind that another part of the
+	application must subsequently decide how to recover 
+	after failing to make a change that was presumably 
+	necessary.  Typically, an application will retry the
+	transaction (ACID method) but consideration must be
+	given as to why the method failed in the first place
+	and whether or not retry is even feasible.  Thus, a
+	gain in flexibility is not necessarily a solution to
+	the problem.
+		
+	Option (2) is a viable real world solution and only 
+	requires that an application detect that access to
+	an object is no longer possible.  This is a pract-
+	ical approach when the reason for failure is tanta-
+	mount to global application failure, i.e. when the
+	failure can't be isolated locally and is likely not
+	related to some transient condition. For example: 
+	running out of memory.  If an application quits only
+	for globally significant failures, option (2) is a 
+	simple and effective way to deal with this problem.
+
+	Note: Nod types will only quit when runtime
+	system resources are depleted, provided the app-
+	lication is	properly coded.  However, most Nod
+	types have built-in integrity checks (bug checks)
+	that can cause disruption.  Thus, in effect, residual
+	bugs are global application failures.  
+
+
+	Any design strategy that doesn't encapsulate locking
+	is asking for trouble.  Indeed, object oriented
+	methods are ideal for solving this problem.  However,
+	because it's not generally possible to know what
+	combination of objects need to be accessed coherently,
+	lockable types tend to be defined in the application 
+	layer. 
+		
+	This is counter-intuitive because it's also	a 
+	hallmark of OOP that app development is facilitated
+	by the use of predefined general purpose types.  But
+	using predefined lockable types is problematic when
+	those types are composed in an instance with non-
+	lockable types and another internal lock.  In this
+	case, programmers must be careful to call self-
+	locking methods consistently while in the scope of
+	an internal lock to avoid the possibilty of a 
+	dreaded "dead" lock.  In the final analysis, general
+	purpose lockable types are not "wrong" and indeed
+	quite useful.  But they should be defined and used
+	with care.
+}}
+{
+
+	general
+	{
+		begin ( etm );	-- default time-out
+
+
+		set [upd]( etm [opt] );
+
+		set [upd]( etm [opt] )( bool ok );
+
+		reset [upd];
+
+
+		hold [eval]( etm [opt] );	-- time-outquits
+
+		hold [eval]( etm [opt] )( bool ok );
+
+		release [eval];
+
+
+		use_handle = handle proxy [eval];
+	}
+}
+

@@ -1,0 +1,60 @@
+
+page typeid in AlphaByNod
+
+
+subroutine get_typeid<t>( <t> obj )( typeid );
+
+
+type typeid -- intrinsic
+{{
+	A typeid is a type identification object.
+
+	The binding of a typeid to a type definition is 
+	consistent such that any type named t on a page
+	named p and a book named b will always have the 
+	same typeid.  
+		
+	Although representation is not defined, clearly a
+	type name includes the type's defined name as well
+	as a book and page name.
+
+	Original typeids can be copied from any object by
+	calling universal method :typeid.
+
+	A typeid is portable.  An exported typeid identifies
+	the same type across sessions provided an application 
+	maintains the same book, page, and basic type names.
+
+	The application must ensure that imported typeids
+	correctly associate to type	definitions in the current
+	application.
+
+	Note:  Clearly typeids can't survive every possible
+	evolution of an application.  In general, if a portable
+	app type uses typeids to store content, it should also 
+	use version specific format expressions that can
+	distinguish different typeids by version.
+
+	typeid can be ordered to faciliate lookup.
+
+	"tid |=| get_typeid( x )"
+	"tid:selects<thing>?"
+
+}}
+{
+	general
+	{
+		begin ( typeid other );				-- copy
+
+		begin ( mediator [upd], expr fex );		
+
+		store ( mediator [upd], expr fex );
+
+		selects<t>? ()( bool );		-- iff actual <t>
+
+		is_equal? ( typeid other )( bool );
+
+		is_before? ( typeid other )( bool );
+	}
+}
+

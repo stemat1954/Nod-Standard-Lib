@@ -1,0 +1,55 @@
+
+page counter in AlphaByNod
+
+
+type counter from indicator
+{{
+	A counter is a counting indicator.
+
+	Note: See alpha\indicator for more info.
+
+	:begin sets min, max, and initial values. It also
+	sets default wait time and execution mode.
+
+	A counter is "directional".  Generally, it starts at one
+	end of the range and moves to the other. Initial level 
+	should be min or max.  A counter that starts at the min 
+	level indicates at the max level.  Conversely, a counter
+	that starts at the max level inicates at the min level.
+
+	Note:  Initial level not equal to min or max is an 
+	invalid	configuration that causes disruption.
+
+	A counter can be used to regulate how often a thread
+	reponds to asynchronous events.  One side increases or
+	decreases the counter, while another side waits for the
+	limit to be reached.  When a waiting thread is released
+	by an indicated counter, it responds and resets the counter.
+
+	The default wait time is used when :wait is called with
+	a null elapsed time.  If the default wait time is also 
+	null, :wait does not time-out.
+
+	The counter execution mode is auto-reset if input auto
+	is 'true' or null. Otherwise, execution mode is manual-
+	reset.
+
+	:inc increases the count by one up to the max level.
+
+	:dec decreases the count by one down to the min level.
+	
+	indicator:reset sets the counter back to it's initial 
+	value and clears the release state.
+}}
+{
+	general
+	{
+		begin ( int min, int max, int n, etm wait [opt], bool auto [opt] );
+
+		inc [upd];
+
+		dec [upd];
+	}
+}
+
+

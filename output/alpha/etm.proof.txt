@@ -1,0 +1,85 @@
+page etm
+{
+	type etm  @10944|etm(5,6) --external
+	 viable = yes
+	{
+		method abs  @19616|etm(109,3) --external
+		 viable = yes
+
+		method abs  @42128|etm(110,3) --external
+		 viable = yes
+
+		method add  @17952|etm(88,3) --external
+		 viable = yes
+
+		method add  @12544|etm(89,3) --external
+		 viable = yes
+
+		method as_int  @16288|etm(84,3) --external
+		 viable = yes
+
+		method begin  @56384|etm(69,3) --external
+		 viable = yes
+
+		method begin  @58880|etm(71,3) --external
+		 viable = yes
+
+		method begin  @56800|etm(73,3) --external
+		 viable = yes
+
+		method begin  @53888|etm(75,3) --external
+		 viable = yes
+
+		method div  @18368|etm(97,3) --external
+		 viable = yes
+
+		method div  @15456|etm(98,3) --external
+		 viable = yes
+
+		method is_before?  @15872|etm(80,3) --external
+		 viable = yes
+
+		method is_equal?  @58464|etm(78,3) --external
+		 viable = yes
+
+		method is_less?  @14208|etm(82,3) --external
+		 viable = yes
+
+		method mod  @14624|etm(103,3) --external
+		 viable = yes
+
+		method mod  @16704|etm(104,3) --external
+		 viable = yes
+
+		method mul  @20032|etm(94,3) --external
+		 viable = yes
+
+		method mul  @15040|etm(95,3) --external
+		 viable = yes
+
+		method neg  @17120|etm(106,3) --external
+		 viable = yes
+
+		method neg  @19200|etm(107,3) --external
+		 viable = yes
+
+		method rdiv  @12960|etm(100,3) --external
+		 viable = yes
+
+		method rdiv  @18784|etm(101,3) --external
+		 viable = yes
+
+		method set  @13376|etm(86,3) --external
+		 viable = yes
+
+		method store  @54304|etm(76,3) --external
+		 viable = yes
+
+		method sub  @13792|etm(91,3) --external
+		 viable = yes
+
+		method sub  @17536|etm(92,3) --external
+		 viable = yes
+	}
+}
+

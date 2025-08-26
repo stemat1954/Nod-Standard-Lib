@@ -1,0 +1,107 @@
+
+page fault in AlphaByNod
+
+
+enum type fault_category ( 'bug', 'format', 'timeout', 'resource', 'platform', 'system' );
+{{
+	'bug' - a programming error was detected
+
+		Use 'bug' to categorize invalid inputs and logical 
+		inconsistencies.  In a perfect world, bugs will
+		never occur in a tested app, but of course, this
+		is rarely true in reality.	Nod does not have
+		any provision for removing bug-related quits (no
+		provision for debug/release builds).
+
+	'format' - a data format error was detected
+
+		Use 'format' to indicate formatting errors in
+		external data.  Alpha portability methods are the 
+		primary	source for this fault.
+
+	'timeout' - access to a shared resource timed out
+
+		Use 'timeout' when concurrent contention for a
+		shared resource will not resolve in time.
+
+	'resource' - a dynamic resource was depleted
+
+		Use 'resource' when a dynamically allocated,
+		limited resource cannot be acquired.
+		
+	'platform'	- an invalid platform was detected
+
+		Use 'platform' when an expected feature or
+		capability of the host platform is missing or
+		insufficient.  These are usually related to
+		installation errors.
+
+	'system'  - an invalid system was detected
+
+		Use 'system' when a required app component ( e.g. 
+		file or service) is missing or unavailable.  This
+		is for apps that are part of a distributed or
+		multi-process system.
+	
+}}
+
+
+type fault  -- intrinsic
+{{
+	A fault is an intrinsic quit object.
+
+	Alpha types send fault objects when they quit.
+	Applications can and should send faults wherever it 
+	makes sense.
+
+	Quit objects are attached to trace objects. Trace
+	objects also capture quit location.  See alpha\trace
+	for	details.
+
+	Quitting and trapping fault objects is not suitable for
+	normal error handling.  Normal errors can and should be 
+	handled	in the normal flow of execution.
+		
+	Faults correspond to errors that are probably fatal. 
+	This includes internal errors like residual program bugs 
+	and external errors beyond the direct control of an 
+	application.
+		
+	Disruptions (caused by quitting) are generally trapped 
+	in a high level context where a decision can be made to
+	either adapt and retry, or leave.  Such a decision
+	should be made solely on the kind of fault sent, not on
+	the additional commentary.  Comments should be used to 
+	convey auxiliary information to a human reader.
+		
+	Clearly, fault categories are imprecise. Precise error
+	identification is an aspect of normal processing.  The 
+	idea is to broadly classify faults so that an application 
+	might decide to retry rather than leave.
+		
+	Note: Even this strategy is perhaps too ambiguous. It's 
+	more likely that an application will choose to retry or 
+	leave based on where a disruption is trapped rather than 
+	what kind of fault was sent.  However, it may be possible
+	to rule-out certain kinds of faults for retry (e.g. 
+	'bug' ).
+
+	fault accessors return void proxies if there is no
+	corresponding information provided when the fault is
+	initialized.
+		
+}}
+{
+	general
+	{
+		begin ( fault_category [opt], expr comment [opt] );
+
+		use_category = fault_category proxy [eval];
+
+		get_category ()( fault_category );
+
+		use_comment = expr proxy [eval];
+
+		get_comment ()( expr );
+	}
+}

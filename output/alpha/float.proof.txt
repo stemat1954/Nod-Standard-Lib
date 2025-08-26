@@ -1,0 +1,335 @@
+page float
+{
+	type fp10  @55344|float(151,6) --external
+	 viable = yes
+	{
+		method abs  @33360|float(211,3) --external
+		 viable = yes
+
+		method abs  @42928|float(212,3) --external
+		 viable = yes
+
+		method add  @32944|float(191,3) --external
+		 viable = yes
+
+		method add  @47088|float(192,3) --external
+		 viable = yes
+
+		method begin  @00976|float(163,3) --external
+		 viable = yes
+
+		method begin  @01808|float(165,3) --external
+		 viable = yes
+
+		method begin  @47504|float(167,3) --external
+		 viable = yes
+
+		method begin  @46672|float(169,3) --external
+		 viable = yes
+
+		method begin  @38352|float(174,3) --external
+		 viable = yes
+
+		method begin<#n>  @34608|float(171,3) --external
+		 viable = no
+
+		method dis  @45840|float(214,3) --external
+		 viable = yes
+
+		method dis  @37520|float(215,3) --external
+		 viable = yes
+
+		method div  @39600|float(200,3) --external
+		 viable = yes
+
+		method div  @48752|float(201,3) --external
+		 viable = yes
+
+		method is_before?  @33776|float(181,3) --external
+		 viable = yes
+
+		method is_equal?  @42512|float(179,3) --external
+		 viable = yes
+
+		method is_less?  @43760|float(183,3) --external
+		 viable = yes
+
+		method log  @44592|float(226,3) --external
+		 viable = yes
+
+		method log  @40016|float(227,3) --external
+		 viable = yes
+
+		method ltf  @35856|float(217,3) --external
+		 viable = yes
+
+		method ltf  @40848|float(218,3) --external
+		 viable = yes
+
+		method mul  @39184|float(197,3) --external
+		 viable = yes
+
+		method mul  @35440|float(198,3) --external
+		 viable = yes
+
+		method neg  @47920|float(203,3) --external
+		 viable = yes
+
+		method neg  @36272|float(204,3) --external
+		 viable = yes
+
+		method pow  @34192|float(220,3) --external
+		 viable = yes
+
+		method pow  @41680|float(221,3) --external
+		 viable = yes
+
+		method pow  @45424|float(223,3) --external
+		 viable = yes
+
+		method pow  @43344|float(224,3) --external
+		 viable = yes
+
+		method rpd  @37104|float(239,3) --external
+		 viable = yes
+
+		method rpd  @45008|float(240,3) --external
+		 viable = yes
+
+		method rpd  @63488|float(241,3) --external
+		 viable = yes
+
+		method rpi  @50176|float(243,3) --external
+		 viable = yes
+
+		method rpi  @63904|float(244,3) --external
+		 viable = yes
+
+		method rpi  @55168|float(245,3) --external
+		 viable = yes
+
+		method rpn  @52256|float(251,3) --external
+		 viable = yes
+
+		method rpn  @54752|float(252,3) --external
+		 viable = yes
+
+		method rpn  @60160|float(253,3) --external
+		 viable = yes
+
+		method rpn  @50592|float(255,3) --external
+		 viable = yes
+
+		method rpn  @54336|float(256,3) --external
+		 viable = yes
+
+		method rpn  @52672|float(257,3) --external
+		 viable = yes
+
+		method rpo  @58912|float(247,3) --external
+		 viable = yes
+
+		method rpo  @56832|float(248,3) --external
+		 viable = yes
+
+		method rpo  @51424|float(249,3) --external
+		 viable = yes
+
+		method rpu  @35024|float(235,3) --external
+		 viable = yes
+
+		method rpu  @41264|float(236,3) --external
+		 viable = yes
+
+		method rpu  @37936|float(237,3) --external
+		 viable = yes
+
+		method set  @38768|float(186,3) --external
+		 viable = yes
+
+		method sgn  @42096|float(209,3) --external
+		 viable = yes
+
+		method sp10  @36688|float(232,3) --external
+		 viable = yes
+
+		method sp10  @40432|float(233,3) --external
+		 viable = yes
+
+		method store  @44176|float(176,3) --external
+		 viable = yes
+
+		method sub  @46256|float(194,3) --external
+		 viable = yes
+
+		method sub  @48336|float(195,3) --external
+		 viable = yes
+	}
+
+	type fp2  @56880|float(38,6) --external
+	 viable = yes
+	{
+		method abs  @13456|float(98,3) --external
+		 viable = yes
+
+		method abs  @15952|float(99,3) --external
+		 viable = yes
+
+		method add  @32560|float(78,3) --external
+		 viable = yes
+
+		method add  @28816|float(79,3) --external
+		 viable = yes
+
+		method begin  @44624|float(50,3) --external
+		 viable = yes
+
+		method begin  @39216|float(52,3) --external
+		 viable = yes
+
+		method begin  @40048|float(54,3) --external
+		 viable = yes
+
+		method begin  @32144|float(56,3) --external
+		 viable = yes
+
+		method begin  @41296|float(61,3) --external
+		 viable = yes
+
+		method begin<#n>  @43792|float(58,3) --external
+		 viable = no
+
+		method dis  @06384|float(101,3) --external
+		 viable = yes
+
+		method dis  @00144|float(102,3) --external
+		 viable = yes
+
+		method div  @10544|float(87,3) --external
+		 viable = yes
+
+		method div  @06800|float(88,3) --external
+		 viable = yes
+
+		method is_before?  @37968|float(68,3) --external
+		 viable = yes
+
+		method is_equal?  @37552|float(66,3) --external
+		 viable = yes
+
+		method is_less?  @30064|float(70,3) --external
+		 viable = yes
+
+		method log  @05136|float(113,3) --external
+		 viable = yes
+
+		method log  @07632|float(114,3) --external
+		 viable = yes
+
+		method ltf  @02224|float(104,3) --external
+		 viable = yes
+
+		method ltf  @05968|float(105,3) --external
+		 viable = yes
+
+		method mul  @41712|float(84,3) --external
+		 viable = yes
+
+		method mul  @32976|float(85,3) --external
+		 viable = yes
+
+		method neg  @12624|float(90,3) --external
+		 viable = yes
+
+		method neg  @07216|float(91,3) --external
+		 viable = yes
+
+		method pow  @02640|float(107,3) --external
+		 viable = yes
+
+		method pow  @03056|float(108,3) --external
+		 viable = yes
+
+		method pow  @09712|float(110,3) --external
+		 viable = yes
+
+		method pow  @11792|float(111,3) --external
+		 viable = yes
+
+		method rpd  @13872|float(126,3) --external
+		 viable = yes
+
+		method rpd  @08880|float(127,3) --external
+		 viable = yes
+
+		method rpd  @01392|float(128,3) --external
+		 viable = yes
+
+		method rpi  @00560|float(130,3) --external
+		 viable = yes
+
+		method rpi  @08048|float(131,3) --external
+		 viable = yes
+
+		method rpi  @03472|float(132,3) --external
+		 viable = yes
+
+		method rpn  @04304|float(138,3) --external
+		 viable = yes
+
+		method rpn  @09296|float(139,3) --external
+		 viable = yes
+
+		method rpn  @12208|float(140,3) --external
+		 viable = yes
+
+		method rpn  @10128|float(142,3) --external
+		 viable = yes
+
+		method rpn  @13040|float(143,3) --external
+		 viable = yes
+
+		method rpn  @14288|float(144,3) --external
+		 viable = yes
+
+		method rpo  @03888|float(134,3) --external
+		 viable = yes
+
+		method rpo  @10960|float(135,3) --external
+		 viable = yes
+
+		method rpo  @08464|float(136,3) --external
+		 viable = yes
+
+		method rpu  @15120|float(122,3) --external
+		 viable = yes
+
+		method rpu  @15536|float(123,3) --external
+		 viable = yes
+
+		method rpu  @05552|float(124,3) --external
+		 viable = yes
+
+		method set  @42960|float(73,3) --external
+		 viable = yes
+
+		method sgn  @04720|float(96,3) --external
+		 viable = yes
+
+		method sp2  @11376|float(119,3) --external
+		 viable = yes
+
+		method sp2  @14704|float(120,3) --external
+		 viable = yes
+
+		method store  @31728|float(63,3) --external
+		 viable = yes
+
+		method sub  @40464|float(81,3) --external
+		 viable = yes
+
+		method sub  @40880|float(82,3) --external
+		 viable = yes
+	}
+}
+

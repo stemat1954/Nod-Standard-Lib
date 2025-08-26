@@ -1,0 +1,968 @@
+page conventional
+{
+	operation -_  @31568|conventional(262,2) --external
+
+	operation _*_  @31808|conventional(266,2) --external
+
+	operation _+_  @32528|conventional(264,2) --external
+
+	operation _-_  @32768|conventional(265,2) --external
+
+	operation _/_  @33488|conventional(267,2) --external
+
+	operation _|.|_  @29888|conventional(270,2) --external
+
+	operation _|<=|_  @26160|conventional(245,2) --external
+
+	operation _|<|_  @38064|conventional(238,2) --external
+
+	operation _|=|_  @44352|conventional(223,2) --external
+
+	operation _|>=|_  @43584|conventional(242,2) --external
+
+	operation _|>|_  @33968|conventional(239,2) --external
+
+	operation _|^|_  @33248|conventional(269,2) --external
+
+	operation _|after|_  @05504|conventional(231,2) --external
+
+	operation _|and|_  @30848|conventional(251,2) --external
+
+	operation _|before|_  @61808|conventional(230,2) --external
+
+	operation _|nand|_  @31088|conventional(254,2) --external
+
+	operation _|nor|_  @32288|conventional(255,2) --external
+
+	operation _|not<|_  @09248|conventional(241,2) --external
+
+	operation _|not=|_  @22096|conventional(224,2) --external
+
+	operation _|not>|_  @05024|conventional(244,2) --external
+
+	operation _|or|_  @31328|conventional(252,2) --external
+
+	operation _|par|_  @08416|conventional(232,2) --external
+
+	operation _|xnor|_  @33008|conventional(256,2) --external
+
+	operation _|xor|_  @32048|conventional(253,2) --external
+
+	subroutine alpha_to_cstr  @00864|conventional(160,2) --external
+	 viable = yes
+	{
+
+		given
+		{
+			object addr  @42176|conventional(160,2) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object string  @55616|conventional(160,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+		}
+
+		BLOCK --domain
+		{
+			MAKE
+			 object: (direct)-> object (anon)  @55936|conventional(162,3)
+			 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+			CALL --initial
+			 lead: (direct)-> object (anon)  @55936|conventional(162,3)
+			 method: ("begin")-> method begin  @19216|text_mediator(103,3)
+			 input: ("platform_utf")-> object platform_utf  @28736|mediator(13,2)
+			 input: ("platform_endian")-> object platform_endian  @61504|mediator(12,2)
+			CALL
+			 lead: (direct)-> object (anon)  @55936|conventional(162,3)
+			 method: ("write")-> method write  @27120|text_mediator(258,3)
+			 input: ("given\string")-> object string  @55616|conventional(160,2)
+			CALL
+			 lead: (direct)-> object (anon)  @55936|conventional(162,3)
+			 method: ("add_zero")-> method add_zero  @26704|text_mediator(225,3)
+			MAKE
+			 object: (direct)-> object (anon)  @56256|conventional(162,88)
+			 type: ("int")-> type int  @54576|int(6,6)
+			CALL --fundamental
+			 lead: (direct)-> object (anon)  @55936|conventional(162,3)
+			 method: ("detach")-> method detach  @09232|mediator(319,3)
+			 output: ("given\addr")-> object addr  @42176|conventional(160,2)
+			 output: (direct)-> object (anon)  @56256|conventional(162,88)
+		}
+	}
+
+	subroutine choose  @63600|conventional(108,2) --external
+	 viable = yes
+	{
+
+		given
+		{
+			object a  @38336|conventional(108,2) --internal
+			 type: ("object")-> type object  @06960|object(4,6)
+
+			object a?  @54976|conventional(108,2) --internal
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+
+			object b  @55296|conventional(108,2) --internal
+			 type: ("object")-> type object  @06960|object(4,6)
+
+			proxy ~o  @31904|conventional(108,2) --internal
+			 type: ("object")-> type object  @06960|object(4,6)
+		}
+
+		BLOCK --domain
+		{
+			IF
+			 condition: ("a?")-> object a?  @54976|conventional(108,2)
+			{
+				true branch: JOIN
+				 left: ("~o")-> proxy ~o  @31904|conventional(108,2)
+				 right: ("a")-> object a  @38336|conventional(108,2)
+				false branch: JOIN
+				 left: ("~o")-> proxy ~o  @31904|conventional(108,2)
+				 right: ("b")-> object b  @55296|conventional(108,2)
+			}
+		}
+	}
+
+	subroutine cstr_to_alpha  @01664|conventional(165,2) --external
+	 viable = yes
+	{
+
+		given
+		{
+			object addr  @41856|conventional(165,2) --internal
+			 type: ("addr")-> type addr  @39232|addr(4,6)
+
+			object string  @40576|conventional(165,2) --internal
+			 type: ("string")-> type string  @09264|string(4,6)
+		}
+
+		BLOCK --domain
+		{
+			CALL --initial, fundamental
+			 lead: ("given\string")-> object string  @40576|conventional(165,2)
+			 method: ("begin")-> method begin  @16640|string(53,3)
+			 input: ("given\addr")-> object addr  @41856|conventional(165,2)
+			 input: ("platform_utf")-> object platform_utf  @28736|mediator(13,2)
+			 input: ("platform_endian")-> object platform_endian  @61504|mediator(12,2)
+			 input: (pending)->
+		}
+	}
+
+	nom type double<t>  @12432|conventional(89,2) --external
+	 viable = no
+	 equivalent: ("array<t><'2'>")-> type array<t><#>  @20832|array(117,6)
+
+	subroutine fix<t>  @64800|conventional(133,2) --external
+	 viable = no
+	{
+
+		given
+		{
+			object a  @41536|conventional(133,2) --internal
+			 type: ("t")-> (unmatched)
+
+			object b  @38656|conventional(133,2) --internal
+			 type: ("t")-> (unmatched)
+
+			proxy ~o  @32816|conventional(133,2) --internal
+			 type: ("t")-> (unmatched)
+		}
+
+		BLOCK* --domain
+		{
+			CALL* --provisional
+			 lead: ("a")-> object a  @41536|conventional(133,2)
+			 method: ("is_not_null?")-> (unmatched)
+			 input: ("a")-> object a  @41536|conventional(133,2)
+			IF* --provisional
+			 condition: (direct)-> blank (anon)  @47104|conventional(,)
+			{
+				true branch: JOIN --provisional
+				 left: ("~o")-> proxy ~o  @32816|conventional(133,2)
+				 right: ("a")-> object a  @41536|conventional(133,2)
+				false branch: JOIN --provisional
+				 left: ("~o")-> proxy ~o  @32816|conventional(133,2)
+				 right: ("b")-> object b  @38656|conventional(133,2)
+			}
+		}
+	}
+
+	nom type quad<t>  @07056|conventional(91,2) --external
+	 viable = no
+	 equivalent: ("array<t><'4'>")-> type array<t><#>  @20832|array(117,6)
+
+	enum type sign  @41472|conventional(103,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'zero' = 0
+	    'positive' = 1
+	    'negative' = 2
+	}
+	{
+		method begin  @50640|conventional(103,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object expr  @38976|conventional(103,11) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+
+				object io  @47936|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object (anon)  @39936|conventional(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				CALL --fundamental
+				 lead: (direct)-> enumerator $index  @18592|conventional(,)
+				 method: ("enumerate")-> method enumerate  @61872|$appendix(,)
+				 input: (direct)-> object expr  @38976|conventional(103,11)
+				 output: (direct)-> object (anon)  @39936|conventional(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @31120|conventional(,)
+				 type: ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @47936|conventional(103,11)
+				 method: (direct)-> method $18<25>( as_base<enumerated> )  @21488|$appendix(,)
+				 result: (direct)-> proxy (anon)  @31120|conventional(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> proxy (anon)  @31120|conventional(,)
+				 method: ("begin")-> method begin  @60960|enumerated(29,3)
+				 input: (direct)-> object (anon)  @39936|conventional(,)
+				CALL --initial, fundamental
+				 lead: ("io.expr")-> object expr  @39040|conventional(,)
+				 method: ("begin")-> method begin  @38800|expr(88,3)
+				 input: (direct)-> object expr  @38976|conventional(103,11)
+			}
+		}
+
+		method begin  @45232|conventional(103,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @48256|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+
+				object sign  @51136|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @33424|conventional(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object sign  @51136|conventional(103,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @33424|conventional(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @31424|conventional(,)
+				 type: ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+				 permission: [init]
+				TRANSLATE --base
+				 lead: (direct)-> object io  @48256|conventional(103,11)
+				 method: (direct)-> method $18<25>( as_base<enumerated> )  @21488|$appendix(,)
+				 result: (direct)-> proxy (anon)  @31424|conventional(,)
+				CALL --initial, fundamental
+				 lead: (direct)-> proxy (anon)  @31424|conventional(,)
+				 method: ("begin")-> method begin  @60960|enumerated(29,3)
+				 input: (direct)-> proxy (anon)  @33424|conventional(,)
+				CALL --initial, fundamental
+				 lead: ("io.expr")-> object expr  @39040|conventional(,)
+				 method: ("begin")-> method begin  @38800|expr(88,3)
+				 input: ("sign.expr")-> object expr  @39040|conventional(,)
+			}
+		}
+
+		method get_token  @48560|conventional(103,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object expr  @38016|conventional(103,11) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+
+				object io  @54656|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+			}
+
+			BLOCK --domain
+			{
+				CALL --initial, fundamental
+				 lead: (direct)-> object expr  @38016|conventional(103,11)
+				 method: ("begin")-> method begin  @38800|expr(88,3)
+				 input: ("io.expr")-> object expr  @39040|conventional(,)
+			}
+		}
+
+		method is_before?  @52720|conventional(103,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object bool  @49216|conventional(103,11) --internal
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+
+				object io  @37056|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+
+				object sign  @39296|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @30384|conventional(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object sign  @39296|conventional(103,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @30384|conventional(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @30688|conventional(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object io  @37056|conventional(103,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @30688|conventional(,)
+				CALL --fundamental
+				 lead: (direct)-> proxy (anon)  @30688|conventional(,)
+				 method: ("is_before?")-> method is_before?  @55584|int(66,3)
+				 input: (direct)-> proxy (anon)  @30384|conventional(,)
+				 output: (direct)-> object bool  @49216|conventional(103,11)
+			}
+		}
+
+		method is_equal?  @58544|conventional(103,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object bool  @37376|conventional(103,11) --internal
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+
+				object io  @40256|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+
+				object sign  @54016|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @30992|conventional(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object sign  @54016|conventional(103,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @30992|conventional(,)
+				MAKE
+				 proxy: (direct)-> proxy (anon)  @31296|conventional(,)
+				 type: ("int")-> type int  @54576|int(6,6)
+				 permission: [eval]
+				CALL --fundamental
+				 lead: (direct)-> object io  @40256|conventional(103,11)
+				 method: ("use_code")-> method use_code  @58048|enumerated(31,3)
+				 result: (direct)-> proxy (anon)  @31296|conventional(,)
+				CALL --fundamental
+				 lead: (direct)-> proxy (anon)  @31296|conventional(,)
+				 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
+				 input: (direct)-> proxy (anon)  @30992|conventional(,)
+				 output: (direct)-> object bool  @37376|conventional(103,11)
+			}
+		}
+
+		method use_token  @50224|conventional(103,11) --external
+		 viable = yes
+		{
+
+			given
+			{
+				object io  @54336|conventional(103,11) --internal
+				 type: (direct)-> enum type sign  @41472|conventional(103,11)
+
+				proxy ~t  @31600|conventional(103,11) --internal
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+			}
+
+			BLOCK --domain
+			{
+				JOIN
+				 left: (direct)-> proxy ~t  @31600|conventional(103,11)
+				 right: ("io.expr")-> object expr  @39040|conventional(,)
+			}
+		}
+
+		common
+		{
+			enumerator $index  @18592|conventional(,) --internal
+			 type: (direct)-> type $1<2>( <expr>enumerator )  @54288|$appendix(,)
+
+			subroutine $start1  @53440|conventional(,) --internal
+			 viable = yes
+			{
+
+				given
+				{
+				}
+
+				BLOCK --domain
+				{
+					MAKE
+					 enumerator: ("near\$index")-> enumerator $index  @18592|conventional(,)
+					 type: (direct)-> type $1<2>( <expr>enumerator )  @54288|$appendix(,)
+				}
+			}
+		}
+
+
+		instance
+		{
+			object expr  @39040|conventional(,) --internal
+			 type: ("expr")-> type expr  @11328|expr(5,6)
+		}
+
+	}
+
+	subroutine std_before<t>  @62000|conventional(184,2) --external
+	 viable = no
+	{
+
+		given
+		{
+			object a  @42816|conventional(184,2) --internal
+			 type: ("t")-> (unmatched)
+
+			object b  @03200|conventional(184,2) --internal
+			 type: ("t")-> (unmatched)
+
+			object yes  @01920|conventional(184,2) --internal
+			 type: ("bool")-> type bool  @08256|bool(5,6)
+		}
+
+		BLOCK* --domain
+		{
+			CALL* --provisional
+			 lead: ("a")-> object a  @42816|conventional(184,2)
+			 method: ("is_before?")-> (unmatched)
+			 input: ("b")-> object b  @03200|conventional(184,2)
+			 output: ("yes")-> object yes  @01920|conventional(184,2)
+		}
+	}
+
+	subroutine std_copy<t>  @64000|conventional(174,2) --external
+	 viable = no
+	{
+
+		given
+		{
+			object a  @56576|conventional(174,2) --internal
+			 type: ("t")-> (unmatched)
+
+			object b  @56896|conventional(174,2) --internal
+			 type: ("t")-> (unmatched)
+		}
+
+		BLOCK* --domain
+		{
+			CALL* --provisional
+			 lead: ("b")-> object b  @56896|conventional(174,2)
+			 method: ("begin")-> (unmatched)
+			 input: ("a")-> object a  @56576|conventional(174,2)
+		}
+	}
+
+	subroutine std_take<t>  @65200|conventional(179,2) --external
+	 viable = no
+	{
+
+		given
+		{
+			object a  @57216|conventional(179,2) --internal
+			 type: ("t")-> (unmatched)
+
+			object b  @42496|conventional(179,2) --internal
+			 type: ("t")-> (unmatched)
+		}
+
+		BLOCK* --domain
+		{
+			CALL* --provisional
+			 lead: ("b")-> object b  @42496|conventional(179,2)
+			 method: ("begin")-> (unmatched)
+			 input: ("a")-> object a  @57216|conventional(179,2)
+		}
+	}
+
+	nom type triple<t>  @10128|conventional(90,2) --external
+	 viable = no
+	 equivalent: ("array<t><'3'>")-> type array<t><#>  @20832|array(117,6)
+
+	nom type word1  @13456|conventional(93,2) --external
+	 viable = yes
+	 equivalent: (direct)-> type $3<'1'>( word<'1'> )  @51984|$appendix(,)
+
+	nom type word16  @12944|conventional(96,2) --external
+	 viable = yes
+	 equivalent: (direct)-> type $3<'16'>( word<'16'> )  @52368|$appendix(,)
+
+	nom type word32  @07312|conventional(97,2) --external
+	 viable = yes
+	 equivalent: (direct)-> type $3<'32'>( word<'32'> )  @53136|$appendix(,)
+
+	nom type word4  @09104|conventional(94,2) --external
+	 viable = yes
+	 equivalent: (direct)-> type $3<'4'>( word<'4'> )  @49296|$appendix(,)
+
+	nom type word64  @11664|conventional(98,2) --external
+	 viable = yes
+	 equivalent: (direct)-> type $3<'64'>( word<'64'> )  @53520|$appendix(,)
+
+	nom type word8  @11408|conventional(95,2) --external
+	 viable = yes
+	 equivalent: (direct)-> type $3<'8'>( word<'8'> )  @55824|$appendix(,)
+
+	common
+	{
+		subroutine $start1  @60048|conventional(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object no_addr  @10000|conventional(14,2)
+				 type: ("addr")-> type addr  @39232|addr(4,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object no_addr  @10000|conventional(14,2)
+				 method: ("begin")-> method begin  @61504|addr(34,3)
+				MAKE
+				 object: (direct)-> object no_handle  @10320|conventional(16,2)
+				 type: ("handle")-> type handle  @55728|handle(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object no_handle  @10320|conventional(16,2)
+				 method: ("begin")-> method begin  @63072|handle(23,3)
+			}
+		}
+
+		subroutine $start1  @60448|conventional(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object true  @06480|conventional(22,2) --'true'
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @51456|conventional(,) --'true'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object true  @06480|conventional(22,2)
+				 method: ("begin")-> method begin  @23136|bool(24,3)
+				 input: (direct)-> literal (anon)  @51456|conventional(,)
+				MAKE
+				 object: (direct)-> object false  @07120|conventional(24,2) --'false'
+				 type: ("bool")-> type bool  @08256|bool(5,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @46336|conventional(,) --'false'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object false  @07120|conventional(24,2)
+				 method: ("begin")-> method begin  @23136|bool(24,3)
+				 input: (direct)-> literal (anon)  @46336|conventional(,)
+			}
+		}
+
+		subroutine $start1  @60848|conventional(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object int_min  @07440|conventional(30,2) --'min'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @46656|conventional(,) --'min'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object int_min  @07440|conventional(30,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @46656|conventional(,)
+				MAKE
+				 object: (direct)-> object int_max  @10640|conventional(32,2) --'max'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @43456|conventional(,) --'max'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object int_max  @10640|conventional(32,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @43456|conventional(,)
+				MAKE
+				 object: (direct)-> object zero  @08080|conventional(34,2) --'0'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @48576|conventional(,) --'0'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object zero  @08080|conventional(34,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @48576|conventional(,)
+				MAKE
+				 object: (direct)-> object one  @08720|conventional(36,2) --'1'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @43776|conventional(,) --'1'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object one  @08720|conventional(36,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @43776|conventional(,)
+				MAKE
+				 object: (direct)-> object two  @10960|conventional(38,2) --'2'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @46976|conventional(,) --'2'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object two  @10960|conventional(38,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @46976|conventional(,)
+				MAKE
+				 object: (direct)-> object three  @09040|conventional(40,2) --'3'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @47296|conventional(,) --'3'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object three  @09040|conventional(40,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @47296|conventional(,)
+				MAKE
+				 object: (direct)-> object four  @11600|conventional(42,2) --'4'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @40896|conventional(,) --'4'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object four  @11600|conventional(42,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @40896|conventional(,)
+				MAKE
+				 object: (direct)-> object five  @39360|conventional(44,2) --'5'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @50816|conventional(,) --'5'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object five  @39360|conventional(44,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @50816|conventional(,)
+				MAKE
+				 object: (direct)-> object six  @33600|conventional(46,2) --'6'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @46016|conventional(,) --'6'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object six  @33600|conventional(46,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @46016|conventional(,)
+				MAKE
+				 object: (direct)-> object seven  @38400|conventional(48,2) --'7'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @49536|conventional(,) --'7'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object seven  @38400|conventional(48,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @49536|conventional(,)
+				MAKE
+				 object: (direct)-> object eight  @34240|conventional(50,2) --'8'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @43136|conventional(,) --'8'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object eight  @34240|conventional(50,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @43136|conventional(,)
+				MAKE
+				 object: (direct)-> object nine  @37760|conventional(52,2) --'9'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @47616|conventional(,) --'9'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object nine  @37760|conventional(52,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @47616|conventional(,)
+				MAKE
+				 object: (direct)-> object ten  @39680|conventional(54,2) --'10'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @48896|conventional(,) --'10'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object ten  @39680|conventional(54,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @48896|conventional(,)
+				MAKE
+				 object: (direct)-> object neg_one  @36160|conventional(56,2) --'-1'
+				 type: ("int")-> type int  @54576|int(6,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @44096|conventional(,) --'-1'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object neg_one  @36160|conventional(56,2)
+				 method: ("begin")-> method begin  @58080|int(52,3)
+				 input: (direct)-> literal (anon)  @44096|conventional(,)
+			}
+		}
+
+		subroutine $start1  @50640|conventional(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object fp2_max  @36480|conventional(61,2) --'max'
+				 type: ("fp2")-> type fp2  @56880|float(38,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @45056|conventional(,) --'max'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp2_max  @36480|conventional(61,2)
+				 method: ("begin")-> method begin  @44624|float(50,3)
+				 input: (direct)-> literal (anon)  @45056|conventional(,)
+				MAKE
+				 object: (direct)-> object fp2_min  @34560|conventional(63,2) --'min'
+				 type: ("fp2")-> type fp2  @56880|float(38,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @41216|conventional(,) --'min'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp2_min  @34560|conventional(63,2)
+				 method: ("begin")-> method begin  @44624|float(50,3)
+				 input: (direct)-> literal (anon)  @41216|conventional(,)
+				MAKE
+				 object: (direct)-> object fp2_epsilon  @34880|conventional(65,2) --'epsilon'
+				 type: ("fp2")-> type fp2  @56880|float(38,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @51776|conventional(,) --'epsilon'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp2_epsilon  @34880|conventional(65,2)
+				 method: ("begin")-> method begin  @44624|float(50,3)
+				 input: (direct)-> literal (anon)  @51776|conventional(,)
+				MAKE
+				 object: (direct)-> object fp2_nan  @36800|conventional(67,2) --'nan'
+				 type: ("fp2")-> type fp2  @56880|float(38,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @44416|conventional(,) --'nan'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp2_nan  @36800|conventional(67,2)
+				 method: ("begin")-> method begin  @44624|float(50,3)
+				 input: (direct)-> literal (anon)  @44416|conventional(,)
+				MAKE
+				 object: (direct)-> object fp2_infinity  @38720|conventional(69,2) --'+infinity'
+				 type: ("fp2")-> type fp2  @56880|float(38,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @52736|conventional(,) --'+infinity'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp2_infinity  @38720|conventional(69,2)
+				 method: ("begin")-> method begin  @44624|float(50,3)
+				 input: (direct)-> literal (anon)  @52736|conventional(,)
+			}
+		}
+
+		subroutine $start1  @53040|conventional(,) --internal
+		 viable = yes
+		{
+
+			given
+			{
+			}
+
+			BLOCK --domain
+			{
+				MAKE
+				 object: (direct)-> object fp10_max  @37120|conventional(75,2) --'max'
+				 type: ("fp10")-> type fp10  @55344|float(151,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @53376|conventional(,) --'max'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp10_max  @37120|conventional(75,2)
+				 method: ("begin")-> method begin  @00976|float(163,3)
+				 input: (direct)-> literal (anon)  @53376|conventional(,)
+				MAKE
+				 object: (direct)-> object fp10_min  @37440|conventional(77,2) --'min'
+				 type: ("fp10")-> type fp10  @55344|float(151,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @53696|conventional(,) --'min'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp10_min  @37440|conventional(77,2)
+				 method: ("begin")-> method begin  @00976|float(163,3)
+				 input: (direct)-> literal (anon)  @53696|conventional(,)
+				MAKE
+				 object: (direct)-> object fp10_epsilon  @35520|conventional(79,2) --'epsilon'
+				 type: ("fp10")-> type fp10  @55344|float(151,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @50496|conventional(,) --'epsilon'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp10_epsilon  @35520|conventional(79,2)
+				 method: ("begin")-> method begin  @00976|float(163,3)
+				 input: (direct)-> literal (anon)  @50496|conventional(,)
+				MAKE
+				 object: (direct)-> object fp10_nan  @35200|conventional(81,2) --'nan'
+				 type: ("fp10")-> type fp10  @55344|float(151,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @50176|conventional(,) --'nan'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp10_nan  @35200|conventional(81,2)
+				 method: ("begin")-> method begin  @00976|float(163,3)
+				 input: (direct)-> literal (anon)  @50176|conventional(,)
+				MAKE
+				 object: (direct)-> object fp10_infinity  @38080|conventional(83,2) --'+infinity'
+				 type: ("fp10")-> type fp10  @55344|float(151,6)
+				MAKE
+				 literal: (direct)-> literal (anon)  @45376|conventional(,) --'+infinity'
+				 type: ("expr")-> type expr  @11328|expr(5,6)
+				CALL --initial, fundamental
+				 lead: (direct)-> object fp10_infinity  @38080|conventional(83,2)
+				 method: ("begin")-> method begin  @00976|float(163,3)
+				 input: (direct)-> literal (anon)  @45376|conventional(,)
+			}
+		}
+
+		object eight  @34240|conventional(50,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object false  @07120|conventional(24,2) --external
+		 type: ("bool")-> type bool  @08256|bool(5,6)
+
+		object five  @39360|conventional(44,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object four  @11600|conventional(42,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object fp10_epsilon  @35520|conventional(79,2) --external
+		 type: ("fp10")-> type fp10  @55344|float(151,6)
+
+		object fp10_infinity  @38080|conventional(83,2) --external
+		 type: ("fp10")-> type fp10  @55344|float(151,6)
+
+		object fp10_max  @37120|conventional(75,2) --external
+		 type: ("fp10")-> type fp10  @55344|float(151,6)
+
+		object fp10_min  @37440|conventional(77,2) --external
+		 type: ("fp10")-> type fp10  @55344|float(151,6)
+
+		object fp10_nan  @35200|conventional(81,2) --external
+		 type: ("fp10")-> type fp10  @55344|float(151,6)
+
+		object fp2_epsilon  @34880|conventional(65,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+
+		object fp2_infinity  @38720|conventional(69,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+
+		object fp2_max  @36480|conventional(61,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+
+		object fp2_min  @34560|conventional(63,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+
+		object fp2_nan  @36800|conventional(67,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+
+		object int_max  @10640|conventional(32,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object int_min  @07440|conventional(30,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object neg_one  @36160|conventional(56,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object nine  @37760|conventional(52,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object no_addr  @10000|conventional(14,2) --external
+		 type: ("addr")-> type addr  @39232|addr(4,6)
+
+		object no_handle  @10320|conventional(16,2) --external
+		 type: ("handle")-> type handle  @55728|handle(5,6)
+
+		object one  @08720|conventional(36,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object seven  @38400|conventional(48,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object six  @33600|conventional(46,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object ten  @39680|conventional(54,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object three  @09040|conventional(40,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object true  @06480|conventional(22,2) --external
+		 type: ("bool")-> type bool  @08256|bool(5,6)
+
+		object two  @10960|conventional(38,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+
+		object zero  @08080|conventional(34,2) --external
+		 type: ("int")-> type int  @54576|int(6,6)
+	}
+
+}
+

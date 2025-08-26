@@ -1,0 +1,87 @@
+
+page vector in AlphaByNod
+
+
+type vector<t><#n> from direct_access<<t>>
+{{
+	algebraic vector.
+	
+	numeric type <t> = int,	fp2, fp10, cplx
+
+	<#n> dimension (number of coordinates)
+}}
+{
+	nom type same_type = vector<<t>><<#n>>;
+
+	nom type sq_matrix = sq_matrix<<t>><<#n>>;  -- same dimensions as this vector
+
+	nom type lt_matrix<#r> = matrix<<t>><<#r>><<#n>>; -- same width as this vector, #r rows
+
+	nom type lt_vector<#r> = vector<<t>><<#r>>; -- result of ltf
+
+
+	general method
+	{
+		begin;											-- zero vector
+
+		begin ( same_type other );						-- copy
+
+		begin<xt><#xn> ( vector<<xt>><<#xn>> other );	-- conversion 
+
+		begin ( <t> x, <t> y, <t> z [opt], <t> w [opt] )()( extra );	-- synthesis
+
+		begin<xt><c> ( serial_access<<xt>><<c>> source );	-- fill
+
+
+		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
+
+		store ( mediator m [upd], expr fex )()( extra );	-- mediation
+
+	
+		is_equal? ( same_type v )( bool );
+
+		is_zero? ()( bool );
+
+
+		set_coord [upd]( int i, <t> n );
+
+		get_coord [eval]( int i )( <t> n );
+
+		use_coord [eval]( int i ) = <t> proxy [eval,init];
+
+		get_coords [eval]()( array<<t>><<#n>> );			
+
+
+		add [upd]( same_type v );					-- add: io.xi <= io.xi + v.xi 
+		add [eval]( same_type v )( same_type v2 );		
+
+		sub [upd]( same_type v );					-- subtract: io.xi <= io.xi - v.xi 
+		sub [eval]( same_type v )( same_type v2 );
+
+		mul [upd]( <t> n );							-- multiply: io.xi <= io.xi * n 
+		mul [eval]( <t> n )( same_type v );
+
+		div [upd]( <t> n );							-- divide: io.xi <= io.xi / n 
+		div [eval]( <t> n )( same_type v ); 
+
+		neg [upd];									-- negate: io.xi <= -io.xi 
+		neg [eval]()( same_type v );
+
+		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n <= sum(io.xi * v.xi) ( default v = io )
+
+		ltf [upd]( sq_matrix );						-- linear transform #n -> #n
+		ltf [eval]( sq_matrix )( same_type );	
+
+		ltf<#r> [eval]( lt_matrix<<#r>> )( lt_vector<<#r>> );	-- linear transform #n -> #r
+	}
+
+
+	abstract method in direct_access<<t>>
+	{
+		[final]	~count ()( int );	
+
+		[final] ~use@ ( int i ) = <t> proxy; 
+	}
+
+}
+

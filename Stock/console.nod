@@ -1,0 +1,176 @@
+
+page console in StockByNod
+
+
+type console 
+{{
+	A console is an interactive peripheral that displays 
+	ouput strings and accepts input strings from a user. 
+
+	Unicode character encoding is device specific. Call
+	:get_encoding to get encoding specs for output strings.
+
+	Note: In general, console encoding is different	from
+	platform encoding. However, system consoles always use
+	platform encoding.
+}}
+{
+	general method
+	{
+		begin  -- system console
+		{
+			kernel\console_identify( no_addr, *handle hcon:begin );
+			if ( "hcon |=| no_handle" ) quit with fault:begin( 'platform', 'no system console' );
+			io:configure( hcon )( string err );
+			if ( "is_not_null?( err )" ) quit with fault:begin( 'platform', 'system console broken' );
+		}
+
+		begin ( string name )( string error )  -- named console
+		{
+			alpha_to_cstr( name )( addr pname ); 
+			kernel\console_identify( pname, *handle hcon:begin );
+			kernel\heap_free( *pname );
+
+			if ( "hcon |=| no_handle" )
+			{
+				text_mediator:begin( 'unknown console: ' ):write( name ):detach()( error );
+				io.ready:begin( false );
+			}
+			else
+				io:configure( hcon )( error );
+		}
+
+		get_encoding ()( utf f, endian e )
+		{
+			f:begin( io.utf );
+			e:begin( io.endian );
+		}
+		
+			
+		read [upd]( text_mediator tm [upd], int q )( string error ) -- q chars into mediator @wp
+		{
+			if ( io.ready )
+				io.channel:read( *tm, q )( error )
+			else
+				error:begin( not_ready );
+		}
+
+		read [upd]( int q )( string input, string error ) -- q chars into string
+		{
+			if ( io.ready )
+			{
+				text_mediator tm:begin( io.utf, io.endian );
+				io.channel:read( *tm, q )( error );
+				if ( "is_null?( error )" ) tm:read()( input ); -- all
+			}
+			else
+				error:begin( not_ready );
+		}
+
+		
+		read [upd]( text_mediator tm [upd], unicode c [opt] )( string error ) -- delimited by c (eol) into mediator @wp
+		{
+			fix( c, io.eol ) is ~c;
+			if ( io.ready )
+				io.channel:read( *tm, ~c )( error )
+			else
+				error:begin( not_ready );
+		}
+
+		
+		read [upd]( unicode c [opt] )( string input, string error ) -- delimited by c (eol) into string
+		{
+			fix( c, io.eol ) is ~c;
+			if ( io.ready )
+			{
+				text_mediator tm:begin( io.utf, io.endian );
+				io.channel:read( *tm, ~c )( error );
+				if ( "is_null?( error )" ) tm:read()( input ); -- all
+			}
+			else
+				error:begin( not_ready );
+		}
+			
+
+		write [upd]( string )( string error )  -- string
+		{
+			text_mediator tm:begin( given\string );
+			io:write( *tm )( error );
+		}
+
+		write [upd]( expr )( string error )  -- expr
+		{
+			text_mediator tm:begin( given\expr );
+			io:write( *tm )( error );
+		}
+
+		write [upd]( text_mediator tm [upd] )( string error ) -- from mediator @rp
+		{
+			if ( io.ready )
+				io.channel:write( *tm )( error )
+			else
+				error:begin( not_ready );
+		}
+
+
+	}
+
+
+	misc method
+	{
+		configure [upd]( handle hcon )( string err )
+		{
+			kernel\console_open_channel( hcon, *handle hch:begin, *addr pnote:begin );
+			
+			if ( "hch |not=| no_handle" )
+			{
+				io.channel:begin( hch ); 
+
+				kernel\console_get_protocol( hcon, *int unit:begin, *word16 bom:begin, *int eol:begin );
+
+				io.eol:begin( eol );
+
+				select ( unit )
+				{
+					value ( '1' ) io.utf:begin ( 'UTF-8' );
+					value ( '2' ) io.utf:begin ( 'UTF-16' );
+					value ( '4' ) io.utf:begin ( 'UTF-32' );
+					else quit with fault:begin( 'bug', 'unexpected code unit value' );
+				}
+
+				if ( "bom |=| unicode_bom_FEFF" ) io.endian:begin ( 'big-endian' )
+				else if ( "bom |=| unicode_bom_FFFE" ) io.endian:begin ( 'little-endian' )
+				else if ( "not( is_zero?( bom ) )" ) quit with fault:begin( 'bug', 'invalid byte order mark' );
+
+				io.ready:begin( true );
+			}
+			else 
+			{
+				io.ready:begin( false );
+
+				text_mediator tm:begin( 'could not open console channel [' );
+				if ( "pnote |not=| no_addr" ) tm:write( cstr_to_alpha( pnote )( =string ) );  -- zero terminated
+				tm:write( ']' ):detach()( err );
+			}
+
+			kernel\heap_free( *pnote );
+		}
+	}
+
+
+	common string not_ready:begin( 'not ready' ) [const];
+
+	instance
+	{
+		bool					ready; 
+
+		read_write_text_channel channel	[opt];
+		utf								[opt];
+		endian							[opt];
+		unicode					eol		[opt];
+	}
+
+}
+
+
+

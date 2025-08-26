@@ -1,0 +1,40 @@
+page object
+{
+	type object  @06960|object(4,6) --external
+	 viable = yes
+	{
+		method as<t>  @17472|object(53,3) --external
+		 viable = no
+
+		method as_actual<t>  @19136|object(55,3) --external
+		 viable = no
+
+		method as_base<t>  @13728|object(57,3) --external
+		 viable = no
+
+		method get_addr  @23712|object(45,3) --external
+		 viable = yes
+
+		method get_typeid  @24960|object(43,3) --external
+		 viable = yes
+
+		method is<t>?  @12480|object(48,3) --external
+		 viable = no
+
+		method is_actual<t>?  @13312|object(50,3) --external
+		 viable = no
+
+		method is_not_null?  @18304|object(38,3) --external
+		 viable = yes
+
+		method is_null?  @19968|object(36,3) --external
+		 viable = yes
+
+		method recycle  @22464|object(60,3) --external
+		 viable = yes
+
+		method use_typeid  @14976|object(41,3) --external
+		 viable = yes
+	}
+}
+

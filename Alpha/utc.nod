@@ -1,0 +1,165 @@
+
+page utc in AlphaByNod
+
+
+type utc_offset 
+{{
+	A utc_offset is a two-part int used to specify a utc
+	point relative to some origin.
+
+	offset pairs are either (year,days) or (days,ticks).
+}}
+{
+	general
+	{
+		begin ( int first, int second );
+
+		use_first = int proxy [eval,init];
+
+		get_first ()( int );
+
+		use_second = int proxy [eval,init];
+
+		get_second ()( int );
+	}
+}
+
+
+common utc_offset utc_origin [const];	 -- (years,days) in Gregorian calendar
+
+
+type utc  -- conventional
+{{
+	A utc is a point in UTC (coordinated universal time)
+	(real) time.
+
+	utc values enumerate discrete points (ticks) along 
+	a utc time line.  They have cardinality and ordinality. 
+	The time line origin coincides with day zero in the 
+	Gregorian calendar, and clock time zero (midnight) for
+	a clock located on the prime meridian (Greenwich).
+
+	Ticks are measured in millisecs relative to a defined
+	origin on the utc time line named utc_origin.  The utc
+	origin is an integer pair (y,d) where y is a number of 
+	years and d is a number of days counted from the abs-
+	olute Gregorian origin. Thus, utc value 0 identifies 
+	a point in UTC time that coincides with utc_origin, 
+	which may be offset from the Gregorian origin.
+		
+	A utc tick value is synchronized to a platform system
+	clock that is in turn synchronized (in principal) to
+	real UTC. 
+	
+	A real time value is captured when a utc object is 
+	initialized.  It can be resynchronized by calling 
+	:update.
+
+	Although utc ticks are measured in millisecs, they may
+	not in fact be precise to the millisec. Indeed, repeat
+	calls to :update may not yield distinct tick values.
+
+	Accuracy of a tick is only as good as the underlying 
+	platform clock and Nod applications can only assume 
+	that accuracy is "Nod enough" to distinguish real
+	times for practical purposes, i.e. times that can be 
+	distinguished by humans (conciously or subconciously).
+	
+	Other specialized high-precision clocks may be avail-
+	able in the kernel, or the application can write 
+	compatible subroutines.
+
+	Given utc_origin, a utc, and a time zone, an equivalent
+	calendar date and clock time can be derived for that
+	utc in that time zone.
+		
+	Note: This functionality is not Alpha. See stock
+	conversion subroutines.
+		
+	To support derivation of calendar dates and clock times,
+	:analyze converts a utc value to an int pair (d,t) where
+	d is a count of days from utc_origin and t is a count of
+	millisecs in the day, where 0 < t < 86,401,000.  
+
+	d and t incorporate leap days and known leap seconds.
+	Any value t >= 86,400,000 is within a leap second on
+	day d. 
+		
+	Leap seconds are not regular and any leap second intro-
+	duced after release of a Nod implementation may or
+	may	not be known, depending on the execution platform.
+		
+	Since int precision on every Nod implementation is	at
+	least 32 bits, there is enough range in the number of
+	days to allow about 5.883 million years of real time 
+	utc values.  This range also ensures that a single 
+	utc_origin will suffice for all practical time. 
+		
+	Note: Clearly, internal utc values must have 64	bits
+	of total precision.
+
+	Unlike calendar dates and clock times, a utc object 
+	can be used in calculations.
+		
+	The arithmetic difference between two utc's is an 
+	etm (elapsed time) and adding an etm to a utc yields
+	a new utc.  See alpha\etm for more info.
+		
+	Note that the elapsed time between two ticks that
+	have the exact same clock time on two consecutive
+	days is usually, but not necessarily, 24 hours. If
+	there is a leap second in the interval, the elapsed
+	time will be 24 hours and one second. 
+		
+	Likewise, if a 24 hour elapsed time is added to a tick
+	that falls on a day with a leap second, the resulting
+	tick will have a clock time that is one second earlier
+	the next day.
+
+	Similar reasoning applies to dates in consecutive years
+	that have an intervening leap day.
+
+	Many applications can ignore this technicality in 
+	practice, but it's an important technical consideration.
+
+	A utc object is portable. See Alpha type reference for
+	supported formats.
+
+	Note: value expressions and format expressions may have
+	some rudimentary support for calendar date and clock
+	time (tbd), but full-feature date and time will be pro-
+	vided by stock types.
+}}
+{
+
+	general
+	{
+		begin ( expr vex [opt] );	-- default = "now"
+
+		begin ( utc_offset );	-- (days,ticks) from utc_origin
+
+		begin ( utc other );		-- copy
+
+		begin ( mediator [upd], expr fex );	
+
+		store ( mediator [upd], expr fex );
+
+
+		is_equal? ( utc t )( bool );
+
+		is_before? ( utc t )( bool );
+
+		is_less? ( utc t )( bool );	
+
+	
+		update [upd];		-- "now"
+
+		analyze ()( utc_offset );	-- (days,ticks) from utc origin
+
+		add [upd]( etm t );
+		add [eval]( etm t )( utc );
+
+		sub ( utc t )( etm d );		-- d <= v - t
+	}
+}
+

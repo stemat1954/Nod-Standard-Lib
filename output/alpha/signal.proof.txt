@@ -1,0 +1,14 @@
+page signal
+{
+	type signal  @09648|signal(5,6) --external
+	 from ("indicator")-> type indicator  @54192|indicator(5,6)
+	 viable = yes
+	{
+		method begin  @25376|signal(31,3) --external
+		 viable = yes
+
+		method indicate  @25792|signal(33,3) --external
+		 viable = yes
+	}
+}
+

@@ -1,0 +1,193 @@
+
+page channel in KernelByNod [compatible]
+
+subroutine
+{{
+	This subroutine group provides a queueing facility for
+	asynchronous channel i/o.
+
+	See channel i/o group on this page for async routines.
+
+	Given:
+
+		hs			- signal handle
+		hq			- queue handle
+		preq		- request record pointer
+
+	See alpha\signal for info on signals.
+
+	Channel queues are required for asynchronous input and
+	output. To initiate asynchronous i/o, an application
+	formats an i/o request record and gives it to the read 
+	or write subroutine.  When the i/o completes, the 
+	request record is queued and the queue signal is raised. 
+
+	channel_queue_read reads a channel queue.  If the queue
+	is empty, output preq equals no_addr on return.
+}}
+{
+	channel_queue_create ( handle hs, handle hq [upd] );
+
+	channel_queue_delete ( handle hq );
+
+	channel_queue_read ( handle hq, addr preq [upd] );
+}
+
+
+
+subroutine
+{{
+	This subroutine group provides a common, low-level 
+	channel i/o facility.
+	
+	Given:
+
+		hch			- channel handle
+		hq			- queue handle
+		preq		- request record pointer (addr)
+		wait		- synchronous wait in msecs
+
+	There are various kinds of channels available to an
+	application.  Support for specific channels is platform 
+	dependent, but generally most platforms support named
+	channels to communicate with the file system.  Other
+	unnamed channels, e.g. network channels, are usually
+	supported too.  Since channel support is varied and
+	extensible, subroutines that create and control specific
+	kinds of channels are found on other channel-specific
+	pages.  
+	
+	Channel i/o is either synchronous or asynchronus.
+	To initiate either kind of i/o, the application formats
+	an i/o request and submits it using a specific sync or 
+	async subroutine.
+
+	channel_sync_io returns when the request has been 
+	processed.  Calls are serialized against the underlying
+	device and the thread may suspend until the device is
+	available. A wait time in msecs can be specified to
+	limit the wait, but it may be ignored. 
+
+	Note: If wait equals max_int, channel_sync_io doesn't
+	return until the requst is complete.
+
+	channel_async_io returns after the request has been 
+	placed in an internal device queue.  Access to the 
+	queue is serialized.  A return queue handle must be	
+	specified. The return queue contains request addrs
+	in order of completion.
+
+	Asynchronous transfers are ultimately performed by an
+	underlying synchronous transfer which runs concurrently
+	with any synchronous transfers initiated by the app.
+
+	During async transfer, addrs and handles must remain 
+	valid.  An application should not release resources 
+	until all requests are complete.  In particular, an 
+	application should not free memory or close handles
+	during a disruption unless it can determine there is 
+	no pending i/o.  
+	
+	channel_close deactivates a channel and cancels any
+	pending i/o.  Cancelled async requests are queued 
+	as usual, but they complete with a report of 'c'.  
+}}
+
+{{
+	i/o request record coresponds to an aligned C struct
+	on the target platform:
+
+	struct
+	{
+		unsigned char	action;		// ascii 'r', 'w'
+		void*			pdata;		// data base addr
+		PRAGMA_INT		offset;		// data offset from base
+		PRAGMA_INT		size;		// xfer size
+		PRAGMA_INT		id;			// async id
+		PRAGMA_INT		seek;		// device offset  
+
+		PRAGMA_INT		deficit;	// 0 ... size
+		unsigned char	report;		// ascii 'NUL', 'p', 'b', 't', 'c', 'x'
+		void*			pnote;		// device generated text
+	}
+
+	action, pdata, offset, size, id, and seek are app-side 
+	values. They aren't modified.
+	
+	deficit, report, and pnote are device-side values set
+	by the device.
+
+	action
+	'r' = read
+	'w' = write
+
+	report
+	'^000' = none (good)
+	'p' = pending
+	'b' = busy (time expired)
+	'r' = retry
+	'e' = end
+	'c' = closed
+	'x' = error
+	
+	'^000' (zero) means all data was transferred as 
+	requested; deficit = 0.
+
+	'p' is for async requests and means the request	was 
+	queued; deficit = size.
+
+	'b' is for sync requests and means the channel is busy;
+	deficit > 0.  
+
+	'r' means retry; deficit > 0.  The requested amount
+	was not transferred, but retry is possible.
+		
+	'e' means end:  a fixed limit was reached and retry is
+	not possible; deficit > 0.
+	
+	'c' means closed; deficit = size.
+	
+	'x' means error; deficit > 0.
+	
+	
+	A device can return a diagnostic text message in a
+	buffer addressed by pnote. If pnote is not equal to 
+	no_addr after i/o has completed, it must be released 
+	by the application to avoid a "memory leak."
+
+	Note: this is usually done by attaching the note
+	buffer to a text object which eventually releases
+	the buffer when it goes out of scope.
+	
+	Information is device-dependent but the note must be
+	ZERO-TERMINATED AND FORMATTED USING PLATFORM DEFAULT
+	ENCODING.
+	
+	Device notes are typically used to convey diagnostic
+	info when the report is 'x', but it can be allocated
+	for any report.
+
+	Here is the corresponding format:
+
+	{
+		word8	( 'b' );
+		addr	( 'b' );
+		int		( 'b' );
+		int		( 'b' );
+		int		( 'b' );
+		int		( 'b' );
+		int		( 'b' );
+		word8	( 'b' );
+		addr	( 'b' );
+	}
+
+}}
+{
+	channel_sync_io ( handle hch, addr preq, int wait );
+
+	channel_async_io ( handle hch, addr preq, handle hq );
+
+	channel_close ( handle hch );
+}
+
+

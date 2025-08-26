@@ -1,0 +1,114 @@
+
+page etm in AlphaByNod
+
+
+type etm  -- conventional
+{{
+	An etm measures elapsed time.
+
+	An etm measures the time difference between two
+	hypothetical points on an abstract msec time line. 
+	Etms are signed, so they can be used to offset a
+	reference point in two directions.
+
+	Note:  etms are used to express realtime synchro-
+	nization offsets such as timer periods and wait time-
+	outs.  They're also used to express the difference 
+	between two realtime clock ticks (e.g utc). 
+
+	Logically, an etm is a signed integer that has an
+	implicit unit of measure (millisec).  There are two
+	reasons for making etm a type distinct from int:
+		
+	(1) The magnitude of the difference between two time
+	ticks may overflow type int on some platforms. This
+	makes etm essential.
+
+	(2) A known time unit allows for built-in conversion
+	across various other time units. This makes etm 
+	convenient.
+
+	Note:  Time ticks are assumed to have 63 bits of un-
+	signed precision.  Etms have 64 bits of signed 
+	precision.  All Nod implementations support no less
+	than 32 bits of int precision, but some may support
+	no more than 32 bits.
+
+	Formality notwithstanding, many if not most real etms 
+	can be represented by an int.  :as_int returns access to
+	int etm if it exists.  Otherwise the result is void.
+
+	Note: Compatible subroutines require integer time-outs,
+	so this is one application of :as_int. As a practical
+	matter, :as_int is platform dependent.
+
+	Basic integer arithmetic methods are provided as are
+	common numeric comparison methods.
+
+	An etm can be initialized by specifying a combination 
+	of terms with different units.  Individual  terms are
+	converted to msecs and summed to get a net result in
+	msecs.  
+		
+	Note: Terms are signed and conversion factors are 
+	"regular". Applications are responsible for any "leap" 
+	accounting that may be required.
+
+	Note:  Terms can be specified for msecs, secs, mins,
+	hours, and days. All are [opt] except msecs.  Giving
+	null or zero has an equivalent effect.
+
+	An etm is portable. See documentation for supported
+	formats.
+		
+	See documentation for literal value expressions.
+}}
+{
+	general 		
+	{
+		begin ( expr vex );	 -- literal
+
+		begin ( int ms, int s [opt], int m [opt], int h [opt], int d [opt] );	-- synthetic
+
+		begin ( etm other );	-- copy
+
+		begin ( mediator [upd], expr fex );			
+		store ( mediator [upd], expr fex );	
+
+		is_equal? ( etm other )( bool );
+
+		is_before? ( etm other )( bool );
+		
+		is_less? ( etm other )( bool );
+	
+		as_int = int proxy [eval];	-- may be void
+
+		set [upd]( etm other );	 -- immediate replace
+
+		add [upd]( etm other );
+		add	[eval]( etm other )( etm );	
+
+		sub [upd]( etm other );
+		sub	[eval]( etm other )( etm );
+
+		mul [upd]( int n );
+		mul	[eval]( int n )( etm );		
+
+		div [upd]( int n );						
+		div	[eval]( int n )( etm );	
+
+		rdiv [upd]( int n )( etm r );		-- remainder out
+		rdiv [eval]( int n )( etm t, etm r );	
+
+		mod [upd]( int n );
+		mod	[eval]( int n )( etm );	
+
+		neg [upd];
+		neg	[eval]()( etm );
+
+		abs [upd];
+		abs	[eval]()( etm );	
+	}
+
+}
+

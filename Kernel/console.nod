@@ -1,0 +1,70 @@
+
+page console in KernelByNod [compatible]
+
+subroutine  
+{{
+	This subroutine group provides low-level access to
+	platform consoles.  A console is an interactive text 
+	peripheral.
+
+	A console has a logical (possibly virtual) display
+	and keyboard by which an app can communicate with an
+	interactive user.  
+
+	Supported character sets and text encoding are device
+	dependent. 
+
+	Consoles are identified by name, but every platform
+	has at least one unnamed system console.
+	
+	The system console supports a subset of standard ascii
+	comprised of printable characters and CR (13, aka eol). 
+	Handling of other ascii characters can vary. Character 
+	encoding is determined by the platform's default unicode
+	settings.
+
+	Note: to open a system console, specify pname = no_addr.
+	
+ 	Some platforms may support non-system consoles with	
+	non-ascii characters sets. Of course, applications that
+	utilize non-system consoles are platform dependent.
+	See Pragma Platform Reference for details.  
+
+	Consoles transfer data using a text-oreiented protocol. 
+	Call console_get_protocol() to get specs.
+
+	Channel read and write requests are sized in code units.
+	That is, request size in bytes must be a multiple of the
+	code unit size.
+
+	Characters are displayed on a single line until an eol
+	char is written.  Display direction (left-to-right or 
+	right-to-left), and max chars per line, is console 
+	dependent.  
+	
+	The system console displays left-to-right and wraps
+	long lines.
+
+
+	text protocol:
+		
+		unit = (1,2,4)
+		     = (utf-8, utf-16, utf-32)
+
+		bom = ( 'x:0000','x:FEFF','x:FFFE' ) 
+		    = ( na (unit = 1), big endian, little endian)
+
+		eol = code point value
+
+	
+}}
+{
+	console_identify ( addr pname, handle hcon [upd] );
+
+	console_open_channel ( handle hcon, handle hch [upd], addr pnote [upd] );
+	
+	console_get_protocol ( handle hcon, int unit [upd], word<'16'> bom [upd], int eol [upd] );
+}
+
+
+

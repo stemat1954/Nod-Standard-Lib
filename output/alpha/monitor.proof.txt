@@ -1,0 +1,22 @@
+page monitor
+{
+	type monitor  @07728|monitor(3,6) --external
+	 viable = yes
+	{
+		method add  @38352|monitor(32,3) --external
+		 viable = yes
+
+		method begin  @37936|monitor(30,3) --external
+		 viable = yes
+
+		method delete  @32944|monitor(34,3) --external
+		 viable = yes
+
+		method move  @14560|monitor(36,3) --external
+		 viable = yes
+
+		method wait  @27872|monitor(38,3) --external
+		 viable = yes
+	}
+}
+

@@ -1,0 +1,145 @@
+page word
+{
+	type word<#>  @11568|word(5,6) --external
+	 viable = no
+	{
+		method adc  @43904|word(115,3) --external
+		 viable = yes
+
+		method adc  @40160|word(116,3) --external
+		 viable = yes
+
+		method add  @44736|word(112,3) --external
+		 viable = yes
+
+		method add  @42240|word(113,3) --external
+		 viable = yes
+
+		method and  @36000|word(91,3) --external
+		 viable = yes
+
+		method and  @36416|word(92,3) --external
+		 viable = yes
+
+		method asr  @57552|word(127,3) --external
+		 viable = yes
+
+		method asr  @03664|word(128,3) --external
+		 viable = yes
+
+		method begin  @14784|word(65,3) --external
+		 viable = yes
+
+		method begin  @31840|word(69,3) --external
+		 viable = yes
+
+		method begin  @32256|word(71,3) --external
+		 viable = yes
+
+		method begin  @32672|word(73,3) --external
+		 viable = yes
+
+		method begin  @34336|word(76,3) --external
+		 viable = yes
+
+		method begin<#n>  @31424|word(67,3) --external
+		 viable = no
+
+		method is_before?  @33920|word(83,3) --external
+		 viable = yes
+
+		method is_equal?  @33504|word(81,3) --external
+		 viable = yes
+
+		method is_less?  @34752|word(85,3) --external
+		 viable = yes
+
+		method is_zero?  @35168|word(87,3) --external
+		 viable = yes
+
+		method lsl  @40576|word(121,3) --external
+		 viable = yes
+
+		method lsl  @40992|word(122,3) --external
+		 viable = yes
+
+		method lsr  @42656|word(124,3) --external
+		 viable = yes
+
+		method lsr  @41408|word(125,3) --external
+		 viable = yes
+
+		method nand  @39328|word(103,3) --external
+		 viable = yes
+
+		method nand  @39744|word(104,3) --external
+		 viable = yes
+
+		method neg  @45152|word(118,3) --external
+		 viable = yes
+
+		method neg  @45568|word(119,3) --external
+		 viable = yes
+
+		method nor  @43072|word(106,3) --external
+		 viable = yes
+
+		method nor  @43488|word(107,3) --external
+		 viable = yes
+
+		method not  @37664|word(100,3) --external
+		 viable = yes
+
+		method not  @38912|word(101,3) --external
+		 viable = yes
+
+		method or  @38496|word(94,3) --external
+		 viable = yes
+
+		method or  @36832|word(95,3) --external
+		 viable = yes
+
+		method rcl  @55056|word(136,3) --external
+		 viable = yes
+
+		method rcl  @58800|word(137,3) --external
+		 viable = yes
+
+		method rcr  @55472|word(139,3) --external
+		 viable = yes
+
+		method rcr  @61296|word(140,3) --external
+		 viable = yes
+
+		method rol  @59632|word(130,3) --external
+		 viable = yes
+
+		method rol  @64624|word(131,3) --external
+		 viable = yes
+
+		method ror  @53808|word(133,3) --external
+		 viable = yes
+
+		method ror  @54640|word(134,3) --external
+		 viable = yes
+
+		method set  @35584|word(89,3) --external
+		 viable = yes
+
+		method store  @33088|word(78,3) --external
+		 viable = yes
+
+		method xnor  @44320|word(109,3) --external
+		 viable = yes
+
+		method xnor  @41824|word(110,3) --external
+		 viable = yes
+
+		method xor  @37248|word(97,3) --external
+		 viable = yes
+
+		method xor  @38080|word(98,3) --external
+		 viable = yes
+	}
+}
+

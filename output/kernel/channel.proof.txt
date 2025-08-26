@@ -1,0 +1,21 @@
+page channel
+{
+	subroutine channel_async_io  @31888|channel(188,2) --external
+	 viable = yes
+
+	subroutine channel_close  @33488|channel(190,2) --external
+	 viable = yes
+
+	subroutine channel_queue_create  @37488|channel(29,2) --external
+	 viable = yes
+
+	subroutine channel_queue_delete  @36288|channel(31,2) --external
+	 viable = yes
+
+	subroutine channel_queue_read  @31488|channel(33,2) --external
+	 viable = yes
+
+	subroutine channel_sync_io  @37088|channel(186,2) --external
+	 viable = yes
+}
+

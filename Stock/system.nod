@@ -1,0 +1,30 @@
+
+page system in StockByNod
+
+--  SAMPLE IMPLEMENTATION (suitable for HelloWorld)
+
+
+type system
+{
+	general method
+	{
+		begin 
+		{
+			io.console:begin;  -- system console
+		}
+
+		use_console = console proxy [eval,upd] ~c
+		{
+			~c -> io.console;
+		}
+	}
+
+	instance
+	{
+		console;
+	}
+}
+
+
+common system sys:begin;	
+

@@ -1,0 +1,33 @@
+
+page analog in AlphaByNod
+
+
+type analog  -- intrinsic,restricted
+{{
+	An analog is an objectified proxy.
+
+	An analog can only be created by the compiler using
+	an analog expression (proxy ref enclosed in square 
+	brackets). 
+	
+	Proxy analogs are always transient and anonymous. An
+	analog captures the proxy's state at the point of 
+	creation and it may change.
+
+	There are no :begin methods.  The HGM initializes an
+	analog when it's created.
+}}
+{
+	general
+	{
+		is_void? ()( bool );
+
+		is_not_void? ()( bool );
+
+		is_stale? ()( bool );
+
+		is_not_stale? ()( bool );
+
+		is_valid? ()( bool );	-- is_not_void |and| is_not_stale
+	}
+}

@@ -1,0 +1,407 @@
+
+page mediator in AlphaByNod
+
+
+enum type endian ( 'little-endian', 'big-endian' );		
+
+enum type utf ( 'UTF-8', 'UTF-16', 'UTF-32' );
+
+
+common  
+{
+	endian	platform_endian [const];  
+	utf		platform_utf [const];
+
+	endian	default_endian; 
+	utf		default_utf;
+}
+
+
+
+type mediator 
+{{
+	A mediator facilitates transfer of object data from 
+	object to external memory and back. 
+	
+	A mediator encapsulates a heap memory addr and provides
+	methods for formatting and parsing arbitrary external
+	data.  
+	
+	Many Alpha types support precise external data formats.
+	Types that support external formats are "portable."
+	
+	:fread and :fwrite are generic methods that call related
+	object methods to coordinate transfer of the object's 
+	value. :fread copies and transforms data from external 
+	memory to object, while :fwrite copies and transforms 
+	data from object to external memory. 
+
+	Reading an object's value is tantamount to object init-
+	ialization, so :fread calls object :begin to coordinate 
+	the transfer.  Thus, the object must have [init] access 
+	permission.
+	
+	:fwrite simply calls corresponding object :store which
+	only needs [eval] access permission.
+	
+	Portable types have a conventional interface:
+
+	general method
+	{
+		begin ( mediator [upd], expr fex );
+		begin ( mediator [upd], expr fex )()( extra );
+
+		store ( mediator [upd], expr fex );
+		store ( mediator [upd], expr fex )()( extra );
+	}
+
+	A portable type needs at least one conventional :begin
+	method and one conventional :store method.
+
+	"fex" is a type dependent format expression interpreted
+	by the method. Supported formats and the exprs that 
+	describe them are documented in the Alpha Type Reference.
+
+	Note:  A particular type may support numerous external
+	formats and versions of those formats.	Format exprs
+	may simply enumerate the literal possibilities or they
+	may have syntactic forms that require interpretation.
+
+	Application types can define methods that follow the 
+	same portable interface convention.  In principle, any
+	application object can be formatted as some sequence of
+	individually rendered sub-objects that are ultimately
+	rendered by Alpha types. 
+		
+	Applications can write their own methods but in most 
+	cases it's easier to simply define a format as part of
+	the type definition and let the compiler write both 
+	methods automatically. 
+	
+	If an application chooses to write custom methods, 
+	it can usually do so by simply reading and writing sub-
+	objects in a straight forward serial access fashion. 
+	However, more advanced applications may need to format
+	data in a random access fashion, which requires knowing
+	the precise size of formatted data, moving the position 
+	cursors, keeping track of unformatted regions, and 
+	generally managing the overall size of external memory.
+		
+	Note: An application can format virtually any well-
+	defined data image using provided methods.  However, 
+	using the advanced methods requires a thorough under-
+	standing of usage to avoid creating a corrupt and
+	totally useless product.  So, programmer beware!
+
+	A mediator has two modal formatting options that 
+	supplement individual format specs:  endianess and
+	UTF (Unicode Transformational Format). Modal format
+	options are specified when a mediator is initialized.
+
+	Note:  Default modal format is controlled by two common
+	settings. Initial defaults are set at startup to plat-
+	form dependent values (common constants), but they can
+	be reset by the application at any time by direct 
+	assignment.
+		
+	Endianess controls byte order.  For example, if an int
+	fex specifies an 8 byte, twos-complement binary value,
+	and a mediator is initialized with 'little-endian', 
+	8 bytes are serially written least-significant to most-
+	significant in memory.  Conversly,  if the mediator is 
+	initialized with 'big-endian', 8 bytes are serially 
+	written most-significant to least-significant in memory.
+
+	UTF encoding controls text encoding.  If an object
+	value is formatted using any unicode text format, UTF 
+	encoding controls how characters (code point values) 
+	are stored. UTF encoding does not apply to binary for-
+	mats. If 'UTF-16' or 'UTF-32' is used, endianess con-
+	trols byte order. 
+		
+	Note: External memory can contain an arbitrary mix of 
+	object data stored using binary and text formats. 
+	
+	An output mediator automatically allocates heap memory
+	as data is transferred to the mediator. Output data is 
+	naturally intended for external consumption, so at some 
+	point the memory must be detached from the mediator and
+	given to some compatible subroutine (e.g.kernel sub-
+	routine) for final disposition.  
+	
+	Detaching memory creates a detached mediator and an 
+	orphan heap pointer that must be reattached to some 
+	mediator or released by some other procedure. Basically,
+	the mediator disowns the detached memory. Detaching 
+	memory does not affect the mediator's internal read/
+	write position cursors.
+
+	External heap memory can be attached (or reattached) to 
+	a detached mediator.  The memory usually originates from 
+	another mediator or from a compatible subroutine. The 
+	memory block may or may not contain	formatted data. Once 
+	external memory is attached to a mediator, the mediator
+	owns the memory and applications must not allow the given
+	addr to be used by any other procedure.
+	
+	When an application uses advanced methods to construct 
+	an object image, it generally needs to manipulate size 
+	and	two position cursors rp (read position or pointer) 
+	and	wp (write position or pointer).
+	
+	Size measures the logical extent of	formatted data in
+	bytes, rp defines the current (next) read position in
+	bytes, and wp defines the current (next) write position
+	in bytes.  Various methods directly set these values,
+	while object methods automatically update these values.
+
+	Note: size measures the logical extent of formatted 
+	data.  The actual block size may be greater	than the
+	logical size. 
+	
+	Initially, size, wp, and rp are zero.  When size is 
+	zero, the heap memory addr is null. 
+	
+	wp and rp are constrained such that
+	
+		0 <= (rp,wp) <= size 
+	
+	at all times. rp and wp equal to size is a limit aka
+	"end" position.
+					
+	Any attempt to read data beyond the last byte will 
+	disrupt the app.  rp can be placed automatically or 
+	specifically to the end position, but this is not a 
+	valid read position.
+	
+	Writing data automatically moves wp and automaticaly
+	increases size if wp exceeds size.  If wp is set beyond
+	the end, size is automatically increased.  Thus, it's 
+	not possible to disrupt the app by writing past	the end. 
+	However, "randomly" setting wp beyond the end creates an
+	unformatted "hole" in the exteral data, so random access 
+	applications must carefully track the location of 
+	formatted data and holes.
+
+	Methods that increase size do not change wp or rp, but
+	if size is decreased, wp and rp may be adjusted	to their
+	limit positions to keep them in range.
+	
+	Detaching memory does not change wp or rp.
+	
+	Attaching memory may adjust wp and rp to their limit
+	positions to keep them in range. If a logical size is
+	not specified when mem is attached, the heap block size
+	is used by default. If a logical size IS specified, it's
+	verified (less or equal to block size).
+
+	Note: If preformatted memory is attached without a 
+	logical size spec, the heap block size is generally more
+	than the logical size, so applications must immediately
+	locate the logical end of formatted data and set logical 
+	size.  This is a common scenario for example, when
+	primitive subroutines return null-terminated strings
+	with no size information.
+
+	:set_rp_mod and :set_wp_mod align their respective pos-
+	itions on a	specified modulo boundary, if they aren't 
+	already aligned.  rp will not be moved beyond end, but 
+	wp will be properly placed, and size will be increased 
+	as necessary.
+		
+				
+	:move shifts a q-byte block by n bytes, where n is signed: 
+
+		(1) block read q bytes from rp 
+		(2) set rp,wp = rp + n
+		(3) block write q bytes from wp
+
+	Thus, rp is at the start of the shifted block, and wp
+	is positioned on the next byte after the shifted block.
+	If the block is shifted up (positive) beyond size, 
+	size will be increased and wp will be at the end. Other-
+	wise, size is not changed. Shifting memory generally
+	leaves holes in the mediator, so the application must
+	adjust size (truncate) and/or fill holes as needed.
+	 
+	:copy copies a q-byte block from a source mediator 
+	without changing the source rp.  Thus, the given source 
+	mediator is not modified.
+	
+	(1) block read up to q bytes from source using given
+		rp or source rp
+	(2) set q2 = actual bytes read
+	(3) set it rp = it wp
+	(4) block write q2 bytes from it wp
+
+	If rp *is* specified, it overrides the source mediator 
+	rp.  If q is not specified (null), all data is copied 
+	from the source starting at the effective rp.  When the
+	method returns, (this) rp is at the start of copied 
+	data and (this) wp is at the end. Size is increased (or
+	not) as neccessary. Copying	memory may leave holes in
+	the mediator, so the	application must adjust size 
+	(truncate) and/or fill holes as necessary.
+
+
+	:enable_auto_align turns on alignment for binary formats.
+	Objects will be written and read on platform compatible
+	memory boundaries.  
+
+
+	Several methods support readable Nod formats.  A readable 
+	format is a default format that has indented and labeled 
+	sub-objects similar to JSON. 
+	
+	:inc_indent and :dec_indent adjust the indention level by 
+	one, plus and minus respectively.  :get_indent returns the
+	current indention level in an output.
+
+	Note: Indention level is used to maintain the format
+	nesting level, which in turn can be used to calculate 
+	the	indention of subobjects. Initial indent is zero.
+
+	:write_new_line writes a string of ascii control characters
+	and an ascii label using the current indention level:
+	
+	'CR' + 'LF' + ( indent * 'TAB' ) + label + 'SP' + '='
+
+	The chars in label are copied from a given expr and it's
+	delimited by 'SP' + '='. 
+
+	Note:  The label can't contain an internal '=' char. The
+	current utf is used to encode and decode chars.
+
+	:read_new_line reads the same characters using the current
+	indention level.
+
+	:write_nul writes an ascii 'NUL' character.
+
+	:read_nul reads over an ascii 'NUL' character if it's 
+	written, and assigns 'true' to an output bool.  If the
+	next char is not 'NUL', rp is not moved and the output
+	is 'false'.
+			
+
+	:write_checksum writes a 4 byte checksum at the	current 
+	wp. The sum is calculated from all bytes preceding wp.  
+
+	:read_checksum calculates a 4 byte checksum by reading
+	from the current rp to the position 4 bytes before the
+	end.  Then it reads 4 bytes as an integer checksum 
+	(assuming they were written by :write_checksum ). The
+	output bool is 'true' if the values agree, otherwise 
+	it's 'false'.  Before returning, rp is restored to it's 
+	initial position.
+
+
+	If an application intends to mediate object pointers
+	( op<t> ) then it must derive and adapt this base type
+	to implement a scheme to store and restore the pointer
+	and it's object.
+}}
+{
+
+	general 
+	{
+		begin ( endian [opt], utf [opt] ); -- original
+
+		begin ( mediator other [upd] );   -- take 
+
+		begin ( mediator other );		   -- copy
+
+
+		get_endian ()( endian );
+
+		get_utf ()( utf );
+
+
+		detach [upd]()( addr pmem, int size ); -- orphan pmem
+
+		attach [upd]( addr pmem, int size [opt] );  -- adopt pmem
+
+				
+		enable_auto_align [upd];		-- binary formats
+
+
+		set_size [upd]( int );			-- size <= given
+
+		set_size_wp [upd];				-- size <= wp
+
+		set_size_rp [upd];				-- size <= rp
+
+		get_size ()( int );				-- out <= size
+
+
+		set_rp [upd]( int n );			-- rp <= n
+
+		set_rp_last [upd];				-- rp <= size - 1
+
+		set_rp_end [upd];				-- rp <= size
+
+		set_rp_mod [upd]( int n );		-- rp <= next n-byte boundary
+
+		get_rp ()( int n );				-- n <= rp
+
+		rp_first? ()( bool );			-- rp |=| zero  
+
+		rp_last? ()( bool );			-- rp |=| (size - 1)  
+
+		rp_end? ()( bool );				-- rp |=| size 
+
+
+		set_wp [upd]( int n );			-- wp <= n
+
+		set_wp_end [upd];				-- wp <= size
+
+		set_wp_mod [upd]( int n );		-- wp <= next n-byte boundary
+
+		get_wp ()( int n );				-- n <= wp
+
+		wp_end? ()( bool );				-- wp |=| size 
+
+
+		inc_indent [upd];				-- indent <= indent + 1
+
+		dec_indent [upd];				-- indent <= indent - 1
+
+		get_indent ()( int n );			-- n <= indent
+
+
+		write_new_line [upd]( expr label );	-- ascii (CR) LF label (platform dependent)
+
+		read_new_line [upd]()( expr label ); -- ditto
+		
+		write_nul [upd];				-- ascii NUL
+
+		read_nul [upd]()( bool );		-- ditto
+
+		
+		write_checksum [upd];
+
+		read_checksum [upd]()( bool ok );
+				
+
+		fread<t> [upd]( expr fex )( <t> obj );			-- read object, one fex
+
+		fread<t> [upd]( expr fex )( <t> obj )( extra );	-- read object, extra fex
+
+			
+		fwrite<t> [upd]( <t> obj, expr fex );			-- write object, one fex
+
+		fwrite<t> [upd]( <t> obj, expr fex )()( extra ); -- write object, extra fex
+
+
+		move [upd]( int q, int n );		-- see notes
+
+		copy [upd]( mediator source, int q [opt], int rp [opt] )( int q2 );	-- see notes
+	}
+
+
+	abstract -- recap as [pwd]
+	{
+		~fread [upd]( expr fex )( op<object> )( extra );	
+
+		~fwrite [upd]( op<object>, expr fex )()( extra );	
+	}
+}

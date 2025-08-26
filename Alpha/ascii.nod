@@ -1,0 +1,150 @@
+
+page ascii in AlphaByNod
+
+
+type ascii from enumerated
+{{
+	Ascii objects represent individual characters in a
+	literal source expr.  
+
+	Ascii objects (characters) are enumerated objects
+	that conform to industry standards.  There are 256 
+	possible characters.  The first 128 ( 0 - 127 ) are 
+	consistent with ANSI standard (1967). Characters 128 -
+	255 are non-standard, i.e. extended.
+
+	Note:  See https://en.wikipedia.org/wiki/ASCII
+
+	Ascii objects are typically extracted from source exprs,
+	but source exprs are not actually comprised of ascii
+	objects.  
+	
+	Ascii objects are extracted from exprs and identified 
+	by exprs, so things can get a little circular and
+	confusing. 
+	
+	Every ascii character has a printable notation, but not 
+	every ascii character can be printed.
+	
+	For example, the expr 'cat' is comprised of 3 chars
+	that, when extracted as ascii objects, have notations
+	'c', 'a', and 't'. 
+
+	The expr 'hi^013' is comprised of 3 chars that, when
+	extracted as ascii objects, have notations 'h', 'i', 
+	and 'CR'.  Note that character 13 (carriage	return) is
+	not printable, but the notation is.
+
+	Note:  Caret sub-expressions are generally used to 
+	insert non-printable standard characters, but they can
+	also be used to insert non-standard extended characters. 
+
+
+	code vs notation
+
+	  0  'NUL' 'SOH' 'STX' 'ETX' 'EOT' 'ENQ' 'ACK' 'BEL'   
+	  8  'BS'  'TAB' 'LF'  'VT'  'FF'  'CR'  'SO'  'SI'	
+	 16  'DLE' 'DC1' 'DC2' 'DC3' 'DC4' 'NAK' 'SYN' 'ETB'	
+	 24  'CAN' 'EM'  'SUB' 'ESC' 'FS'  'GS'  'RS'  'US'	
+	 32  'SP'  '!'   '"'   '#'   '$'   '%'   '&'   '^''	
+	 40  '('   ')'   '*'   '+'   ','   '-'   '.'   '/'		
+	 48  '0'   '1'   '2'   '3'   '4'   '5'   '6'   '7'		
+	 56  '8'   '9'   ':'   ';'   '<'   '='   '>'   '?'		
+	 64  '@'   'A'   'B'   'C'   'D'   'E'   'F'   'G'		
+	 72  'H'   'I'   'J'   'K'   'L'   'M'   'N'   'O'		
+	 80  'P'   'Q'   'R'   'S'   'T'   'U'   'V'   'W'		
+	 88  'X'   'Y'   'Z'   '['   '\'   ']'   '^^'  '_'		
+	 96  '!'   'a'   'b'   'c'   'd'   'e'   'f'   'g'		
+	104  'h'   'i'   'j'   'k'   'l'   'm'   'n'   'o'		
+	112  'p'   'q'   'r'   's'   't'   'u'   'v'   'w'		
+	120  'x'   'y'	'z'   '{'   '|'   '}'   '~'   'DEL'	
+
+
+	Standard printable characters have notations that print
+	as the character they label (e.g. the notation for 
+	character A is 'A').
+
+	Standard unprintable characters have notiations that 
+	print as standard mnemonic strings (e.g. the notation
+	for carriage return is 'CR' ). 
+	
+	Extended characters have neutral decimal value 
+	notatations that are int value exprs.  For example,
+	the notation for extended character 255 is '255'.
+
+	Most classification methods apply only to standard 
+	characters. That is, they'll never indicate a true 
+	condition for extended characters.
+		
+	select ( c ) -- type ascii
+	{
+		case ( 'NUL' );
+
+		case ( 'a' );
+
+		case ( '128' );
+	}
+
+	An ascii object can be initialized from an int code
+	value, but be careful about using int value expressions
+	to specify the code value.
+
+	ascii c:begin( 'A' );	-- 'A' is notation for char code 65
+
+	ascii c:begin( '65' );  -- wrong! not a valid ascii notation
+
+	ascii c:begin( '65' as int );  -- ok, this calls int :begin
+
+	ascii c:begin( '^065' );  -- ok, but cryptic, use 'A' instead
+
+	An ascii object is portable but applications are
+	limited.  The primary fex is either 'notation' or 'code' and 
+	an extra fex specifies how to format the expr or int
+}}
+{
+
+	general	
+	{
+		begin ( expr notation );	-- vex  
+
+		begin ( int code );		-- enum value
+		
+		begin ( ascii other );	-- copy
+
+		begin ( mediator [upd], expr fex )()( extra );	
+
+		store ( mediator [upd], expr fex )()( extra );
+
+		use_notation = expr proxy [eval];
+
+		get_notation ()( expr );
+
+		is_before? ( ascii )( bool );
+
+		is_equal? ( ascii )( bool );
+
+		is_standard? ()( bool );		-- not extended
+
+		is_extended? ()( bool );		-- not standard
+
+		is_control? ()( bool );			-- not printable, not space
+
+		is_letter? ()( bool );			-- either case
+
+		is_uc_letter? ()( bool );		-- uppercase
+
+		is_lc_letter? ()( bool );		-- lowercase
+
+		is_bin_digit? ()( bool );		-- 0-1
+
+		is_dec_digit? ()( bool );		-- 0-9
+
+		is_hex_digit? ()( bool );		-- 0-9 aA-fF
+
+		is_punctuation? ()( bool );		-- !"#%&'()*,-./:;?@[\]_{}
+
+		is_symbol? ()( bool );			-- $+-<>^!|~
+
+		is_in? ( expr )( bool );
+	}
+}

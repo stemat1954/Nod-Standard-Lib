@@ -1,0 +1,113 @@
+
+page complex in AlphaByNod
+
+type cplx 
+{{
+	complex number
+
+
+}}
+{
+	general method
+	{
+		begin ( expr vex [opt] );			-- description, default = zero
+
+		begin ( coord2_tag, fp2 a, fp2 b );		-- synthesis: 'cartesion' (rx,iy) 'polar' (mod,arg)
+
+		begin ( coord2_tag, vector<fp2><'2'> v ); -- synthesis: 'cartesion' (rx,iy) 'polar' (mod,arg)
+
+		begin ( cplx n );					-- copy
+
+		begin ( int n );					-- int conversion (rx=n,iy=0)
+
+		begin ( fp2 n );					-- fp2 conversion (rx=n,iy=0)
+
+		begin ( fp10 n );					-- fp10 conversion (rx=n,iy=0)
+
+
+		begin ( mediator [upd], expr fex );	-- mediation
+
+		store ( mediator [upd], expr fex );	-- mediation
+
+
+		is_equal? ( cplx n )( bool );		-- equality
+						
+		is_before? ( cplx n )( bool );		-- ordinality (same as is_less?)
+
+		is_less? ( cplx n )( bool );		-- cardinality (same as is_before?)
+
+		is_zero? ()( bool );
+
+
+		get_rx ()( fp2 rx );
+
+		get_iy ()( fp2 iy );
+
+		get_cartesian ()( fp2 rx, fp2 iy );
+
+		get_cartesian ()( vector<fp2><'2'> v );
+
+
+		get_mod ()( fp2 mod );
+
+		get_arg ()( fp2 arg );
+
+		get_polar ()( fp2 mod, fp2 arg );	
+
+		get_polar ()( vector<fp2><'2'> v );
+
+
+		-- arithmetic
+		
+		add [upd]( cplx n );				-- add: 
+		add [eval]( cplx n )( cplx x );	
+
+		sub [upd]( cplx n );				-- subtract:
+		sub [eval]( cplx n )( cplx x );
+
+		mul [upd]( cplx n );				-- multiply: 
+		mul [eval]( cplx n )( cplx x );		
+
+		div [upd]( cplx n );				-- divide:
+		div [eval]( cplx n )( cplx x );
+			
+		neg [upd];							-- negate:
+		neg [eval]()( cplx x );
+
+
+		-- common 
+
+		abs [upd];								-- abs value: io <= |io| (aka modulus)
+		abs [eval]()( cplx y );					-- imaginary part = 0
+
+		dis [upd]( cplx n );					-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [eval]( cplx n )( cplx y );			-- imaginary part = 0
+
+		ltf [upd]( cplx m, cplx b );			-- linear transform: io <= ( m * io ) + b  (aka fused multiply add) 
+		ltf [eval]( cplx m, cplx b )( cplx y );
+
+		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ (n/d) (rational exponent) (default d = 1)
+		pow [eval]( int n, int d [opt] )( cplx y );
+
+		pow [upd]( fp2 n );						-- power: io <= io ^ n (real exponent)
+		pow [eval]( fp2 n )( cplx y );
+
+		pow [upd]( cplx n );					-- power: io <= io ^ n (complex exponent)
+		pow [eval]( cplx n )( cplx y );
+
+		log [upd]( fp2 b [opt] );				-- log: io <= log base b of io  (default b = euler's number, ie. natural log)
+		log [eval]( fp2 b [opt] )( cplx y );
+
+		log [upd]( cplx b );					-- log: io <= log base b of io  (cplx base)
+		log [eval]( cplx b )( cplx y );
+
+
+		-- special 
+
+		
+		cnj	[upd];								-- conjugate: (negate imaginary part)
+		cnj [eval]()( cplx x );
+
+
+	}
+}

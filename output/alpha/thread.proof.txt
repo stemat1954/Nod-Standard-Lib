@@ -1,0 +1,71 @@
+page thread
+{
+	subroutine get_process_id  @00912|thread(74,2) --external
+	 viable = yes
+
+	subroutine get_thread_id  @64048|thread(72,2) --external
+	 viable = yes
+
+	subroutine start_thread<ept>  @02112|thread(76,2) --external
+	 viable = no
+
+	type thread  @10032|thread(20,6) --external
+	 viable = yes
+	{
+		method begin  @29120|thread(50,3) --external
+		 viable = yes
+
+		method get_id  @32032|thread(62,3) --external
+		 viable = yes
+
+		method get_state  @30368|thread(60,3) --external
+		 viable = yes
+
+		method kill  @34944|thread(54,3) --external
+		 viable = yes
+
+		method stop  @22048|thread(52,3) --external
+		 viable = yes
+
+		method use_handle  @32864|thread(64,3) --external
+		 viable = yes
+
+		method wait  @29536|thread(56,3) --external
+		 viable = yes
+
+		method wait  @29952|thread(58,3) --external
+		 viable = yes
+	}
+
+	enum type thread_state  @31616|thread(5,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'new' = 0
+	    'starting' = 1
+	    'active' = 2
+	    'stopping' = 3
+	    'done' = 4
+	    'dead' = 5
+	}
+	{
+		method begin  @04912|thread(5,11) --external
+		 viable = yes
+
+		method begin  @04080|thread(5,11) --external
+		 viable = yes
+
+		method get_token  @05744|thread(5,11) --external
+		 viable = yes
+
+		method is_before?  @06160|thread(5,11) --external
+		 viable = yes
+
+		method is_equal?  @06992|thread(5,11) --external
+		 viable = yes
+
+		method use_token  @05328|thread(5,11) --external
+		 viable = yes
+	}
+}
+

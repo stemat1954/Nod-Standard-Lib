@@ -1,0 +1,156 @@
+
+page array in AlphaByNod
+
+{{
+	array<t>
+	array<t><#>
+
+	An array is an ordered collection of homogenous
+	objects. Objects are uniform and logically contiguous
+	in memory. <t> is the symbolic object type.
+
+	An array can be configured for any type <t> but some
+	methods are type dependent.
+
+	An array is portable if <t> is portable.  <t> formats
+	are given as extras.
+
+	A fixed size array has a symbolic dimension <#>.
+
+	If an array is not fixed size, objects can be added
+	and deleted.
+
+	Methods that require a given index quit if the index 
+	is invalid. A valid index is between zero and count
+	(inclusive).  index = count is a valid insertion index.
+
+	Arrays derive from direct_access<t> which in turn 
+	derives from serial_access<t><int>.  Thus, they can be 
+	iterated in a for-each loop.
+
+	Any serial_access<t> collection can be used as a source
+	for array objects.
+}}
+
+
+type array<t> from direct_access<<t>> -- compatible and conventional per <t>
+{{
+	Taking the contents of another array leaves the other
+	array empty.
+
+	:insert always works provided there is available memory
+	(and index is valid).
+	
+	:delete always works by ignoring attempts to remove too
+	many objects.
+
+	Note: delete without an index (default) when array is
+	empty doesn't do anything.
+
+	Inserting and deleting at the end of an array is most
+	efficient.
+
+}}
+{
+	nom type same_type = array<<t>>;
+
+	nom type serial<c> = serial_access<<t>><<c>>;
+
+	nom type direct = direct_access<<t>>;
+
+
+	general method 
+	{
+		begin ( int reserve [opt] ); 
+
+		begin ( same_type other [upd] );		-- take 
+
+		insert [upd]( int i [opt], int q );	-- q null objs at i (end)
+
+		insert [upd]( int i [opt] ) = <t> proxy [init];	-- one null obj at i (end), return access
+
+		delete [upd]( int i [opt], int q [opt] );		-- q (1) objs at i (end)
+
+		resize [upd]( int q );			-- insert or delete at end, new count = q
+
+		shrink [upd];					-- release unused memory
+	}
+	
+
+	general method  -- <t> dependent
+	{
+		begin<c> ( serial<<c>> source );								-- with <t> copy
+		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );	-- with copier
+
+		begin ( mediator [upd], expr fex )()( extra );			-- mediate
+		store [eval]( mediator [upd], expr fex )()( extra );	-- mediate
+
+		insert [upd]( direct source, int i [opt], int q [opt], int j [opt] );									-- with <t> copy: q (all) objs from source at j (0) to i (end) 
+		insert [upd]( direct source, int i [opt], int q [opt], int j [opt] ) with copier ( <t> )( <t> );		-- with copier:  ditto
+		insert [upd]( direct source [upd], int i [opt], int q [opt], int j [opt] );								-- with <t> take: ditto
+		insert [upd]( direct source [upd], int i [opt], int q [opt], int j [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
+
+		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] );									-- with <t> copy: q (all) objs from source to i (end) 
+		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] ) with copier ( <t> )( <t> );			-- with copier:  ditto
+		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] );								-- with <t> take: ditto
+		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
+
+		copy [eval]( int i [opt] )( <t> obj );									-- with <t> copy: one obj at i (end) to obj
+		copy [eval]( int i [opt] )( <t> obj ) with copier ( <t> )( <t> );		-- with copier: ditto
+
+		take [upd]( int i [opt] )( <t> obj );									-- with <t> taker: one obj at i (end) to obj
+		take [upd]( int i [opt] )( <t> obj ) with taker ( <t> [upd] )( <t> );	-- with taker: ditto
+
+		rank ( <t> )( int i, bool unique ) with sorter ( <t> a, <t> b )( bool ); -- find ordered insertion point
+	}
+
+	abstract method in direct_access<<t>>
+	{
+		[final] ~count ()( int n );
+		
+		[final] ~use@ ( int i ) = <t> proxy;
+	}
+}
+
+
+
+type array<t><#> from direct_access<<t>> -- compatible and conventional per <t>
+{{
+	Fixed size array.
+
+	Taking the contents of another fixed size array leaves
+	the other array with all objects null.
+}}
+{
+	nom type same_type = array<<t>><<#>>;
+
+	nom type serial<c> = serial_access<<t>><<c>>;
+
+	general 
+	{
+		begin;	-- all objects null
+		
+		begin ( same_type other [upd] );  -- take 
+	}
+
+	general -- <t> dependent
+	{
+		begin ( <t> seed );								-- with <t> copy
+		begin ( <t> seed ) with copier ( <t> )( <t> );	-- with copier
+
+		begin<c> ( serial<<c>> source );							-- with <t> copy
+		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );	-- with copier
+
+		begin ( mediator [upd], expr fex )()( extra );	-- mediate
+		store ( mediator [upd], expr fex )()( extra );	-- mediate
+	}
+
+	abstract method in direct_access<<t>>
+	{
+		[final] ~count ()( int n );
+		
+		[final] ~use@ ( int i ) = <t> proxy;
+	}
+
+}
+

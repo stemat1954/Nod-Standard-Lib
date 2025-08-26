@@ -1,0 +1,35 @@
+page unicode
+{
+	type unicode  @07344|unicode(4,6) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+		method begin  @42016|unicode(28,3) --external
+		 viable = yes
+
+		method begin  @39520|unicode(30,3) --external
+		 viable = yes
+
+		method begin  @44512|unicode(32,3) --external
+		 viable = yes
+
+		method begin  @40352|unicode(34,3) --external
+		 viable = yes
+
+		method get_notation  @40768|unicode(40,3) --external
+		 viable = yes
+
+		method is_before?  @42432|unicode(42,3) --external
+		 viable = yes
+
+		method is_equal?  @41184|unicode(44,3) --external
+		 viable = yes
+
+		method store  @42848|unicode(36,3) --external
+		 viable = yes
+
+		method use_notation  @39936|unicode(38,3) --external
+		 viable = yes
+	}
+}
+

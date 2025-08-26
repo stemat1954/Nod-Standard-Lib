@@ -1,0 +1,46 @@
+
+page unicode in AlphaByNod
+
+type unicode from enumerated
+{{
+	label = 'U+xxxxxx' where x is hex digit
+
+	Unicode properties are standardized and defined in a
+	public Unicode Character Database (UCD).  The UCD is 
+	large and complex, and it's not practical to encapsul-
+	ate it behind property methods in this type.
+
+	Instead, the UCD will be provided in a GDK book which
+	has the necessary types and subroutines to look up 
+	properties for a given unicode object.
+	
+
+	https://en.wikipedia.org/wiki/Unicode_character_property
+
+	A unicode object is portable but applications are
+	limited.  The primary fex is either 'notation' or 'code'.
+	An extra fex specifies how to format the char notation
+	as an expr, or the char code as an int.
+}}
+{
+	general
+	{
+		begin ( expr notation );-- vex
+
+		begin ( int code );		-- code point, enum value
+
+		begin ( unicode other );	-- copy
+
+		begin ( mediator m [upd], expr fex )()( extra );  
+
+		store ( mediator m [upd], expr fex )()( extra ); 
+
+		use_notation = expr proxy [eval];
+
+		get_notation ()( expr );
+
+		is_before? ( unicode )( bool );
+
+		is_equal? ( unicode )( bool );
+	}
+}

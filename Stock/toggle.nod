@@ -1,0 +1,58 @@
+
+page toggle in StockByNod
+
+
+type toggle
+{{
+	A toggle encapsulates a binary semaphore.  
+
+	Toggle methods provide an intuitive boolean interface
+	around an encapsulated counting semaphore.
+
+	:begin configures a 'false' binary (two-value) 
+	semaphore.
+	
+	:wait spin-waits for the toggle to be 'true' then
+	(simultaneously) resets the toggle to 'false'.
+	
+	:release sets the toggle to 'true'.
+	
+	Multiple threads can :wait and :release the same
+	toggle.  Logically, one thread is released per :wait
+	no matter how many intervening calls to :release.
+	
+	Toggles are used to implement "spinning" locks and 
+	signals. 
+	
+	Locks follow a one-sided mutual-exclusion protocol
+	whereby the same thread waits and releases.  Logically,
+	a lock toggle represents an "unlocked" condition.
+	
+	Signals follow a two-sided protocol whereby some threads
+	wait and react, while other threads indicate (release).
+}}
+{
+	general
+	{
+		begin
+		{
+			io.semaphore:begin( zero, one );
+		}
+
+		wait [upd]
+		{
+			io.semaphore:add_wait( neg_one ); 
+		}
+
+		release [upd]
+		{
+			io.semaphore:add_no_wait( one )(); -- ignore output
+		}
+	}
+
+	instance
+	{
+		semaphore;
+	}
+}
+

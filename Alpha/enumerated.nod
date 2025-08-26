@@ -1,0 +1,36 @@
+
+page enumerated in AlphaByNod 
+
+type enumerated  -- intrinsic
+{{
+	enumerated is a base type for countable subtypes.
+
+	An enumerated object is associated with a unique and
+	identical integer value.  The value must be greater
+	than or equal to zero, and it must uniquely identify
+	one, and only one object in a set of objects of the
+	same enumerated type.
+
+	Best practice is to assign ints contiguously from zero.
+
+	The Nod compiler fabricates and derives app enum types
+	from enumerated.
+
+	alpha types ascii and unicode are enumerated subtypes.
+
+	Technically, enumerated is a complete type, but there's
+	no point in instantiating an object	with an actual type
+	of enumerated.
+	
+}}
+{
+	general 
+	{
+		begin ( int );
+
+		use_code = int proxy [eval];
+		
+		get_code ()( int );
+	}
+
+}

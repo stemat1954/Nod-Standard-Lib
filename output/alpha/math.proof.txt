@@ -1,0 +1,134 @@
+page math
+{
+	subroutine arccos<t>  @60336|math(60,2) --external
+	 viable = no
+
+	subroutine arccot<t>  @62336|math(68,2) --external
+	 viable = no
+
+	subroutine arccsc<t>  @60736|math(64,2) --external
+	 viable = no
+
+	subroutine arcsec<t>  @61136|math(66,2) --external
+	 viable = no
+
+	subroutine arcsin<t>  @61536|math(58,2) --external
+	 viable = no
+
+	subroutine arctan<t>  @61936|math(62,2) --external
+	 viable = no
+
+	enum type coord2_tag  @19152|math(11,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'cartesian' = 0
+	    'polar' = 1
+	}
+	{
+		method begin  @64208|math(11,11) --external
+		 viable = yes
+
+		method begin  @59216|math(11,11) --external
+		 viable = yes
+
+		method get_token  @54224|math(11,11) --external
+		 viable = yes
+
+		method is_before?  @01168|math(11,11) --external
+		 viable = yes
+
+		method is_equal?  @61712|math(11,11) --external
+		 viable = yes
+
+		method use_token  @56304|math(11,11) --external
+		 viable = yes
+	}
+
+	enum type coord3_tag  @15408|math(13,11) --external
+	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	 viable = yes
+	{
+	    'cartesion' = 0
+	    'cylindrical' = 1
+	    'spherical' = 2
+	}
+	{
+		method begin  @60880|math(13,11) --external
+		 viable = yes
+
+		method begin  @60048|math(13,11) --external
+		 viable = yes
+
+		method get_token  @60464|math(13,11) --external
+		 viable = yes
+
+		method is_before?  @62128|math(13,11) --external
+		 viable = yes
+
+		method is_equal?  @06576|math(13,11) --external
+		 viable = yes
+
+		method use_token  @65040|math(13,11) --external
+		 viable = yes
+	}
+
+	subroutine cos<t>  @58656|math(48,2) --external
+	 viable = no
+
+	subroutine cosh<t>  @02912|math(81,2) --external
+	 viable = no
+
+	subroutine cot<t>  @59936|math(56,2) --external
+	 viable = no
+
+	subroutine coth<t>  @05712|math(89,2) --external
+	 viable = no
+
+	subroutine cplx_pow<t>  @57456|math(33,2) --external
+	 viable = no
+
+	subroutine cplx_pow<t><u>  @57856|math(35,2) --external
+	 viable = no
+
+	subroutine csc<t>  @63136|math(52,2) --external
+	 viable = no
+
+	subroutine csch<t>  @01312|math(85,2) --external
+	 viable = no
+
+	subroutine fp2_pow<t>  @13120|math(29,2) --external
+	 viable = no
+
+	subroutine fp2_pow<t><u>  @13520|math(31,2) --external
+	 viable = no
+
+	subroutine sec<t>  @59536|math(54,2) --external
+	 viable = no
+
+	subroutine sech<t>  @63648|math(87,2) --external
+	 viable = no
+
+	subroutine sin<t>  @58256|math(46,2) --external
+	 viable = no
+
+	subroutine sinh<t>  @62736|math(79,2) --external
+	 viable = no
+
+	subroutine tan<t>  @59056|math(50,2) --external
+	 viable = no
+
+	subroutine tanh<t>  @00112|math(83,2) --external
+	 viable = no
+
+	common
+	{
+		object euler  @36272|math(21,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+
+		object pi  @32416|math(19,2) --external
+		 type: ("fp2")-> type fp2  @56880|float(38,6)
+	}
+
+}
+

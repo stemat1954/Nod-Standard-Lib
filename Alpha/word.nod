@@ -1,0 +1,143 @@
+
+page word in AlphaByNod
+
+
+type word<#> -- elementary, compatible (up to word32), conventional
+{{
+	A word is a generic multibit register.  It's the 
+	object-oriented equivalent of a machine word.
+
+	<#> is symbolic bit precision.
+		
+	Note:  The minimum adhoc precision is <#1> and the 
+	maximum is <#128>.
+
+	See Alpha type reference for value expression syntax.
+
+	Note: Value expressions generally specify a	base 
+	followed by a value in the specified base.  For example
+		
+	'b:1011100' (binary) 
+	'o:070165'	(octal) 
+	'd:9810'	(decimal)
+	'x:4A5F'	(hexadecimal)
+		
+	Reading left to right, bits in a value expr are	order-
+	ed most to least significant.  For example, given a
+	word<#4> value expression 'b:1100', bits are ordered 
+	'1', '1', '0', '0' from most to least significant. 
+
+	Cross precision copy initialization is allowed. If
+	the source word is "narrower" than the target, more
+	significant bits are inserted. If input sign is 'true'
+	the source value is "sign extended."  Otherwise, zeros 
+	are inserted.  If the source word is "wider" than the 
+	target, the more significant bits in the source are not 
+	copied. 
+	
+	A word can be initialized with an integer value	given 
+	an int fex that specifies how negative values are 
+	encoded. If the int value can't be stored in the re-
+	ceiving word, the method fails.
+
+	Note: This amounts to a binary int :store. Similar 
+	capability is provided for fp2 and fp10.  See source 
+	type defs for inverse initialization.
+		
+	Words are ranked by their values interpreted as un-
+	signed integers. Only words with the same precision can
+	be compared.
+
+	Words are portable. See Alpha type reference for
+	supported formats.  
+
+	Generic binary 'b' is supported for c-compatability.
+	If word precision is too high for the target platform, 
+	the app will be disrupted.  All platforms support at 
+	least word<#32>, so compatible pages that use word32
+	(or less) are also platform independent.
+		
+}}
+{
+	
+	general 
+	{
+		begin ( expr vex [opt] );					-- expressed value, default = zero
+
+		begin<#n> ( word<<#n>> w, bool signed [opt] );	-- copy w/ width conversion
+
+		begin ( int n, expr fex [opt] );			-- int conversion, default fex = 'b' generic binary
+
+		begin ( fp2 r, expr fex [opt] );			-- fp2 conversion, ditto
+
+		begin ( fp10 r, expr fex );					-- fp10 conversion, fp10 fex for encoding required
+
+
+		begin ( mediator [upd], expr fex );		
+
+		store ( mediator [upd], expr fex ) ;	
+		
+
+		is_equal? ( word<<#>> w )( bool );
+
+		is_before? ( word<<#>> w )( bool );
+
+		is_less? ( word<<#>> w )( bool );
+	
+		is_zero? ()( bool );
+
+		set [upd]( word<<#>> w );						-- intrinsic assign
+	
+		and [upd]( word<<#>> w );						-- bitwise
+		and [eval]( word<<#>> w )( word<<#>> );
+
+		or [upd]( word<<#>> w );						-- bitwise
+		or [eval]( word<<#>> w )( word<<#>> );
+
+		xor [upd]( word<<#>> w );						-- bitwise
+		xor [eval]( word<<#>> w )( word<<#>> );
+
+		not [upd];										-- bitwise
+		not [eval]()( word<<#>> );
+
+		nand [upd]( word<<#>> w );						-- bitwise
+		nand [eval]( word<<#>> w )( word<<#>> );
+
+		nor [upd]( word<<#>> w );						-- bitwise
+		nor [eval]( word<<#>> w )( word<<#>> );
+
+		xnor [upd]( word<<#>> w );						-- bitwise
+		xnor [eval]( word<<#>> w )( word<<#>> );
+	
+		add [upd]( word<<#>> w );						-- add no carry
+		add [eval]( word<<#>> w )( word<<#>> );
+
+		adc [upd]( word<<#>> w, word<'1'> c [upd] );	-- add with carry
+		adc [eval]( word<<#>> w, word<'1'> c [upd] )( word<<#>> );
+
+		neg [upd];										-- two's complement negate 
+		neg [eval]()( word<<#>> );
+
+		lsl [upd]( int n );								-- logical shift left
+		lsl [eval]( int n )( word<<#>> );
+
+		lsr [upd]( int n );								-- logical shift right
+		lsr [eval]( int n )( word<<#>> );
+
+		asr [upd]( int n );								-- arithmetic shift right
+		asr [eval]( int n )( word<<#>> );
+
+		rol [upd]( int n );								-- rotate left 
+		rol [eval]( int n )( word<<#>> );
+
+		ror [upd]( int n );								-- rotate right
+		ror [eval]( int n )( word<<#>> );
+
+		rcl [upd]( int n, word<'1'> c [upd] );			-- rotate thru carry left
+		rcl [eval]( int n, word<'1'> c [upd] )( word<<#>> );
+
+		rcr [upd]( int n, word<'1'> c [upd] );			-- rotate thru carry right
+		rcr [eval]( int n, word<'1'> c [upd] )( word<<#>> );
+	}
+}
+

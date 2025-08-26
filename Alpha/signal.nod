@@ -1,0 +1,38 @@
+
+page signal in AlphaByNod
+
+
+type signal from indicator
+{{
+	A signal is a condition indicator.
+
+	Note: See alpha\indicator for more info.
+
+	:begin sets default wait time and execution mode.
+
+	The default wait time is used when :wait is called with
+	a null elapsed time. If the default wait time is also 
+	null, :wait does not time-out.
+
+	The signal execution mode is auto-reset if input auto
+	is 'true' or null. Otherwise, execution mode is manual-
+	reset.
+
+	A signal's initial release state is 'false'.
+
+	:indicate sets the signal release state.
+
+	indicator:reset clears the signal release state.
+}}
+{
+
+	general
+	{
+		begin ( etm wait [opt], bool auto [opt] );
+
+		indicate [upd];
+	}
+}
+
+
+
