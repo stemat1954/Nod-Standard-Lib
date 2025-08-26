@@ -365,3 +365,5 @@ FodyWeavers.xsd
 #Nod
 build.bat
 make.ddl.txt
+/build.bat
+/make.ddl.txt
