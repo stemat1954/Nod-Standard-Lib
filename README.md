@@ -1,4 +1,4 @@
-__Nod__ is a new object-oriented programming language that gives a _nod_ to predecessors without being trapped by their legacy. It strives to be a fresh and practical language suitable for systems programming and beyond.  The goal is to balance real-world trade-offs in a language that is uniquely regular (consistent), efficient (fast), reliable (precautious), and convenient (automatic).
+__Nod__ is a new object-oriented programming language that gives a respectful _nod_ to predecessors without being trapped by their legacy. It strives to be a fresh and practical language suitable for systems programming and beyond.  The goal is to balance real-world trade-offs in a language that is uniquely regular (consistent), efficient (fast), reliable (precautious), and convenient (automatic).
 
 This repository contains the __Nod Standard Library__ which is a collection of reference "books" that encode essential types and resources that all __Nod__ applications will find useful.  
 
