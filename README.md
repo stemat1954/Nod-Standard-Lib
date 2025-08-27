@@ -10,7 +10,7 @@ __Stock__ contains pages in a book of useful and indispensable types and objects
 
 You can find the __Nod PDF Design Reference__ here:  https://drive.google.com/file/d/1Kv6-Jv9uvsKS8tQcFzsryOwvN0Fr_EH-/view?usp=drive_link
 
-To orient you for a quick peek, here are some notes to help make sense of the code:
+To orient for a quick peek, here are some notes to help make sense of the code:
 
 1.  Single-line side remarks start with a double-hyphen -- and they're ignored.
 2.  Multi-line narratives are enclosed by matching double-curly brackets {{&nbsp;}} and they're also ignored.
@@ -19,7 +19,7 @@ To orient you for a quick peek, here are some notes to help make sense of the co
 5.  A procedure interface definition can be elaborate, but the most important feature to recognize is enumeration of inputs and outputs in separate parenthesized lists. The key take-away: inputs have proper value when the procedure starts and outputs don't. Outputs are generally initialized before the procedure returns, but not always.
 6.  At the most basic level, writing a procedure amounts to creating (instantiating) objects and calling methods that initialize, evaluate, and update the value of those objects.  These basic operations can be combined with other familiar forms to branch in various ways (__if__/__else__, __loop__, __select__).  You'll also see other imperative expressions like __return__, __escape__, __quit__, __for each__, and __isolate__/__trap__.
 7.  Every type has at least one standard method named _begin_.  Furthermore, any method named _begin_ is presumed to initialize the object for which it's called.
-8.  To create an object, write it's type followed by it's name:&nbsp;&nbsp;&nbsp;&nbsp;  _int_ _x_
+8.  To create an object, write its type followed by its name:&nbsp;&nbsp;&nbsp;&nbsp;  _int_ _x_
 9.  To call a method, reference an object and method by name separated by a colon, passing inputs and outputs as required:&nbsp;&nbsp;&nbsp;&nbsp; _x_:_begin_( '0' )
 10.  Method calls can be chained. This works because calling a method "results" in a reference to the object that led the prior call. Combining the previous examples and another call in one flow:&nbsp;&nbsp;&nbsp;&nbsp;_int_ _x_:_begin_( '0' ):_add_( '1' )
 11.  A proxy is a kind of reference entity that joins an object at runtime.  A proxy isn't an object, but it has a name, and that name becomes an alias for the object it represents. Thus, a proxy reference generally stands for the object it's joined to. By convention, proxy names have a leading squiggle.  For example, _~thing_. 
