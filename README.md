@@ -14,7 +14,7 @@ To orient you for a quick peek, here are some notes to help you make sense of th
 
 1.  A literal is a string of characters enclosed by single-quotes.  Literals are hard-coded application strings that mostly represent original object values, but they have other purposes.  In __Nod__, literals are generally opaque to the compiler and they might not be evaluated until runtime.
 2.  There are two kinds of procedures in __Nod__: method and subroutine.  Methods are associated with a particular object type while subroutines aren't.
-3.  A procedure interface definition can be elaborate, but the most important feature to recognize is the enumeration of inputs and outputs in separate parenthesized lists. The key take-away: inputs are initialized and outputs aren't.
+3.  A procedure interface definition can be elaborate, but the most important feature to recognize is the enumeration of inputs and outputs in separate parenthesized lists. The key take-away: inputs are initialized on entry and outputs aren't.
 4.  At it's most basic level, writing a procedure amounts to creating (instantiating) objects and calling methods that initialize, evaluate, and update the value of those objects.  These basic operations can be combined with other familiar forms to branch in various ways (__if__/__else__, __loop__, __select__).  You'll also see other imperative expressions like __return__, __escape__, __quit__, and __isolate__/__trap__.
 5.  Every type has at least one standard method named _begin_.  Furthermore, any method named _begin_ is presumed to initialize the object it's called for.
 6.  To create an object, you write it's type followed by it's name:&nbsp;&nbsp;&nbsp;&nbsp;  _int_ _x_
