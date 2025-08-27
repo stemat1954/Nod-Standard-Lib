@@ -13,16 +13,17 @@ You can find the __Nod PDF Design Reference__ here:  https://drive.google.com/fi
 To orient you for a quick peek, here are some notes to help you make sense of the code:
 
 1.  A literal is a string of characters enclosed by single-quotes.  Literals are hard-coded application strings that mostly represent original object values, but they have other purposes.  In __Nod__, literals are generally opaque to the compiler and they might not be evaluated until runtime.
-2.  There are two kinds of procedures in __Nod__: method and subroutine.  Methods are associated with a particular object type while subroutines aren't.
-3.  A procedure interface definition can be elaborate, but the most important feature to recognize is the enumeration of inputs and outputs in separate parenthesized lists. The key take-away: inputs are initialized on entry and outputs aren't.
-4.  At the most basic level, writing a procedure amounts to creating (instantiating) objects and calling methods that initialize, evaluate, and update the value of those objects.  These basic operations can be combined with other familiar forms to branch in various ways (__if__/__else__, __loop__, __select__).  You'll also see other imperative expressions like __return__, __escape__, __quit__, and __isolate__/__trap__.
-5.  Every type has at least one standard method named _begin_.  Furthermore, any method named _begin_ is presumed to initialize the object it's called for.
-6.  To create an object, you write it's type followed by it's name:&nbsp;&nbsp;&nbsp;&nbsp;  _int_ _x_
-7.  To call a method, you reference an object and method by name separated by a colon:&nbsp;&nbsp;&nbsp;&nbsp; _x_:_begin_( '0' )
-8.  Method calls can be chained. This works because the "result" of calling a method is the same object that led the previous call. Combining  previous examples and another call in one flow:&nbsp;&nbsp;&nbsp;&nbsp;_int_ _x_:_begin_( '0' ):_add_( '1' )
-9.  A proxy is a kind of reference entity that joins to an object at runtime.  A proxy isn't an object, it's an alias, and as an alias it can generally be used wherever it's joined object can be used.
-10.  A formula is an expression enclosed by double-quotes.  A formula "calculates" a single object value using syntax that follows traditional operator and function call syntax.  Formulas are translated into equivalent method calls and the language of formulas is completely extensible. Here is a formula that calculates the tangent of x using sine and cosine methods:&nbsp;&nbsp;&nbsp;&nbsp;"sin(x)/cos(x)" 
-11. Operators in formulas are delimited by vertical bars ||.  __Nod__ has 3 intrinsic (non-formula) operators:  _join_, _assign_, and _as_.  _join_ is associated with the lexical token ->.  _assign_ is associated with the lexical token <=.  _as_ is associated with the same lexical keyword.  Of the three, only _join_ can't be written as an equivalent method call sequence.
+2.  Side remarks start with a double-hyphen -- and they're ignored. 
+3.  There are two kinds of procedures: method and subroutine.  Methods are associated with a particular object type while subroutines aren't.
+4.  A procedure interface definition can be elaborate, but the most important feature to recognize is the enumeration of inputs and outputs in separate parenthesized lists. The key take-away: inputs are initialized on entry and outputs aren't.
+5.  At the most basic level, writing a procedure amounts to creating (instantiating) objects and calling methods that initialize, evaluate, and update the value of those objects.  These basic operations can be combined with other familiar forms to branch in various ways (__if__/__else__, __loop__, __select__).  You'll also see other imperative expressions like __return__, __escape__, __quit__, __for each__, and __isolate__/__trap__.
+6.  Every type has at least one standard method named _begin_.  Furthermore, any method named _begin_ is presumed to initialize the object for which it's called.
+7.  To create an object, write it's type followed by it's name:&nbsp;&nbsp;&nbsp;&nbsp;  _int_ _x_
+8.  To call a method, reference an object and method by name separated by a colon, passing inputs and outputs as required:&nbsp;&nbsp;&nbsp;&nbsp; _x_:_begin_( '0' )
+9.  Method calls can be chained. This works because the "result" of calling a method is the same object that led the previous call. Combining  previous examples and another call in one flow:&nbsp;&nbsp;&nbsp;&nbsp;_int_ _x_:_begin_( '0' ):_add_( '1' )
+10.  A proxy is a kind of reference entity that joins to an object at runtime.  A proxy isn't an object, it's an alias, and as an alias it can generally be used wherever it's joined object can be used.
+11.  A formula is an expression enclosed by double-quotes.  A formula "calculates" a single object value using syntax that follows traditional operator and function call syntax.  Formulas are translated into equivalent method calls and the language of formulas is completely extensible. Here is a formula that calculates the tangent of x using sine and cosine methods:&nbsp;&nbsp;&nbsp;&nbsp;"sin(x)/cos(x)" 
+12. Operators in formulas are delimited by vertical bars ||.  __Nod__ has 3 intrinsic (non-formula) operators:  _join_, _assign_, and _as_.  _join_ is associated with the lexical token ->.  _assign_ is associated with the lexical token <=.  _as_ is associated with the same lexical keyword.  Of the three, only _join_ can't be written as an equivalent method call sequence.
 
 That's it.  For more information, dive into the Design Reference. It's all there.  
 
