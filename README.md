@@ -1,4 +1,4 @@
-__Nod__ is a new object-oriented programming language that gives a _nod_ to predecessors without being trapped by legacy. It strives to be a fresh and practical language suitable for systems programming and beyond.  The goal is to balance real-world trade-offs in a language that is uniquely regular (consistent), efficient (fast), reliable (precautious), and convenient (automatic).
+__Nod__ is a new object-oriented programming language that gives a _nod_ to predecessors without being trapped by their legacy. It strives to be a fresh and practical language suitable for systems programming and beyond.  The goal is to balance real-world trade-offs in a language that is uniquely regular (consistent), efficient (fast), reliable (precautious), and convenient (automatic).
 
 This repository contains the __Nod Standard Library__ which is a collection of reference "books" that encode essential types and resources that all __Nod__ applications will find useful.  
 
@@ -24,6 +24,7 @@ To orient you for a quick peek, here are some notes to help you make sense of th
 10.  A proxy is a kind of reference entity that joins to an object at runtime.  A proxy isn't an object, it's an alias, and as an alias it can generally be used wherever it's joined object can be used.
 11.  A formula is an expression enclosed by double-quotes.  A formula "calculates" a single object value using syntax that follows traditional operator and function call syntax.  Formulas are translated into equivalent method calls and the language of formulas is completely extensible. Here is a formula that calculates the tangent of x using sine and cosine methods:&nbsp;&nbsp;&nbsp;&nbsp;"sin(x)/cos(x)" 
 12. Operators in formulas are delimited by vertical bars ||.  __Nod__ has 3 intrinsic (non-formula) operators:  _join_, _assign_, and _as_.  _join_ is associated with the lexical token ->.  _assign_ is associated with the lexical token <=.  _as_ is associated with the same lexical keyword.  Of the three, only _join_ can't be written as an equivalent method call sequence.
+13. __Nod__ supports generic programming using special rules for names and references.  An identifier that has embedded angle brackets <> is a generic name or adhoc reference that incorporates configurable definition factors.  This is an advanced topic that resists summary, but the main take-away is that angle-brackets in the code mean generic compile-time configuration. 
 
 That's it.  For more information, dive into the Design Reference. It's all there.  
 
