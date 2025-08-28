@@ -1,6 +1,6 @@
 __Nod__ is a new object-oriented language designed from the start to be a fresh and practical alternative to the _status quo_. The goal is to balance real-world trade-offs in a language that is uniquely regular (consistent), efficient (fast), reliable (precautious), and convenient (automatic).  While __Nod__ respects the past, it's not beholden to it. You might say that __Nod__ sidesteps its predecessors with a respectful _nod_.
 
-__Nod__ has wide applicability, but it's particularly well-suited for building low-level infrastructure that runs on multiple platforms.  A keen awareness of portability issues allows many applications to be written without regard to runtime platform, while kernel abstraction and access to the native kernel provide the ultimate ability to go low. Furthermore, built-in modularity provides a simple and robust path for evolution.  
+__Nod__ has wide applicability, but it's particularly well-suited for building low-level infrastructure that runs on multiple platforms.  A keen awareness of portability issues allows many applications to be written without regard to runtime platform, while kernel abstraction and access to the native kernel provide the ultimate ability to go low. Furthermore, built-in modularity provides a simple and robust path for evolution and expansion of the __Nod__ universe.  
 
 This repository contains the __Nod Standard Library__ which is a collection of reference books that encode essential types and resources that all __Nod__ applications will find useful.  
 
