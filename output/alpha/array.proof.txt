@@ -1,143 +1,143 @@
 page array
 {
-	type array<t>  @19424|array(36,6) --external
-	 from ("direct_access<t>")-> type direct_access<t>  @05520|access(89,6)
+	type array<t>  @08352|array(36,6) --external
+	 from ("direct_access<t>")-> type direct_access<t>  @61392|access(89,6)
 	 viable = no
 	{
-		method begin  @31920|array(64,3) --external
+		method begin  @54528|array(64,3) --external
 		 viable = yes
 
-		method begin  @31088|array(66,3) --external
+		method begin  @56192|array(66,3) --external
 		 viable = yes
 
-		method begin  @46256|array(85,3) --external
+		method begin  @53696|array(85,3) --external
 		 viable = yes
 
-		method begin<c>  @51664|array(82,3) --external
+		method begin<c>  @53280|array(82,3) --external
 		 viable = no
 
-		method begin<c>  @48336|array(83,3) --external
+		method begin<c>  @55360|array(83,3) --external
 		 viable = no
 
-		method copy  @50832|array(98,3) --external
+		method copy  @26704|array(98,3) --external
 		 viable = yes
 
-		method copy  @47504|array(99,3) --external
+		method copy  @27120|array(99,3) --external
 		 viable = yes
 
-		method delete  @53328|array(72,3) --external
+		method delete  @52448|array(72,3) --external
 		 viable = yes
 
-		nom type direct  @09872|array(59,11) --internal
+		nom type direct  @07648|array(59,11) --internal
 		 viable = yes
-		 equivalent: ("direct_access<t>")-> type direct_access<t>  @05520|access(89,6)
+		 equivalent: ("direct_access<t>")-> type direct_access<t>  @61392|access(89,6)
 
-		method insert  @31504|array(68,3) --external
-		 viable = yes
-
-		method insert  @28592|array(70,3) --external
+		method insert  @51200|array(68,3) --external
 		 viable = yes
 
-		method insert  @47920|array(88,3) --external
+		method insert  @57024|array(70,3) --external
 		 viable = yes
 
-		method insert  @52912|array(89,3) --external
+		method insert  @54112|array(88,3) --external
 		 viable = yes
 
-		method insert  @49584|array(90,3) --external
+		method insert  @49952|array(89,3) --external
 		 viable = yes
 
-		method insert  @50000|array(91,3) --external
+		method insert  @51616|array(90,3) --external
 		 viable = yes
 
-		method insert<c>  @47088|array(93,3) --external
+		method insert  @25456|array(91,3) --external
+		 viable = yes
+
+		method insert<c>  @26288|array(93,3) --external
 		 viable = no
 
-		method insert<c>  @48752|array(94,3) --external
+		method insert<c>  @27952|array(94,3) --external
 		 viable = no
 
-		method insert<c>  @45840|array(95,3) --external
+		method insert<c>  @28368|array(95,3) --external
 		 viable = no
 
-		method insert<c>  @50416|array(96,3) --external
+		method insert<c>  @28784|array(96,3) --external
 		 viable = no
 
-		method rank  @14096|array(104,3) --external
+		method rank  @23376|array(104,3) --external
 		 viable = yes
 
-		method resize  @49168|array(74,3) --external
+		method resize  @54944|array(74,3) --external
 		 viable = yes
 
-		nom type same_type  @06288|array(55,11) --internal
+		nom type same_type  @16544|array(55,11) --internal
 		 viable = yes
-		 equivalent: ("array<t>")-> type array<t>  @19424|array(36,6)
+		 equivalent: ("array<t>")-> type array<t>  @08352|array(36,6)
 
-		nom type serial<c>  @11152|array(57,11) --internal
+		nom type serial<c>  @18864|array(57,11) --internal
 		 viable = no
-		 equivalent: ("serial_access<t><c>")-> type serial_access<t><c>  @54704|access(5,6)
+		 equivalent: ("serial_access<t><c>")-> type serial_access<t><c>  @56368|access(5,6)
 
-		method shrink  @46672|array(76,3) --external
+		method shrink  @52864|array(76,3) --external
 		 viable = yes
 
-		method store  @52496|array(86,3) --external
+		method store  @50368|array(86,3) --external
 		 viable = yes
 
-		method take  @52080|array(101,3) --external
+		method take  @27536|array(101,3) --external
 		 viable = yes
 
-		method take  @51248|array(102,3) --external
+		method take  @21296|array(102,3) --external
 		 viable = yes
 
-		abstract method ~count  @12128|array(109,11) --fraternal
+		abstract method ~count  @02288|array(109,11) --fraternal
 		 key = -0
 		 viable = yes
 
-		abstract method ~use@  @10144|array(111,11) --fraternal
+		abstract method ~use@  @58400|array(111,11) --fraternal
 		 key = -0
 		 viable = yes
 	}
 
-	type array<t><#>  @20832|array(117,6) --external
-	 from ("direct_access<t>")-> type direct_access<t>  @05520|access(89,6)
+	type array<t><#>  @57664|array(117,6) --external
+	 from ("direct_access<t>")-> type direct_access<t>  @61392|access(89,6)
 	 viable = no
 	{
-		method begin  @16592|array(131,3) --external
+		method begin  @23792|array(131,3) --external
 		 viable = yes
 
-		method begin  @17008|array(133,3) --external
+		method begin  @24624|array(133,3) --external
 		 viable = yes
 
-		method begin  @15344|array(138,3) --external
+		method begin  @21712|array(138,3) --external
 		 viable = yes
 
-		method begin  @17424|array(139,3) --external
+		method begin  @24208|array(139,3) --external
 		 viable = yes
 
-		method begin  @14928|array(144,3) --external
+		method begin  @22544|array(144,3) --external
 		 viable = yes
 
-		method begin<c>  @18256|array(141,3) --external
+		method begin<c>  @22128|array(141,3) --external
 		 viable = no
 
-		method begin<c>  @19088|array(142,3) --external
+		method begin<c>  @25040|array(142,3) --external
 		 viable = no
 
-		nom type same_type  @13200|array(125,11) --internal
+		nom type same_type  @27040|array(125,11) --internal
 		 viable = yes
-		 equivalent: ("array<t><#>")-> type array<t><#>  @20832|array(117,6)
+		 equivalent: ("array<t><#>")-> type array<t><#>  @57664|array(117,6)
 
-		nom type serial<c>  @06800|array(127,11) --internal
+		nom type serial<c>  @19296|array(127,11) --internal
 		 viable = no
-		 equivalent: ("serial_access<t><c>")-> type serial_access<t><c>  @54704|access(5,6)
+		 equivalent: ("serial_access<t><c>")-> type serial_access<t><c>  @56368|access(5,6)
 
-		method store  @19504|array(145,3) --external
+		method store  @22960|array(145,3) --external
 		 viable = yes
 
-		abstract method ~count  @11632|array(150,11) --fraternal
+		abstract method ~count  @64352|array(150,11) --fraternal
 		 key = -0
 		 viable = yes
 
-		abstract method ~use@  @12624|array(152,11) --fraternal
+		abstract method ~use@  @59888|array(152,11) --fraternal
 		 key = -0
 		 viable = yes
 	}

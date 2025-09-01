@@ -1,74 +1,74 @@
 page toggle
 {
-	type toggle  @44304|toggle(5,6) --external
+	type toggle  @29152|toggle(5,6) --external
 	 viable = yes
 	{
-		method begin  @39184|toggle(37,3) --external
+		method begin  @11008|toggle(37,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @49632|toggle(37,3) --internal
-				 type: (direct)-> type toggle  @44304|toggle(5,6)
+				object io  @48800|toggle(37,3) --internal
+				 type: (direct)-> type toggle  @29152|toggle(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --initial, fundamental
-				 lead: ("io.semaphore")-> object semaphore  @54816|toggle(55,3)
-				 method: ("begin")-> method begin  @15392|semaphore(69,3)
-				 input: ("zero")-> object zero  @08080|conventional(34,2)
-				 input: ("one")-> object one  @08720|conventional(36,2)
+				 lead: ("io.semaphore")-> object semaphore  @04960|toggle(55,3)
+				 method: ("begin")-> method begin  @26928|semaphore(69,3)
+				 input: ("zero")-> object zero  @41840|conventional(34,2)
+				 input: ("one")-> object one  @38640|conventional(36,2)
 			}
 		}
 
-		method release  @45648|toggle(47,3) --external
+		method release  @13088|toggle(47,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @64992|toggle(47,3) --internal
-				 type: (direct)-> type toggle  @44304|toggle(5,6)
+				object io  @53600|toggle(47,3) --internal
+				 type: (direct)-> type toggle  @29152|toggle(5,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @58912|toggle(49,16)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @53920|toggle(49,16)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.semaphore")-> object semaphore  @54816|toggle(55,3)
-				 method: ("add_no_wait")-> method add_no_wait  @24544|semaphore(73,3)
-				 input: ("one")-> object one  @08720|conventional(36,2)
-				 output: (direct)-> object (anon)  @58912|toggle(49,16)
+				 lead: ("io.semaphore")-> object semaphore  @04960|toggle(55,3)
+				 method: ("add_no_wait")-> method add_no_wait  @20688|semaphore(73,3)
+				 input: ("one")-> object one  @38640|conventional(36,2)
+				 output: (direct)-> object (anon)  @53920|toggle(49,16)
 			}
 		}
 
-		method wait  @56464|toggle(42,3) --external
+		method wait  @08928|toggle(42,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @63712|toggle(42,3) --internal
-				 type: (direct)-> type toggle  @44304|toggle(5,6)
+				object io  @53280|toggle(42,3) --internal
+				 type: (direct)-> type toggle  @29152|toggle(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --fundamental
-				 lead: ("io.semaphore")-> object semaphore  @54816|toggle(55,3)
-				 method: ("add_wait")-> method add_wait  @26624|semaphore(71,3)
-				 input: ("neg_one")-> object neg_one  @36160|conventional(56,2)
+				 lead: ("io.semaphore")-> object semaphore  @04960|toggle(55,3)
+				 method: ("add_wait")-> method add_wait  @19440|semaphore(71,3)
+				 input: ("neg_one")-> object neg_one  @36464|conventional(56,2)
 			}
 		}
 
 		instance
 		{
-			object semaphore  @54816|toggle(55,3) --internal
-			 type: ("semaphore")-> type semaphore  @10416|semaphore(4,6)
+			object semaphore  @04960|toggle(55,3) --internal
+			 type: ("semaphore")-> type semaphore  @04256|semaphore(4,6)
 		}
 
 	}

@@ -101,12 +101,12 @@ subroutine
 	{
 		unsigned char	action;		// ascii 'r', 'w'
 		void*			pdata;		// data base addr
-		PRAGMA_INT		offset;		// data offset from base
-		PRAGMA_INT		size;		// xfer size
-		PRAGMA_INT		id;			// async id
-		PRAGMA_INT		seek;		// device offset  
+		NOD_INT			offset;		// data offset from base
+		NOD_INT			size;		// xfer size
+		NOD_INT			id;			// async id
+		NOD_INT			seek;		// device offset  
 
-		PRAGMA_INT		deficit;	// 0 ... size
+		NOD_INT			deficit;	// 0 ... size
 		unsigned char	report;		// ascii 'NUL', 'p', 'b', 't', 'c', 'x'
 		void*			pnote;		// device generated text
 	}
@@ -169,6 +169,7 @@ subroutine
 
 	Here is the corresponding format:
 
+	format
 	{
 		word8	( 'b' );
 		addr	( 'b' );
@@ -180,6 +181,9 @@ subroutine
 		word8	( 'b' );
 		addr	( 'b' );
 	}
+
+	Note that this format can be inferred from an instance
+	def if it's coded in the correct order.
 
 }}
 {

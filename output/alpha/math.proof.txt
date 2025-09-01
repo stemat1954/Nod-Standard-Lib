@@ -1,52 +1,52 @@
 page math
 {
-	subroutine arccos<t>  @60336|math(60,2) --external
+	subroutine arccos<t>  @38512|math(60,2) --external
 	 viable = no
 
-	subroutine arccot<t>  @62336|math(68,2) --external
+	subroutine arccot<t>  @36112|math(68,2) --external
 	 viable = no
 
-	subroutine arccsc<t>  @60736|math(64,2) --external
+	subroutine arccsc<t>  @38912|math(64,2) --external
 	 viable = no
 
-	subroutine arcsec<t>  @61136|math(66,2) --external
+	subroutine arcsec<t>  @36512|math(66,2) --external
 	 viable = no
 
-	subroutine arcsin<t>  @61536|math(58,2) --external
+	subroutine arcsin<t>  @36912|math(58,2) --external
 	 viable = no
 
-	subroutine arctan<t>  @61936|math(62,2) --external
+	subroutine arctan<t>  @35712|math(62,2) --external
 	 viable = no
 
-	enum type coord2_tag  @19152|math(11,11) --external
-	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	enum type coord2_tag  @01184|math(11,11) --external
+	 from ("enumerated")-> type enumerated  @17216|enumerated(4,6)
 	 viable = yes
 	{
 	    'cartesian' = 0
 	    'polar' = 1
 	}
 	{
-		method begin  @64208|math(11,11) --external
+		method begin  @29888|math(11,11) --external
 		 viable = yes
 
-		method begin  @59216|math(11,11) --external
+		method begin  @30720|math(11,11) --external
 		 viable = yes
 
-		method get_token  @54224|math(11,11) --external
+		method get_token  @31968|math(11,11) --external
 		 viable = yes
 
-		method is_before?  @01168|math(11,11) --external
+		method is_before?  @35296|math(11,11) --external
 		 viable = yes
 
-		method is_equal?  @61712|math(11,11) --external
+		method is_equal?  @37376|math(11,11) --external
 		 viable = yes
 
-		method use_token  @56304|math(11,11) --external
+		method use_token  @31136|math(11,11) --external
 		 viable = yes
 	}
 
-	enum type coord3_tag  @15408|math(13,11) --external
-	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	enum type coord3_tag  @06592|math(13,11) --external
+	 from ("enumerated")-> type enumerated  @17216|enumerated(4,6)
 	 viable = yes
 	{
 	    'cartesion' = 0
@@ -54,80 +54,80 @@ page math
 	    'spherical' = 2
 	}
 	{
-		method begin  @60880|math(13,11) --external
+		method begin  @21984|math(13,11) --external
 		 viable = yes
 
-		method begin  @60048|math(13,11) --external
+		method begin  @27392|math(13,11) --external
 		 viable = yes
 
-		method get_token  @60464|math(13,11) --external
+		method get_token  @22400|math(13,11) --external
 		 viable = yes
 
-		method is_before?  @62128|math(13,11) --external
+		method is_before?  @39040|math(13,11) --external
 		 viable = yes
 
-		method is_equal?  @06576|math(13,11) --external
+		method is_equal?  @26560|math(13,11) --external
 		 viable = yes
 
-		method use_token  @65040|math(13,11) --external
+		method use_token  @38624|math(13,11) --external
 		 viable = yes
 	}
 
-	subroutine cos<t>  @58656|math(48,2) --external
+	subroutine cos<t>  @34832|math(48,2) --external
 	 viable = no
 
-	subroutine cosh<t>  @02912|math(81,2) --external
+	subroutine cosh<t>  @07472|math(81,2) --external
 	 viable = no
 
-	subroutine cot<t>  @59936|math(56,2) --external
+	subroutine cot<t>  @39312|math(56,2) --external
 	 viable = no
 
-	subroutine coth<t>  @05712|math(89,2) --external
+	subroutine coth<t>  @12272|math(89,2) --external
 	 viable = no
 
-	subroutine cplx_pow<t>  @57456|math(33,2) --external
+	subroutine cplx_pow<t>  @33632|math(33,2) --external
 	 viable = no
 
-	subroutine cplx_pow<t><u>  @57856|math(35,2) --external
+	subroutine cplx_pow<t><u>  @34032|math(35,2) --external
 	 viable = no
 
-	subroutine csc<t>  @63136|math(52,2) --external
+	subroutine csc<t>  @37712|math(52,2) --external
 	 viable = no
 
-	subroutine csch<t>  @01312|math(85,2) --external
+	subroutine csch<t>  @13472|math(85,2) --external
 	 viable = no
 
-	subroutine fp2_pow<t>  @13120|math(29,2) --external
+	subroutine fp2_pow<t>  @32832|math(29,2) --external
 	 viable = no
 
-	subroutine fp2_pow<t><u>  @13520|math(31,2) --external
+	subroutine fp2_pow<t><u>  @33232|math(31,2) --external
 	 viable = no
 
-	subroutine sec<t>  @59536|math(54,2) --external
+	subroutine sec<t>  @38112|math(54,2) --external
 	 viable = no
 
-	subroutine sech<t>  @63648|math(87,2) --external
+	subroutine sech<t>  @09072|math(87,2) --external
 	 viable = no
 
-	subroutine sin<t>  @58256|math(46,2) --external
+	subroutine sin<t>  @34432|math(46,2) --external
 	 viable = no
 
-	subroutine sinh<t>  @62736|math(79,2) --external
+	subroutine sinh<t>  @37312|math(79,2) --external
 	 viable = no
 
-	subroutine tan<t>  @59056|math(50,2) --external
+	subroutine tan<t>  @35232|math(50,2) --external
 	 viable = no
 
-	subroutine tanh<t>  @00112|math(83,2) --external
+	subroutine tanh<t>  @13872|math(83,2) --external
 	 viable = no
 
 	common
 	{
-		object euler  @36272|math(21,2) --external
-		 type: ("fp2")-> type fp2  @56880|float(38,6)
+		object euler  @62544|math(21,2) --external
+		 type: ("fp2")-> type fp2  @23840|float(38,6)
 
-		object pi  @32416|math(19,2) --external
-		 type: ("fp2")-> type fp2  @56880|float(38,6)
+		object pi  @28736|math(19,2) --external
+		 type: ("fp2")-> type fp2  @23840|float(38,6)
 	}
 
 }

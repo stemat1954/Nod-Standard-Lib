@@ -1,144 +1,144 @@
 adhoc appendix
 {
-	type $1<'16'>( word<'16'> )  @11952|$appendix(,) --internal
+	type $1<'16'>( word<'16'> )  @08096|$appendix(,) --internal
 	 viable = yes
 	{
-		method adc  @07408|$appendix(,) --external
+		method adc  @44448|$appendix(,) --external
 		 viable = yes
 
-		method adc  @56720|$appendix(,) --external
+		method adc  @45280|$appendix(,) --external
 		 viable = yes
 
-		method add  @07824|$appendix(,) --external
+		method add  @44864|$appendix(,) --external
 		 viable = yes
 
-		method add  @08240|$appendix(,) --external
+		method add  @45696|$appendix(,) --external
 		 viable = yes
 
-		method and  @09072|$appendix(,) --external
+		method and  @46112|$appendix(,) --external
 		 viable = yes
 
-		method and  @08656|$appendix(,) --external
+		method and  @48192|$appendix(,) --external
 		 viable = yes
 
-		method asr  @09488|$appendix(,) --external
+		method asr  @46528|$appendix(,) --external
 		 viable = yes
 
-		method asr  @13648|$appendix(,) --external
+		method asr  @46944|$appendix(,) --external
 		 viable = yes
 
-		method begin  @12400|$appendix(,) --external
+		method begin  @47776|$appendix(,) --external
 		 viable = yes
 
-		method begin  @09904|$appendix(,) --external
+		method begin  @52352|$appendix(,) --external
 		 viable = yes
 
-		method begin  @10320|$appendix(,) --external
+		method begin  @50688|$appendix(,) --external
 		 viable = yes
 
-		method begin  @11984|$appendix(,) --external
+		method begin  @48608|$appendix(,) --external
 		 viable = yes
 
-		method begin  @10736|$appendix(,) --external
+		method begin  @51520|$appendix(,) --external
 		 viable = yes
 
-		method begin<#n>  @11152|$appendix(,) --external
+		method begin<#n>  @52768|$appendix(,) --external
 		 viable = no
 
-		method is_before?  @11568|$appendix(,) --external
+		method is_before?  @51936|$appendix(,) --external
 		 viable = yes
 
-		method is_equal?  @12816|$appendix(,) --external
+		method is_equal?  @51104|$appendix(,) --external
 		 viable = yes
 
-		method is_less?  @13232|$appendix(,) --external
+		method is_less?  @49024|$appendix(,) --external
 		 viable = yes
 
-		method is_zero?  @14064|$appendix(,) --external
+		method is_zero?  @49856|$appendix(,) --external
 		 viable = yes
 
-		method lsl  @16560|$appendix(,) --external
+		method lsl  @53184|$appendix(,) --external
 		 viable = yes
 
-		method lsl  @17808|$appendix(,) --external
+		method lsl  @49440|$appendix(,) --external
 		 viable = yes
 
-		method lsr  @16976|$appendix(,) --external
+		method lsr  @50272|$appendix(,) --external
 		 viable = yes
 
-		method lsr  @15728|$appendix(,) --external
+		method lsr  @53600|$appendix(,) --external
 		 viable = yes
 
-		method nand  @18640|$appendix(,) --external
+		method nand  @54016|$appendix(,) --external
 		 viable = yes
 
-		method nand  @18224|$appendix(,) --external
+		method nand  @14928|$appendix(,) --external
 		 viable = yes
 
-		method neg  @19888|$appendix(,) --external
+		method neg  @00368|$appendix(,) --external
 		 viable = yes
 
-		method neg  @19056|$appendix(,) --external
+		method neg  @09520|$appendix(,) --external
 		 viable = yes
 
-		method nor  @17392|$appendix(,) --external
+		method nor  @08272|$appendix(,) --external
 		 viable = yes
 
-		method nor  @14480|$appendix(,) --external
+		method nor  @12016|$appendix(,) --external
 		 viable = yes
 
-		method not  @19472|$appendix(,) --external
+		method not  @04528|$appendix(,) --external
 		 viable = yes
 
-		method not  @16144|$appendix(,) --external
+		method not  @05360|$appendix(,) --external
 		 viable = yes
 
-		method or  @14896|$appendix(,) --external
+		method or  @07440|$appendix(,) --external
 		 viable = yes
 
-		method or  @15312|$appendix(,) --external
+		method or  @08688|$appendix(,) --external
 		 viable = yes
 
-		method rcl  @32736|$appendix(,) --external
+		method rcl  @00784|$appendix(,) --external
 		 viable = yes
 
-		method rcl  @24000|$appendix(,) --external
+		method rcl  @10768|$appendix(,) --external
 		 viable = yes
 
-		method rcr  @26080|$appendix(,) --external
+		method rcr  @07856|$appendix(,) --external
 		 viable = yes
 
-		method rcr  @28160|$appendix(,) --external
+		method rcr  @01200|$appendix(,) --external
 		 viable = yes
 
-		method rol  @28992|$appendix(,) --external
+		method rol  @14096|$appendix(,) --external
 		 viable = yes
 
-		method rol  @21920|$appendix(,) --external
+		method rol  @64656|$appendix(,) --external
 		 viable = yes
 
-		method ror  @25248|$appendix(,) --external
+		method ror  @13680|$appendix(,) --external
 		 viable = yes
 
-		method ror  @35648|$appendix(,) --external
+		method ror  @13264|$appendix(,) --external
 		 viable = yes
 
-		method set  @24416|$appendix(,) --external
+		method set  @15344|$appendix(,) --external
 		 viable = yes
 
-		method store  @30656|$appendix(,) --external
+		method store  @01616|$appendix(,) --external
 		 viable = yes
 
-		method xnor  @29408|$appendix(,) --external
+		method xnor  @12432|$appendix(,) --external
 		 viable = yes
 
-		method xnor  @23584|$appendix(,) --external
+		method xnor  @65072|$appendix(,) --external
 		 viable = yes
 
-		method xor  @33152|$appendix(,) --external
+		method xor  @10352|$appendix(,) --external
 		 viable = yes
 
-		method xor  @29824|$appendix(,) --external
+		method xor  @09936|$appendix(,) --external
 		 viable = yes
 	}
 }

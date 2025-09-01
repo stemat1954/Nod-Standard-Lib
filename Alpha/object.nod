@@ -3,32 +3,30 @@ page object in AlphaByNod
 
 type object  -- virtual, restricted
 {{
-	This is a special virtual type definition.  It serves
-	as a domain for universal methods.
+	This is a special virtual type definition. 
 	
-	Type object and universal methods have special status
-	in Nod.  
+	This definition also serves as a domain for primary
+	methods.
+	
+	Primary methods and virtual type object have special 
+	status in Nod.  
 	
 	Conceptually, type object is a virtual base type from
-	which all other types derive, while universal methods
-	are	general methods that the compiler automatically 
-	includes in every type definition (including this one).
+	which all other types derive, while primary methods	
+	automatically belong to every type definition (includ-
+	ing this one).
 	
-	Technically, universal methods aren't inherited from
-	type object.  Rather, they're "included," as if they 
-	were written explicitly in the type definition.
+	Technically, primary methods aren't inherited from
+	type object.  Rather, they're "included" by the com-
+	piler, as if they were written explicitly in the type
+	definition.
 	
-	Universal methods evaluate the construction of an object
-	rather than it's value. In particular, universal methods 
-	can be called for null objects without causing disrup-
-	tion.
-
-	:recycle reconstructs an object without changing the
-	object's addr. A recycled object has a null value.
-
 	:as_base<> has reserved permission syntax and never
 	returns a void proxy because the type ref can always
 	be verified at compile time.
+
+	The other generic type methods require an implicit
+	object accessed by proxy. 
 }}
 {
 	general 
@@ -37,6 +35,8 @@ type object  -- virtual, restricted
 
 		is_not_null? [eval]()( bool );
 
+		recycle [term];	 
+
 
 		use_typeid [eval] = typeid proxy [eval];  -- access 
 
@@ -44,20 +44,18 @@ type object  -- virtual, restricted
 
 		get_addr [eval]()( addr );  -- copy
 
-	
+
+		as_base<t> [eval] = <t> proxy [eval,upd,init];  -- see notes
+	}
+
+	general
+	{
 		is<t>? [eval]()( bool );  
-
-		is_actual<t>? [eval]()( bool );
-
 
 		as<t> [eval] = <t> proxy [eval,upd];	-- may be void
 
+		is_actual<t>? [eval]()( bool );
+
 		as_actual<t> [eval] = <t> proxy [eval,init];  -- may be void
-
-		as_base<t> [eval] = <t> proxy [eval,upd,init]; 
-
-
-		recycle [term];	 
-
 	}
 }

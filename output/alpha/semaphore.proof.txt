@@ -1,15 +1,15 @@
 page semaphore
 {
-	type semaphore  @10416|semaphore(4,6) --external
+	type semaphore  @04256|semaphore(4,6) --external
 	 viable = yes
 	{
-		method add_no_wait  @24544|semaphore(73,3) --external
+		method add_no_wait  @20688|semaphore(73,3) --external
 		 viable = yes
 
-		method add_wait  @26624|semaphore(71,3) --external
+		method add_wait  @19440|semaphore(71,3) --external
 		 viable = yes
 
-		method begin  @15392|semaphore(69,3) --external
+		method begin  @26928|semaphore(69,3) --external
 		 viable = yes
 	}
 }

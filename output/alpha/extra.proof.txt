@@ -1,23 +1,23 @@
 page extra
 {
-	type extra  @11712|extra(5,6) --external
-	 from ("direct_access<object>")-> type direct_access<t>  @05520|access(89,6)
+	type extra  @18752|extra(5,6) --external
+	 from ("direct_access<object>")-> type direct_access<t>  @61392|access(89,6)
 	 viable = yes
 	{
-		method count  @36720|extra(48,3) --external
+		method count  @65440|extra(48,3) --external
 		 viable = yes
 
-		method delete  @34640|extra(43,3) --external
+		method delete  @64608|extra(43,3) --external
 		 viable = yes
 
-		method use@  @37136|extra(50,3) --external
+		method use@  @06560|extra(50,3) --external
 		 viable = yes
 
-		abstract method ~count  @13120|extra(55,11) --fraternal
+		abstract method ~count  @60384|extra(55,11) --fraternal
 		 key = -0
 		 viable = yes
 
-		abstract method ~use@  @49872|extra(57,11) --fraternal
+		abstract method ~use@  @00304|extra(57,11) --fraternal
 		 key = -0
 		 viable = yes
 	}

@@ -1,30 +1,30 @@
 page lock
 {
-	type lock  @53424|lock(5,6) --external
+	type lock  @21920|lock(5,6) --external
 	 viable = yes
 	{
-		method begin  @14160|lock(168,3) --external
+		method begin  @51984|lock(168,3) --external
 		 viable = yes
 
-		method hold  @17904|lock(178,3) --external
+		method hold  @60896|lock(178,3) --external
 		 viable = yes
 
-		method hold  @18736|lock(180,3) --external
+		method hold  @64640|lock(180,3) --external
 		 viable = yes
 
-		method release  @20400|lock(182,3) --external
+		method release  @05760|lock(182,3) --external
 		 viable = yes
 
-		method reset  @15824|lock(175,3) --external
+		method reset  @04928|lock(175,3) --external
 		 viable = yes
 
-		method set  @08336|lock(171,3) --external
+		method set  @52400|lock(171,3) --external
 		 viable = yes
 
-		method set  @14576|lock(173,3) --external
+		method set  @53232|lock(173,3) --external
 		 viable = yes
 
-		method use_handle  @14992|lock(185,3) --external
+		method use_handle  @06176|lock(185,3) --external
 		 viable = yes
 	}
 }

@@ -1,26 +1,26 @@
 page fault
 {
-	type fault  @53808|fault(49,6) --external
+	type fault  @24224|fault(49,6) --external
 	 viable = yes
 	{
-		method begin  @35888|fault(97,3) --external
+		method begin  @01984|fault(97,3) --external
 		 viable = yes
 
-		method get_category  @29648|fault(101,3) --external
+		method get_category  @06976|fault(101,3) --external
 		 viable = yes
 
-		method get_comment  @35056|fault(105,3) --external
+		method get_comment  @03232|fault(105,3) --external
 		 viable = yes
 
-		method use_category  @31312|fault(99,3) --external
+		method use_category  @10720|fault(99,3) --external
 		 viable = yes
 
-		method use_comment  @42544|fault(103,3) --external
+		method use_comment  @02400|fault(103,3) --external
 		 viable = yes
 	}
 
-	enum type fault_category  @44208|fault(5,11) --external
-	 from ("enumerated")-> type enumerated  @10176|enumerated(4,6)
+	enum type fault_category  @01568|fault(5,11) --external
+	 from ("enumerated")-> type enumerated  @17216|enumerated(4,6)
 	 viable = yes
 	{
 	    'bug' = 0
@@ -31,22 +31,22 @@ page fault
 	    'system' = 5
 	}
 	{
-		method begin  @57968|fault(5,11) --external
+		method begin  @34464|fault(5,11) --external
 		 viable = yes
 
-		method begin  @53392|fault(5,11) --external
+		method begin  @32800|fault(5,11) --external
 		 viable = yes
 
-		method get_token  @63376|fault(5,11) --external
+		method get_token  @34880|fault(5,11) --external
 		 viable = yes
 
-		method is_before?  @00336|fault(5,11) --external
+		method is_before?  @24896|fault(5,11) --external
 		 viable = yes
 
-		method is_equal?  @58384|fault(5,11) --external
+		method is_equal?  @25312|fault(5,11) --external
 		 viable = yes
 
-		method use_token  @55888|fault(5,11) --external
+		method use_token  @24480|fault(5,11) --external
 		 viable = yes
 	}
 }

@@ -1,225 +1,225 @@
 page console
 {
-	type console  @44688|console(5,6) --external
+	type console  @29536|console(5,6) --external
 	 viable = yes
 	{
-		method begin  @37728|console(20,3) --external
+		method begin  @20336|console(20,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @64928|console(20,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @15840|console(20,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object hcon  @03232|console(22,39)
-				 type: ("handle")-> type handle  @55728|handle(5,6)
+				 object: (direct)-> object hcon  @15520|console(22,39)
+				 type: ("handle")-> type handle  @23456|handle(5,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> object hcon  @03232|console(22,39)
-				 method: ("begin")-> method begin  @63072|handle(23,3)
+				 lead: (direct)-> object hcon  @15520|console(22,39)
+				 method: ("begin")-> method begin  @28928|handle(23,3)
 				CALL --compatible
-				 subroutine: ("kernel\console_identify")-> subroutine console_identify  @30688|console(62,2)
-				 input: ("no_addr")-> object no_addr  @10000|conventional(14,2)
-				 input: (direct)-> object hcon  @03232|console(22,39)
+				 subroutine: ("kernel\console_identify")-> subroutine console_identify  @02816|console(62,2)
+				 input: ("no_addr")-> object no_addr  @44080|conventional(14,2)
+				 input: (direct)-> object hcon  @15520|console(22,39)
 				MAKE
-				 object: (direct)-> object (anon)  @61728|console(23,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @05280|console(23,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("hcon")-> object hcon  @03232|console(22,39)
-				 method: ("is_equal?")-> method is_equal?  @53088|handle(31,3)
-				 input: ("no_handle")-> object no_handle  @10320|conventional(16,2)
-				 output: (direct)-> object (anon)  @61728|console(23,10)
+				 lead: ("hcon")-> object hcon  @15520|console(22,39)
+				 method: ("is_equal?")-> method is_equal?  @26848|handle(31,3)
+				 input: ("no_handle")-> object no_handle  @41200|conventional(16,2)
+				 output: (direct)-> object (anon)  @05280|console(23,10)
 				IF
-				 condition: (direct)-> object (anon)  @61728|console(23,10)
+				 condition: (direct)-> object (anon)  @05280|console(23,10)
 				{
 					true branch: RETURN --to isolate (quit)
-					 trace: (direct)-> object (anon)  @03552|console(,)
+					 trace: (direct)-> object (anon)  @08480|console(,)
 						trace branch: BLOCK --domain
 						{
 							MAKE
-							 object: (direct)-> object (anon)  @03552|console(,)
-							 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+							 object: (direct)-> object (anon)  @08480|console(,)
+							 type: (direct)-> type $6<26>( alpha\op<fault> )  @40208|$appendix(,)
 							MAKE
-							 proxy: (direct)-> proxy (anon)  @15040|console(,)
-							 type: ("fault")-> type fault  @53808|fault(49,6)
+							 proxy: (direct)-> proxy (anon)  @11984|console(,)
+							 type: ("fault")-> type fault  @24224|fault(49,6)
 							 permission: [init]
 							CALL --initial, fundamental
-							 lead: (direct)-> object (anon)  @03552|console(,)
-							 method: ("begin")-> method begin  @23152|$appendix(,)
-							 result: (direct)-> proxy (anon)  @15040|console(,)
+							 lead: (direct)-> object (anon)  @08480|console(,)
+							 method: ("begin")-> method begin  @31120|$appendix(,)
+							 result: (direct)-> proxy (anon)  @11984|console(,)
 							MAKE
-							 literal: (direct)-> literal (anon)  @65248|console(,) --'platform'
-							 type: ("expr")-> type expr  @11328|expr(5,6)
+							 literal: (direct)-> literal (anon)  @09440|console(,) --'platform'
+							 type: ("expr")-> type expr  @18368|expr(5,6)
 							MAKE
-							 literal: (direct)-> literal (anon)  @00032|console(,) --'no system console'
-							 type: ("expr")-> type expr  @11328|expr(5,6)
+							 literal: (direct)-> literal (anon)  @06240|console(,) --'no system console'
+							 type: ("expr")-> type expr  @18368|expr(5,6)
 							MAKE
-							 object: (direct)-> object (anon)  @54432|console(23,47)
-							 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+							 object: (direct)-> object (anon)  @63520|console(23,47)
+							 type: ("fault_category")-> enum type fault_category  @01568|fault(5,11)
 							CALL --initial
-							 lead: (direct)-> object (anon)  @54432|console(23,47)
-							 method: ("begin")-> method begin  @57968|fault(5,11)
-							 input: (direct)-> literal (anon)  @65248|console(,)
+							 lead: (direct)-> object (anon)  @63520|console(23,47)
+							 method: ("begin")-> method begin  @34464|fault(5,11)
+							 input: (direct)-> literal (anon)  @09440|console(,)
 							CALL --initial, fundamental
-							 lead: (direct)-> proxy (anon)  @15040|console(,)
-							 method: ("begin")-> method begin  @35888|fault(97,3)
-							 input: (direct)-> object (anon)  @54432|console(23,47)
-							 input: (direct)-> literal (anon)  @00032|console(,)
+							 lead: (direct)-> proxy (anon)  @11984|console(,)
+							 method: ("begin")-> method begin  @01984|fault(97,3)
+							 input: (direct)-> object (anon)  @63520|console(23,47)
+							 input: (direct)-> literal (anon)  @06240|console(,)
 						}
 				}
 				MAKE
-				 object: (direct)-> object err  @62048|console(24,26)
-				 type: ("string")-> type string  @09264|string(4,6)
+				 object: (direct)-> object err  @04320|console(24,26)
+				 type: ("string")-> type string  @11552|string(4,6)
 				CALL
-				 lead: ("io")-> object io  @64928|console(20,3)
-				 method: ("configure")-> method configure  @41056|console(121,3)
-				 input: ("hcon")-> object hcon  @03232|console(22,39)
-				 output: (direct)-> object err  @62048|console(24,26)
+				 lead: ("io")-> object io  @15840|console(20,3)
+				 method: ("configure")-> method configure  @24912|console(121,3)
+				 input: ("hcon")-> object hcon  @15520|console(22,39)
+				 output: (direct)-> object err  @04320|console(24,26)
 				MAKE
-				 object: (direct)-> object (anon)  @63328|console(25,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @06560|console(25,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("err")-> object err  @62048|console(24,26)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @63328|console(25,10)
+				 lead: ("err")-> object err  @04320|console(24,26)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @06560|console(25,10)
 				IF
-				 condition: (direct)-> object (anon)  @63328|console(25,10)
+				 condition: (direct)-> object (anon)  @06560|console(25,10)
 				{
 					true branch: RETURN --to isolate (quit)
-					 trace: (direct)-> object (anon)  @00352|console(,)
+					 trace: (direct)-> object (anon)  @05600|console(,)
 						trace branch: BLOCK --domain
 						{
 							MAKE
-							 object: (direct)-> object (anon)  @00352|console(,)
-							 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+							 object: (direct)-> object (anon)  @05600|console(,)
+							 type: (direct)-> type $6<26>( alpha\op<fault> )  @40208|$appendix(,)
 							MAKE
-							 proxy: (direct)-> proxy (anon)  @12912|console(,)
-							 type: ("fault")-> type fault  @53808|fault(49,6)
+							 proxy: (direct)-> proxy (anon)  @15328|console(,)
+							 type: ("fault")-> type fault  @24224|fault(49,6)
 							 permission: [init]
 							CALL --initial, fundamental
-							 lead: (direct)-> object (anon)  @00352|console(,)
-							 method: ("begin")-> method begin  @23152|$appendix(,)
-							 result: (direct)-> proxy (anon)  @12912|console(,)
+							 lead: (direct)-> object (anon)  @05600|console(,)
+							 method: ("begin")-> method begin  @31120|$appendix(,)
+							 result: (direct)-> proxy (anon)  @15328|console(,)
 							MAKE
-							 literal: (direct)-> literal (anon)  @03872|console(,) --'platform'
-							 type: ("expr")-> type expr  @11328|expr(5,6)
+							 literal: (direct)-> literal (anon)  @06880|console(,) --'platform'
+							 type: ("expr")-> type expr  @18368|expr(5,6)
 							MAKE
-							 literal: (direct)-> literal (anon)  @63648|console(,) --'system console broken'
-							 type: ("expr")-> type expr  @11328|expr(5,6)
+							 literal: (direct)-> literal (anon)  @07520|console(,) --'system console broken'
+							 type: ("expr")-> type expr  @18368|expr(5,6)
 							MAKE
-							 object: (direct)-> object (anon)  @54752|console(25,48)
-							 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+							 object: (direct)-> object (anon)  @63840|console(25,48)
+							 type: ("fault_category")-> enum type fault_category  @01568|fault(5,11)
 							CALL --initial
-							 lead: (direct)-> object (anon)  @54752|console(25,48)
-							 method: ("begin")-> method begin  @57968|fault(5,11)
-							 input: (direct)-> literal (anon)  @03872|console(,)
+							 lead: (direct)-> object (anon)  @63840|console(25,48)
+							 method: ("begin")-> method begin  @34464|fault(5,11)
+							 input: (direct)-> literal (anon)  @06880|console(,)
 							CALL --initial, fundamental
-							 lead: (direct)-> proxy (anon)  @12912|console(,)
-							 method: ("begin")-> method begin  @35888|fault(97,3)
-							 input: (direct)-> object (anon)  @54752|console(25,48)
-							 input: (direct)-> literal (anon)  @63648|console(,)
+							 lead: (direct)-> proxy (anon)  @15328|console(,)
+							 method: ("begin")-> method begin  @01984|fault(97,3)
+							 input: (direct)-> object (anon)  @63840|console(25,48)
+							 input: (direct)-> literal (anon)  @07520|console(,)
 						}
 				}
 			}
 		}
 
-		method begin  @21504|console(28,3) --external
+		method begin  @22000|console(28,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object error  @39648|console(28,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @54496|console(28,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @57568|console(28,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @11040|console(28,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 
-				object name  @58528|console(28,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object name  @11360|console(28,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object pname  @44768|console(30,27)
-				 type: ("addr")-> type addr  @39232|addr(4,6)
+				 object: (direct)-> object pname  @50656|console(30,27)
+				 type: ("addr")-> type addr  @44496|addr(4,6)
 				CALL
-				 subroutine: ("alpha_to_cstr")-> subroutine alpha_to_cstr  @00864|conventional(160,2)
-				 input: ("name")-> object name  @58528|console(28,3)
-				 output: (direct)-> object pname  @44768|console(30,27)
+				 subroutine: ("alpha_to_cstr")-> subroutine alpha_to_cstr  @41760|conventional(160,2)
+				 input: ("name")-> object name  @11360|console(28,3)
+				 output: (direct)-> object pname  @50656|console(30,27)
 				MAKE
-				 object: (direct)-> object hcon  @47328|console(31,37)
-				 type: ("handle")-> type handle  @55728|handle(5,6)
+				 object: (direct)-> object hcon  @62816|console(31,37)
+				 type: ("handle")-> type handle  @23456|handle(5,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> object hcon  @47328|console(31,37)
-				 method: ("begin")-> method begin  @63072|handle(23,3)
+				 lead: (direct)-> object hcon  @62816|console(31,37)
+				 method: ("begin")-> method begin  @28928|handle(23,3)
 				CALL --compatible
-				 subroutine: ("kernel\console_identify")-> subroutine console_identify  @30688|console(62,2)
-				 input: ("pname")-> object pname  @44768|console(30,27)
-				 input: (direct)-> object hcon  @47328|console(31,37)
+				 subroutine: ("kernel\console_identify")-> subroutine console_identify  @02816|console(62,2)
+				 input: ("pname")-> object pname  @50656|console(30,27)
+				 input: (direct)-> object hcon  @62816|console(31,37)
 				CALL --compatible
-				 subroutine: ("kernel\heap_free")-> subroutine heap_free  @34688|heap(27,2)
-				 input: ("pname")-> object pname  @44768|console(30,27)
+				 subroutine: ("kernel\heap_free")-> subroutine heap_free  @04816|heap(27,2)
+				 input: ("pname")-> object pname  @50656|console(30,27)
 				MAKE
-				 object: (direct)-> object (anon)  @45728|console(34,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @00480|console(34,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("hcon")-> object hcon  @47328|console(31,37)
-				 method: ("is_equal?")-> method is_equal?  @53088|handle(31,3)
-				 input: ("no_handle")-> object no_handle  @10320|conventional(16,2)
-				 output: (direct)-> object (anon)  @45728|console(34,10)
+				 lead: ("hcon")-> object hcon  @62816|console(31,37)
+				 method: ("is_equal?")-> method is_equal?  @26848|handle(31,3)
+				 input: ("no_handle")-> object no_handle  @41200|conventional(16,2)
+				 output: (direct)-> object (anon)  @00480|console(34,10)
 				IF
-				 condition: (direct)-> object (anon)  @45728|console(34,10)
+				 condition: (direct)-> object (anon)  @00480|console(34,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 object: (direct)-> object (anon)  @52128|console(36,5)
-						 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+						 object: (direct)-> object (anon)  @51616|console(36,5)
+						 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 						MAKE
-						 literal: (direct)-> literal (anon)  @47648|console(,) --'unknown console: '
-						 type: ("expr")-> type expr  @11328|expr(5,6)
+						 literal: (direct)-> literal (anon)  @51936|console(,) --'unknown console: '
+						 type: ("expr")-> type expr  @18368|expr(5,6)
 						CALL --initial
-						 lead: (direct)-> object (anon)  @52128|console(36,5)
-						 method: ("begin")-> method begin  @22960|text_mediator(117,3)
-						 input: (direct)-> literal (anon)  @47648|console(,)
+						 lead: (direct)-> object (anon)  @51616|console(36,5)
+						 method: ("begin")-> method begin  @45536|text_mediator(117,3)
+						 input: (direct)-> literal (anon)  @51936|console(,)
 						CALL
-						 lead: (direct)-> object (anon)  @52128|console(36,5)
-						 method: ("write")-> method write  @27120|text_mediator(258,3)
-						 input: ("name")-> object name  @58528|console(28,3)
+						 lead: (direct)-> object (anon)  @51616|console(36,5)
+						 method: ("write")-> method write  @49696|text_mediator(258,3)
+						 input: ("name")-> object name  @11360|console(28,3)
 						CALL
-						 lead: (direct)-> object (anon)  @52128|console(36,5)
-						 method: ("detach")-> method detach  @06736|text_mediator(124,3)
-						 output: ("error")-> object error  @39648|console(28,3)
+						 lead: (direct)-> object (anon)  @51616|console(36,5)
+						 method: ("detach")-> method detach  @50528|text_mediator(124,3)
+						 output: ("error")-> object error  @54496|console(28,3)
 						CALL --initial, fundamental
-						 lead: ("io.ready")-> object ready  @09680|console(165,3)
-						 method: ("begin")-> method begin  @21056|bool(26,3)
-						 input: ("false")-> object false  @07120|conventional(24,2)
+						 lead: ("io.ready")-> object ready  @44720|console(165,3)
+						 method: ("begin")-> method begin  @42288|bool(26,3)
+						 input: ("false")-> object false  @40880|conventional(24,2)
 					}
 					false branch: CALL
-					 lead: ("io")-> object io  @57568|console(28,3)
-					 method: ("configure")-> method configure  @41056|console(121,3)
-					 input: ("hcon")-> object hcon  @47328|console(31,37)
-					 output: ("error")-> object error  @39648|console(28,3)
+					 lead: ("io")-> object io  @11040|console(28,3)
+					 method: ("configure")-> method configure  @24912|console(121,3)
+					 input: ("hcon")-> object hcon  @62816|console(31,37)
+					 output: ("error")-> object error  @54496|console(28,3)
 				}
 			}
 		}
 
-		method configure  @41056|console(121,3) --internal
+		method configure  @24912|console(121,3) --internal
 		 viable = yes
 		{
 
 			common
 			{
-				enumerator $index  @25648|console(,) --internal
-				 type: (direct)-> type $1<5>( <int>enumerator )  @52752|$appendix(,)
+				enumerator $index  @59360|console(,) --internal
+				 type: (direct)-> type $1<5>( <int>enumerator )  @33296|$appendix(,)
 
-				subroutine $start1  @64448|console(,) --internal
+				subroutine $start1  @33616|console(,) --internal
 				 viable = yes
 				{
 
@@ -230,8 +230,8 @@ page console
 					BLOCK --domain
 					{
 						MAKE
-						 enumerator: (direct)-> enumerator $index  @25648|console(,)
-						 type: (direct)-> type $1<5>( <int>enumerator )  @52752|$appendix(,)
+						 enumerator: (direct)-> enumerator $index  @59360|console(,)
+						 type: (direct)-> type $1<5>( <int>enumerator )  @33296|$appendix(,)
 					}
 				}
 			}
@@ -239,93 +239,93 @@ page console
 
 			given
 			{
-				object err  @53408|console(121,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object err  @64736|console(121,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object hcon  @39328|console(121,3) --internal
-				 type: ("handle")-> type handle  @55728|handle(5,6)
+				object hcon  @50336|console(121,3) --internal
+				 type: ("handle")-> type handle  @23456|handle(5,6)
 
-				object io  @50208|console(121,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @62176|console(121,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object hch  @37408|console(123,40)
-				 type: ("handle")-> type handle  @55728|handle(5,6)
+				 object: (direct)-> object hch  @65376|console(123,40)
+				 type: ("handle")-> type handle  @23456|handle(5,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> object hch  @37408|console(123,40)
-				 method: ("begin")-> method begin  @63072|handle(23,3)
+				 lead: (direct)-> object hch  @65376|console(123,40)
+				 method: ("begin")-> method begin  @28928|handle(23,3)
 				MAKE
-				 object: (direct)-> object pnote  @43488|console(123,59)
-				 type: ("addr")-> type addr  @39232|addr(4,6)
+				 object: (direct)-> object pnote  @62496|console(123,59)
+				 type: ("addr")-> type addr  @44496|addr(4,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> object pnote  @43488|console(123,59)
-				 method: ("begin")-> method begin  @61504|addr(34,3)
+				 lead: (direct)-> object pnote  @62496|console(123,59)
+				 method: ("begin")-> method begin  @46672|addr(34,3)
 				CALL --compatible
-				 subroutine: ("kernel\console_open_channel")-> subroutine console_open_channel  @34288|console(64,2)
-				 input: ("hcon")-> object hcon  @39328|console(121,3)
-				 input: (direct)-> object hch  @37408|console(123,40)
-				 input: (direct)-> object pnote  @43488|console(123,59)
+				 subroutine: ("kernel\console_open_channel")-> subroutine console_open_channel  @04416|console(64,2)
+				 input: ("hcon")-> object hcon  @50336|console(121,3)
+				 input: (direct)-> object hch  @65376|console(123,40)
+				 input: (direct)-> object pnote  @62496|console(123,59)
 				MAKE
-				 object: (direct)-> object (anon)  @54368|console(125,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @57376|console(125,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("hch")-> object hch  @37408|console(123,40)
-				 method: ("is_equal?")-> method is_equal?  @53088|handle(31,3)
-				 input: ("no_handle")-> object no_handle  @10320|conventional(16,2)
-				 output: (direct)-> object (anon)  @54368|console(125,10)
+				 lead: ("hch")-> object hch  @65376|console(123,40)
+				 method: ("is_equal?")-> method is_equal?  @26848|handle(31,3)
+				 input: ("no_handle")-> object no_handle  @41200|conventional(16,2)
+				 output: (direct)-> object (anon)  @57376|console(125,10)
 				MAKE
-				 object: (direct)-> object (anon)  @37728|console(125,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @57696|console(125,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: (direct)-> object (anon)  @54368|console(125,10)
-				 method: ("not")-> method not  @30096|bool(43,3)
-				 output: (direct)-> object (anon)  @37728|console(125,10)
+				 lead: (direct)-> object (anon)  @57376|console(125,10)
+				 method: ("not")-> method not  @39376|bool(43,3)
+				 output: (direct)-> object (anon)  @57696|console(125,10)
 				IF
-				 condition: (direct)-> object (anon)  @37728|console(125,10)
+				 condition: (direct)-> object (anon)  @57696|console(125,10)
 				{
 					true branch: BLOCK --domain
 					{
 						CALL --initial
-						 lead: ("io.channel")-> object channel  @08400|console(167,3)
-						 method: ("begin")-> method begin  @17552|text_channel(149,3)
-						 input: ("hch")-> object hch  @37408|console(123,40)
+						 lead: ("io.channel")-> object channel  @42800|console(167,3)
+						 method: ("begin")-> method begin  @42208|text_channel(149,3)
+						 input: ("hch")-> object hch  @65376|console(123,40)
 						MAKE
-						 object: (direct)-> object unit  @54688|console(129,41)
-						 type: ("int")-> type int  @54576|int(6,6)
+						 object: (direct)-> object unit  @58016|console(129,41)
+						 type: ("int")-> type int  @21536|int(6,6)
 						CALL --initial, fundamental
-						 lead: (direct)-> object unit  @54688|console(129,41)
-						 method: ("begin")-> method begin  @58080|int(52,3)
+						 lead: (direct)-> object unit  @58016|console(129,41)
+						 method: ("begin")-> method begin  @31424|int(52,3)
 						 input: (pending)->
 						MAKE
-						 object: (direct)-> object bom  @38048|console(129,58)
-						 type: (direct)-> type $3<'16'>( word<'16'> )  @52368|$appendix(,)
+						 object: (direct)-> object bom  @58336|console(129,58)
+						 type: (direct)-> type $3<'16'>( word<'16'> )  @36368|$appendix(,)
 						CALL --initial, fundamental
-						 lead: (direct)-> object bom  @38048|console(129,58)
-						 method: ("begin")-> method begin  @52192|$appendix(,)
+						 lead: (direct)-> object bom  @58336|console(129,58)
+						 method: ("begin")-> method begin  @33840|$appendix(,)
 						 input: (pending)->
 						MAKE
-						 object: (direct)-> object eol  @43808|console(129,77)
-						 type: ("int")-> type int  @54576|int(6,6)
+						 object: (direct)-> object eol  @00160|console(129,77)
+						 type: ("int")-> type int  @21536|int(6,6)
 						CALL --initial, fundamental
-						 lead: (direct)-> object eol  @43808|console(129,77)
-						 method: ("begin")-> method begin  @58080|int(52,3)
+						 lead: (direct)-> object eol  @00160|console(129,77)
+						 method: ("begin")-> method begin  @31424|int(52,3)
 						 input: (pending)->
 						CALL --compatible
-						 subroutine: ("kernel\console_get_protocol")-> subroutine console_get_protocol  @35488|console(66,2)
-						 input: ("hcon")-> object hcon  @39328|console(121,3)
-						 input: (direct)-> object unit  @54688|console(129,41)
-						 input: (direct)-> object bom  @38048|console(129,58)
-						 input: (direct)-> object eol  @43808|console(129,77)
+						 subroutine: ("kernel\console_get_protocol")-> subroutine console_get_protocol  @03216|console(66,2)
+						 input: ("hcon")-> object hcon  @50336|console(121,3)
+						 input: (direct)-> object unit  @58016|console(129,41)
+						 input: (direct)-> object bom  @58336|console(129,58)
+						 input: (direct)-> object eol  @00160|console(129,77)
 						CALL --initial, fundamental
-						 lead: ("io.eol")-> object eol  @06160|console(170,3)
-						 method: ("begin")-> method begin  @39520|unicode(30,3)
-						 input: ("eol")-> object eol  @43808|console(129,77)
+						 lead: ("io.eol")-> object eol  @37680|console(170,3)
+						 method: ("begin")-> method begin  @40656|unicode(30,3)
+						 input: ("eol")-> object eol  @00160|console(129,77)
 						SELECT
-						 selector: ("unit")-> object unit  @54688|console(129,41)
-						 enumerator: (direct)-> enumerator $index  @25648|console(,)
+						 selector: ("unit")-> object unit  @58016|console(129,41)
+						 enumerator: (direct)-> enumerator $index  @59360|console(,)
 						 '1' -> branch 0
 						 '2' -> branch 1
 						 '4' -> branch 2
@@ -334,167 +334,167 @@ page console
 							branch 0: BLOCK --domain
 							{
 								MAKE
-								 literal: (direct)-> literal (anon)  @38688|console(,) --'UTF-8'
-								 type: ("expr")-> type expr  @11328|expr(5,6)
+								 literal: (direct)-> literal (anon)  @01120|console(,) --'UTF-8'
+								 type: ("expr")-> type expr  @18368|expr(5,6)
 								CALL --initial
-								 lead: ("io.utf")-> object utf  @05840|console(168,3)
-								 method: ("begin")-> method begin  @03248|mediator(7,11)
-								 input: (direct)-> literal (anon)  @38688|console(,)
+								 lead: ("io.utf")-> object utf  @43440|console(168,3)
+								 method: ("begin")-> method begin  @40704|mediator(7,11)
+								 input: (direct)-> literal (anon)  @01120|console(,)
 							}
 
 							branch 1: BLOCK --domain
 							{
 								MAKE
-								 literal: (direct)-> literal (anon)  @55648|console(,) --'UTF-16'
-								 type: ("expr")-> type expr  @11328|expr(5,6)
+								 literal: (direct)-> literal (anon)  @01440|console(,) --'UTF-16'
+								 type: ("expr")-> type expr  @18368|expr(5,6)
 								CALL --initial
-								 lead: ("io.utf")-> object utf  @05840|console(168,3)
-								 method: ("begin")-> method begin  @03248|mediator(7,11)
-								 input: (direct)-> literal (anon)  @55648|console(,)
+								 lead: ("io.utf")-> object utf  @43440|console(168,3)
+								 method: ("begin")-> method begin  @40704|mediator(7,11)
+								 input: (direct)-> literal (anon)  @01440|console(,)
 							}
 
 							branch 2: BLOCK --domain
 							{
 								MAKE
-								 literal: (direct)-> literal (anon)  @39008|console(,) --'UTF-32'
-								 type: ("expr")-> type expr  @11328|expr(5,6)
+								 literal: (direct)-> literal (anon)  @01760|console(,) --'UTF-32'
+								 type: ("expr")-> type expr  @18368|expr(5,6)
 								CALL --initial
-								 lead: ("io.utf")-> object utf  @05840|console(168,3)
-								 method: ("begin")-> method begin  @03248|mediator(7,11)
-								 input: (direct)-> literal (anon)  @39008|console(,)
+								 lead: ("io.utf")-> object utf  @43440|console(168,3)
+								 method: ("begin")-> method begin  @40704|mediator(7,11)
+								 input: (direct)-> literal (anon)  @01760|console(,)
 							}
 
 							default branch: RETURN --to isolate (quit)
-							 trace: (direct)-> object (anon)  @55008|console(,)
+							 trace: (direct)-> object (anon)  @59936|console(,)
 								trace branch: BLOCK --domain
 								{
 									MAKE
-									 object: (direct)-> object (anon)  @55008|console(,)
-									 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+									 object: (direct)-> object (anon)  @59936|console(,)
+									 type: (direct)-> type $6<26>( alpha\op<fault> )  @40208|$appendix(,)
 									MAKE
-									 proxy: (direct)-> proxy (anon)  @15648|console(,)
-									 type: ("fault")-> type fault  @53808|fault(49,6)
+									 proxy: (direct)-> proxy (anon)  @15632|console(,)
+									 type: ("fault")-> type fault  @24224|fault(49,6)
 									 permission: [init]
 									CALL --initial, fundamental
-									 lead: (direct)-> object (anon)  @55008|console(,)
-									 method: ("begin")-> method begin  @23152|$appendix(,)
-									 result: (direct)-> proxy (anon)  @15648|console(,)
+									 lead: (direct)-> object (anon)  @59936|console(,)
+									 method: ("begin")-> method begin  @31120|$appendix(,)
+									 result: (direct)-> proxy (anon)  @15632|console(,)
 									MAKE
-									 literal: (direct)-> literal (anon)  @38368|console(,) --'bug'
-									 type: ("expr")-> type expr  @11328|expr(5,6)
+									 literal: (direct)-> literal (anon)  @49376|console(,) --'bug'
+									 type: ("expr")-> type expr  @18368|expr(5,6)
 									MAKE
-									 literal: (direct)-> literal (anon)  @55328|console(,) --'unexpected code unit value'
-									 type: ("expr")-> type expr  @11328|expr(5,6)
+									 literal: (direct)-> literal (anon)  @00800|console(,) --'unexpected code unit value'
+									 type: ("expr")-> type expr  @18368|expr(5,6)
 									MAKE
-									 object: (direct)-> object (anon)  @57056|console(138,26)
-									 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+									 object: (direct)-> object (anon)  @20720|console(138,26)
+									 type: ("fault_category")-> enum type fault_category  @01568|fault(5,11)
 									CALL --initial
-									 lead: (direct)-> object (anon)  @57056|console(138,26)
-									 method: ("begin")-> method begin  @57968|fault(5,11)
-									 input: (direct)-> literal (anon)  @38368|console(,)
+									 lead: (direct)-> object (anon)  @20720|console(138,26)
+									 method: ("begin")-> method begin  @34464|fault(5,11)
+									 input: (direct)-> literal (anon)  @49376|console(,)
 									CALL --initial, fundamental
-									 lead: (direct)-> proxy (anon)  @15648|console(,)
-									 method: ("begin")-> method begin  @35888|fault(97,3)
-									 input: (direct)-> object (anon)  @57056|console(138,26)
-									 input: (direct)-> literal (anon)  @55328|console(,)
+									 lead: (direct)-> proxy (anon)  @15632|console(,)
+									 method: ("begin")-> method begin  @01984|fault(97,3)
+									 input: (direct)-> object (anon)  @20720|console(138,26)
+									 input: (direct)-> literal (anon)  @00800|console(,)
 								}
 						}
 						MAKE
-						 object: (direct)-> object (anon)  @50976|console(141,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @31600|console(141,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("bom")-> object bom  @38048|console(129,58)
-						 method: ("is_equal?")-> method is_equal?  @63008|$appendix(,)
-						 input: ("unicode_bom_FEFF")-> object unicode_bom_FEFF  @56416|ucdb(10,2)
-						 output: (direct)-> object (anon)  @50976|console(141,11)
+						 lead: ("bom")-> object bom  @58336|console(129,58)
+						 method: ("is_equal?")-> method is_equal?  @33424|$appendix(,)
+						 input: ("unicode_bom_FEFF")-> object unicode_bom_FEFF  @02400|ucdb(10,2)
+						 output: (direct)-> object (anon)  @31600|console(141,11)
 						IF
-						 condition: (direct)-> object (anon)  @50976|console(141,11)
+						 condition: (direct)-> object (anon)  @31600|console(141,11)
 						{
 							true branch: BLOCK --domain
 							{
 								MAKE
-								 literal: (direct)-> literal (anon)  @55968|console(,) --'big-endian'
-								 type: ("expr")-> type expr  @11328|expr(5,6)
+								 literal: (direct)-> literal (anon)  @02080|console(,) --'big-endian'
+								 type: ("expr")-> type expr  @18368|expr(5,6)
 								CALL --initial
-								 lead: ("io.endian")-> object endian  @09360|console(169,3)
-								 method: ("begin")-> method begin  @63792|mediator(5,11)
-								 input: (direct)-> literal (anon)  @55968|console(,)
+								 lead: ("io.endian")-> object endian  @37360|console(169,3)
+								 method: ("begin")-> method begin  @22816|mediator(5,11)
+								 input: (direct)-> literal (anon)  @02080|console(,)
 							}
 							false branch: BLOCK --domain
 							{
 								MAKE
-								 object: (direct)-> object (anon)  @60576|console(142,16)
-								 type: ("bool")-> type bool  @08256|bool(5,6)
+								 object: (direct)-> object (anon)  @28720|console(142,16)
+								 type: ("bool")-> type bool  @19936|bool(5,6)
 								CALL --fundamental
-								 lead: ("bom")-> object bom  @38048|console(129,58)
-								 method: ("is_equal?")-> method is_equal?  @63008|$appendix(,)
-								 input: ("unicode_bom_FFFE")-> object unicode_bom_FFFE  @55456|ucdb(12,2)
-								 output: (direct)-> object (anon)  @60576|console(142,16)
+								 lead: ("bom")-> object bom  @58336|console(129,58)
+								 method: ("is_equal?")-> method is_equal?  @33424|$appendix(,)
+								 input: ("unicode_bom_FFFE")-> object unicode_bom_FFFE  @06240|ucdb(12,2)
+								 output: (direct)-> object (anon)  @28720|console(142,16)
 								IF
-								 condition: (direct)-> object (anon)  @60576|console(142,16)
+								 condition: (direct)-> object (anon)  @28720|console(142,16)
 								{
 									true branch: BLOCK --domain
 									{
 										MAKE
-										 literal: (direct)-> literal (anon)  @56288|console(,) --'little-endian'
-										 type: ("expr")-> type expr  @11328|expr(5,6)
+										 literal: (direct)-> literal (anon)  @03360|console(,) --'little-endian'
+										 type: ("expr")-> type expr  @18368|expr(5,6)
 										CALL --initial
-										 lead: ("io.endian")-> object endian  @09360|console(169,3)
-										 method: ("begin")-> method begin  @63792|mediator(5,11)
-										 input: (direct)-> literal (anon)  @56288|console(,)
+										 lead: ("io.endian")-> object endian  @37360|console(169,3)
+										 method: ("begin")-> method begin  @22816|mediator(5,11)
+										 input: (direct)-> literal (anon)  @03360|console(,)
 									}
 									false branch: BLOCK --domain
 									{
 										MAKE
-										 object: (direct)-> object (anon)  @56608|console(143,21)
-										 type: ("bool")-> type bool  @08256|bool(5,6)
+										 object: (direct)-> object (anon)  @02720|console(143,21)
+										 type: ("bool")-> type bool  @19936|bool(5,6)
 										CALL --fundamental
-										 lead: ("bom")-> object bom  @38048|console(129,58)
-										 method: ("is_zero?")-> method is_zero?  @65088|$appendix(,)
-										 output: (direct)-> object (anon)  @56608|console(143,21)
+										 lead: ("bom")-> object bom  @58336|console(129,58)
+										 method: ("is_zero?")-> method is_zero?  @34256|$appendix(,)
+										 output: (direct)-> object (anon)  @02720|console(143,21)
 										MAKE
-										 object: (direct)-> object (anon)  @39968|console(143,16)
-										 type: ("bool")-> type bool  @08256|bool(5,6)
+										 object: (direct)-> object (anon)  @02400|console(143,16)
+										 type: ("bool")-> type bool  @19936|bool(5,6)
 										CALL --fundamental
-										 lead: (direct)-> object (anon)  @56608|console(143,21)
-										 method: ("not")-> method not  @30096|bool(43,3)
-										 output: (direct)-> object (anon)  @39968|console(143,16)
+										 lead: (direct)-> object (anon)  @02720|console(143,21)
+										 method: ("not")-> method not  @39376|bool(43,3)
+										 output: (direct)-> object (anon)  @02400|console(143,16)
 										IF
-										 condition: (direct)-> object (anon)  @39968|console(143,16)
+										 condition: (direct)-> object (anon)  @02400|console(143,16)
 										{
 											true branch: RETURN --to isolate (quit)
-											 trace: (direct)-> object (anon)  @56928|console(,)
+											 trace: (direct)-> object (anon)  @03040|console(,)
 												trace branch: BLOCK --domain
 												{
 													MAKE
-													 object: (direct)-> object (anon)  @56928|console(,)
-													 type: (direct)-> type $6<26>( alpha\op<fault> )  @51600|$appendix(,)
+													 object: (direct)-> object (anon)  @03040|console(,)
+													 type: (direct)-> type $6<26>( alpha\op<fault> )  @40208|$appendix(,)
 													MAKE
-													 proxy: (direct)-> proxy (anon)  @08656|console(,)
-													 type: ("fault")-> type fault  @53808|fault(49,6)
+													 proxy: (direct)-> proxy (anon)  @08944|console(,)
+													 type: ("fault")-> type fault  @24224|fault(49,6)
 													 permission: [init]
 													CALL --initial, fundamental
-													 lead: (direct)-> object (anon)  @56928|console(,)
-													 method: ("begin")-> method begin  @23152|$appendix(,)
-													 result: (direct)-> proxy (anon)  @08656|console(,)
+													 lead: (direct)-> object (anon)  @03040|console(,)
+													 method: ("begin")-> method begin  @31120|$appendix(,)
+													 result: (direct)-> proxy (anon)  @08944|console(,)
 													MAKE
-													 literal: (direct)-> literal (anon)  @40288|console(,) --'bug'
-													 type: ("expr")-> type expr  @11328|expr(5,6)
+													 literal: (direct)-> literal (anon)  @03680|console(,) --'bug'
+													 type: ("expr")-> type expr  @18368|expr(5,6)
 													MAKE
-													 literal: (direct)-> literal (anon)  @57248|console(,) --'invalid byte order mark'
-													 type: ("expr")-> type expr  @11328|expr(5,6)
+													 literal: (direct)-> literal (anon)  @04000|console(,) --'invalid byte order mark'
+													 type: ("expr")-> type expr  @18368|expr(5,6)
 													MAKE
-													 object: (direct)-> object (anon)  @46496|console(143,57)
-													 type: ("fault_category")-> enum type fault_category  @44208|fault(5,11)
+													 object: (direct)-> object (anon)  @19760|console(143,57)
+													 type: ("fault_category")-> enum type fault_category  @01568|fault(5,11)
 													CALL --initial
-													 lead: (direct)-> object (anon)  @46496|console(143,57)
-													 method: ("begin")-> method begin  @57968|fault(5,11)
-													 input: (direct)-> literal (anon)  @40288|console(,)
+													 lead: (direct)-> object (anon)  @19760|console(143,57)
+													 method: ("begin")-> method begin  @34464|fault(5,11)
+													 input: (direct)-> literal (anon)  @03680|console(,)
 													CALL --initial, fundamental
-													 lead: (direct)-> proxy (anon)  @08656|console(,)
-													 method: ("begin")-> method begin  @35888|fault(97,3)
-													 input: (direct)-> object (anon)  @46496|console(143,57)
-													 input: (direct)-> literal (anon)  @57248|console(,)
+													 lead: (direct)-> proxy (anon)  @08944|console(,)
+													 method: ("begin")-> method begin  @01984|fault(97,3)
+													 input: (direct)-> object (anon)  @19760|console(143,57)
+													 input: (direct)-> literal (anon)  @04000|console(,)
 												}
 										}
 									}
@@ -502,452 +502,452 @@ page console
 							}
 						}
 						CALL --initial, fundamental
-						 lead: ("io.ready")-> object ready  @09680|console(165,3)
-						 method: ("begin")-> method begin  @21056|bool(26,3)
-						 input: ("true")-> object true  @06480|conventional(22,2)
+						 lead: ("io.ready")-> object ready  @44720|console(165,3)
+						 method: ("begin")-> method begin  @42288|bool(26,3)
+						 input: ("true")-> object true  @44400|conventional(22,2)
 					}
 					false branch: BLOCK --domain
 					{
 						CALL --initial, fundamental
-						 lead: ("io.ready")-> object ready  @09680|console(165,3)
-						 method: ("begin")-> method begin  @21056|bool(26,3)
-						 input: ("false")-> object false  @07120|conventional(24,2)
+						 lead: ("io.ready")-> object ready  @44720|console(165,3)
+						 method: ("begin")-> method begin  @42288|bool(26,3)
+						 input: ("false")-> object false  @40880|conventional(24,2)
 						MAKE
-						 object: (direct)-> object tm  @53056|console(151,5)
-						 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+						 object: (direct)-> object tm  @24992|console(151,5)
+						 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 						MAKE
-						 literal: (direct)-> literal (anon)  @44736|console(,) --'could not open console channel ['
-						 type: ("expr")-> type expr  @11328|expr(5,6)
+						 literal: (direct)-> literal (anon)  @21472|console(,) --'could not open console channel ['
+						 type: ("expr")-> type expr  @18368|expr(5,6)
 						CALL --initial
-						 lead: (direct)-> object tm  @53056|console(151,5)
-						 method: ("begin")-> method begin  @22960|text_mediator(117,3)
-						 input: (direct)-> literal (anon)  @44736|console(,)
+						 lead: (direct)-> object tm  @24992|console(151,5)
+						 method: ("begin")-> method begin  @45536|text_mediator(117,3)
+						 input: (direct)-> literal (anon)  @21472|console(,)
 						MAKE
-						 object: (direct)-> object (anon)  @49856|console(152,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @19552|console(152,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("pnote")-> object pnote  @43488|console(123,59)
-						 method: ("is_equal?")-> method is_equal?  @63168|addr(42,3)
-						 input: ("no_addr")-> object no_addr  @10000|conventional(14,2)
-						 output: (direct)-> object (anon)  @49856|console(152,11)
+						 lead: ("pnote")-> object pnote  @62496|console(123,59)
+						 method: ("is_equal?")-> method is_equal?  @48336|addr(42,3)
+						 input: ("no_addr")-> object no_addr  @44080|conventional(14,2)
+						 output: (direct)-> object (anon)  @19552|console(152,11)
 						MAKE
-						 object: (direct)-> object (anon)  @52096|console(152,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @12192|console(152,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: (direct)-> object (anon)  @49856|console(152,11)
-						 method: ("not")-> method not  @30096|bool(43,3)
-						 output: (direct)-> object (anon)  @52096|console(152,11)
+						 lead: (direct)-> object (anon)  @19552|console(152,11)
+						 method: ("not")-> method not  @39376|bool(43,3)
+						 output: (direct)-> object (anon)  @12192|console(152,11)
 						IF
-						 condition: (direct)-> object (anon)  @52096|console(152,11)
+						 condition: (direct)-> object (anon)  @12192|console(152,11)
 						{
 							true branch: BLOCK --domain
 							{
 								MAKE
-								 object: (direct)-> object (anon)  @45696|console(152,70)
-								 type: ("string")-> type string  @09264|string(4,6)
+								 object: (direct)-> object (anon)  @14112|console(152,70)
+								 type: ("string")-> type string  @11552|string(4,6)
 								CALL
-								 subroutine: ("cstr_to_alpha")-> subroutine cstr_to_alpha  @01664|conventional(165,2)
-								 input: ("pnote")-> object pnote  @43488|console(123,59)
-								 output: (direct)-> object (anon)  @45696|console(152,70)
+								 subroutine: ("cstr_to_alpha")-> subroutine cstr_to_alpha  @42160|conventional(165,2)
+								 input: ("pnote")-> object pnote  @62496|console(123,59)
+								 output: (direct)-> object (anon)  @14112|console(152,70)
 								CALL
-								 lead: ("tm")-> object tm  @53056|console(151,5)
-								 method: ("write")-> method write  @27120|text_mediator(258,3)
-								 input: (direct)-> object (anon)  @45696|console(152,70)
+								 lead: ("tm")-> object tm  @24992|console(151,5)
+								 method: ("write")-> method write  @49696|text_mediator(258,3)
+								 input: (direct)-> object (anon)  @14112|console(152,70)
 							}
 						}
 						MAKE
-						 literal: (direct)-> literal (anon)  @37696|console(,) --']'
-						 type: ("expr")-> type expr  @11328|expr(5,6)
+						 literal: (direct)-> literal (anon)  @13472|console(,) --']'
+						 type: ("expr")-> type expr  @18368|expr(5,6)
 						CALL
-						 lead: ("tm")-> object tm  @53056|console(151,5)
-						 method: ("write")-> method write  @27952|text_mediator(263,3)
-						 input: (direct)-> literal (anon)  @37696|console(,)
+						 lead: ("tm")-> object tm  @24992|console(151,5)
+						 method: ("write")-> method write  @51360|text_mediator(263,3)
+						 input: (direct)-> literal (anon)  @13472|console(,)
 						CALL
-						 lead: ("tm")-> object tm  @53056|console(151,5)
-						 method: ("detach")-> method detach  @06736|text_mediator(124,3)
-						 output: ("err")-> object err  @53408|console(121,3)
+						 lead: ("tm")-> object tm  @24992|console(151,5)
+						 method: ("detach")-> method detach  @50528|text_mediator(124,3)
+						 output: ("err")-> object err  @64736|console(121,3)
 					}
 				}
 				CALL --compatible
-				 subroutine: ("kernel\heap_free")-> subroutine heap_free  @34688|heap(27,2)
-				 input: ("pnote")-> object pnote  @43488|console(123,59)
+				 subroutine: ("kernel\heap_free")-> subroutine heap_free  @04816|heap(27,2)
+				 input: ("pnote")-> object pnote  @62496|console(123,59)
 			}
 		}
 
-		method end  @42096|console(,) --internal
+		method end  @44016|console(,) --internal
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @00480|console(,) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @53360|console(,) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal
-				 lead: (direct)-> object channel  @08400|console(167,3)
-				 method: (direct)-> method end  @49168|console(,)
+				 lead: (direct)-> object channel  @42800|console(167,3)
+				 method: (direct)-> method end  @54416|console(,)
 			}
 		}
 
-		method get_encoding  @38144|console(43,3) --external
+		method get_encoding  @20752|console(43,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object e  @37088|console(43,3) --internal
-				 type: ("endian")-> enum type endian  @23376|mediator(5,11)
+				object e  @57056|console(43,3) --internal
+				 type: ("endian")-> enum type endian  @10752|mediator(5,11)
 
-				object f  @40608|console(43,3) --internal
-				 type: ("utf")-> enum type utf  @23792|mediator(7,11)
+				object f  @61856|console(43,3) --internal
+				 type: ("utf")-> enum type utf  @11168|mediator(7,11)
 
-				object io  @51808|console(43,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @63136|console(43,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --initial
-				 lead: ("f")-> object f  @40608|console(43,3)
-				 method: ("begin")-> method begin  @01584|mediator(7,11)
-				 input: ("io.utf")-> object utf  @05840|console(168,3)
+				 lead: ("f")-> object f  @61856|console(43,3)
+				 method: ("begin")-> method begin  @41120|mediator(7,11)
+				 input: ("io.utf")-> object utf  @43440|console(168,3)
 				CALL --initial
-				 lead: ("e")-> object e  @37088|console(43,3)
-				 method: ("begin")-> method begin  @62544|mediator(5,11)
-				 input: ("io.endian")-> object endian  @09360|console(169,3)
+				 lead: ("e")-> object e  @57056|console(43,3)
+				 method: ("begin")-> method begin  @26976|mediator(5,11)
+				 input: ("io.endian")-> object endian  @37360|console(169,3)
 			}
 		}
 
-		method read  @43136|console(50,3) --external
+		method read  @22416|console(50,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object error  @42528|console(50,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @52256|console(50,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @52448|console(50,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @59616|console(50,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 
-				object q  @40928|console(50,3) --internal
-				 type: ("int")-> type int  @54576|int(6,6)
+				object q  @52576|console(50,3) --internal
+				 type: ("int")-> type int  @21536|int(6,6)
 
-				object tm  @50848|console(50,3) --internal
-				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+				object tm  @55776|console(50,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 			}
 
 			BLOCK --domain
 			{
 				IF
-				 condition: ("io.ready")-> object ready  @09680|console(165,3)
+				 condition: ("io.ready")-> object ready  @44720|console(165,3)
 				{
 					true branch: CALL
-					 lead: ("io.channel")-> object channel  @08400|console(167,3)
-					 method: ("read")-> method read  @17968|text_channel(154,3)
-					 input: ("tm")-> object tm  @50848|console(50,3)
-					 input: ("q")-> object q  @40928|console(50,3)
-					 output: ("error")-> object error  @42528|console(50,3)
+					 lead: ("io.channel")-> object channel  @42800|console(167,3)
+					 method: ("read")-> method read  @27648|text_channel(154,3)
+					 input: ("tm")-> object tm  @55776|console(50,3)
+					 input: ("q")-> object q  @52576|console(50,3)
+					 output: ("error")-> object error  @52256|console(50,3)
 					false branch: CALL --initial, fundamental
-					 lead: ("error")-> object error  @42528|console(50,3)
-					 method: ("begin")-> method begin  @21216|string(59,3)
-					 input: ("not_ready")-> object not_ready  @04880|console(161,9)
+					 lead: ("error")-> object error  @52256|console(50,3)
+					 method: ("begin")-> method begin  @31088|string(59,3)
+					 input: ("not_ready")-> object not_ready  @43760|console(161,9)
 				}
 			}
 		}
 
-		method read  @38560|console(58,3) --external
+		method read  @22832|console(58,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object error  @53088|console(58,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @50976|console(58,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object input  @46048|console(58,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object input  @49696|console(58,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @41568|console(58,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @52896|console(58,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 
-				object q  @47968|console(58,3) --internal
-				 type: ("int")-> type int  @54576|int(6,6)
+				object q  @54816|console(58,3) --internal
+				 type: ("int")-> type int  @21536|int(6,6)
 			}
 
 			BLOCK --domain
 			{
 				IF
-				 condition: ("io.ready")-> object ready  @09680|console(165,3)
+				 condition: ("io.ready")-> object ready  @44720|console(165,3)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 object: (direct)-> object tm  @45088|console(62,5)
-						 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+						 object: (direct)-> object tm  @53216|console(62,5)
+						 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 						CALL --initial
-						 lead: (direct)-> object tm  @45088|console(62,5)
-						 method: ("begin")-> method begin  @19216|text_mediator(103,3)
-						 input: ("io.utf")-> object utf  @05840|console(168,3)
-						 input: ("io.endian")-> object endian  @09360|console(169,3)
+						 lead: (direct)-> object tm  @53216|console(62,5)
+						 method: ("begin")-> method begin  @50944|text_mediator(103,3)
+						 input: ("io.utf")-> object utf  @43440|console(168,3)
+						 input: ("io.endian")-> object endian  @37360|console(169,3)
 						CALL
-						 lead: ("io.channel")-> object channel  @08400|console(167,3)
-						 method: ("read")-> method read  @17968|text_channel(154,3)
-						 input: ("tm")-> object tm  @45088|console(62,5)
-						 input: ("q")-> object q  @47968|console(58,3)
-						 output: ("error")-> object error  @53088|console(58,3)
+						 lead: ("io.channel")-> object channel  @42800|console(167,3)
+						 method: ("read")-> method read  @27648|text_channel(154,3)
+						 input: ("tm")-> object tm  @53216|console(62,5)
+						 input: ("q")-> object q  @54816|console(58,3)
+						 output: ("error")-> object error  @50976|console(58,3)
 						MAKE
-						 object: (direct)-> object (anon)  @41248|console(64,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @64416|console(64,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("error")-> object error  @53088|console(58,3)
-						 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-						 output: (direct)-> object (anon)  @41248|console(64,11)
+						 lead: ("error")-> object error  @50976|console(58,3)
+						 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+						 output: (direct)-> object (anon)  @64416|console(64,11)
 						IF
-						 condition: (direct)-> object (anon)  @41248|console(64,11)
+						 condition: (direct)-> object (anon)  @64416|console(64,11)
 						{
 							true branch: CALL
-							 lead: ("tm")-> object tm  @45088|console(62,5)
-							 method: ("read")-> method read  @42512|text_mediator(327,3)
+							 lead: ("tm")-> object tm  @53216|console(62,5)
+							 method: ("read")-> method read  @64672|text_mediator(327,3)
 							 input: (pending)->
-							 output: ("input")-> object input  @46048|console(58,3)
+							 output: ("input")-> object input  @49696|console(58,3)
 						}
 					}
 					false branch: CALL --initial, fundamental
-					 lead: ("error")-> object error  @53088|console(58,3)
-					 method: ("begin")-> method begin  @21216|string(59,3)
-					 input: ("not_ready")-> object not_ready  @04880|console(161,9)
+					 lead: ("error")-> object error  @50976|console(58,3)
+					 method: ("begin")-> method begin  @31088|string(59,3)
+					 input: ("not_ready")-> object not_ready  @43760|console(161,9)
 				}
 			}
 		}
 
-		method read  @38976|console(71,3) --external
+		method read  @23248|console(71,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object c  @46688|console(71,3) --internal
-				 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+				object c  @53536|console(71,3) --internal
+				 type: ("unicode")-> type unicode  @05408|unicode(4,6)
 
-				object error  @48288|console(71,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @50016|console(71,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @47008|console(71,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @64096|console(71,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 
-				object tm  @51488|console(71,3) --internal
-				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+				object tm  @60576|console(71,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy ~c  @28992|console(73,4)
-				 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+				 proxy: (direct)-> proxy ~c  @09856|console(73,4)
+				 type: ("unicode")-> type unicode  @05408|unicode(4,6)
 				 permission: [eval]
 				CALL
-				 subroutine: (direct)-> subroutine $22<13>( fix<unicode> )  @09936|$appendix(,)
-				 input: ("c")-> object c  @46688|console(71,3)
-				 input: ("io.eol")-> object eol  @06160|console(170,3)
-				 result: (direct)-> proxy ~c  @28992|console(73,4)
+				 subroutine: (direct)-> subroutine $22<13>( fix<unicode> )  @63088|$appendix(,)
+				 input: ("c")-> object c  @53536|console(71,3)
+				 input: ("io.eol")-> object eol  @37680|console(170,3)
+				 result: (direct)-> proxy ~c  @09856|console(73,4)
 				IF
-				 condition: ("io.ready")-> object ready  @09680|console(165,3)
+				 condition: ("io.ready")-> object ready  @44720|console(165,3)
 				{
 					true branch: CALL
-					 lead: ("io.channel")-> object channel  @08400|console(167,3)
-					 method: ("read")-> method read  @09232|text_channel(159,3)
-					 input: ("tm")-> object tm  @51488|console(71,3)
-					 input: ("~c")-> proxy ~c  @28992|console(73,4)
-					 output: ("error")-> object error  @48288|console(71,3)
+					 lead: ("io.channel")-> object channel  @42800|console(167,3)
+					 method: ("read")-> method read  @44288|text_channel(159,3)
+					 input: ("tm")-> object tm  @60576|console(71,3)
+					 input: ("~c")-> proxy ~c  @09856|console(73,4)
+					 output: ("error")-> object error  @50016|console(71,3)
 					false branch: CALL --initial, fundamental
-					 lead: ("error")-> object error  @48288|console(71,3)
-					 method: ("begin")-> method begin  @21216|string(59,3)
-					 input: ("not_ready")-> object not_ready  @04880|console(161,9)
+					 lead: ("error")-> object error  @50016|console(71,3)
+					 method: ("begin")-> method begin  @31088|string(59,3)
+					 input: ("not_ready")-> object not_ready  @43760|console(161,9)
 				}
 			}
 		}
 
-		method read  @39392|console(81,3) --external
+		method read  @07024|console(81,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object c  @53728|console(81,3) --internal
-				 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+				object c  @53856|console(81,3) --internal
+				 type: ("unicode")-> type unicode  @05408|unicode(4,6)
 
-				object error  @51168|console(81,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @54176|console(81,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object input  @48608|console(81,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object input  @56096|console(81,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @48928|console(81,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @63456|console(81,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy ~c  @28384|console(83,4)
-				 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+				 proxy: (direct)-> proxy ~c  @15024|console(83,4)
+				 type: ("unicode")-> type unicode  @05408|unicode(4,6)
 				 permission: [eval]
 				CALL
-				 subroutine: (direct)-> subroutine $22<13>( fix<unicode> )  @09936|$appendix(,)
-				 input: ("c")-> object c  @53728|console(81,3)
-				 input: ("io.eol")-> object eol  @06160|console(170,3)
-				 result: (direct)-> proxy ~c  @28384|console(83,4)
+				 subroutine: (direct)-> subroutine $22<13>( fix<unicode> )  @63088|$appendix(,)
+				 input: ("c")-> object c  @53856|console(81,3)
+				 input: ("io.eol")-> object eol  @37680|console(170,3)
+				 result: (direct)-> proxy ~c  @15024|console(83,4)
 				IF
-				 condition: ("io.ready")-> object ready  @09680|console(165,3)
+				 condition: ("io.ready")-> object ready  @44720|console(165,3)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 object: (direct)-> object tm  @50528|console(86,5)
-						 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+						 object: (direct)-> object tm  @60896|console(86,5)
+						 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 						CALL --initial
-						 lead: (direct)-> object tm  @50528|console(86,5)
-						 method: ("begin")-> method begin  @19216|text_mediator(103,3)
-						 input: ("io.utf")-> object utf  @05840|console(168,3)
-						 input: ("io.endian")-> object endian  @09360|console(169,3)
+						 lead: (direct)-> object tm  @60896|console(86,5)
+						 method: ("begin")-> method begin  @50944|text_mediator(103,3)
+						 input: ("io.utf")-> object utf  @43440|console(168,3)
+						 input: ("io.endian")-> object endian  @37360|console(169,3)
 						CALL
-						 lead: ("io.channel")-> object channel  @08400|console(167,3)
-						 method: ("read")-> method read  @09232|text_channel(159,3)
-						 input: ("tm")-> object tm  @50528|console(86,5)
-						 input: ("~c")-> proxy ~c  @28384|console(83,4)
-						 output: ("error")-> object error  @51168|console(81,3)
+						 lead: ("io.channel")-> object channel  @42800|console(167,3)
+						 method: ("read")-> method read  @44288|text_channel(159,3)
+						 input: ("tm")-> object tm  @60896|console(86,5)
+						 input: ("~c")-> proxy ~c  @15024|console(83,4)
+						 output: ("error")-> object error  @54176|console(81,3)
 						MAKE
-						 object: (direct)-> object (anon)  @45408|console(88,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @56416|console(88,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("error")-> object error  @51168|console(81,3)
-						 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-						 output: (direct)-> object (anon)  @45408|console(88,11)
+						 lead: ("error")-> object error  @54176|console(81,3)
+						 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+						 output: (direct)-> object (anon)  @56416|console(88,11)
 						IF
-						 condition: (direct)-> object (anon)  @45408|console(88,11)
+						 condition: (direct)-> object (anon)  @56416|console(88,11)
 						{
 							true branch: CALL
-							 lead: ("tm")-> object tm  @50528|console(86,5)
-							 method: ("read")-> method read  @42512|text_mediator(327,3)
+							 lead: ("tm")-> object tm  @60896|console(86,5)
+							 method: ("read")-> method read  @64672|text_mediator(327,3)
 							 input: (pending)->
-							 output: ("input")-> object input  @48608|console(81,3)
+							 output: ("input")-> object input  @56096|console(81,3)
 						}
 					}
 					false branch: CALL --initial, fundamental
-					 lead: ("error")-> object error  @51168|console(81,3)
-					 method: ("begin")-> method begin  @21216|string(59,3)
-					 input: ("not_ready")-> object not_ready  @04880|console(161,9)
+					 lead: ("error")-> object error  @54176|console(81,3)
+					 method: ("begin")-> method begin  @31088|string(59,3)
+					 input: ("not_ready")-> object not_ready  @43760|console(161,9)
 				}
 			}
 		}
 
-		method write  @39808|console(95,3) --external
+		method write  @23664|console(95,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object error  @42208|console(95,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @55136|console(95,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @41888|console(95,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @51296|console(95,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 
-				object string  @49248|console(95,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object string  @59296|console(95,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object tm  @52768|console(97,4)
-				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+				 object: (direct)-> object tm  @61216|console(97,4)
+				 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 				CALL --initial
-				 lead: (direct)-> object tm  @52768|console(97,4)
-				 method: ("begin")-> method begin  @18800|text_mediator(109,3)
-				 input: ("given\string")-> object string  @49248|console(95,3)
+				 lead: (direct)-> object tm  @61216|console(97,4)
+				 method: ("begin")-> method begin  @45120|text_mediator(109,3)
+				 input: ("given\string")-> object string  @59296|console(95,3)
 				CALL
-				 lead: ("io")-> object io  @41888|console(95,3)
-				 method: ("write")-> method write  @40640|console(107,3)
-				 input: ("tm")-> object tm  @52768|console(97,4)
-				 output: ("error")-> object error  @42208|console(95,3)
+				 lead: ("io")-> object io  @51296|console(95,3)
+				 method: ("write")-> method write  @24496|console(107,3)
+				 input: ("tm")-> object tm  @61216|console(97,4)
+				 output: ("error")-> object error  @55136|console(95,3)
 			}
 		}
 
-		method write  @40224|console(101,3) --external
+		method write  @24080|console(101,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object error  @43168|console(101,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @60256|console(101,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object expr  @42848|console(101,3) --internal
-				 type: ("expr")-> type expr  @11328|expr(5,6)
+				object expr  @55456|console(101,3) --internal
+				 type: ("expr")-> type expr  @18368|expr(5,6)
 
-				object io  @46368|console(101,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @58976|console(101,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object tm  @49568|console(103,4)
-				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+				 object: (direct)-> object tm  @63776|console(103,4)
+				 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 				CALL --initial
-				 lead: (direct)-> object tm  @49568|console(103,4)
-				 method: ("begin")-> method begin  @22960|text_mediator(117,3)
-				 input: ("given\expr")-> object expr  @42848|console(101,3)
+				 lead: (direct)-> object tm  @63776|console(103,4)
+				 method: ("begin")-> method begin  @45536|text_mediator(117,3)
+				 input: ("given\expr")-> object expr  @55456|console(101,3)
 				CALL
-				 lead: ("io")-> object io  @46368|console(101,3)
-				 method: ("write")-> method write  @40640|console(107,3)
-				 input: ("tm")-> object tm  @49568|console(103,4)
-				 output: ("error")-> object error  @43168|console(101,3)
+				 lead: ("io")-> object io  @58976|console(101,3)
+				 method: ("write")-> method write  @24496|console(107,3)
+				 input: ("tm")-> object tm  @63776|console(103,4)
+				 output: ("error")-> object error  @60256|console(101,3)
 			}
 		}
 
-		method write  @40640|console(107,3) --external
+		method write  @24496|console(107,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object error  @49888|console(107,3) --internal
-				 type: ("string")-> type string  @09264|string(4,6)
+				object error  @61536|console(107,3) --internal
+				 type: ("string")-> type string  @11552|string(4,6)
 
-				object io  @54048|console(107,3) --internal
-				 type: (direct)-> type console  @44688|console(5,6)
+				object io  @65056|console(107,3) --internal
+				 type: (direct)-> type console  @29536|console(5,6)
 
-				object tm  @44448|console(107,3) --internal
-				 type: ("text_mediator")-> type text_mediator  @45840|text_mediator(40,6)
+				object tm  @56736|console(107,3) --internal
+				 type: ("text_mediator")-> type text_mediator  @35680|text_mediator(40,6)
 			}
 
 			BLOCK --domain
 			{
 				IF
-				 condition: ("io.ready")-> object ready  @09680|console(165,3)
+				 condition: ("io.ready")-> object ready  @44720|console(165,3)
 				{
 					true branch: CALL
-					 lead: ("io.channel")-> object channel  @08400|console(167,3)
-					 method: ("write")-> method write  @06320|text_channel(164,3)
-					 input: ("tm")-> object tm  @44448|console(107,3)
-					 output: ("error")-> object error  @49888|console(107,3)
+					 lead: ("io.channel")-> object channel  @42800|console(167,3)
+					 method: ("write")-> method write  @44704|text_channel(164,3)
+					 input: ("tm")-> object tm  @56736|console(107,3)
+					 output: ("error")-> object error  @61536|console(107,3)
 					false branch: CALL --initial, fundamental
-					 lead: ("error")-> object error  @49888|console(107,3)
-					 method: ("begin")-> method begin  @21216|string(59,3)
-					 input: ("not_ready")-> object not_ready  @04880|console(161,9)
+					 lead: ("error")-> object error  @61536|console(107,3)
+					 method: ("begin")-> method begin  @31088|string(59,3)
+					 input: ("not_ready")-> object not_ready  @43760|console(161,9)
 				}
 			}
 		}
 
 		common
 		{
-			subroutine $start1  @64848|console(,) --internal
+			subroutine $start1  @34016|console(,) --internal
 			 viable = yes
 			{
 
@@ -958,41 +958,41 @@ page console
 				BLOCK --domain
 				{
 					MAKE
-					 object: (direct)-> object not_ready  @04880|console(161,9) --'not ready'
-					 type: ("string")-> type string  @09264|string(4,6)
+					 object: (direct)-> object not_ready  @43760|console(161,9) --'not ready'
+					 type: ("string")-> type string  @11552|string(4,6)
 					MAKE
-					 literal: (direct)-> literal (anon)  @52416|console(,) --'not ready'
-					 type: ("expr")-> type expr  @11328|expr(5,6)
+					 literal: (direct)-> literal (anon)  @11552|console(,) --'not ready'
+					 type: ("expr")-> type expr  @18368|expr(5,6)
 					CALL --initial, fundamental
-					 lead: (direct)-> object not_ready  @04880|console(161,9)
-					 method: ("begin")-> method begin  @26208|string(57,3)
-					 input: (direct)-> literal (anon)  @52416|console(,)
+					 lead: (direct)-> object not_ready  @43760|console(161,9)
+					 method: ("begin")-> method begin  @31504|string(57,3)
+					 input: (direct)-> literal (anon)  @11552|console(,)
 					 input: (pending)->
 					 input: (pending)->
 				}
 			}
 
-			object not_ready  @04880|console(161,9) --internal
-			 type: ("string")-> type string  @09264|string(4,6)
+			object not_ready  @43760|console(161,9) --internal
+			 type: ("string")-> type string  @11552|string(4,6)
 		}
 
 
 		instance
 		{
-			object channel  @08400|console(167,3) --internal
-			 type: ("read_write_text_channel")-> type read_write_text_channel  @48912|text_channel(145,6)
+			object channel  @42800|console(167,3) --internal
+			 type: ("read_write_text_channel")-> type read_write_text_channel  @31456|text_channel(145,6)
 
-			object endian  @09360|console(169,3) --internal
-			 type: ("endian")-> enum type endian  @23376|mediator(5,11)
+			object endian  @37360|console(169,3) --internal
+			 type: ("endian")-> enum type endian  @10752|mediator(5,11)
 
-			object eol  @06160|console(170,3) --internal
-			 type: ("unicode")-> type unicode  @07344|unicode(4,6)
+			object eol  @37680|console(170,3) --internal
+			 type: ("unicode")-> type unicode  @05408|unicode(4,6)
 
-			object ready  @09680|console(165,3) --internal
-			 type: ("bool")-> type bool  @08256|bool(5,6)
+			object ready  @44720|console(165,3) --internal
+			 type: ("bool")-> type bool  @19936|bool(5,6)
 
-			object utf  @05840|console(168,3) --internal
-			 type: ("utf")-> enum type utf  @23792|mediator(7,11)
+			object utf  @43440|console(168,3) --internal
+			 type: ("utf")-> enum type utf  @11168|mediator(7,11)
 		}
 
 	}

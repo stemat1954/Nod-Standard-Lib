@@ -1,153 +1,153 @@
 page complex
 {
-	type cplx  @08640|complex(4,6) --external
+	type cplx  @20320|complex(4,6) --external
 	 viable = yes
 	{
-		method abs  @48592|complex(80,3) --external
+		method abs  @11328|complex(80,3) --external
 		 viable = yes
 
-		method abs  @52752|complex(81,3) --external
+		method abs  @08832|complex(81,3) --external
 		 viable = yes
 
-		method add  @40800|complex(62,3) --external
+		method add  @04256|complex(62,3) --external
 		 viable = yes
 
-		method add  @41216|complex(63,3) --external
+		method add  @08416|complex(63,3) --external
 		 viable = yes
 
-		method begin  @34256|complex(13,3) --external
+		method begin  @46336|complex(13,3) --external
 		 viable = yes
 
-		method begin  @34672|complex(15,3) --external
+		method begin  @51744|complex(15,3) --external
 		 viable = yes
 
-		method begin  @35088|complex(17,3) --external
+		method begin  @47584|complex(17,3) --external
 		 viable = yes
 
-		method begin  @35504|complex(19,3) --external
+		method begin  @48416|complex(19,3) --external
 		 viable = yes
 
-		method begin  @35920|complex(21,3) --external
+		method begin  @52160|complex(21,3) --external
 		 viable = yes
 
-		method begin  @29264|complex(23,3) --external
+		method begin  @48000|complex(23,3) --external
 		 viable = yes
 
-		method begin  @36336|complex(25,3) --external
+		method begin  @48832|complex(25,3) --external
 		 viable = yes
 
-		method begin  @29680|complex(28,3) --external
+		method begin  @49248|complex(28,3) --external
 		 viable = yes
 
-		method cnj  @53472|complex(108,3) --external
+		method cnj  @17456|complex(108,3) --external
 		 viable = yes
 
-		method cnj  @55552|complex(109,3) --external
+		method cnj  @13712|complex(109,3) --external
 		 viable = yes
 
-		method dis  @47760|complex(83,3) --external
+		method dis  @07168|complex(83,3) --external
 		 viable = yes
 
-		method dis  @51920|complex(84,3) --external
+		method dis  @07584|complex(84,3) --external
 		 viable = yes
 
-		method div  @46928|complex(71,3) --external
+		method div  @06752|complex(71,3) --external
 		 viable = yes
 
-		method div  @48176|complex(72,3) --external
+		method div  @05920|complex(72,3) --external
 		 viable = yes
 
-		method get_arg  @40384|complex(53,3) --external
+		method get_arg  @06336|complex(53,3) --external
 		 viable = yes
 
-		method get_cartesian  @39552|complex(46,3) --external
+		method get_cartesian  @52576|complex(46,3) --external
 		 viable = yes
 
-		method get_cartesian  @39968|complex(48,3) --external
+		method get_cartesian  @45920|complex(48,3) --external
 		 viable = yes
 
-		method get_iy  @42880|complex(44,3) --external
+		method get_iy  @50912|complex(44,3) --external
 		 viable = yes
 
-		method get_mod  @43296|complex(51,3) --external
+		method get_mod  @51328|complex(51,3) --external
 		 viable = yes
 
-		method get_polar  @44128|complex(55,3) --external
+		method get_polar  @10912|complex(55,3) --external
 		 viable = yes
 
-		method get_polar  @43712|complex(57,3) --external
+		method get_polar  @05088|complex(57,3) --external
 		 viable = yes
 
-		method get_rx  @38720|complex(42,3) --external
+		method get_rx  @52992|complex(42,3) --external
 		 viable = yes
 
-		method is_before?  @38304|complex(35,3) --external
+		method is_before?  @46752|complex(35,3) --external
 		 viable = yes
 
-		method is_equal?  @39136|complex(33,3) --external
+		method is_equal?  @49664|complex(33,3) --external
 		 viable = yes
 
-		method is_less?  @41632|complex(37,3) --external
+		method is_less?  @50080|complex(37,3) --external
 		 viable = yes
 
-		method is_zero?  @42464|complex(39,3) --external
+		method is_zero?  @50496|complex(39,3) --external
 		 viable = yes
 
-		method log  @45264|complex(98,3) --external
+		method log  @16208|complex(98,3) --external
 		 viable = yes
 
-		method log  @45680|complex(99,3) --external
+		method log  @12464|complex(99,3) --external
 		 viable = yes
 
-		method log  @46096|complex(101,3) --external
+		method log  @13296|complex(101,3) --external
 		 viable = yes
 
-		method log  @59296|complex(102,3) --external
+		method log  @19120|complex(102,3) --external
 		 viable = yes
 
-		method ltf  @52336|complex(86,3) --external
+		method ltf  @08000|complex(86,3) --external
 		 viable = yes
 
-		method ltf  @50256|complex(87,3) --external
+		method ltf  @09248|complex(87,3) --external
 		 viable = yes
 
-		method mul  @37056|complex(68,3) --external
+		method mul  @11744|complex(68,3) --external
 		 viable = yes
 
-		method mul  @37472|complex(69,3) --external
+		method mul  @09664|complex(69,3) --external
 		 viable = yes
 
-		method neg  @47344|complex(74,3) --external
+		method neg  @10080|complex(74,3) --external
 		 viable = yes
 
-		method neg  @50672|complex(75,3) --external
+		method neg  @04672|complex(75,3) --external
 		 viable = yes
 
-		method pow  @49008|complex(89,3) --external
+		method pow  @17872|complex(89,3) --external
 		 viable = yes
 
-		method pow  @49424|complex(90,3) --external
+		method pow  @19536|complex(90,3) --external
 		 viable = yes
 
-		method pow  @46512|complex(92,3) --external
+		method pow  @15376|complex(92,3) --external
 		 viable = yes
 
-		method pow  @51088|complex(93,3) --external
+		method pow  @14544|complex(93,3) --external
 		 viable = yes
 
-		method pow  @49840|complex(95,3) --external
+		method pow  @12880|complex(95,3) --external
 		 viable = yes
 
-		method pow  @51504|complex(96,3) --external
+		method pow  @15792|complex(96,3) --external
 		 viable = yes
 
-		method store  @37888|complex(30,3) --external
+		method store  @53408|complex(30,3) --external
 		 viable = yes
 
-		method sub  @42048|complex(65,3) --external
+		method sub  @05504|complex(65,3) --external
 		 viable = yes
 
-		method sub  @44544|complex(66,3) --external
+		method sub  @10496|complex(66,3) --external
 		 viable = yes
 	}
 }

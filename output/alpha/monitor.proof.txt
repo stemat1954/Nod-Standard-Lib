@@ -1,21 +1,21 @@
 page monitor
 {
-	type monitor  @07728|monitor(3,6) --external
+	type monitor  @11936|monitor(3,6) --external
 	 viable = yes
 	{
-		method add  @38352|monitor(32,3) --external
+		method add  @46064|monitor(32,3) --external
 		 viable = yes
 
-		method begin  @37936|monitor(30,3) --external
+		method begin  @47312|monitor(30,3) --external
 		 viable = yes
 
-		method delete  @32944|monitor(34,3) --external
+		method delete  @43152|monitor(34,3) --external
 		 viable = yes
 
-		method move  @14560|monitor(36,3) --external
+		method move  @46896|monitor(36,3) --external
 		 viable = yes
 
-		method wait  @27872|monitor(38,3) --external
+		method wait  @44816|monitor(38,3) --external
 		 viable = yes
 	}
 }

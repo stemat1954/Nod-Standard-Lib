@@ -1,16 +1,16 @@
 page counter
 {
-	type counter  @09024|counter(5,6) --external
-	 from ("indicator")-> type indicator  @54192|indicator(5,6)
+	type counter  @05840|counter(5,6) --external
+	 from ("indicator")-> type indicator  @21152|indicator(5,6)
 	 viable = yes
 	{
-		method begin  @57216|counter(47,3) --external
+		method begin  @16624|counter(47,3) --external
 		 viable = yes
 
-		method dec  @57632|counter(51,3) --external
+		method dec  @18288|counter(51,3) --external
 		 viable = yes
 
-		method inc  @55968|counter(49,3) --external
+		method inc  @17040|counter(49,3) --external
 		 viable = yes
 	}
 }

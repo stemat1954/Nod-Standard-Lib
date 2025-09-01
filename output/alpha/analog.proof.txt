@@ -1,21 +1,21 @@
 page analog
 {
-	type analog  @19040|analog(5,6) --external
+	type analog  @07968|analog(5,6) --external
 	 viable = yes
 	{
-		method is_not_stale?  @30256|analog(29,3) --external
+		method is_not_stale?  @49536|analog(29,3) --external
 		 viable = yes
 
-		method is_not_void?  @30672|analog(25,3) --external
+		method is_not_void?  @50784|analog(25,3) --external
 		 viable = yes
 
-		method is_stale?  @29424|analog(27,3) --external
+		method is_stale?  @56608|analog(27,3) --external
 		 viable = yes
 
-		method is_valid?  @29008|analog(31,3) --external
+		method is_valid?  @52032|analog(31,3) --external
 		 viable = yes
 
-		method is_void?  @29840|analog(23,3) --external
+		method is_void?  @55776|analog(23,3) --external
 		 viable = yes
 	}
 }

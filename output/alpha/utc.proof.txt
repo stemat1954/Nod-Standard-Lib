@@ -1,71 +1,71 @@
 page utc
 {
-	type utc  @05424|utc(31,6) --external
+	type utc  @06176|utc(31,6) --external
 	 viable = yes
 	{
-		method add  @22688|utc(159,3) --external
+		method add  @29440|utc(159,3) --external
 		 viable = yes
 
-		method add  @23936|utc(160,3) --external
+		method add  @35264|utc(160,3) --external
 		 viable = yes
 
-		method analyze  @21856|utc(157,3) --external
+		method analyze  @36512|utc(157,3) --external
 		 viable = yes
 
-		method begin  @28512|utc(137,3) --external
+		method begin  @31104|utc(137,3) --external
 		 viable = yes
 
-		method begin  @18528|utc(139,3) --external
+		method begin  @26112|utc(139,3) --external
 		 viable = yes
 
-		method begin  @21440|utc(141,3) --external
+		method begin  @27776|utc(141,3) --external
 		 viable = yes
 
-		method begin  @23104|utc(143,3) --external
+		method begin  @24032|utc(143,3) --external
 		 viable = yes
 
-		method is_before?  @27264|utc(150,3) --external
+		method is_before?  @28608|utc(150,3) --external
 		 viable = yes
 
-		method is_equal?  @26016|utc(148,3) --external
+		method is_equal?  @25280|utc(148,3) --external
 		 viable = yes
 
-		method is_less?  @22272|utc(152,3) --external
+		method is_less?  @36096|utc(152,3) --external
 		 viable = yes
 
-		method store  @23520|utc(145,3) --external
+		method store  @21952|utc(145,3) --external
 		 viable = yes
 
-		method sub  @17280|utc(162,3) --external
+		method sub  @22368|utc(162,3) --external
 		 viable = yes
 
-		method update  @16448|utc(155,3) --external
+		method update  @28192|utc(155,3) --external
 		 viable = yes
 	}
 
-	type utc_offset  @10800|utc(5,6) --external
+	type utc_offset  @05792|utc(5,6) --external
 	 viable = yes
 	{
-		method begin  @41600|utc(15,3) --external
+		method begin  @29024|utc(15,3) --external
 		 viable = yes
 
-		method get_first  @44096|utc(19,3) --external
+		method get_first  @24448|utc(19,3) --external
 		 viable = yes
 
-		method get_second  @28096|utc(23,3) --external
+		method get_second  @30272|utc(23,3) --external
 		 viable = yes
 
-		method use_first  @43680|utc(17,3) --external
+		method use_first  @24864|utc(17,3) --external
 		 viable = yes
 
-		method use_second  @18112|utc(21,3) --external
+		method use_second  @23616|utc(21,3) --external
 		 viable = yes
 	}
 
 	common
 	{
-		object utc_origin  @46624|utc(28,8) --external
-		 type: ("utc_offset")-> type utc_offset  @10800|utc(5,6)
+		object utc_origin  @20544|utc(28,8) --external
+		 type: ("utc_offset")-> type utc_offset  @05792|utc(5,6)
 	}
 
 }

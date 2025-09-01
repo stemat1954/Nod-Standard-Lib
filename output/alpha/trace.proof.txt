@@ -1,15 +1,15 @@
 page trace
 {
-	type trace  @04656|trace(5,6) --external
+	type trace  @10784|trace(5,6) --external
 	 viable = yes
 	{
-		method get_location  @36608|trace(34,3) --external
+		method get_location  @36496|trace(34,3) --external
 		 viable = yes
 
-		method use_location  @36192|trace(32,3) --external
+		method use_location  @36080|trace(32,3) --external
 		 viable = yes
 
-		method use_quit_object  @37024|trace(36,3) --external
+		method use_quit_object  @36912|trace(36,3) --external
 		 viable = yes
 	}
 }

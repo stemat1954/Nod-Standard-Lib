@@ -1,33 +1,33 @@
 page op
 {
-	type op<t>  @08880|op(5,6) --external
+	type op<t>  @07712|op(5,6) --external
 	 viable = no
 	{
-		method begin  @20800|op(181,3) --external
+		method begin  @19856|op(181,3) --external
 		 viable = yes
 
-		method begin  @17056|op(190,3) --external
+		method begin  @29008|op(190,3) --external
 		 viable = yes
 
-		method begin<xt>  @15808|op(183,3) --external
+		method begin<xt>  @28176|op(183,3) --external
 		 viable = no
 
-		method begin<xt>  @24128|op(185,3) --external
+		method begin<xt>  @23600|op(185,3) --external
 		 viable = no
 
-		method begin<xt>  @14144|op(187,3) --external
+		method begin<xt>  @28592|op(187,3) --external
 		 viable = no
 
-		method deref  @17888|op(195,3) --external
+		method deref  @16112|op(195,3) --external
 		 viable = yes
 
-		method is_before<xt>?  @20384|op(199,3) --external
+		method is_before<xt>?  @22352|op(199,3) --external
 		 viable = no
 
-		method is_equal<xt>?  @16224|op(197,3) --external
+		method is_equal<xt>?  @16528|op(197,3) --external
 		 viable = no
 
-		method store  @28704|op(192,3) --external
+		method store  @25680|op(192,3) --external
 		 viable = yes
 	}
 }

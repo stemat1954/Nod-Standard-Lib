@@ -1,138 +1,138 @@
 page int
 {
-	type int  @54576|int(6,6) --external
+	type int  @21536|int(6,6) --external
 	 viable = yes
 	{
-		method abs  @10832|int(98,3) --external
+		method abs  @50736|int(98,3) --external
 		 viable = yes
 
-		method abs  @11248|int(99,3) --external
+		method abs  @49488|int(99,3) --external
 		 viable = yes
 
-		method add  @59328|int(76,3) --external
+		method add  @54480|int(76,3) --external
 		 viable = yes
 
-		method add  @60576|int(77,3) --external
+		method add  @48656|int(77,3) --external
 		 viable = yes
 
-		method begin  @58080|int(52,3) --external
+		method begin  @31424|int(52,3) --external
 		 viable = yes
 
-		method begin  @56416|int(54,3) --external
+		method begin  @31840|int(54,3) --external
 		 viable = yes
 
-		method begin  @49760|int(59,3) --external
+		method begin  @33088|int(59,3) --external
 		 viable = yes
 
-		method begin<#>  @53920|int(56,3) --external
+		method begin<#>  @32256|int(56,3) --external
 		 viable = no
 
-		method dec  @17488|int(119,3) --external
+		method dec  @44912|int(119,3) --external
 		 viable = yes
 
-		method dec  @12080|int(120,3) --external
+		method dec  @52816|int(120,3) --external
 		 viable = yes
 
-		method def  @11664|int(125,3) --external
+		method def  @45744|int(125,3) --external
 		 viable = yes
 
-		method def  @19984|int(126,3) --external
+		method def  @46160|int(126,3) --external
 		 viable = yes
 
-		method dis  @17072|int(101,3) --external
+		method dis  @42000|int(101,3) --external
 		 viable = yes
 
-		method dis  @22064|int(102,3) --external
+		method dis  @44496|int(102,3) --external
 		 viable = yes
 
-		method div  @62656|int(85,3) --external
+		method div  @56560|int(85,3) --external
 		 viable = yes
 
-		method div  @64320|int(86,3) --external
+		method div  @56976|int(86,3) --external
 		 viable = yes
 
-		method div  @23728|int(87,3) --external
+		method div  @41168|int(87,3) --external
 		 viable = yes
 
-		method inc  @16240|int(116,3) --external
+		method inc  @44080|int(116,3) --external
 		 viable = yes
 
-		method inc  @18320|int(117,3) --external
+		method inc  @49904|int(117,3) --external
 		 viable = yes
 
-		method inf  @21232|int(122,3) --external
+		method inf  @51152|int(122,3) --external
 		 viable = yes
 
-		method inf  @12912|int(123,3) --external
+		method inf  @45328|int(123,3) --external
 		 viable = yes
 
-		method is_before?  @55584|int(66,3) --external
+		method is_before?  @34752|int(66,3) --external
 		 viable = yes
 
-		method is_equal?  @61408|int(64,3) --external
+		method is_equal?  @34336|int(64,3) --external
 		 viable = yes
 
-		method is_less?  @64736|int(68,3) --external
+		method is_less?  @35168|int(68,3) --external
 		 viable = yes
 
-		method log  @08752|int(110,3) --external
+		method log  @43664|int(110,3) --external
 		 viable = yes
 
-		method log  @22480|int(111,3) --external
+		method log  @49072|int(111,3) --external
 		 viable = yes
 
-		method ltf  @23312|int(104,3) --external
+		method ltf  @41584|int(104,3) --external
 		 viable = yes
 
-		method ltf  @09168|int(105,3) --external
+		method ltf  @42416|int(105,3) --external
 		 viable = yes
 
-		method mod  @13328|int(128,3) --external
+		method mod  @50320|int(128,3) --external
 		 viable = yes
 
-		method mod  @13744|int(129,3) --external
+		method mod  @51568|int(129,3) --external
 		 viable = yes
 
-		method mul  @61824|int(82,3) --external
+		method mul  @56144|int(82,3) --external
 		 viable = yes
 
-		method mul  @62240|int(83,3) --external
+		method mul  @47408|int(83,3) --external
 		 viable = yes
 
-		method neg  @10000|int(89,3) --external
+		method neg  @47824|int(89,3) --external
 		 viable = yes
 
-		method neg  @10416|int(90,3) --external
+		method neg  @54896|int(90,3) --external
 		 viable = yes
 
-		method pow  @22896|int(107,3) --external
+		method pow  @42832|int(107,3) --external
 		 viable = yes
 
-		method pow  @12496|int(108,3) --external
+		method pow  @43248|int(108,3) --external
 		 viable = yes
 
-		method set  @56000|int(71,3) --external
+		method set  @54064|int(71,3) --external
 		 viable = yes
 
-		method sgn  @16656|int(95,3) --external
+		method sgn  @53648|int(95,3) --external
 		 viable = yes
 
-		method sgn  @21648|int(96,3) --external
+		method sgn  @48240|int(96,3) --external
 		 viable = yes
 
-		method sp2  @24144|int(131,3) --external
+		method sp2  @55312|int(131,3) --external
 		 viable = yes
 
-		method sp2  @09584|int(132,3) --external
+		method sp2  @55728|int(132,3) --external
 		 viable = yes
 
-		method store  @58496|int(61,3) --external
+		method store  @33504|int(61,3) --external
 		 viable = yes
 
-		method sub  @65152|int(79,3) --external
+		method sub  @46576|int(79,3) --external
 		 viable = yes
 
-		method sub  @60992|int(80,3) --external
+		method sub  @46992|int(80,3) --external
 		 viable = yes
 	}
 }

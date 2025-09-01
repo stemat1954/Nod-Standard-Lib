@@ -1,24 +1,24 @@
 page addr
 {
-	type addr  @39232|addr(4,6) --external
+	type addr  @44496|addr(4,6) --external
 	 viable = yes
 	{
-		method begin  @61504|addr(34,3) --external
+		method begin  @46672|addr(34,3) --external
 		 viable = yes
 
-		method begin  @61920|addr(36,3) --external
+		method begin  @45840|addr(36,3) --external
 		 viable = yes
 
-		method begin  @62336|addr(38,3) --external
+		method begin  @46256|addr(38,3) --external
 		 viable = yes
 
-		method is_before?  @63584|addr(44,3) --external
+		method is_before?  @47920|addr(44,3) --external
 		 viable = yes
 
-		method is_equal?  @63168|addr(42,3) --external
+		method is_equal?  @48336|addr(42,3) --external
 		 viable = yes
 
-		method store  @62752|addr(40,3) --external
+		method store  @47088|addr(40,3) --external
 		 viable = yes
 	}
 }

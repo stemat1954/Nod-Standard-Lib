@@ -1,25 +1,25 @@
 page timer
 {
-	type timer  @04272|timer(5,6) --external
-	 from ("indicator")-> type indicator  @54192|indicator(5,6)
+	type timer  @05024|timer(5,6) --external
+	 from ("indicator")-> type indicator  @21152|indicator(5,6)
 	 viable = yes
 	{
-		method begin  @34112|timer(74,3) --external
+		method begin  @18192|timer(74,3) --external
 		 viable = yes
 
-		method cancel  @19552|timer(84,3) --external
+		method cancel  @35664|timer(84,3) --external
 		 viable = yes
 
-		method set_first  @34528|timer(76,3) --external
+		method set_first  @34832|timer(76,3) --external
 		 viable = yes
 
-		method set_first  @18720|timer(78,3) --external
+		method set_first  @39408|timer(78,3) --external
 		 viable = yes
 
-		method set_repeat  @35360|timer(80,3) --external
+		method set_repeat  @40240|timer(80,3) --external
 		 viable = yes
 
-		method start  @35776|timer(82,3) --external
+		method start  @35248|timer(82,3) --external
 		 viable = yes
 	}
 }

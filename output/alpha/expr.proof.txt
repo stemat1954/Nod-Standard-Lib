@@ -1,46 +1,46 @@
 page expr
 {
-	type expr  @11328|expr(5,6) --external
+	type expr  @18368|expr(5,6) --external
 	 viable = yes
 	{
-		method begin  @38800|expr(88,3) --external
+		method begin  @65024|expr(88,3) --external
 		 viable = yes
 
-		method begin  @39632|expr(90,3) --external
+		method begin  @05728|expr(90,3) --external
 		 viable = yes
 
-		method begin<c>  @38384|expr(86,3) --external
+		method begin<c>  @07392|expr(86,3) --external
 		 viable = no
 
-		method extract  @43376|expr(100,3) --external
+		method extract  @62944|expr(100,3) --external
 		 viable = yes
 
-		method extract  @33808|expr(102,3) --external
+		method extract  @00736|expr(102,3) --external
 		 viable = yes
 
-		method extract  @29232|expr(104,3) --external
+		method extract  @63776|expr(104,3) --external
 		 viable = yes
 
-		method find  @33392|expr(106,3) --external
+		method find  @64192|expr(106,3) --external
 		 viable = yes
 
-		method get_length  @30896|expr(98,3) --external
+		method get_length  @02816|expr(98,3) --external
 		 viable = yes
 
-		method is_before?  @34224|expr(96,3) --external
+		method is_before?  @07808|expr(96,3) --external
 		 viable = yes
 
-		method is_equal?  @30480|expr(94,3) --external
+		method is_equal?  @06144|expr(94,3) --external
 		 viable = yes
 
-		method scan  @36304|expr(108,3) --external
+		method scan  @01152|expr(108,3) --external
 		 viable = yes
 
-		nom type serial<c>  @07568|expr(82,11) --internal
+		nom type serial<c>  @15376|expr(82,11) --internal
 		 viable = no
-		 equivalent: ("serial_access<ascii><c>")-> type serial_access<t><c>  @54704|access(5,6)
+		 equivalent: ("serial_access<ascii><c>")-> type serial_access<t><c>  @56368|access(5,6)
 
-		method store  @35472|expr(92,3) --external
+		method store  @03648|expr(92,3) --external
 		 viable = yes
 	}
 }

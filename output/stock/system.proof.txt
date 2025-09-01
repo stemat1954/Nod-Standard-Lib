@@ -1,76 +1,76 @@
 page system
 {
-	type system  @42000|system(7,6) --external
+	type system  @35296|system(7,6) --external
 	 viable = yes
 	{
-		method begin  @08816|system(11,3) --external
+		method begin  @43872|system(11,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @46832|system(11,3) --internal
-				 type: (direct)-> type system  @42000|system(7,6)
+				object io  @20144|system(11,3) --internal
+				 type: (direct)-> type system  @35296|system(7,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --initial
-				 lead: ("io.console")-> object console  @52576|system(24,3)
-				 method: ("begin")-> method begin  @37728|console(20,3)
+				 lead: ("io.console")-> object console  @02080|system(24,3)
+				 method: ("begin")-> method begin  @20336|console(20,3)
 			}
 		}
 
-		method end  @32944|system(,) --internal
+		method end  @53584|system(,) --internal
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @17440|system(,) --internal
-				 type: (direct)-> type system  @42000|system(7,6)
+				object io  @38000|system(,) --internal
+				 type: (direct)-> type system  @35296|system(7,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal
-				 lead: (direct)-> object console  @52576|system(24,3)
-				 method: (direct)-> method end  @42096|console(,)
+				 lead: (direct)-> object console  @02080|system(24,3)
+				 method: (direct)-> method end  @44016|console(,)
 			}
 		}
 
-		method use_console  @15888|system(16,3) --external
+		method use_console  @35136|system(16,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @50032|system(16,3) --internal
-				 type: (direct)-> type system  @42000|system(7,6)
+				object io  @21744|system(16,3) --internal
+				 type: (direct)-> type system  @35296|system(7,6)
 
-				proxy ~c  @62064|system(16,3) --internal
-				 type: ("console")-> type console  @44688|console(5,6)
+				proxy ~c  @01664|system(16,3) --internal
+				 type: ("console")-> type console  @29536|console(5,6)
 			}
 
 			BLOCK --domain
 			{
 				JOIN
-				 left: ("~c")-> proxy ~c  @62064|system(16,3)
-				 right: ("io.console")-> object console  @52576|system(24,3)
+				 left: ("~c")-> proxy ~c  @01664|system(16,3)
+				 right: ("io.console")-> object console  @02080|system(24,3)
 			}
 		}
 
 		instance
 		{
-			object console  @52576|system(24,3) --internal
-			 type: ("console")-> type console  @44688|console(5,6)
+			object console  @02080|system(24,3) --internal
+			 type: ("console")-> type console  @29536|console(5,6)
 		}
 
 	}
 
 	common
 	{
-		subroutine $start1  @55440|system(,) --internal
+		subroutine $start1  @13568|system(,) --internal
 		 viable = yes
 		{
 
@@ -81,16 +81,16 @@ page system
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object sys  @54176|system(29,8)
-				 type: ("system")-> type system  @42000|system(7,6)
+				 object: (direct)-> object sys  @03360|system(29,8)
+				 type: ("system")-> type system  @35296|system(7,6)
 				CALL --initial
-				 lead: (direct)-> object sys  @54176|system(29,8)
-				 method: ("begin")-> method begin  @08816|system(11,3)
+				 lead: (direct)-> object sys  @03360|system(29,8)
+				 method: ("begin")-> method begin  @43872|system(11,3)
 			}
 		}
 
-		object sys  @54176|system(29,8) --external
-		 type: ("system")-> type system  @42000|system(7,6)
+		object sys  @03360|system(29,8) --external
+		 type: ("system")-> type system  @35296|system(7,6)
 	}
 
 }

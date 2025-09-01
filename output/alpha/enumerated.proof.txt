@@ -1,15 +1,15 @@
 page enumerated
 {
-	type enumerated  @10176|enumerated(4,6) --external
+	type enumerated  @17216|enumerated(4,6) --external
 	 viable = yes
 	{
-		method begin  @60960|enumerated(29,3) --external
+		method begin  @14128|enumerated(29,3) --external
 		 viable = yes
 
-		method get_code  @55136|enumerated(33,3) --external
+		method get_code  @34704|enumerated(33,3) --external
 		 viable = yes
 
-		method use_code  @58048|enumerated(31,3) --external
+		method use_code  @34288|enumerated(31,3) --external
 		 viable = yes
 	}
 }

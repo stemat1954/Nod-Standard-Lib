@@ -1,463 +1,463 @@
 page list
 {
-	type <t>node1  @41616|list(337,13) --internal
+	type <t>node1  @32224|list(337,13) --internal
 	 from ("t")-> (unmatched)
-	 from ("node1")-> type node1  @45456|list(22,6)
+	 from ("node1")-> type node1  @34528|list(22,6)
 	 viable = no
 	{
-		method begin  @48128|list(342,17) --external
+		method begin  @34304|list(342,17) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @34672|list(342,17) --internal
-				 type: (direct)-> type <t>node1  @41616|list(337,13)
+				object io  @64880|list(342,17) --internal
+				 type: (direct)-> type <t>node1  @32224|list(337,13)
 
-				proxy ~base  @38992|list(342,17) --internal
+				proxy ~base  @48752|list(342,17) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @27168|list(344,5)
-				 type: ("node1")-> type node1  @45456|list(22,6)
+				 proxy: (direct)-> proxy (anon)  @12592|list(344,5)
+				 type: ("node1")-> type node1  @34528|list(22,6)
 				 permission: [upd]
 				TRANSLATE* --provisional --base
-				 lead: ("io")-> object io  @34672|list(342,17)
-				 method: (direct)-> method $18<7>( as_base<node1> )  @35856|$appendix(,)
-				 result: (direct)-> proxy (anon)  @27168|list(344,5)
+				 lead: ("io")-> object io  @64880|list(342,17)
+				 method: (direct)-> method $18<7>( as_base<node1> )  @39024|$appendix(,)
+				 result: (direct)-> proxy (anon)  @12592|list(344,5)
 				CALL* --provisional
-				 lead: (direct)-> blank (anon)  @33776|list(,)
+				 lead: (direct)-> blank (anon)  @09968|list(,)
 				 method: ("begin")-> (unmatched)
 				TRANSLATE* --provisional --base
-				 lead: ("io")-> object io  @34672|list(342,17)
-				 method: ("as_base<t>")-> method as_base<t>  @13728|object(57,3)
+				 lead: ("io")-> object io  @64880|list(342,17)
+				 method: ("as_base<t>")-> method as_base<t>  @27760|object(48,3)
 				JOIN* --provisional
-				 left: ("~base")-> proxy ~base  @38992|list(342,17)
-				 right: (direct)-> blank (anon)  @46288|list(,)
+				 left: ("~base")-> proxy ~base  @48752|list(342,17)
+				 right: (direct)-> blank (anon)  @15136|list(,)
 			}
 		}
 	}
 
-	nom type link1  @11920|list(19,10) --external
+	nom type link1  @19216|list(19,10) --external
 	 viable = yes
-	 equivalent: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+	 equivalent: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 
-	type list  @43536|list(99,6) --external
-	 from (direct)-> type $8<7><9>( serial_access<node1><list_cursor> )  @56208|$appendix(,)
+	type list  @30304|list(99,6) --external
+	 from (direct)-> type $8<7><9>( serial_access<node1><list_cursor> )  @38672|$appendix(,)
 	 viable = yes
 	{
-		method begin  @45632|list(167,3) --external
+		method begin  @31152|list(167,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @00000|list(167,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @39392|list(167,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @28688|list(169,6)
-				 type: (direct)-> type $8<7><9>( serial_access<node1><list_cursor> )  @56208|$appendix(,)
+				 proxy: (direct)-> proxy (anon)  @08336|list(169,6)
+				 type: (direct)-> type $8<7><9>( serial_access<node1><list_cursor> )  @38672|$appendix(,)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @00000|list(167,3)
-				 method: (direct)-> method $18<$8<7><9>>( as_base<serial_access<node1><list_cursor>> )  @42928|$appendix(,)
-				 result: (direct)-> proxy (anon)  @28688|list(169,6)
+				 lead: ("io")-> object io  @39392|list(167,3)
+				 method: (direct)-> method $18<$8<7><9>>( as_base<serial_access<node1><list_cursor>> )  @33616|$appendix(,)
+				 result: (direct)-> proxy (anon)  @08336|list(169,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> proxy (anon)  @28688|list(169,6)
-				 method: ("begin")-> method begin  @05968|$appendix(,)
+				 lead: (direct)-> proxy (anon)  @08336|list(169,6)
+				 method: ("begin")-> method begin  @36800|$appendix(,)
 			}
 		}
 
-		method begin  @47712|list(172,3) --external
+		method begin  @28656|list(172,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @01280|list(172,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @31712|list(172,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object other  @01600|list(172,3) --internal
-				 type: ("list")-> type list  @43536|list(99,6)
+				object other  @32032|list(172,3) --internal
+				 type: ("list")-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @63936|list(174,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @33312|list(174,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("other.first")-> object first  @33280|list(327,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @63936|list(174,10)
+				 lead: ("other.first")-> object first  @37424|list(327,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @33312|list(174,10)
 				IF
-				 condition: (direct)-> object (anon)  @63936|list(174,10)
+				 condition: (direct)-> object (anon)  @33312|list(174,10)
 				{
 					true branch: BLOCK --domain
 					{
 						CALL --fundamental
-						 lead: ("io.first")-> object first  @33280|list(327,3)
-						 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-						 input: ("other.first")-> object first  @33280|list(327,3)
+						 lead: ("io.first")-> object first  @37424|list(327,3)
+						 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+						 input: ("other.first")-> object first  @37424|list(327,3)
 						CALL --fundamental
-						 lead: ("io.last")-> object last  @40640|list(328,3)
-						 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-						 input: ("other.last")-> object last  @40640|list(328,3)
+						 lead: ("io.last")-> object last  @34224|list(328,3)
+						 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+						 input: ("other.last")-> object last  @34224|list(328,3)
 						CALL --terminal, fundamental
-						 lead: ("other.current")-> object current  @35840|list(329,3)
-						 method: ("recycle")-> method recycle  @22464|object(60,3)
+						 lead: ("other.current")-> object current  @33904|list(329,3)
+						 method: ("recycle")-> method recycle  @42736|object(38,3)
 					}
 				}
 			}
 		}
 
-		method get_current  @46880|list(198,3) --external
+		method get_current  @30736|list(198,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @60736|list(198,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @40352|list(198,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object link1  @58496|list(198,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @37472|list(198,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @59776|list(200,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @37792|list(200,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @59776|list(200,10)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @37792|list(200,10)
 				IF
-				 condition: (direct)-> object (anon)  @59776|list(200,10)
+				 condition: (direct)-> object (anon)  @37792|list(200,10)
 				{
 					true branch: CALL --fundamental
-					 lead: ("given\link1")-> object link1  @58496|list(198,3)
-					 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-					 input: ("io.current")-> object current  @35840|list(329,3)
+					 lead: ("given\link1")-> object link1  @37472|list(198,3)
+					 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+					 input: ("io.current")-> object current  @33904|list(329,3)
 				}
 			}
 		}
 
-		method get_first  @51456|list(188,3) --external
+		method get_first  @28240|list(188,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @03840|list(188,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @34912|list(188,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object link1  @57536|list(188,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @38432|list(188,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @00320|list(190,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @36192|list(190,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.first")-> object first  @33280|list(327,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @00320|list(190,10)
+				 lead: ("io.first")-> object first  @37424|list(327,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @36192|list(190,10)
 				IF
-				 condition: (direct)-> object (anon)  @00320|list(190,10)
+				 condition: (direct)-> object (anon)  @36192|list(190,10)
 				{
 					true branch: CALL --fundamental
-					 lead: ("given\link1")-> object link1  @57536|list(188,3)
-					 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-					 input: ("io.first")-> object first  @33280|list(327,3)
+					 lead: ("given\link1")-> object link1  @38432|list(188,3)
+					 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+					 input: ("io.first")-> object first  @37424|list(327,3)
 				}
 			}
 		}
 
-		method get_last  @46464|list(193,3) --external
+		method get_last  @29072|list(193,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @64576|list(193,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @36512|list(193,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object link1  @57856|list(193,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @35232|list(193,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @58176|list(195,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @40032|list(195,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.last")-> object last  @40640|list(328,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @58176|list(195,10)
+				 lead: ("io.last")-> object last  @34224|list(328,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @40032|list(195,10)
 				IF
-				 condition: (direct)-> object (anon)  @58176|list(195,10)
+				 condition: (direct)-> object (anon)  @40032|list(195,10)
 				{
 					true branch: CALL --fundamental
-					 lead: ("given\link1")-> object link1  @57856|list(193,3)
-					 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-					 input: ("io.last")-> object last  @40640|list(328,3)
+					 lead: ("given\link1")-> object link1  @35232|list(193,3)
+					 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+					 input: ("io.last")-> object last  @34224|list(328,3)
 				}
 			}
 		}
 
-		method get_next  @51040|list(203,3) --external
+		method get_next  @42624|list(203,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @60096|list(203,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @29472|list(203,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object link1  @60416|list(203,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @29152|list(203,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @61056|list(205,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @29792|list(205,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @61056|list(205,10)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @29792|list(205,10)
 				IF
-				 condition: (direct)-> object (anon)  @61056|list(205,10)
+				 condition: (direct)-> object (anon)  @29792|list(205,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @26864|list(205,50)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @08640|list(205,50)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @26864|list(205,50)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @08640|list(205,50)
 						CALL
-						 lead: (direct)-> proxy (anon)  @26864|list(205,50)
-						 method: ("get_next")-> method get_next  @42304|list(34,3)
-						 output: ("given\link1")-> object link1  @60416|list(203,3)
+						 lead: (direct)-> proxy (anon)  @08640|list(205,50)
+						 method: ("get_next")-> method get_next  @29488|list(34,3)
+						 output: ("given\link1")-> object link1  @29152|list(203,3)
 					}
 				}
 			}
 		}
 
-		method go_first  @49376|list(214,3) --external
+		method go_first  @43040|list(214,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @39792|list(214,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @04144|list(214,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @27312|list(216,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @06704|list(216,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.first")-> object first  @33280|list(327,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @27312|list(216,10)
+				 lead: ("io.first")-> object first  @37424|list(327,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @06704|list(216,10)
 				IF
-				 condition: (direct)-> object (anon)  @27312|list(216,10)
+				 condition: (direct)-> object (anon)  @06704|list(216,10)
 				{
 					true branch: BLOCK --domain
 					{
 						CALL --terminal, fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: ("recycle")-> method recycle  @22464|object(60,3)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: ("recycle")-> method recycle  @42736|object(38,3)
 						CALL --fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-						 input: ("io.first")-> object first  @33280|list(327,3)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+						 input: ("io.first")-> object first  @37424|list(327,3)
 					}
 				}
 			}
 		}
 
-		method go_front  @48544|list(209,3) --external
+		method go_front  @35552|list(209,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @61376|list(209,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @30112|list(209,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal, fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("recycle")-> method recycle  @22464|object(60,3)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("recycle")-> method recycle  @42736|object(38,3)
 			}
 		}
 
-		method go_here  @50208|list(237,3) --external
+		method go_here  @29728|list(237,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @32432|list(237,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @62960|list(237,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object link1  @31152|list(237,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @06384|list(237,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal, fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("recycle")-> method recycle  @22464|object(60,3)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("recycle")-> method recycle  @42736|object(38,3)
 				CALL --fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-				 input: ("given\link1")-> object link1  @31152|list(237,3)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+				 input: ("given\link1")-> object link1  @06384|list(237,3)
 			}
 		}
 
-		method go_last  @49792|list(219,3) --external
+		method go_last  @39296|list(219,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @32752|list(219,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @07984|list(219,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @37872|list(221,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @04784|list(221,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.last")-> object last  @40640|list(328,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @37872|list(221,10)
+				 lead: ("io.last")-> object last  @34224|list(328,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @04784|list(221,10)
 				IF
-				 condition: (direct)-> object (anon)  @37872|list(221,10)
+				 condition: (direct)-> object (anon)  @04784|list(221,10)
 				{
 					true branch: BLOCK --domain
 					{
 						CALL --terminal, fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: ("recycle")-> method recycle  @22464|object(60,3)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: ("recycle")-> method recycle  @42736|object(38,3)
 						CALL --fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-						 input: ("io.last")-> object last  @40640|list(328,3)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+						 input: ("io.last")-> object last  @34224|list(328,3)
 					}
 				}
 			}
 		}
 
-		method go_next  @50624|list(224,3) --external
+		method go_next  @35968|list(224,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @38512|list(224,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @07664|list(224,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @28592|list(226,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @01584|list(226,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-				 output: (direct)-> object (anon)  @28592|list(226,10)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+				 output: (direct)-> object (anon)  @01584|list(226,10)
 				IF
-				 condition: (direct)-> object (anon)  @28592|list(226,10)
+				 condition: (direct)-> object (anon)  @01584|list(226,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 object: (direct)-> object (anon)  @41072|list(228,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @58800|list(228,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("io.first")-> object first  @33280|list(327,3)
-						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-						 output: (direct)-> object (anon)  @41072|list(228,11)
+						 lead: ("io.first")-> object first  @37424|list(327,3)
+						 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+						 output: (direct)-> object (anon)  @58800|list(228,11)
 						IF
-						 condition: (direct)-> object (anon)  @41072|list(228,11)
+						 condition: (direct)-> object (anon)  @58800|list(228,11)
 						{
 							true branch: BLOCK --domain
 							{
 								CALL --terminal, fundamental
-								 lead: ("io.current")-> object current  @35840|list(329,3)
-								 method: ("recycle")-> method recycle  @22464|object(60,3)
+								 lead: ("io.current")-> object current  @33904|list(329,3)
+								 method: ("recycle")-> method recycle  @42736|object(38,3)
 								CALL --fundamental
-								 lead: ("io.current")-> object current  @35840|list(329,3)
-								 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-								 input: ("io.first")-> object first  @33280|list(327,3)
+								 lead: ("io.current")-> object current  @33904|list(329,3)
+								 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+								 input: ("io.first")-> object first  @37424|list(327,3)
 							}
 						}
 					}
 					false branch: BLOCK --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @30512|list(232,15)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @13504|list(232,15)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @30512|list(232,15)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @13504|list(232,15)
 						MAKE
-						 object: (direct)-> object nl  @33392|list(232,34)
-						 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+						 object: (direct)-> object nl  @02224|list(232,34)
+						 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 						CALL
-						 lead: (direct)-> proxy (anon)  @30512|list(232,15)
-						 method: ("get_next")-> method get_next  @42304|list(34,3)
-						 output: (direct)-> object nl  @33392|list(232,34)
+						 lead: (direct)-> proxy (anon)  @13504|list(232,15)
+						 method: ("get_next")-> method get_next  @29488|list(34,3)
+						 output: (direct)-> object nl  @02224|list(232,34)
 						MAKE
-						 object: (direct)-> object (anon)  @30832|list(233,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @57520|list(233,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @33392|list(232,34)
-						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-						 output: (direct)-> object (anon)  @30832|list(233,11)
+						 lead: ("nl")-> object nl  @02224|list(232,34)
+						 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+						 output: (direct)-> object (anon)  @57520|list(233,11)
 						IF
-						 condition: (direct)-> object (anon)  @30832|list(233,11)
+						 condition: (direct)-> object (anon)  @57520|list(233,11)
 						{
 							true branch: BLOCK --domain
 							{
 								CALL --terminal, fundamental
-								 lead: ("io.current")-> object current  @35840|list(329,3)
-								 method: ("recycle")-> method recycle  @22464|object(60,3)
+								 lead: ("io.current")-> object current  @33904|list(329,3)
+								 method: ("recycle")-> method recycle  @42736|object(38,3)
 								CALL --fundamental
-								 lead: ("io.current")-> object current  @35840|list(329,3)
-								 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-								 input: ("nl")-> object nl  @33392|list(232,34)
+								 lead: ("io.current")-> object current  @33904|list(329,3)
+								 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+								 input: ("nl")-> object nl  @02224|list(232,34)
 							}
 						}
 					}
@@ -465,144 +465,144 @@ page list
 			}
 		}
 
-		method insert  @46048|list(242,3) --external
+		method insert  @34720|list(242,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @39472|list(242,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @57840|list(242,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object link1  @31472|list(242,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @63280|list(242,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @24736|list(244,15)
-				 type: ("node1")-> type node1  @45456|list(22,6)
+				 proxy: (direct)-> proxy (anon)  @11376|list(244,15)
+				 type: ("node1")-> type node1  @34528|list(22,6)
 				 permission: [upd]
 				CALL --fundamental
-				 lead: ("given\link1")-> object link1  @31472|list(242,3)
-				 method: ("deref")-> method deref  @15536|$appendix(,)
-				 result: (direct)-> proxy (anon)  @24736|list(244,15)
+				 lead: ("given\link1")-> object link1  @63280|list(242,3)
+				 method: ("deref")-> method deref  @36384|$appendix(,)
+				 result: (direct)-> proxy (anon)  @11376|list(244,15)
 				CALL
-				 lead: (direct)-> proxy (anon)  @24736|list(244,15)
-				 method: ("unlink")-> method unlink  @43552|list(44,3)
+				 lead: (direct)-> proxy (anon)  @11376|list(244,15)
+				 method: ("unlink")-> method unlink  @30320|list(44,3)
 				MAKE
-				 object: (direct)-> object (anon)  @36592|list(245,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @08304|list(245,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @36592|list(245,10)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @08304|list(245,10)
 				IF
-				 condition: (direct)-> object (anon)  @36592|list(245,10)
+				 condition: (direct)-> object (anon)  @08304|list(245,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @29600|list(248,15)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @10464|list(248,15)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @29600|list(248,15)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @10464|list(248,15)
 						MAKE
-						 object: (direct)-> object before  @37232|list(248,39)
-						 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+						 object: (direct)-> object before  @01904|list(248,39)
+						 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 						CALL
-						 lead: (direct)-> proxy (anon)  @29600|list(248,15)
-						 method: ("get_next")-> method get_next  @42304|list(34,3)
-						 output: (direct)-> object before  @37232|list(248,39)
+						 lead: (direct)-> proxy (anon)  @10464|list(248,15)
+						 method: ("get_next")-> method get_next  @29488|list(34,3)
+						 output: (direct)-> object before  @01904|list(248,39)
 						CALL
-						 lead: (direct)-> proxy (anon)  @29600|list(248,15)
-						 method: ("set_next")-> method set_next  @42720|list(39,3)
-						 input: ("given\link1")-> object link1  @31472|list(242,3)
+						 lead: (direct)-> proxy (anon)  @10464|list(248,15)
+						 method: ("set_next")-> method set_next  @29904|list(39,3)
+						 input: ("given\link1")-> object link1  @63280|list(242,3)
 						MAKE
-						 object: (direct)-> object (anon)  @28912|list(249,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @03184|list(249,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("before")-> object before  @37232|list(248,39)
-						 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-						 output: (direct)-> object (anon)  @28912|list(249,11)
+						 lead: ("before")-> object before  @01904|list(248,39)
+						 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+						 output: (direct)-> object (anon)  @03184|list(249,11)
 						IF
-						 condition: (direct)-> object (anon)  @28912|list(249,11)
+						 condition: (direct)-> object (anon)  @03184|list(249,11)
 						{
 							true branch: BLOCK --domain
 							{
 								CALL --terminal, fundamental
-								 lead: ("io.last")-> object last  @40640|list(328,3)
-								 method: ("recycle")-> method recycle  @22464|object(60,3)
+								 lead: ("io.last")-> object last  @34224|list(328,3)
+								 method: ("recycle")-> method recycle  @42736|object(38,3)
 								CALL --fundamental
-								 lead: ("io.last")-> object last  @40640|list(328,3)
-								 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-								 input: ("given\link1")-> object link1  @31472|list(242,3)
+								 lead: ("io.last")-> object last  @34224|list(328,3)
+								 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+								 input: ("given\link1")-> object link1  @63280|list(242,3)
 							}
 							false branch: BLOCK --domain
 							{
 								MAKE
-								 proxy: (direct)-> proxy (anon)  @29296|list(252,17)
-								 type: ("node1")-> type node1  @45456|list(22,6)
+								 proxy: (direct)-> proxy (anon)  @10768|list(252,17)
+								 type: ("node1")-> type node1  @34528|list(22,6)
 								 permission: [upd]
 								CALL --fundamental
-								 lead: ("given\link1")-> object link1  @31472|list(242,3)
-								 method: ("deref")-> method deref  @15536|$appendix(,)
-								 result: (direct)-> proxy (anon)  @29296|list(252,17)
+								 lead: ("given\link1")-> object link1  @63280|list(242,3)
+								 method: ("deref")-> method deref  @36384|$appendix(,)
+								 result: (direct)-> proxy (anon)  @10768|list(252,17)
 								CALL
-								 lead: (direct)-> proxy (anon)  @29296|list(252,17)
-								 method: ("set_next")-> method set_next  @42720|list(39,3)
-								 input: ("before")-> object before  @37232|list(248,39)
+								 lead: (direct)-> proxy (anon)  @10768|list(252,17)
+								 method: ("set_next")-> method set_next  @29904|list(39,3)
+								 input: ("before")-> object before  @01904|list(248,39)
 							}
 						}
 					}
 					false branch: BLOCK --domain
 					{
 						MAKE
-						 object: (direct)-> object (anon)  @38192|list(254,15)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @04464|list(254,15)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("io.first")-> object first  @33280|list(327,3)
-						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-						 output: (direct)-> object (anon)  @38192|list(254,15)
+						 lead: ("io.first")-> object first  @37424|list(327,3)
+						 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+						 output: (direct)-> object (anon)  @04464|list(254,15)
 						IF
-						 condition: (direct)-> object (anon)  @38192|list(254,15)
+						 condition: (direct)-> object (anon)  @04464|list(254,15)
 						{
 							true branch: BLOCK --domain
 							{
 								MAKE
-								 proxy: (direct)-> proxy (anon)  @25040|list(257,16)
-								 type: ("node1")-> type node1  @45456|list(22,6)
+								 proxy: (direct)-> proxy (anon)  @11072|list(257,16)
+								 type: ("node1")-> type node1  @34528|list(22,6)
 								 permission: [upd]
 								CALL --fundamental
-								 lead: ("given\link1")-> object link1  @31472|list(242,3)
-								 method: ("deref")-> method deref  @15536|$appendix(,)
-								 result: (direct)-> proxy (anon)  @25040|list(257,16)
+								 lead: ("given\link1")-> object link1  @63280|list(242,3)
+								 method: ("deref")-> method deref  @36384|$appendix(,)
+								 result: (direct)-> proxy (anon)  @11072|list(257,16)
 								CALL
-								 lead: (direct)-> proxy (anon)  @25040|list(257,16)
-								 method: ("set_next")-> method set_next  @42720|list(39,3)
-								 input: ("io.first")-> object first  @33280|list(327,3)
+								 lead: (direct)-> proxy (anon)  @11072|list(257,16)
+								 method: ("set_next")-> method set_next  @29904|list(39,3)
+								 input: ("io.first")-> object first  @37424|list(327,3)
 								CALL --terminal, fundamental
-								 lead: ("io.first")-> object first  @33280|list(327,3)
-								 method: ("recycle")-> method recycle  @22464|object(60,3)
+								 lead: ("io.first")-> object first  @37424|list(327,3)
+								 method: ("recycle")-> method recycle  @42736|object(38,3)
 								CALL --fundamental
-								 lead: ("io.first")-> object first  @33280|list(327,3)
-								 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-								 input: ("given\link1")-> object link1  @31472|list(242,3)
+								 lead: ("io.first")-> object first  @37424|list(327,3)
+								 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+								 input: ("given\link1")-> object link1  @63280|list(242,3)
 							}
 							false branch: BLOCK --domain
 							{
 								CALL --fundamental
-								 lead: ("io.first")-> object first  @33280|list(327,3)
-								 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-								 input: ("given\link1")-> object link1  @31472|list(242,3)
+								 lead: ("io.first")-> object first  @37424|list(327,3)
+								 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+								 input: ("given\link1")-> object link1  @63280|list(242,3)
 								CALL --fundamental
-								 lead: ("io.last")-> object last  @40640|list(328,3)
-								 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-								 input: ("given\link1")-> object link1  @31472|list(242,3)
+								 lead: ("io.last")-> object last  @34224|list(328,3)
+								 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+								 input: ("given\link1")-> object link1  @63280|list(242,3)
 							}
 						}
 					}
@@ -610,131 +610,131 @@ page list
 			}
 		}
 
-		method is_empty?  @48960|list(183,3) --external
+		method is_empty?  @26992|list(183,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @61696|list(183,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @36832|list(183,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object yes  @02560|list(183,3) --internal
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				object yes  @38752|list(183,3) --internal
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --fundamental
-				 lead: ("io.first")-> object first  @33280|list(327,3)
-				 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-				 output: ("yes")-> object yes  @02560|list(183,3)
+				 lead: ("io.first")-> object first  @37424|list(327,3)
+				 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+				 output: ("yes")-> object yes  @38752|list(183,3)
 			}
 		}
 
-		method remove_next  @47296|list(268,3) --external
+		method remove_next  @37216|list(268,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @30192|list(268,3) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @61360|list(268,3) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @33712|list(270,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @60080|list(270,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.current")-> object current  @35840|list(329,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @33712|list(270,10)
+				 lead: ("io.current")-> object current  @33904|list(329,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @60080|list(270,10)
 				IF
-				 condition: (direct)-> object (anon)  @33712|list(270,10)
+				 condition: (direct)-> object (anon)  @60080|list(270,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @26560|list(273,15)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @12896|list(273,15)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("io.current")-> object current  @35840|list(329,3)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @26560|list(273,15)
+						 lead: ("io.current")-> object current  @33904|list(329,3)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @12896|list(273,15)
 						MAKE
-						 object: (direct)-> object next  @33072|list(273,34)
-						 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+						 object: (direct)-> object next  @63600|list(273,34)
+						 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 						CALL
-						 lead: (direct)-> proxy (anon)  @26560|list(273,15)
-						 method: ("get_next")-> method get_next  @42304|list(34,3)
-						 output: (direct)-> object next  @33072|list(273,34)
+						 lead: (direct)-> proxy (anon)  @12896|list(273,15)
+						 method: ("get_next")-> method get_next  @29488|list(34,3)
+						 output: (direct)-> object next  @63600|list(273,34)
 						MAKE
-						 object: (direct)-> object (anon)  @27632|list(274,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @60400|list(274,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("next")-> object next  @33072|list(273,34)
-						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-						 output: (direct)-> object (anon)  @27632|list(274,11)
+						 lead: ("next")-> object next  @63600|list(273,34)
+						 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+						 output: (direct)-> object (anon)  @60400|list(274,11)
 						IF
-						 condition: (direct)-> object (anon)  @27632|list(274,11)
+						 condition: (direct)-> object (anon)  @60400|list(274,11)
 						{
 							true branch: BLOCK --domain
 							{
 								MAKE
-								 proxy: (direct)-> proxy (anon)  @25344|list(276,10)
-								 type: ("node1")-> type node1  @45456|list(22,6)
+								 proxy: (direct)-> proxy (anon)  @13200|list(276,10)
+								 type: ("node1")-> type node1  @34528|list(22,6)
 								 permission: [upd]
 								CALL --fundamental
-								 lead: ("next")-> object next  @33072|list(273,34)
-								 method: ("deref")-> method deref  @15536|$appendix(,)
-								 result: (direct)-> proxy (anon)  @25344|list(276,10)
+								 lead: ("next")-> object next  @63600|list(273,34)
+								 method: ("deref")-> method deref  @36384|$appendix(,)
+								 result: (direct)-> proxy (anon)  @13200|list(276,10)
 								MAKE
-								 object: (direct)-> object next_next  @31792|list(276,34)
-								 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+								 object: (direct)-> object next_next  @59120|list(276,34)
+								 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 								CALL
-								 lead: (direct)-> proxy (anon)  @25344|list(276,10)
-								 method: ("get_next")-> method get_next  @42304|list(34,3)
-								 output: (direct)-> object next_next  @31792|list(276,34)
+								 lead: (direct)-> proxy (anon)  @13200|list(276,10)
+								 method: ("get_next")-> method get_next  @29488|list(34,3)
+								 output: (direct)-> object next_next  @59120|list(276,34)
 								CALL
-								 lead: (direct)-> proxy (anon)  @25344|list(276,10)
-								 method: ("unlink")-> method unlink  @43552|list(44,3)
+								 lead: (direct)-> proxy (anon)  @13200|list(276,10)
+								 method: ("unlink")-> method unlink  @30320|list(44,3)
 								MAKE
-								 object: (direct)-> object (anon)  @34032|list(277,12)
-								 type: ("bool")-> type bool  @08256|bool(5,6)
+								 object: (direct)-> object (anon)  @64240|list(277,12)
+								 type: ("bool")-> type bool  @19936|bool(5,6)
 								CALL --fundamental
-								 lead: ("next_next")-> object next_next  @31792|list(276,34)
-								 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-								 output: (direct)-> object (anon)  @34032|list(277,12)
+								 lead: ("next_next")-> object next_next  @59120|list(276,34)
+								 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+								 output: (direct)-> object (anon)  @64240|list(277,12)
 								IF
-								 condition: (direct)-> object (anon)  @34032|list(277,12)
+								 condition: (direct)-> object (anon)  @64240|list(277,12)
 								{
 									true branch: BLOCK --domain
 									{
 										CALL --terminal, fundamental
-										 lead: ("io.last")-> object last  @40640|list(328,3)
-										 method: ("recycle")-> method recycle  @22464|object(60,3)
+										 lead: ("io.last")-> object last  @34224|list(328,3)
+										 method: ("recycle")-> method recycle  @42736|object(38,3)
 										CALL --fundamental
-										 lead: ("io.last")-> object last  @40640|list(328,3)
-										 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-										 input: ("io.current")-> object current  @35840|list(329,3)
+										 lead: ("io.last")-> object last  @34224|list(328,3)
+										 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+										 input: ("io.current")-> object current  @33904|list(329,3)
 									}
 									false branch: BLOCK --domain
 									{
 										MAKE
-										 proxy: (direct)-> proxy (anon)  @25648|list(280,17)
-										 type: ("node1")-> type node1  @45456|list(22,6)
+										 proxy: (direct)-> proxy (anon)  @11680|list(280,17)
+										 type: ("node1")-> type node1  @34528|list(22,6)
 										 permission: [upd]
 										CALL --fundamental
-										 lead: ("io.current")-> object current  @35840|list(329,3)
-										 method: ("deref")-> method deref  @15536|$appendix(,)
-										 result: (direct)-> proxy (anon)  @25648|list(280,17)
+										 lead: ("io.current")-> object current  @33904|list(329,3)
+										 method: ("deref")-> method deref  @36384|$appendix(,)
+										 result: (direct)-> proxy (anon)  @11680|list(280,17)
 										CALL
-										 lead: (direct)-> proxy (anon)  @25648|list(280,17)
-										 method: ("set_next")-> method set_next  @42720|list(39,3)
-										 input: ("next_next")-> object next_next  @31792|list(276,34)
+										 lead: (direct)-> proxy (anon)  @11680|list(280,17)
+										 method: ("set_next")-> method set_next  @29904|list(39,3)
+										 input: ("next_next")-> object next_next  @59120|list(276,34)
 									}
 								}
 							}
@@ -743,63 +743,63 @@ page list
 					false branch: BLOCK --domain
 					{
 						MAKE
-						 object: (direct)-> object (anon)  @40112|list(283,15)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @59440|list(283,15)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("io.first")-> object first  @33280|list(327,3)
-						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-						 output: (direct)-> object (anon)  @40112|list(283,15)
+						 lead: ("io.first")-> object first  @37424|list(327,3)
+						 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+						 output: (direct)-> object (anon)  @59440|list(283,15)
 						IF
-						 condition: (direct)-> object (anon)  @40112|list(283,15)
+						 condition: (direct)-> object (anon)  @59440|list(283,15)
 						{
 							true branch: BLOCK --domain
 							{
 								MAKE
-								 proxy: (direct)-> proxy (anon)  @29904|list(286,13)
-								 type: ("node1")-> type node1  @45456|list(22,6)
+								 proxy: (direct)-> proxy (anon)  @12288|list(286,13)
+								 type: ("node1")-> type node1  @34528|list(22,6)
 								 permission: [upd]
 								CALL --fundamental
-								 lead: ("io.first")-> object first  @33280|list(327,3)
-								 method: ("deref")-> method deref  @15536|$appendix(,)
-								 result: (direct)-> proxy (anon)  @29904|list(286,13)
+								 lead: ("io.first")-> object first  @37424|list(327,3)
+								 method: ("deref")-> method deref  @36384|$appendix(,)
+								 result: (direct)-> proxy (anon)  @12288|list(286,13)
 								MAKE
-								 object: (direct)-> object next_next  @32112|list(286,37)
-								 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+								 object: (direct)-> object next_next  @63920|list(286,37)
+								 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 								CALL
-								 lead: (direct)-> proxy (anon)  @29904|list(286,13)
-								 method: ("get_next")-> method get_next  @42304|list(34,3)
-								 output: (direct)-> object next_next  @32112|list(286,37)
+								 lead: (direct)-> proxy (anon)  @12288|list(286,13)
+								 method: ("get_next")-> method get_next  @29488|list(34,3)
+								 output: (direct)-> object next_next  @63920|list(286,37)
 								CALL
-								 lead: (direct)-> proxy (anon)  @29904|list(286,13)
-								 method: ("unlink")-> method unlink  @43552|list(44,3)
+								 lead: (direct)-> proxy (anon)  @12288|list(286,13)
+								 method: ("unlink")-> method unlink  @30320|list(44,3)
 								MAKE
-								 object: (direct)-> object (anon)  @35952|list(287,11)
-								 type: ("bool")-> type bool  @08256|bool(5,6)
+								 object: (direct)-> object (anon)  @02544|list(287,11)
+								 type: ("bool")-> type bool  @19936|bool(5,6)
 								CALL --fundamental
-								 lead: ("next_next")-> object next_next  @32112|list(286,37)
-								 method: ("is_null?")-> method is_null?  @19968|object(36,3)
-								 output: (direct)-> object (anon)  @35952|list(287,11)
+								 lead: ("next_next")-> object next_next  @63920|list(286,37)
+								 method: ("is_null?")-> method is_null?  @41904|object(34,3)
+								 output: (direct)-> object (anon)  @02544|list(287,11)
 								IF
-								 condition: (direct)-> object (anon)  @35952|list(287,11)
+								 condition: (direct)-> object (anon)  @02544|list(287,11)
 								{
 									true branch: BLOCK --domain
 									{
 										CALL --terminal, fundamental
-										 lead: ("io.first")-> object first  @33280|list(327,3)
-										 method: ("recycle")-> method recycle  @22464|object(60,3)
+										 lead: ("io.first")-> object first  @37424|list(327,3)
+										 method: ("recycle")-> method recycle  @42736|object(38,3)
 										CALL --terminal, fundamental
-										 lead: ("io.last")-> object last  @40640|list(328,3)
-										 method: ("recycle")-> method recycle  @22464|object(60,3)
+										 lead: ("io.last")-> object last  @34224|list(328,3)
+										 method: ("recycle")-> method recycle  @42736|object(38,3)
 									}
 									false branch: BLOCK --domain
 									{
 										CALL --terminal, fundamental
-										 lead: ("io.first")-> object first  @33280|list(327,3)
-										 method: ("recycle")-> method recycle  @22464|object(60,3)
+										 lead: ("io.first")-> object first  @37424|list(327,3)
+										 method: ("recycle")-> method recycle  @42736|object(38,3)
 										CALL --fundamental
-										 lead: ("io.first")-> object first  @33280|list(327,3)
-										 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-										 input: ("next_next")-> object next_next  @32112|list(286,37)
+										 lead: ("io.first")-> object first  @37424|list(327,3)
+										 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+										 input: ("next_next")-> object next_next  @63920|list(286,37)
 									}
 								}
 							}
@@ -809,999 +809,999 @@ page list
 			}
 		}
 
-		abstract method ~flip_cursor  @22096|list(314,11) --fraternal
+		abstract method ~flip_cursor  @40784|list(314,11) --fraternal
 		 key = serial_access<t><c>-2
 		 viable = yes
 		{
 
 			given
 			{
-				object c  @39152|list(314,11) --internal
-				 type: ("list_cursor")-> type list_cursor  @42768|list(57,13)
+				object c  @61040|list(314,11) --internal
+				 type: ("list_cursor")-> type list_cursor  @36832|list(57,13)
 
-				object io  @34352|list(314,11) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @62640|list(314,11) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL
-				 lead: ("c")-> object c  @39152|list(314,11)
-				 method: ("flip")-> method flip  @44800|list(80,3)
+				 lead: ("c")-> object c  @61040|list(314,11)
+				 method: ("flip")-> method flip  @26576|list(80,3)
 			}
 		}
 
-		abstract method ~move_cursor  @26560|list(309,11) --fraternal
+		abstract method ~move_cursor  @57152|list(309,11) --fraternal
 		 key = serial_access<t><c>-1
 		 viable = yes
 		{
 
 			given
 			{
-				object c  @36912|list(309,11) --internal
-				 type: ("list_cursor")-> type list_cursor  @42768|list(57,13)
+				object c  @60720|list(309,11) --internal
+				 type: ("list_cursor")-> type list_cursor  @36832|list(57,13)
 
-				object io  @41392|list(309,11) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @07024|list(309,11) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL
-				 lead: ("c")-> object c  @36912|list(309,11)
-				 method: ("move")-> method move  @44384|list(70,3)
+				 lead: ("c")-> object c  @60720|list(309,11)
+				 method: ("move")-> method move  @27824|list(70,3)
 			}
 		}
 
-		abstract method ~open_cursor  @27056|list(304,11) --fraternal
+		abstract method ~open_cursor  @56656|list(304,11) --fraternal
 		 key = serial_access<t><c>-0
 		 viable = yes
 		{
 
 			given
 			{
-				object c  @27952|list(304,11) --internal
-				 type: ("list_cursor")-> type list_cursor  @42768|list(57,13)
+				object c  @65200|list(304,11) --internal
+				 type: ("list_cursor")-> type list_cursor  @36832|list(57,13)
 
-				object io  @37552|list(304,11) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @59760|list(304,11) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				object step  @36272|list(304,11) --internal
-				 type: ("int")-> type int  @54576|int(6,6)
+				object step  @02864|list(304,11) --internal
+				 type: ("int")-> type int  @21536|int(6,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @28272|list(306,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @62320|list(306,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("step")-> object step  @36272|list(304,11)
-				 method: ("is_equal?")-> method is_equal?  @61408|int(64,3)
-				 input: ("one")-> object one  @08720|conventional(36,2)
-				 output: (direct)-> object (anon)  @28272|list(306,10)
+				 lead: ("step")-> object step  @02864|list(304,11)
+				 method: ("is_equal?")-> method is_equal?  @34336|int(64,3)
+				 input: ("one")-> object one  @38640|conventional(36,2)
+				 output: (direct)-> object (anon)  @62320|list(306,10)
 				IF
-				 condition: (direct)-> object (anon)  @28272|list(306,10)
+				 condition: (direct)-> object (anon)  @62320|list(306,10)
 				{
 					true branch: CALL --initial
-					 lead: ("c")-> object c  @27952|list(304,11)
-					 method: ("begin")-> method begin  @43968|list(65,3)
-					 input: ("io.first")-> object first  @33280|list(327,3)
+					 lead: ("c")-> object c  @65200|list(304,11)
+					 method: ("begin")-> method begin  @26160|list(65,3)
+					 input: ("io.first")-> object first  @37424|list(327,3)
 					false branch: CALL --initial
-					 lead: ("c")-> object c  @27952|list(304,11)
-					 method: ("begin")-> method begin  @43968|list(65,3)
+					 lead: ("c")-> object c  @65200|list(304,11)
+					 method: ("begin")-> method begin  @26160|list(65,3)
 					 input: (pending)->
 				}
 			}
 		}
 
-		abstract method ~use@  @22592|list(319,11) --fraternal
+		abstract method ~use@  @57648|list(319,11) --fraternal
 		 key = serial_access<t><c>-3
 		 viable = yes
 		{
 
 			given
 			{
-				object c  @29232|list(319,11) --internal
-				 type: ("list_cursor")-> type list_cursor  @42768|list(57,13)
+				object c  @62000|list(319,11) --internal
+				 type: ("list_cursor")-> type list_cursor  @36832|list(57,13)
 
-				object io  @38832|list(319,11) --internal
-				 type: (direct)-> type list  @43536|list(99,6)
+				object io  @61680|list(319,11) --internal
+				 type: (direct)-> type list  @30304|list(99,6)
 
-				proxy ~n  @34032|list(319,11) --internal
-				 type: ("node1")-> type node1  @45456|list(22,6)
+				proxy ~n  @48448|list(319,11) --internal
+				 type: ("node1")-> type node1  @34528|list(22,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @39296|list(321,11)
-				 type: ("node1")-> type node1  @45456|list(22,6)
+				 proxy: (direct)-> proxy (anon)  @45712|list(321,11)
+				 type: ("node1")-> type node1  @34528|list(22,6)
 				 permission: [eval]
 				CALL
-				 lead: ("c")-> object c  @29232|list(319,11)
-				 method: ("use_node")-> method use_node  @45216|list(85,3)
-				 result: (direct)-> proxy (anon)  @39296|list(321,11)
+				 lead: ("c")-> object c  @62000|list(319,11)
+				 method: ("use_node")-> method use_node  @27408|list(85,3)
+				 result: (direct)-> proxy (anon)  @45712|list(321,11)
 				JOIN
-				 left: ("~n")-> proxy ~n  @34032|list(319,11)
-				 right: (direct)-> proxy (anon)  @39296|list(321,11)
+				 left: ("~n")-> proxy ~n  @48448|list(319,11)
+				 right: (direct)-> proxy (anon)  @45712|list(321,11)
 			}
 		}
 
 		instance
 		{
-			object current  @35840|list(329,3) --internal
-			 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+			object current  @33904|list(329,3) --internal
+			 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 
-			object first  @33280|list(327,3) --internal
-			 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+			object first  @37424|list(327,3) --internal
+			 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 
-			object last  @40640|list(328,3) --internal
-			 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+			object last  @34224|list(328,3) --internal
+			 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 		}
 
 	}
 
-	type list<t>  @42384|list(350,6) --external
-	 from ("list")-> type list  @43536|list(99,6)
+	type list<t>  @32992|list(350,6) --external
+	 from ("list")-> type list  @30304|list(99,6)
 	 viable = no
 	{
-		method begin  @20880|list(359,3) --external
+		method begin  @40544|list(359,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @34992|list(359,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @64560|list(359,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @27472|list(361,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @14112|list(361,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @34992|list(359,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @27472|list(361,6)
+				 lead: ("io")-> object io  @64560|list(359,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @14112|list(361,6)
 				CALL --initial
-				 lead: (direct)-> proxy (anon)  @27472|list(361,6)
-				 method: ("begin")-> method begin  @45632|list(167,3)
+				 lead: (direct)-> proxy (anon)  @14112|list(361,6)
+				 method: ("begin")-> method begin  @31152|list(167,3)
 			}
 		}
 
-		method begin  @15056|list(364,3) --external
+		method begin  @30560|list(364,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @29552|list(364,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @65520|list(364,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				object other  @40752|list(364,3) --internal
-				 type: ("list<t>")-> type list<t>  @42384|list(350,6)
+				object other  @03504|list(364,3) --internal
+				 type: ("list<t>")-> type list<t>  @32992|list(350,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @27776|list(366,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @14416|list(366,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @29552|list(364,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @27776|list(366,6)
+				 lead: ("io")-> object io  @65520|list(364,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @14416|list(366,6)
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @28080|list(366,34)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @17776|list(366,34)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("other")-> object other  @40752|list(364,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @28080|list(366,34)
+				 lead: ("other")-> object other  @03504|list(364,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @17776|list(366,34)
 				CALL --initial
-				 lead: (direct)-> proxy (anon)  @27776|list(366,6)
-				 method: ("begin")-> method begin  @47712|list(172,3)
-				 input: (direct)-> proxy (anon)  @28080|list(366,34)
+				 lead: (direct)-> proxy (anon)  @14416|list(366,6)
+				 method: ("begin")-> method begin  @28656|list(172,3)
+				 input: (direct)-> proxy (anon)  @17776|list(366,34)
 			}
 		}
 
-		method begin  @10064|list(370,3) --external
+		method begin  @30144|list(370,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @24752|list(370,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @03824|list(370,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				object other  @35312|list(370,3) --internal
-				 type: ("list<t>")-> type list<t>  @42384|list(350,6)
+				object other  @05104|list(370,3) --internal
+				 type: ("list<t>")-> type list<t>  @32992|list(350,6)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @40432|list(,)
-				 type: ("list_cursor")-> type list_cursor  @42768|list(57,13)
+				 object: (direct)-> object (anon)  @00304|list(,)
+				 type: ("list_cursor")-> type list_cursor  @36832|list(57,13)
 				CALL --fundamental
-				 lead: ("other")-> object other  @35312|list(370,3)
-				 method: ("open_cursor")-> method open_cursor  @15952|$appendix(,)
+				 lead: ("other")-> object other  @05104|list(370,3)
+				 method: ("open_cursor")-> method open_cursor  @28064|$appendix(,)
 				 input: (pending)->
-				 output: (direct)-> object (anon)  @40432|list(,)
+				 output: (direct)-> object (anon)  @00304|list(,)
 				LOOP* --unconditional
 				{
 					iteration branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy ~n  @26256|list(,)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy ~n  @18992|list(,)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [eval]
 						CALL --fundamental
-						 lead: ("other")-> object other  @35312|list(370,3)
-						 method: ("use@")-> method use@  @11792|$appendix(,)
-						 input: (direct)-> object (anon)  @40432|list(,)
-						 result: (direct)-> proxy ~n  @26256|list(,)
+						 lead: ("other")-> object other  @05104|list(370,3)
+						 method: ("use@")-> method use@  @29312|$appendix(,)
+						 input: (direct)-> object (anon)  @00304|list(,)
+						 result: (direct)-> proxy ~n  @18992|list(,)
 						MAKE
-						 analog: (direct)-> analog (anon)  @42032|list(,)
-						 type: ("analog")-> type analog  @19040|analog(5,6)
+						 analog: (direct)-> analog (anon)  @22160|list(,)
+						 type: ("analog")-> type analog  @07968|analog(5,6)
 						MAKE
-						 object: (direct)-> object (anon)  @41712|list(,)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @00624|list(,)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: (direct)-> analog (anon)  @42032|list(,)
-						 method: ("is_void?")-> method is_void?  @29840|analog(23,3)
-						 output: (direct)-> object (anon)  @41712|list(,)
+						 lead: (direct)-> analog (anon)  @22160|list(,)
+						 method: ("is_void?")-> method is_void?  @55776|analog(23,3)
+						 output: (direct)-> object (anon)  @00624|list(,)
 						IF
-						 condition: (direct)-> object (anon)  @41712|list(,)
+						 condition: (direct)-> object (anon)  @00624|list(,)
 						{
 							true branch: RETURN --to loop (escape)
 						}
 						BLOCK* --domain
 						{
 							MAKE
-							 object: (direct)-> object nl  @25072|list(374,5)
-							 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+							 object: (direct)-> object nl  @00944|list(374,5)
+							 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 							CALL* --provisional --initial, fundamental
-							 lead: (direct)-> object nl  @25072|list(374,5)
-							 method: ("begin<<t>node1>")-> method begin<xt>  @18448|$appendix(,)
+							 lead: (direct)-> object nl  @00944|list(374,5)
+							 method: ("begin<<t>node1>")-> method begin<xt>  @12448|$appendix(,)
 							CALL* --provisional
-							 lead: (direct)-> blank (anon)  @42480|list(,)
+							 lead: (direct)-> blank (anon)  @01536|list(,)
 							 method: ("begin")-> (unmatched)
 							TRANSLATE* --provisional --random
-							 lead: ("~n")-> proxy ~n  @26256|list(,)
-							 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+							 lead: ("~n")-> proxy ~n  @18992|list(,)
+							 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 							CALL* --provisional
-							 lead: ("~new_t")-> blank ~new_t  @36224|list(,)
+							 lead: ("~new_t")-> blank ~new_t  @08608|list(,)
 							 method: ("begin")-> (unmatched)
-							 input: (direct)-> blank (anon)  @36496|list(,)
+							 input: (direct)-> blank (anon)  @10784|list(,)
 							MAKE
-							 proxy: (direct)-> proxy (anon)  @30208|list(376,7)
-							 type: ("list")-> type list  @43536|list(99,6)
+							 proxy: (direct)-> proxy (anon)  @24160|list(376,7)
+							 type: ("list")-> type list  @30304|list(99,6)
 							 permission: [init]
 							TRANSLATE --base
-							 lead: ("io")-> object io  @24752|list(370,3)
-							 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-							 result: (direct)-> proxy (anon)  @30208|list(376,7)
+							 lead: ("io")-> object io  @03824|list(370,3)
+							 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+							 result: (direct)-> proxy (anon)  @24160|list(376,7)
 							CALL
-							 lead: (direct)-> proxy (anon)  @30208|list(376,7)
-							 method: ("insert")-> method insert  @46048|list(242,3)
-							 input: ("nl")-> object nl  @25072|list(374,5)
+							 lead: (direct)-> proxy (anon)  @24160|list(376,7)
+							 method: ("insert")-> method insert  @34720|list(242,3)
+							 input: ("nl")-> object nl  @00944|list(374,5)
 							CALL
-							 lead: (direct)-> proxy (anon)  @30208|list(376,7)
-							 method: ("go_next")-> method go_next  @50624|list(224,3)
+							 lead: (direct)-> proxy (anon)  @24160|list(376,7)
+							 method: ("go_next")-> method go_next  @35968|list(224,3)
 						}
 						CALL --fundamental
-						 lead: ("other")-> object other  @35312|list(370,3)
-						 method: ("move_cursor")-> method move_cursor  @14288|$appendix(,)
-						 input: (direct)-> object (anon)  @40432|list(,)
+						 lead: ("other")-> object other  @05104|list(370,3)
+						 method: ("move_cursor")-> method move_cursor  @27648|$appendix(,)
+						 input: (direct)-> object (anon)  @00304|list(,)
 					}
 				}
 			}
 		}
 
-		method begin  @20464|list(380,3) --external
+		method begin  @37632|list(380,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				subroutine copier  @51040|list(380,3) --internal
+				subroutine copier  @09168|list(380,3) --internal
 				 viable = yes
 
-				object io  @42032|list(380,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @01264|list(380,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				object other  @35632|list(380,3) --internal
-				 type: ("list<t>")-> type list<t>  @42384|list(350,6)
+				object other  @08624|list(380,3) --internal
+				 type: ("list<t>")-> type list<t>  @32992|list(350,6)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @25392|list(,)
-				 type: ("list_cursor")-> type list_cursor  @42768|list(57,13)
+				 object: (direct)-> object (anon)  @05424|list(,)
+				 type: ("list_cursor")-> type list_cursor  @36832|list(57,13)
 				CALL --fundamental
-				 lead: ("other")-> object other  @35632|list(380,3)
-				 method: ("open_cursor")-> method open_cursor  @15952|$appendix(,)
+				 lead: ("other")-> object other  @08624|list(380,3)
+				 method: ("open_cursor")-> method open_cursor  @28064|$appendix(,)
 				 input: (pending)->
-				 output: (direct)-> object (anon)  @25392|list(,)
+				 output: (direct)-> object (anon)  @05424|list(,)
 				LOOP* --unconditional
 				{
 					iteration branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy ~n  @30816|list(,)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy ~n  @22336|list(,)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [eval]
 						CALL --fundamental
-						 lead: ("other")-> object other  @35632|list(380,3)
-						 method: ("use@")-> method use@  @11792|$appendix(,)
-						 input: (direct)-> object (anon)  @25392|list(,)
-						 result: (direct)-> proxy ~n  @30816|list(,)
+						 lead: ("other")-> object other  @08624|list(380,3)
+						 method: ("use@")-> method use@  @29312|$appendix(,)
+						 input: (direct)-> object (anon)  @05424|list(,)
+						 result: (direct)-> proxy ~n  @22336|list(,)
 						MAKE
-						 analog: (direct)-> analog (anon)  @42416|list(,)
-						 type: ("analog")-> type analog  @19040|analog(5,6)
+						 analog: (direct)-> analog (anon)  @22544|list(,)
+						 type: ("analog")-> type analog  @07968|analog(5,6)
 						MAKE
-						 object: (direct)-> object (anon)  @42352|list(,)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @05744|list(,)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: (direct)-> analog (anon)  @42416|list(,)
-						 method: ("is_void?")-> method is_void?  @29840|analog(23,3)
-						 output: (direct)-> object (anon)  @42352|list(,)
+						 lead: (direct)-> analog (anon)  @22544|list(,)
+						 method: ("is_void?")-> method is_void?  @55776|analog(23,3)
+						 output: (direct)-> object (anon)  @05744|list(,)
 						IF
-						 condition: (direct)-> object (anon)  @42352|list(,)
+						 condition: (direct)-> object (anon)  @05744|list(,)
 						{
 							true branch: RETURN --to loop (escape)
 						}
 						BLOCK* --domain
 						{
 							MAKE
-							 object: (direct)-> object nl  @25712|list(384,5)
-							 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+							 object: (direct)-> object nl  @06064|list(384,5)
+							 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 							CALL* --provisional --initial, fundamental
-							 lead: (direct)-> object nl  @25712|list(384,5)
-							 method: ("begin<<t>node1>")-> method begin<xt>  @18448|$appendix(,)
+							 lead: (direct)-> object nl  @06064|list(384,5)
+							 method: ("begin<<t>node1>")-> method begin<xt>  @12448|$appendix(,)
 							CALL* --provisional
-							 lead: (direct)-> blank (anon)  @40576|list(,)
+							 lead: (direct)-> blank (anon)  @52656|list(,)
 							 method: ("begin")-> (unmatched)
 							TRANSLATE* --provisional --random
-							 lead: ("~n")-> proxy ~n  @30816|list(,)
-							 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+							 lead: ("~n")-> proxy ~n  @22336|list(,)
+							 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 							CALL* --provisional
-							 subroutine: ("copier")-> subroutine copier  @51040|list(380,3)
-							 input: (direct)-> blank (anon)  @41120|list(,)
-							 output: ("~new_t")-> blank ~new_t  @38944|list(,)
+							 subroutine: ("copier")-> subroutine copier  @09168|list(380,3)
+							 input: (direct)-> blank (anon)  @64080|list(,)
+							 output: ("~new_t")-> blank ~new_t  @54832|list(,)
 							MAKE
-							 proxy: (direct)-> proxy (anon)  @31728|list(387,7)
-							 type: ("list")-> type list  @43536|list(99,6)
+							 proxy: (direct)-> proxy (anon)  @16864|list(387,7)
+							 type: ("list")-> type list  @30304|list(99,6)
 							 permission: [init]
 							TRANSLATE --base
-							 lead: ("io")-> object io  @42032|list(380,3)
-							 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-							 result: (direct)-> proxy (anon)  @31728|list(387,7)
+							 lead: ("io")-> object io  @01264|list(380,3)
+							 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+							 result: (direct)-> proxy (anon)  @16864|list(387,7)
 							CALL
-							 lead: (direct)-> proxy (anon)  @31728|list(387,7)
-							 method: ("insert")-> method insert  @46048|list(242,3)
-							 input: ("nl")-> object nl  @25712|list(384,5)
+							 lead: (direct)-> proxy (anon)  @16864|list(387,7)
+							 method: ("insert")-> method insert  @34720|list(242,3)
+							 input: ("nl")-> object nl  @06064|list(384,5)
 							CALL
-							 lead: (direct)-> proxy (anon)  @31728|list(387,7)
-							 method: ("go_next")-> method go_next  @50624|list(224,3)
+							 lead: (direct)-> proxy (anon)  @16864|list(387,7)
+							 method: ("go_next")-> method go_next  @35968|list(224,3)
 						}
 						CALL --fundamental
-						 lead: ("other")-> object other  @35632|list(380,3)
-						 method: ("move_cursor")-> method move_cursor  @14288|$appendix(,)
-						 input: (direct)-> object (anon)  @25392|list(,)
+						 lead: ("other")-> object other  @08624|list(380,3)
+						 method: ("move_cursor")-> method move_cursor  @27648|$appendix(,)
+						 input: (direct)-> object (anon)  @05424|list(,)
 					}
 				}
 			}
 		}
 
-		method insert  @12976|list(391,3) --external
+		method insert  @26816|list(391,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @42672|list(391,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @07344|list(391,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				proxy ~t  @35040|list(391,3) --internal
+				proxy ~t  @29840|list(391,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 object: (direct)-> object nl  @26032|list(393,10)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @08944|list(393,10)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL* --provisional --initial, fundamental
-				 lead: (direct)-> object nl  @26032|list(393,10)
-				 method: ("begin<<t>node1>")-> method begin<xt>  @18448|$appendix(,)
+				 lead: (direct)-> object nl  @08944|list(393,10)
+				 method: ("begin<<t>node1>")-> method begin<xt>  @12448|$appendix(,)
 				CALL* --provisional
-				 lead: (direct)-> blank (anon)  @65056|list(,)
+				 lead: (direct)-> blank (anon)  @58912|list(,)
 				 method: ("begin")-> (unmatched)
 				JOIN* --provisional
-				 left: ("~t")-> proxy ~t  @35040|list(391,3)
-				 right: (direct)-> blank (anon)  @61248|list(,)
+				 left: ("~t")-> proxy ~t  @29840|list(391,3)
+				 right: (direct)-> blank (anon)  @61632|list(,)
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @32032|list(394,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @19296|list(394,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @42672|list(391,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @32032|list(394,6)
+				 lead: ("io")-> object io  @07344|list(391,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @19296|list(394,6)
 				CALL
-				 lead: (direct)-> proxy (anon)  @32032|list(394,6)
-				 method: ("insert")-> method insert  @46048|list(242,3)
-				 input: ("nl")-> object nl  @26032|list(393,10)
+				 lead: (direct)-> proxy (anon)  @19296|list(394,6)
+				 method: ("insert")-> method insert  @34720|list(242,3)
+				 input: ("nl")-> object nl  @08944|list(393,10)
 			}
 		}
 
-		nom type list_t  @05776|list(352,11) --internal
+		nom type list_t  @17424|list(352,11) --internal
 		 viable = no
-		 equivalent: ("list<t>")-> type list<t>  @42384|list(350,6)
+		 equivalent: ("list<t>")-> type list<t>  @32992|list(350,6)
 
-		method remove_next  @09648|list(421,3) --external
+		method remove_next  @31808|list(421,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				subroutine copier  @55840|list(421,3) --internal
+				subroutine copier  @15568|list(421,3) --internal
 				 viable = yes
 
-				object io  @51952|list(421,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @12464|list(421,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				object next  @50352|list(421,3) --internal
+				object next  @18224|list(421,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @25952|list(423,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @17472|list(423,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @51952|list(421,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @25952|list(423,6)
+				 lead: ("io")-> object io  @12464|list(421,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @17472|list(423,6)
 				MAKE
-				 object: (direct)-> object nl  @53232|list(423,33)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @22704|list(423,33)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL
-				 lead: (direct)-> proxy (anon)  @25952|list(423,6)
-				 method: ("get_next")-> method get_next  @51040|list(203,3)
-				 output: (direct)-> object nl  @53232|list(423,33)
+				 lead: (direct)-> proxy (anon)  @17472|list(423,6)
+				 method: ("get_next")-> method get_next  @42624|list(203,3)
+				 output: (direct)-> object nl  @22704|list(423,33)
 				MAKE
-				 object: (direct)-> object (anon)  @50672|list(424,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @13104|list(424,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("nl")-> object nl  @53232|list(423,33)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @50672|list(424,10)
+				 lead: ("nl")-> object nl  @22704|list(423,33)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @13104|list(424,10)
 				IF*
-				 condition: (direct)-> object (anon)  @50672|list(424,10)
+				 condition: (direct)-> object (anon)  @13104|list(424,10)
 				{
 					true branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @32336|list(426,15)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @18080|list(426,15)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @53232|list(423,33)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @32336|list(426,15)
+						 lead: ("nl")-> object nl  @22704|list(423,33)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @18080|list(426,15)
 						TRANSLATE* --provisional --random
-						 lead: (direct)-> proxy (anon)  @32336|list(426,15)
-						 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+						 lead: (direct)-> proxy (anon)  @18080|list(426,15)
+						 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 						CALL* --provisional
-						 subroutine: ("copier")-> subroutine copier  @55840|list(421,3)
-						 input: (direct)-> blank (anon)  @61792|list(,)
-						 output: ("next")-> object next  @50352|list(421,3)
+						 subroutine: ("copier")-> subroutine copier  @15568|list(421,3)
+						 input: (direct)-> blank (anon)  @00448|list(,)
+						 output: ("next")-> object next  @18224|list(421,3)
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @34160|list(427,7)
-						 type: ("list")-> type list  @43536|list(99,6)
+						 proxy: (direct)-> proxy (anon)  @22640|list(427,7)
+						 type: ("list")-> type list  @30304|list(99,6)
 						 permission: [init]
 						TRANSLATE --base
-						 lead: ("io")-> object io  @51952|list(421,3)
-						 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-						 result: (direct)-> proxy (anon)  @34160|list(427,7)
+						 lead: ("io")-> object io  @12464|list(421,3)
+						 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+						 result: (direct)-> proxy (anon)  @22640|list(427,7)
 						CALL
-						 lead: (direct)-> proxy (anon)  @34160|list(427,7)
-						 method: ("remove_next")-> method remove_next  @47296|list(268,3)
+						 lead: (direct)-> proxy (anon)  @22640|list(427,7)
+						 method: ("remove_next")-> method remove_next  @37216|list(268,3)
 					}
 				}
 			}
 		}
 
-		method remove_next  @10896|list(431,3) --external
+		method remove_next  @28896|list(431,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @54512|list(431,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @20464|list(431,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				object next  @49712|list(431,3) --internal
+				object next  @20784|list(431,3) --internal
 				 type: ("t")-> (unmatched)
 
-				subroutine taker  @51440|list(431,3) --internal
+				subroutine taker  @14768|list(431,3) --internal
 				 viable = yes
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @33856|list(433,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @22032|list(433,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [init]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @54512|list(431,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @33856|list(433,6)
+				 lead: ("io")-> object io  @20464|list(431,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @22032|list(433,6)
 				MAKE
-				 object: (direct)-> object nl  @45232|list(433,33)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @21424|list(433,33)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL
-				 lead: (direct)-> proxy (anon)  @33856|list(433,6)
-				 method: ("get_next")-> method get_next  @51040|list(203,3)
-				 output: (direct)-> object nl  @45232|list(433,33)
+				 lead: (direct)-> proxy (anon)  @22032|list(433,6)
+				 method: ("get_next")-> method get_next  @42624|list(203,3)
+				 output: (direct)-> object nl  @21424|list(433,33)
 				MAKE
-				 object: (direct)-> object (anon)  @54192|list(434,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @19504|list(434,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("nl")-> object nl  @45232|list(433,33)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @54192|list(434,10)
+				 lead: ("nl")-> object nl  @21424|list(433,33)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @19504|list(434,10)
 				IF*
-				 condition: (direct)-> object (anon)  @54192|list(434,10)
+				 condition: (direct)-> object (anon)  @19504|list(434,10)
 				{
 					true branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @35072|list(436,15)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @18384|list(436,15)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @45232|list(433,33)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @35072|list(436,15)
+						 lead: ("nl")-> object nl  @21424|list(433,33)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @18384|list(436,15)
 						TRANSLATE* --provisional --random
-						 lead: (direct)-> proxy (anon)  @35072|list(436,15)
-						 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+						 lead: (direct)-> proxy (anon)  @18384|list(436,15)
+						 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 						CALL* --provisional
-						 subroutine: ("taker")-> subroutine taker  @51440|list(431,3)
-						 input: (direct)-> blank (anon)  @58256|list(,)
-						 output: ("next")-> object next  @49712|list(431,3)
+						 subroutine: ("taker")-> subroutine taker  @14768|list(431,3)
+						 input: (direct)-> blank (anon)  @55920|list(,)
+						 output: ("next")-> object next  @20784|list(431,3)
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @40544|list(437,7)
-						 type: ("list")-> type list  @43536|list(99,6)
+						 proxy: (direct)-> proxy (anon)  @18688|list(437,7)
+						 type: ("list")-> type list  @30304|list(99,6)
 						 permission: [init]
 						TRANSLATE --base
-						 lead: ("io")-> object io  @54512|list(431,3)
-						 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-						 result: (direct)-> proxy (anon)  @40544|list(437,7)
+						 lead: ("io")-> object io  @20464|list(431,3)
+						 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+						 result: (direct)-> proxy (anon)  @18688|list(437,7)
 						CALL
-						 lead: (direct)-> proxy (anon)  @40544|list(437,7)
-						 method: ("remove_next")-> method remove_next  @47296|list(268,3)
+						 lead: (direct)-> proxy (anon)  @18688|list(437,7)
+						 method: ("remove_next")-> method remove_next  @37216|list(268,3)
 					}
 				}
 			}
 		}
 
-		nom type t_node1  @12176|list(354,11) --internal
+		nom type t_node1  @19472|list(354,11) --internal
 		 viable = no
-		 equivalent: ("<t>node1")-> type <t>node1  @41616|list(337,13)
+		 equivalent: ("<t>node1")-> type <t>node1  @32224|list(337,13)
 
-		method use_current  @16720|list(409,3) --external
+		method use_current  @30976|list(409,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @26992|list(409,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @10224|list(409,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				proxy ~t  @33520|list(409,3) --internal
+				proxy ~t  @05312|list(409,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @39632|list(411,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @23856|list(411,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [eval]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @26992|list(409,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @39632|list(411,6)
+				 lead: ("io")-> object io  @10224|list(409,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @23856|list(411,6)
 				MAKE
-				 object: (direct)-> object nl  @43952|list(411,36)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @10544|list(411,36)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL
-				 lead: (direct)-> proxy (anon)  @39632|list(411,6)
-				 method: ("get_current")-> method get_current  @46880|list(198,3)
-				 output: (direct)-> object nl  @43952|list(411,36)
+				 lead: (direct)-> proxy (anon)  @23856|list(411,6)
+				 method: ("get_current")-> method get_current  @30736|list(198,3)
+				 output: (direct)-> object nl  @10544|list(411,36)
 				MAKE
-				 object: (direct)-> object (anon)  @44272|list(412,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @10864|list(412,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("nl")-> object nl  @43952|list(411,36)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @44272|list(412,10)
+				 lead: ("nl")-> object nl  @10544|list(411,36)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @10864|list(412,10)
 				IF*
-				 condition: (direct)-> object (anon)  @44272|list(412,10)
+				 condition: (direct)-> object (anon)  @10864|list(412,10)
 				{
 					true branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @39024|list(412,40)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @19600|list(412,40)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @43952|list(411,36)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @39024|list(412,40)
+						 lead: ("nl")-> object nl  @10544|list(411,36)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @19600|list(412,40)
 						TRANSLATE* --provisional --random
-						 lead: (direct)-> proxy (anon)  @39024|list(412,40)
-						 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+						 lead: (direct)-> proxy (anon)  @19600|list(412,40)
+						 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 						JOIN* --provisional
-						 left: ("~t")-> proxy ~t  @33520|list(409,3)
-						 right: (direct)-> blank (anon)  @58528|list(,)
+						 left: ("~t")-> proxy ~t  @05312|list(409,3)
+						 right: (direct)-> blank (anon)  @65168|list(,)
 					}
 				}
 			}
 		}
 
-		method use_first  @21296|list(397,3) --external
+		method use_first  @38048|list(397,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @42992|list(397,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @09264|list(397,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				proxy ~t  @37776|list(397,3) --internal
+				proxy ~t  @31056|list(397,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @37808|list(399,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @21728|list(399,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [eval]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @42992|list(397,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @37808|list(399,6)
+				 lead: ("io")-> object io  @09264|list(397,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @21728|list(399,6)
 				MAKE
-				 object: (direct)-> object nl  @26352|list(399,34)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @58160|list(399,34)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL
-				 lead: (direct)-> proxy (anon)  @37808|list(399,6)
-				 method: ("get_first")-> method get_first  @51456|list(188,3)
-				 output: (direct)-> object nl  @26352|list(399,34)
+				 lead: (direct)-> proxy (anon)  @21728|list(399,6)
+				 method: ("get_first")-> method get_first  @28240|list(188,3)
+				 output: (direct)-> object nl  @58160|list(399,34)
 				MAKE
-				 object: (direct)-> object (anon)  @43312|list(400,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @09584|list(400,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("nl")-> object nl  @26352|list(399,34)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @43312|list(400,10)
+				 lead: ("nl")-> object nl  @58160|list(399,34)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @09584|list(400,10)
 				IF*
-				 condition: (direct)-> object (anon)  @43312|list(400,10)
+				 condition: (direct)-> object (anon)  @09584|list(400,10)
 				{
 					true branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @32944|list(400,40)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @22944|list(400,40)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @26352|list(399,34)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @32944|list(400,40)
+						 lead: ("nl")-> object nl  @58160|list(399,34)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @22944|list(400,40)
 						TRANSLATE* --provisional --random
-						 lead: (direct)-> proxy (anon)  @32944|list(400,40)
-						 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+						 lead: (direct)-> proxy (anon)  @22944|list(400,40)
+						 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 						JOIN* --provisional
-						 left: ("~t")-> proxy ~t  @37776|list(397,3)
-						 right: (direct)-> blank (anon)  @61520|list(,)
+						 left: ("~t")-> proxy ~t  @31056|list(397,3)
+						 right: (direct)-> blank (anon)  @00992|list(,)
 					}
 				}
 			}
 		}
 
-		method use_last  @21712|list(403,3) --external
+		method use_last  @38464|list(403,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @26672|list(403,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @58480|list(403,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				proxy ~t  @32912|list(403,3) --internal
+				proxy ~t  @31664|list(403,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @35376|list(405,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @20816|list(405,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [eval]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @26672|list(403,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @35376|list(405,6)
+				 lead: ("io")-> object io  @58480|list(403,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @20816|list(405,6)
 				MAKE
-				 object: (direct)-> object nl  @43632|list(405,33)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @12144|list(405,33)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL
-				 lead: (direct)-> proxy (anon)  @35376|list(405,6)
-				 method: ("get_last")-> method get_last  @46464|list(193,3)
-				 output: (direct)-> object nl  @43632|list(405,33)
+				 lead: (direct)-> proxy (anon)  @20816|list(405,6)
+				 method: ("get_last")-> method get_last  @29072|list(193,3)
+				 output: (direct)-> object nl  @12144|list(405,33)
 				MAKE
-				 object: (direct)-> object (anon)  @29872|list(406,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @09904|list(406,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("nl")-> object nl  @43632|list(405,33)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @29872|list(406,10)
+				 lead: ("nl")-> object nl  @12144|list(405,33)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @09904|list(406,10)
 				IF*
-				 condition: (direct)-> object (anon)  @29872|list(406,10)
+				 condition: (direct)-> object (anon)  @09904|list(406,10)
 				{
 					true branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @36592|list(406,40)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @16560|list(406,40)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @43632|list(405,33)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @36592|list(406,40)
+						 lead: ("nl")-> object nl  @12144|list(405,33)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @16560|list(406,40)
 						TRANSLATE* --provisional --random
-						 lead: (direct)-> proxy (anon)  @36592|list(406,40)
-						 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+						 lead: (direct)-> proxy (anon)  @16560|list(406,40)
+						 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 						JOIN* --provisional
-						 left: ("~t")-> proxy ~t  @32912|list(403,3)
-						 right: (direct)-> blank (anon)  @53904|list(,)
+						 left: ("~t")-> proxy ~t  @31664|list(403,3)
+						 right: (direct)-> blank (anon)  @59728|list(,)
 					}
 				}
 			}
 		}
 
-		method use_next  @10480|list(415,3) --external
+		method use_next  @32224|list(415,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @44592|list(415,3) --internal
-				 type: (direct)-> type list<t>  @42384|list(350,6)
+				object io  @11184|list(415,3) --internal
+				 type: (direct)-> type list<t>  @32992|list(350,6)
 
-				proxy ~t  @38080|list(415,3) --internal
+				proxy ~t  @03488|list(415,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 proxy: (direct)-> proxy (anon)  @34768|list(417,6)
-				 type: ("list")-> type list  @43536|list(99,6)
+				 proxy: (direct)-> proxy (anon)  @19904|list(417,6)
+				 type: ("list")-> type list  @30304|list(99,6)
 				 permission: [eval]
 				TRANSLATE --base
-				 lead: ("io")-> object io  @44592|list(415,3)
-				 method: (direct)-> method $18<31>( as_base<list> )  @41680|$appendix(,)
-				 result: (direct)-> proxy (anon)  @34768|list(417,6)
+				 lead: ("io")-> object io  @11184|list(415,3)
+				 method: (direct)-> method $18<31>( as_base<list> )  @37360|$appendix(,)
+				 result: (direct)-> proxy (anon)  @19904|list(417,6)
 				MAKE
-				 object: (direct)-> object nl  @44912|list(417,33)
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				 object: (direct)-> object nl  @11504|list(417,33)
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 				CALL
-				 lead: (direct)-> proxy (anon)  @34768|list(417,6)
-				 method: ("get_next")-> method get_next  @51040|list(203,3)
-				 output: (direct)-> object nl  @44912|list(417,33)
+				 lead: (direct)-> proxy (anon)  @19904|list(417,6)
+				 method: ("get_next")-> method get_next  @42624|list(203,3)
+				 output: (direct)-> object nl  @11504|list(417,33)
 				MAKE
-				 object: (direct)-> object (anon)  @30512|list(418,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @11824|list(418,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("nl")-> object nl  @44912|list(417,33)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @30512|list(418,10)
+				 lead: ("nl")-> object nl  @11504|list(417,33)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @11824|list(418,10)
 				IF*
-				 condition: (direct)-> object (anon)  @30512|list(418,10)
+				 condition: (direct)-> object (anon)  @11824|list(418,10)
 				{
 					true branch: BLOCK* --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @33248|list(418,40)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @17168|list(418,40)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("nl")-> object nl  @44912|list(417,33)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @33248|list(418,40)
+						 lead: ("nl")-> object nl  @11504|list(417,33)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @17168|list(418,40)
 						TRANSLATE* --provisional --random
-						 lead: (direct)-> proxy (anon)  @33248|list(418,40)
-						 method: ("as<t>")-> method as<t>  @17472|object(53,3)
+						 lead: (direct)-> proxy (anon)  @17168|list(418,40)
+						 method: ("as<t>")-> method as<t>  @15696|object(55,3)
 						JOIN* --provisional
-						 left: ("~t")-> proxy ~t  @38080|list(415,3)
-						 right: (direct)-> blank (anon)  @62880|list(,)
+						 left: ("~t")-> proxy ~t  @03488|list(415,3)
+						 right: (direct)-> blank (anon)  @62176|list(,)
 					}
 				}
 			}
 		}
 	}
 
-	type list_cursor  @42768|list(57,13) --internal
+	type list_cursor  @36832|list(57,13) --internal
 	 viable = yes
 	{
-		method begin  @43968|list(65,3) --external
+		method begin  @26160|list(65,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @02880|list(65,3) --internal
-				 type: (direct)-> type list_cursor  @42768|list(57,13)
+				object io  @28832|list(65,3) --internal
+				 type: (direct)-> type list_cursor  @36832|list(57,13)
 
-				object link1  @64256|list(65,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @34592|list(65,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @58816|list(67,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @35872|list(67,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("given\link1")-> object link1  @64256|list(65,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @58816|list(67,10)
+				 lead: ("given\link1")-> object link1  @34592|list(65,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @35872|list(67,10)
 				IF
-				 condition: (direct)-> object (anon)  @58816|list(67,10)
+				 condition: (direct)-> object (anon)  @35872|list(67,10)
 				{
 					true branch: CALL --fundamental
-					 lead: ("io.link1")-> object link1  @40320|list(93,3)
-					 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-					 input: ("given\link1")-> object link1  @64256|list(65,3)
+					 lead: ("io.link1")-> object link1  @39664|list(93,3)
+					 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+					 input: ("given\link1")-> object link1  @34592|list(65,3)
 				}
 			}
 		}
 
-		method flip  @44800|list(80,3) --external
+		method flip  @26576|list(80,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @59456|list(80,3) --internal
-				 type: (direct)-> type list_cursor  @42768|list(57,13)
+				object io  @31072|list(80,3) --internal
+				 type: (direct)-> type list_cursor  @36832|list(57,13)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal, fundamental
-				 lead: ("io.link1")-> object link1  @40320|list(93,3)
-				 method: ("recycle")-> method recycle  @22464|object(60,3)
+				 lead: ("io.link1")-> object link1  @39664|list(93,3)
+				 method: ("recycle")-> method recycle  @42736|object(38,3)
 			}
 		}
 
-		method move  @44384|list(70,3) --external
+		method move  @27824|list(70,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @03520|list(70,3) --internal
-				 type: (direct)-> type list_cursor  @42768|list(57,13)
+				object io  @33632|list(70,3) --internal
+				 type: (direct)-> type list_cursor  @36832|list(57,13)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @00960|list(72,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @31392|list(72,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.link1")-> object link1  @40320|list(93,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @00960|list(72,10)
+				 lead: ("io.link1")-> object link1  @39664|list(93,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @31392|list(72,10)
 				IF
-				 condition: (direct)-> object (anon)  @00960|list(72,10)
+				 condition: (direct)-> object (anon)  @31392|list(72,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @34464|list(74,13)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @20208|list(74,13)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("io.link1")-> object link1  @40320|list(93,3)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @34464|list(74,13)
+						 lead: ("io.link1")-> object link1  @39664|list(93,3)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @20208|list(74,13)
 						MAKE
-						 object: (direct)-> object next  @64896|list(74,32)
-						 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+						 object: (direct)-> object next  @35552|list(74,32)
+						 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 						CALL
-						 lead: (direct)-> proxy (anon)  @34464|list(74,13)
-						 method: ("get_next")-> method get_next  @42304|list(34,3)
-						 output: (direct)-> object next  @64896|list(74,32)
+						 lead: (direct)-> proxy (anon)  @20208|list(74,13)
+						 method: ("get_next")-> method get_next  @29488|list(34,3)
+						 output: (direct)-> object next  @35552|list(74,32)
 						CALL --terminal, fundamental
-						 lead: ("io.link1")-> object link1  @40320|list(93,3)
-						 method: ("recycle")-> method recycle  @22464|object(60,3)
+						 lead: ("io.link1")-> object link1  @39664|list(93,3)
+						 method: ("recycle")-> method recycle  @42736|object(38,3)
 						MAKE
-						 object: (direct)-> object (anon)  @02240|list(76,11)
-						 type: ("bool")-> type bool  @08256|bool(5,6)
+						 object: (direct)-> object (anon)  @32672|list(76,11)
+						 type: ("bool")-> type bool  @19936|bool(5,6)
 						CALL --fundamental
-						 lead: ("next")-> object next  @64896|list(74,32)
-						 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-						 output: (direct)-> object (anon)  @02240|list(76,11)
+						 lead: ("next")-> object next  @35552|list(74,32)
+						 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+						 output: (direct)-> object (anon)  @32672|list(76,11)
 						IF
-						 condition: (direct)-> object (anon)  @02240|list(76,11)
+						 condition: (direct)-> object (anon)  @32672|list(76,11)
 						{
 							true branch: CALL --fundamental
-							 lead: ("io.link1")-> object link1  @40320|list(93,3)
-							 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-							 input: ("next")-> object next  @64896|list(74,32)
+							 lead: ("io.link1")-> object link1  @39664|list(93,3)
+							 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+							 input: ("next")-> object next  @35552|list(74,32)
 						}
 					}
 				}
 			}
 		}
 
-		method use_node  @45216|list(85,3) --external
+		method use_node  @27408|list(85,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @65216|list(85,3) --internal
-				 type: (direct)-> type list_cursor  @42768|list(57,13)
+				object io  @38112|list(85,3) --internal
+				 type: (direct)-> type list_cursor  @36832|list(57,13)
 
-				proxy ~n  @33120|list(85,3) --internal
-				 type: ("node1")-> type node1  @45456|list(22,6)
+				proxy ~n  @47840|list(85,3) --internal
+				 type: ("node1")-> type node1  @34528|list(22,6)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @63616|list(87,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @32992|list(87,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.link1")-> object link1  @40320|list(93,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @63616|list(87,10)
+				 lead: ("io.link1")-> object link1  @39664|list(93,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @32992|list(87,10)
 				IF
-				 condition: (direct)-> object (anon)  @63616|list(87,10)
+				 condition: (direct)-> object (anon)  @32992|list(87,10)
 				{
 					true branch: BLOCK --domain
 					{
 						MAKE
-						 proxy: (direct)-> proxy (anon)  @35680|list(87,52)
-						 type: ("node1")-> type node1  @45456|list(22,6)
+						 proxy: (direct)-> proxy (anon)  @20512|list(87,52)
+						 type: ("node1")-> type node1  @34528|list(22,6)
 						 permission: [upd]
 						CALL --fundamental
-						 lead: ("io.link1")-> object link1  @40320|list(93,3)
-						 method: ("deref")-> method deref  @15536|$appendix(,)
-						 result: (direct)-> proxy (anon)  @35680|list(87,52)
+						 lead: ("io.link1")-> object link1  @39664|list(93,3)
+						 method: ("deref")-> method deref  @36384|$appendix(,)
+						 result: (direct)-> proxy (anon)  @20512|list(87,52)
 						JOIN
-						 left: ("~n")-> proxy ~n  @33120|list(85,3)
-						 right: (direct)-> proxy (anon)  @35680|list(87,52)
+						 left: ("~n")-> proxy ~n  @47840|list(85,3)
+						 right: (direct)-> proxy (anon)  @20512|list(87,52)
 					}
 				}
 			}
@@ -1809,23 +1809,23 @@ page list
 
 		instance
 		{
-			object link1  @40320|list(93,3) --internal
-			 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+			object link1  @39664|list(93,3) --internal
+			 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 		}
 
 	}
 
-	type node1  @45456|list(22,6) --external
+	type node1  @34528|list(22,6) --external
 	 viable = yes
 	{
-		method begin  @41888|list(30,3) --external
+		method begin  @25744|list(30,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @59136|list(30,3) --internal
-				 type: (direct)-> type node1  @45456|list(22,6)
+				object io  @40672|list(30,3) --internal
+				 type: (direct)-> type node1  @34528|list(22,6)
 			}
 
 			BLOCK --domain
@@ -1833,501 +1833,501 @@ page list
 			}
 		}
 
-		method get_next  @42304|list(34,3) --external
+		method get_next  @29488|list(34,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @62976|list(34,3) --internal
-				 type: (direct)-> type node1  @45456|list(22,6)
+				object io  @33952|list(34,3) --internal
+				 type: (direct)-> type node1  @34528|list(22,6)
 
-				object link1  @63296|list(34,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @30432|list(34,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @62336|list(36,10)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @30752|list(36,10)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL --fundamental
-				 lead: ("io.next")-> object next  @40000|list(52,3)
-				 method: ("is_not_null?")-> method is_not_null?  @18304|object(38,3)
-				 output: (direct)-> object (anon)  @62336|list(36,10)
+				 lead: ("io.next")-> object next  @33584|list(52,3)
+				 method: ("is_not_null?")-> method is_not_null?  @42320|object(36,3)
+				 output: (direct)-> object (anon)  @30752|list(36,10)
 				IF
-				 condition: (direct)-> object (anon)  @62336|list(36,10)
+				 condition: (direct)-> object (anon)  @30752|list(36,10)
 				{
 					true branch: CALL --fundamental
-					 lead: ("given\link1")-> object link1  @63296|list(34,3)
-					 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-					 input: ("io.next")-> object next  @40000|list(52,3)
+					 lead: ("given\link1")-> object link1  @30432|list(34,3)
+					 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+					 input: ("io.next")-> object next  @33584|list(52,3)
 				}
 			}
 		}
 
-		method set_next  @42720|list(39,3) --external
+		method set_next  @29904|list(39,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @00640|list(39,3) --internal
-				 type: (direct)-> type node1  @45456|list(22,6)
+				object io  @37152|list(39,3) --internal
+				 type: (direct)-> type node1  @34528|list(22,6)
 
-				object link1  @62016|list(39,3) --internal
-				 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+				object link1  @39712|list(39,3) --internal
+				 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal, fundamental
-				 lead: ("io.next")-> object next  @40000|list(52,3)
-				 method: ("recycle")-> method recycle  @22464|object(60,3)
+				 lead: ("io.next")-> object next  @33584|list(52,3)
+				 method: ("recycle")-> method recycle  @42736|object(38,3)
 				CALL --fundamental
-				 lead: ("io.next")-> object next  @40000|list(52,3)
-				 method: (direct)-> method $30<7>( begin<node1> )  @37936|$appendix(,)
-				 input: ("given\link1")-> object link1  @62016|list(39,3)
+				 lead: ("io.next")-> object next  @33584|list(52,3)
+				 method: (direct)-> method $30<7>( begin<node1> )  @34032|$appendix(,)
+				 input: ("given\link1")-> object link1  @39712|list(39,3)
 			}
 		}
 
-		method unlink  @43552|list(44,3) --external
+		method unlink  @30320|list(44,3) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @62656|list(44,3) --internal
-				 type: (direct)-> type node1  @45456|list(22,6)
+				object io  @39072|list(44,3) --internal
+				 type: (direct)-> type node1  @34528|list(22,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL --terminal, fundamental
-				 lead: ("io.next")-> object next  @40000|list(52,3)
-				 method: ("recycle")-> method recycle  @22464|object(60,3)
+				 lead: ("io.next")-> object next  @33584|list(52,3)
+				 method: ("recycle")-> method recycle  @42736|object(38,3)
 			}
 		}
 
 		instance
 		{
-			object next  @40000|list(52,3) --internal
-			 type: (direct)-> type $6<7>( op<node1> )  @51216|$appendix(,)
+			object next  @33584|list(52,3) --internal
+			 type: (direct)-> type $6<7>( op<node1> )  @38288|$appendix(,)
 		}
 
 	}
 
-	type queue<t>  @47760|list(506,6) --external
+	type queue<t>  @31072|list(506,6) --external
 	 viable = no
 	{
-		method begin  @12560|list(520,3) --external
+		method begin  @36384|list(520,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @46192|list(520,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @19824|list(520,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --initial
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("begin")-> method begin  @20880|list(359,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("begin")-> method begin  @40544|list(359,3)
 			}
 		}
 
-		method begin  @08400|list(525,3) --external
+		method begin  @28480|list(525,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @50992|list(525,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @14704|list(525,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 
-				object other  @56752|list(525,3) --internal
-				 type: ("queue<t>")-> type queue<t>  @47760|list(506,6)
+				object other  @12784|list(525,3) --internal
+				 type: ("queue<t>")-> type queue<t>  @31072|list(506,6)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional --initial
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("begin")-> method begin  @15056|list(364,3)
-				 input: ("other.list")-> object list  @33920|list(566,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("begin")-> method begin  @30560|list(364,3)
+				 input: ("other.list")-> object list  @34544|list(566,3)
 			}
 		}
 
-		method begin  @12144|list(530,3) --external
+		method begin  @40960|list(530,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				subroutine copier  @54640|list(530,3) --internal
+				subroutine copier  @11168|list(530,3) --internal
 				 viable = yes
 
-				object io  @49072|list(530,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @17584|list(530,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 
-				object other  @56112|list(530,3) --internal
-				 type: ("queue<t>")-> type queue<t>  @47760|list(506,6)
+				object other  @22064|list(530,3) --internal
+				 type: ("queue<t>")-> type queue<t>  @31072|list(506,6)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional --initial
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("begin")-> method begin  @20464|list(380,3)
-				 input: ("other.list")-> object list  @33920|list(566,3)
-				 co-routine: ("copier")-> subroutine copier  @54640|list(530,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("begin")-> method begin  @37632|list(380,3)
+				 input: ("other.list")-> object list  @34544|list(566,3)
+				 co-routine: ("copier")-> subroutine copier  @11168|list(530,3)
 			}
 		}
 
-		method is_empty?  @16304|list(535,3) --external
+		method is_empty?  @28064|list(535,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @55152|list(535,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @13744|list(535,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 
-				object yes  @51312|list(535,3) --internal
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				object yes  @16304|list(535,3) --internal
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("is_empty?")-> method is_empty?  @48960|list(183,3)
-				 output: ("yes")-> object yes  @51312|list(535,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("is_empty?")-> method is_empty?  @26992|list(183,3)
+				 output: ("yes")-> object yes  @16304|list(535,3)
 			}
 		}
 
-		method pull  @13808|list(546,3) --external
+		method pull  @33056|list(546,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				subroutine copier  @55040|list(546,3) --internal
+				subroutine copier  @15968|list(546,3) --internal
 				 viable = yes
 
-				object first  @56432|list(546,3) --internal
+				object first  @15344|list(546,3) --internal
 				 type: ("t")-> (unmatched)
 
-				object io  @51632|list(546,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @15984|list(546,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @57072|list(548,31)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @16624|list(548,31)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("is_empty?")-> method is_empty?  @48960|list(183,3)
-				 output: (direct)-> object (anon)  @57072|list(548,31)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("is_empty?")-> method is_empty?  @26992|list(183,3)
+				 output: (direct)-> object (anon)  @16624|list(548,31)
 				CALL --fundamental
-				 lead: (direct)-> object (anon)  @57072|list(548,31)
-				 method: ("not")-> method not  @31344|bool(42,3)
+				 lead: (direct)-> object (anon)  @16624|list(548,31)
+				 method: ("not")-> method not  @38544|bool(42,3)
 				IF*
-				 condition: (direct)-> object (anon)  @57072|list(548,31)
+				 condition: (direct)-> object (anon)  @16624|list(548,31)
 				{
 					true branch: BLOCK* --domain
 					{
 						CALL
-						 lead: ("io.list")-> object list  @33920|list(566,3)
-						 method: ("go_front")-> method go_front  @48544|list(209,3)
+						 lead: ("io.list")-> object list  @34544|list(566,3)
+						 method: ("go_front")-> method go_front  @35552|list(209,3)
 						CALL* --provisional
-						 lead: ("io.list")-> object list  @33920|list(566,3)
-						 method: ("remove_next")-> method remove_next  @09648|list(421,3)
-						 output: ("first")-> object first  @56432|list(546,3)
-						 co-routine: ("copier")-> subroutine copier  @55040|list(546,3)
+						 lead: ("io.list")-> object list  @34544|list(566,3)
+						 method: ("remove_next")-> method remove_next  @31808|list(421,3)
+						 output: ("first")-> object first  @15344|list(546,3)
+						 co-routine: ("copier")-> subroutine copier  @15968|list(546,3)
 					}
 				}
 			}
 		}
 
-		method pull  @15472|list(552,3) --external
+		method pull  @27232|list(552,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object first  @48112|list(552,3) --internal
+				object first  @19184|list(552,3) --internal
 				 type: ("t")-> (unmatched)
 
-				object io  @52912|list(552,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @17904|list(552,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 
-				subroutine taker  @49440|list(552,3) --internal
+				subroutine taker  @13168|list(552,3) --internal
 				 viable = yes
 			}
 
 			BLOCK* --domain
 			{
 				MAKE
-				 object: (direct)-> object (anon)  @46512|list(554,31)
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				 object: (direct)-> object (anon)  @22384|list(554,31)
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 				CALL
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("is_empty?")-> method is_empty?  @48960|list(183,3)
-				 output: (direct)-> object (anon)  @46512|list(554,31)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("is_empty?")-> method is_empty?  @26992|list(183,3)
+				 output: (direct)-> object (anon)  @22384|list(554,31)
 				CALL --fundamental
-				 lead: (direct)-> object (anon)  @46512|list(554,31)
-				 method: ("not")-> method not  @31344|bool(42,3)
+				 lead: (direct)-> object (anon)  @22384|list(554,31)
+				 method: ("not")-> method not  @38544|bool(42,3)
 				IF*
-				 condition: (direct)-> object (anon)  @46512|list(554,31)
+				 condition: (direct)-> object (anon)  @22384|list(554,31)
 				{
 					true branch: BLOCK* --domain
 					{
 						CALL
-						 lead: ("io.list")-> object list  @33920|list(566,3)
-						 method: ("go_front")-> method go_front  @48544|list(209,3)
+						 lead: ("io.list")-> object list  @34544|list(566,3)
+						 method: ("go_front")-> method go_front  @35552|list(209,3)
 						CALL* --provisional
-						 lead: ("io.list")-> object list  @33920|list(566,3)
-						 method: ("remove_next")-> method remove_next  @10896|list(431,3)
-						 output: ("first")-> object first  @48112|list(552,3)
-						 co-routine: ("taker")-> subroutine taker  @49440|list(552,3)
+						 lead: ("io.list")-> object list  @34544|list(566,3)
+						 method: ("remove_next")-> method remove_next  @28896|list(431,3)
+						 output: ("first")-> object first  @19184|list(552,3)
+						 co-routine: ("taker")-> subroutine taker  @13168|list(552,3)
 					}
 				}
 			}
 		}
 
-		method push  @13392|list(540,3) --external
+		method push  @29312|list(540,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @45872|list(540,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @15024|list(540,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 
-				proxy ~t  @61760|list(540,3) --internal
+				proxy ~t  @00448|list(540,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				CALL
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("go_last")-> method go_last  @49792|list(219,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("go_last")-> method go_last  @39296|list(219,3)
 				CALL* --provisional
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("insert")-> method insert  @12976|list(391,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("insert")-> method insert  @26816|list(391,3)
 				JOIN* --provisional
-				 left: ("~t")-> proxy ~t  @61760|list(540,3)
-				 right: (direct)-> blank (anon)  @63696|list(,)
+				 left: ("~t")-> proxy ~t  @00448|list(540,3)
+				 right: (direct)-> blank (anon)  @52112|list(,)
 			}
 		}
 
-		nom type queue_t  @64928|list(516,11) --internal
+		nom type queue_t  @16656|list(516,11) --internal
 		 viable = no
-		 equivalent: ("queue<t>")-> type queue<t>  @47760|list(506,6)
+		 equivalent: ("queue<t>")-> type queue<t>  @31072|list(506,6)
 
-		method use_first  @20048|list(558,3) --external
+		method use_first  @33472|list(558,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @47152|list(558,3) --internal
-				 type: (direct)-> type queue<t>  @47760|list(506,6)
+				object io  @21104|list(558,3) --internal
+				 type: (direct)-> type queue<t>  @31072|list(506,6)
 
-				proxy ~t  @61152|list(558,3) --internal
+				proxy ~t  @03184|list(558,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional
-				 lead: ("io.list")-> object list  @33920|list(566,3)
-				 method: ("use_first")-> method use_first  @21296|list(397,3)
+				 lead: ("io.list")-> object list  @34544|list(566,3)
+				 method: ("use_first")-> method use_first  @38048|list(397,3)
 				JOIN* --provisional
-				 left: ("~t")-> proxy ~t  @61152|list(558,3)
-				 right: (direct)-> blank (anon)  @63152|list(,)
+				 left: ("~t")-> proxy ~t  @03184|list(558,3)
+				 right: (direct)-> blank (anon)  @51840|list(,)
 			}
 		}
 
 		instance
 		{
-			object list  @33920|list(566,3) --internal
-			 type: ("list<t>")-> type list<t>  @42384|list(350,6)
+			object list  @34544|list(566,3) --internal
+			 type: ("list<t>")-> type list<t>  @32992|list(350,6)
 		}
 
 	}
 
-	type stack<t>  @48144|list(444,6) --external
+	type stack<t>  @29920|list(444,6) --external
 	 viable = no
 	{
-		method begin  @19632|list(461,3) --external
+		method begin  @39712|list(461,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @52272|list(461,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @16944|list(461,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --initial
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("begin")-> method begin  @20880|list(359,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("begin")-> method begin  @40544|list(359,3)
 			}
 		}
 
-		method begin  @11728|list(466,3) --external
+		method begin  @33888|list(466,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @53552|list(466,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @14064|list(466,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 
-				object other  @52592|list(466,3) --internal
-				 type: ("stack<t>")-> type stack<t>  @48144|list(444,6)
+				object other  @18544|list(466,3) --internal
+				 type: ("stack<t>")-> type stack<t>  @29920|list(444,6)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional --initial
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("begin")-> method begin  @15056|list(364,3)
-				 input: ("other.list")-> object list  @32960|list(500,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("begin")-> method begin  @30560|list(364,3)
+				 input: ("other.list")-> object list  @39984|list(500,3)
 			}
 		}
 
-		method begin  @14640|list(471,3) --external
+		method begin  @31392|list(471,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				subroutine copier  @51840|list(471,3) --internal
+				subroutine copier  @09568|list(471,3) --internal
 				 viable = yes
 
-				object io  @54832|list(471,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @17264|list(471,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 
-				object other  @55792|list(471,3) --internal
-				 type: ("stack<t>")-> type stack<t>  @48144|list(444,6)
+				object other  @18864|list(471,3) --internal
+				 type: ("stack<t>")-> type stack<t>  @29920|list(444,6)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional --initial
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("begin")-> method begin  @20464|list(380,3)
-				 input: ("other.list")-> object list  @32960|list(500,3)
-				 co-routine: ("copier")-> subroutine copier  @51840|list(471,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("begin")-> method begin  @37632|list(380,3)
+				 input: ("other.list")-> object list  @39984|list(500,3)
+				 co-routine: ("copier")-> subroutine copier  @09568|list(471,3)
 			}
 		}
 
-		method is_empty?  @22128|list(477,3) --external
+		method is_empty?  @43456|list(477,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @47792|list(477,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @23024|list(477,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 
-				object yes  @55472|list(477,3) --internal
-				 type: ("bool")-> type bool  @08256|bool(5,6)
+				object yes  @14384|list(477,3) --internal
+				 type: ("bool")-> type bool  @19936|bool(5,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("is_empty?")-> method is_empty?  @48960|list(183,3)
-				 output: ("yes")-> object yes  @55472|list(477,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("is_empty?")-> method is_empty?  @26992|list(183,3)
+				 output: ("yes")-> object yes  @14384|list(477,3)
 			}
 		}
 
-		method pop  @07152|list(487,3) --external
+		method pop  @32640|list(487,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @45552|list(487,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @23344|list(487,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 			}
 
 			BLOCK --domain
 			{
 				CALL
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("remove_next")-> method remove_next  @47296|list(268,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("remove_next")-> method remove_next  @37216|list(268,3)
 			}
 		}
 
-		method push  @22544|list(482,3) --external
+		method push  @38880|list(482,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @53872|list(482,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @13424|list(482,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 
-				proxy ~t  @63280|list(482,3) --internal
+				proxy ~t  @00144|list(482,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("insert")-> method insert  @12976|list(391,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("insert")-> method insert  @26816|list(391,3)
 				JOIN* --provisional
-				 left: ("~t")-> proxy ~t  @63280|list(482,3)
-				 right: (direct)-> blank (anon)  @56896|list(,)
+				 left: ("~t")-> proxy ~t  @00144|list(482,3)
+				 right: (direct)-> blank (anon)  @56736|list(,)
 			}
 		}
 
-		nom type stack_t  @08080|list(457,11) --internal
+		nom type stack_t  @18192|list(457,11) --internal
 		 viable = no
-		 equivalent: ("stack<t>")-> type stack<t>  @48144|list(444,6)
+		 equivalent: ("stack<t>")-> type stack<t>  @29920|list(444,6)
 
-		method use_top  @11312|list(492,3) --external
+		method use_top  @40128|list(492,3) --external
 		 viable = no
 		{
 
 			given
 			{
-				object io  @49392|list(492,3) --internal
-				 type: (direct)-> type stack<t>  @48144|list(444,6)
+				object io  @15664|list(492,3) --internal
+				 type: (direct)-> type stack<t>  @29920|list(444,6)
 
-				proxy ~t  @59328|list(492,3) --internal
+				proxy ~t  @04400|list(492,3) --internal
 				 type: ("t")-> (unmatched)
 			}
 
 			BLOCK* --domain
 			{
 				CALL* --provisional
-				 lead: ("io.list")-> object list  @32960|list(500,3)
-				 method: ("use_first")-> method use_first  @21296|list(397,3)
+				 lead: ("io.list")-> object list  @39984|list(500,3)
+				 method: ("use_first")-> method use_first  @38048|list(397,3)
 				JOIN* --provisional
-				 left: ("~t")-> proxy ~t  @59328|list(492,3)
-				 right: (direct)-> blank (anon)  @60432|list(,)
+				 left: ("~t")-> proxy ~t  @04400|list(492,3)
+				 right: (direct)-> blank (anon)  @61904|list(,)
 			}
 		}
 
 		instance
 		{
-			object list  @32960|list(500,3) --internal
-			 type: ("list<t>")-> type list<t>  @42384|list(350,6)
+			object list  @39984|list(500,3) --internal
+			 type: ("list<t>")-> type list<t>  @32992|list(350,6)
 		}
 
 	}

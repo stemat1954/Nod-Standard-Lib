@@ -1,16 +1,16 @@
 page ucdb
 {
-	type ucdb  @46224|ucdb(16,6) --external
+	type ucdb  @32608|ucdb(16,6) --external
 	 viable = yes
 	{
-		method begin  @61456|ucdb(18,17) --external
+		method begin  @03936|ucdb(18,17) --external
 		 viable = yes
 		{
 
 			given
 			{
-				object io  @53152|ucdb(18,17) --internal
-				 type: (direct)-> type ucdb  @46224|ucdb(16,6)
+				object io  @60960|ucdb(18,17) --internal
+				 type: (direct)-> type ucdb  @32608|ucdb(16,6)
 			}
 
 			BLOCK --domain
@@ -21,7 +21,7 @@ page ucdb
 
 	common
 	{
-		subroutine $start1  @57040|ucdb(,) --internal
+		subroutine $start1  @12768|ucdb(,) --internal
 		 viable = yes
 		{
 
@@ -32,29 +32,29 @@ page ucdb
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object unicode_bom_FEFF  @56416|ucdb(10,2) --'x:FEFF'
-				 type: (direct)-> type $3<'16'>( word<'16'> )  @52368|$appendix(,)
+				 object: (direct)-> object unicode_bom_FEFF  @02400|ucdb(10,2) --'x:FEFF'
+				 type: (direct)-> type $3<'16'>( word<'16'> )  @36368|$appendix(,)
 				MAKE
-				 literal: (direct)-> literal (anon)  @57632|ucdb(,) --'x:FEFF'
-				 type: ("expr")-> type expr  @11328|expr(5,6)
+				 literal: (direct)-> literal (anon)  @54240|ucdb(,) --'x:FEFF'
+				 type: ("expr")-> type expr  @18368|expr(5,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> object unicode_bom_FEFF  @56416|ucdb(10,2)
-				 method: ("begin")-> method begin  @52192|$appendix(,)
-				 input: (direct)-> literal (anon)  @57632|ucdb(,)
+				 lead: (direct)-> object unicode_bom_FEFF  @02400|ucdb(10,2)
+				 method: ("begin")-> method begin  @33840|$appendix(,)
+				 input: (direct)-> literal (anon)  @54240|ucdb(,)
 				MAKE
-				 object: (direct)-> object unicode_bom_FFFE  @55456|ucdb(12,2) --'x:FFFE'
-				 type: (direct)-> type $3<'16'>( word<'16'> )  @52368|$appendix(,)
+				 object: (direct)-> object unicode_bom_FFFE  @06240|ucdb(12,2) --'x:FFFE'
+				 type: (direct)-> type $3<'16'>( word<'16'> )  @36368|$appendix(,)
 				MAKE
-				 literal: (direct)-> literal (anon)  @59232|ucdb(,) --'x:FFFE'
-				 type: ("expr")-> type expr  @11328|expr(5,6)
+				 literal: (direct)-> literal (anon)  @41760|ucdb(,) --'x:FFFE'
+				 type: ("expr")-> type expr  @18368|expr(5,6)
 				CALL --initial, fundamental
-				 lead: (direct)-> object unicode_bom_FFFE  @55456|ucdb(12,2)
-				 method: ("begin")-> method begin  @52192|$appendix(,)
-				 input: (direct)-> literal (anon)  @59232|ucdb(,)
+				 lead: (direct)-> object unicode_bom_FFFE  @06240|ucdb(12,2)
+				 method: ("begin")-> method begin  @33840|$appendix(,)
+				 input: (direct)-> literal (anon)  @41760|ucdb(,)
 			}
 		}
 
-		subroutine $start1  @49840|ucdb(,) --internal
+		subroutine $start1  @13968|ucdb(,) --internal
 		 viable = yes
 		{
 
@@ -65,22 +65,22 @@ page ucdb
 			BLOCK --domain
 			{
 				MAKE
-				 object: (direct)-> object the_ucdb  @53856|ucdb(24,8)
-				 type: ("ucdb")-> type ucdb  @46224|ucdb(16,6)
+				 object: (direct)-> object the_ucdb  @07840|ucdb(24,8)
+				 type: ("ucdb")-> type ucdb  @32608|ucdb(16,6)
 				CALL --initial
-				 lead: (direct)-> object the_ucdb  @53856|ucdb(24,8)
-				 method: ("begin")-> method begin  @61456|ucdb(18,17)
+				 lead: (direct)-> object the_ucdb  @07840|ucdb(24,8)
+				 method: ("begin")-> method begin  @03936|ucdb(18,17)
 			}
 		}
 
-		object the_ucdb  @53856|ucdb(24,8) --external
-		 type: ("ucdb")-> type ucdb  @46224|ucdb(16,6)
+		object the_ucdb  @07840|ucdb(24,8) --external
+		 type: ("ucdb")-> type ucdb  @32608|ucdb(16,6)
 
-		object unicode_bom_FEFF  @56416|ucdb(10,2) --external
-		 type: (direct)-> type $3<'16'>( word<'16'> )  @52368|$appendix(,)
+		object unicode_bom_FEFF  @02400|ucdb(10,2) --external
+		 type: (direct)-> type $3<'16'>( word<'16'> )  @36368|$appendix(,)
 
-		object unicode_bom_FFFE  @55456|ucdb(12,2) --external
-		 type: (direct)-> type $3<'16'>( word<'16'> )  @52368|$appendix(,)
+		object unicode_bom_FFFE  @06240|ucdb(12,2) --external
+		 type: (direct)-> type $3<'16'>( word<'16'> )  @36368|$appendix(,)
 	}
 
 }

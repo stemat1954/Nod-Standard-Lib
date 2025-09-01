@@ -1,12 +1,12 @@
 page console
 {
-	subroutine console_get_protocol  @35488|console(66,2) --external
+	subroutine console_get_protocol  @03216|console(66,2) --external
 	 viable = yes
 
-	subroutine console_identify  @30688|console(62,2) --external
+	subroutine console_identify  @02816|console(62,2) --external
 	 viable = yes
 
-	subroutine console_open_channel  @34288|console(64,2) --external
+	subroutine console_open_channel  @04416|console(64,2) --external
 	 viable = yes
 }
 
