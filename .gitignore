@@ -364,6 +364,7 @@ FodyWeavers.xsd
 
 #Nod
 /build.bat
+/rebuild.bat
 /make.ddl.txt
 output/
 
