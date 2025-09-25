@@ -19,7 +19,7 @@ type string
 		subroutine is usually the source for this initial-
 		izer.
 	
-	(2) from serial_access collection of characters:
+	(2) from sequential collection of characters:
 
 		encoding must be specified, length is determined
 		by the array count.
@@ -46,7 +46,7 @@ type string
 
 }}
 {
-	nom type serial<c> = serial_access<unicode><<c>>;
+	nom type serial<c> = sequential<unicode><<c>>;
 
 	general method
 	{

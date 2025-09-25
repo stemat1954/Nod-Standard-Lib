@@ -245,12 +245,12 @@ type text_mediator from mediator
 			io:write_one( c );
 		}
 				
-		write<c> [upd]( serial_access<unicode><<c>> source )
+		write<c> [upd]( sequential<unicode><<c>> source )
 		{
 			io:write_sequence( source );
 		}
 
-		write<c> [upd]( serial_access<ascii><<c>> source )
+		write<c> [upd]( sequential<ascii><<c>> source )
 		{
 			io:write_sequence( source );
 		}
@@ -477,7 +477,7 @@ type text_mediator from mediator
 			c:use_code:store( *io, io.codepoint_fex );
 		}
 
-		write_sequence<t><c> [upd]( serial_access<<t>><<c>> source ) -- <t> ascii or unicode
+		write_sequence<t><c> [upd]( sequential<<t>><<c>> source ) -- <t> ascii or unicode
 		{
 			for each ( ~c in source ) ~c:use_code:store( *io, io.codepoint_fex );
 		}

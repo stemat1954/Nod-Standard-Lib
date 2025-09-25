@@ -283,14 +283,15 @@ type mediator
 	is 'false'.
 			
 
-	:write_checksum writes a 4 byte checksum at the	current 
-	wp. The sum is calculated from all bytes preceding wp.  
+	:write_checksum writes a checksum at the current wp. The
+	sum is calculated from all bytes preceding wp and it's
+	truncated as necessary (modulo) to a given size.  
 
-	:read_checksum calculates a 4 byte checksum by reading
-	from the current rp to the position 4 bytes before the
-	end.  Then it reads 4 bytes as an integer checksum 
-	(assuming they were written by :write_checksum ). The
-	output bool is 'true' if the values agree, otherwise 
+	:read_checksum calculates a checksum by reading	from the
+	current rp to a presumed position at end - size.  Then
+	remaining bytes are read as an integer and compared to
+	the calculated and possibly truncated (module) checksum.
+	The output bool is 'true' if the values agree, otherwise 
 	it's 'false'.  Before returning, rp is restored to it's 
 	initial position.
 
@@ -298,7 +299,10 @@ type mediator
 	If an application intends to mediate object pointers
 	( op<t> ) then it must derive and adapt this base type
 	to implement a scheme to store and restore the pointer
-	and it's object.
+	and it's object.  There is no general solution that can
+	suffice for all applications, but most solutions will
+	usually involve coordinating multiple mediators to mimic
+	an external heap.
 }}
 {
 
@@ -377,9 +381,9 @@ type mediator
 		read_nul [upd]()( bool );		-- ditto
 
 		
-		write_checksum [upd];
+		write_checksum [upd]( int size );
 
-		read_checksum [upd]()( bool ok );
+		read_checksum [upd]( int size )( bool ok );
 				
 
 		fread<t> [upd]( expr fex )( <t> obj );			-- read object, one fex

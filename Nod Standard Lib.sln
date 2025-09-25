@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alpha", "Alpha", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		Alpha\access.nod = Alpha\access.nod
 		Alpha\addr.nod = Alpha\addr.nod
 		Alpha\analog.nod = Alpha\analog.nod
 		Alpha\array.nod = Alpha\array.nod
 		Alpha\ascii.nod = Alpha\ascii.nod
 		Alpha\bool.nod = Alpha\bool.nod
 		Alpha\complex.nod = Alpha\complex.nod
+		Alpha\contiguous.nod = Alpha\contiguous.nod
 		Alpha\counter.nod = Alpha\counter.nod
 		Alpha\disruption.nod = Alpha\disruption.nod
 		Alpha\entry.nod = Alpha\entry.nod
@@ -34,6 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alpha", "Alpha", "{02EA681E
 		Alpha\op.nod = Alpha\op.nod
 		Alpha\semaphore.nod = Alpha\semaphore.nod
 		Alpha\signal.nod = Alpha\signal.nod
+		Alpha\sequential.nod = Alpha\sequential.nod
 		Alpha\string.nod = Alpha\string.nod
 		Alpha\thread.nod = Alpha\thread.nod
 		Alpha\timer.nod = Alpha\timer.nod

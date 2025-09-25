@@ -1,0 +1,88 @@
+
+page sequential in AlphaByNod
+
+
+type sequential<t><c> [incomplete] -- intrinsic
+{{
+	sequential<t><c> is a base type for any object 
+	collection that can be accessed serially using a
+	bespoke cursor.
+		
+	<t> is the symbolic object type and <c> is the symbolic 
+	cursor type. 
+	
+	Individual objects in a sequential collection are 
+	accessed in order using a bespoke cursor.
+
+	Access to the collection starts by opening a cursor	
+	positioned at one end of the collection. The cursor moves
+	toward the other end in increments or steps.  A positive 
+	or negative step determines direction and resolution of
+	the cursor. 
+	
+	Generally, a sequential cursor must have a final 
+	inoperable state that doesn't provide access to any
+	object. The inoperable state must be distinguishable
+	from null and an inoperable cursor must be accepted by
+	all	methods.
+
+	:open_cursor( step ) creates an original cursor placed 
+	at one end of the collection.  If step is positive, the 
+	cursor is placed on the first object and moves toward
+	the last.  If step is negative, the cursor is placed on 
+	the last object and moves toward the first.  step = 0 
+	is invalid.  The default step is one.
+
+	Note: If a collection doesn't support step < 0 or 
+	|step| > 1,  the output cursor is inoperable.
+
+	:move_cursor updates the position of a given cursor.
+	
+	:flip_cursor reverses the direction of a given cursor.
+
+	Note: If a cursor can't be flipped, the cursor will 
+	become inoperable.
+
+	:use returns access to the object referenced by a given
+	cursor. If the cursor is inoperable, the proxy will be
+	void.
+
+	The proxy returned by :use has unspecified access.
+	Permission must be specified in the call and it's 
+	verified at runtime.
+
+	A sequential collection can be scanned in a Nod 
+	for loop.
+}}
+{
+	general
+	{
+		begin;
+
+		open_cursor ( int step [opt] )( <c> );
+
+		move_cursor ( <c> [upd] );
+
+		flip_cursor ( <c> [upd] );
+
+		use ( <c> ) = <t> proxy;
+	}
+
+
+	abstract  -- recap as [tbd]
+	{
+		~open_cursor ( int )( <c> );  
+
+		~move_cursor ( <c> [upd] );
+
+		~flip_cursor ( <c> [upd]);
+
+		~use ( <c> ) = <t> proxy; 
+	}
+
+}
+
+
+
+
+

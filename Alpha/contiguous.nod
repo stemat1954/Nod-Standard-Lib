@@ -1,0 +1,66 @@
+
+page contiguous in AlphaByNod
+
+type contiguous<t> [incomplete] from sequential<<t>><int>  -- intrinsic
+{{
+	contiguous<t> is a base type for any object collection
+	that can be counted and accessed by a random position 
+	index.
+		
+	<t> is the symbolic object type. 
+
+	Objects in a contiguous collection can be counted, and
+	individual objects can be directly and randomly accessed
+	using a numeric position index.
+
+	Valid indexes range from zero to count - 1.
+
+	:use returns access to an object at a given position. 
+	If the index is out of range, the result proxy will be 
+	void.
+
+	Note:  access permission is specified by caller and 
+	verified at runtime.
+
+	Contiguous collections are naturally ordered by index,
+	but there is no	presumption that objects with a lesser 
+	index compare less than or before objects with a greater
+	index.
+
+	Any contiguous collection is also a sequential collection
+	that can be accessed serially through an integer cursor. 
+	This allows a  contiguous collection to be used wherever 
+	a sequential collection is required.  In particular, any
+	contiguous collection can be scanned in a for-each loop.
+
+}}
+{
+	general 
+	{
+		begin;
+
+		count ()( int n );
+
+		use ( int i ) = <t> proxy;
+	}
+
+	abstract -- recap as [tbd]
+	{
+		~count ()( int );	
+
+		~use ( int i ) = <t> proxy; 
+	}
+
+	abstract in sequential<<t>><int>
+	{
+		[final] ~open_cursor ( int )( int );  
+
+		[final] ~move_cursor ( int [upd] );
+
+		[final] ~flip_cursor ( int [upd] );
+
+		[final] ~use ( int ) = <t> proxy; 
+	}
+}
+
+

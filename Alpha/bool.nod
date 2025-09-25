@@ -15,8 +15,9 @@ type bool  -- elementary, intrinsic, compatible, conventional
 	A bool value is portable. See documentation for
 	supported formats.
 
-	Generic binary 'b' is supported for c compatability.
-
+	Generic binary 'b' is c-compatible and has a universal
+	representation on every platform (one byte: 0 = false,
+	1 = true).
 }}
 {
 	general

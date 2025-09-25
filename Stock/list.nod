@@ -82,7 +82,7 @@ type node1 [incomplete]
 			io.link1:recycle;  
 		}
 
-		use_node = node1 proxy  ~n
+		use = node1 proxy  ~n
 		{
 			if ( "is_not_null?( io.link1 )" ) ~n -> io.link1:deref; 
 		}
@@ -96,7 +96,7 @@ type node1 [incomplete]
 
 
 
-type list from serial_access<node1><list_cursor>
+type list from sequential<node1><list_cursor>
 {{
 	One-way linked list with untyped nodes.
 
@@ -166,7 +166,7 @@ type list from serial_access<node1><list_cursor>
 	{
 		begin  -- original empty
 		{
-			io:as_base<serial_access<node1><list_cursor>>:begin;
+			io:as_base<sequential<node1><list_cursor>>:begin;
 		}
 
 		begin ( list other [upd] )  -- take 
@@ -299,7 +299,7 @@ type list from serial_access<node1><list_cursor>
 	}
 
 
-	abstract in serial_access<node1><list_cursor>
+	abstract in sequential<node1><list_cursor>
 	{
 		[final] ~open_cursor ( int step )( list_cursor c )
 		{	
@@ -316,9 +316,9 @@ type list from serial_access<node1><list_cursor>
 			c:flip;
 		}
 
-		[final] ~use@ ( list_cursor c ) = node1 proxy ~n   
+		[final] ~use ( list_cursor c ) = node1 proxy ~n   
 		{
-			~n -> c:use_node;
+			~n -> c:use;
 		}
 	}
 	
@@ -347,9 +347,9 @@ type list from serial_access<node1><list_cursor>
 }
 
 
-type list<t> from list
+type <t>list from list
 {
-	nom type list_t = list<<t>>;
+	nom type t_list = <<t>>list;
 
 	nom type t_node1 = <<t>>node1;
 
@@ -361,13 +361,13 @@ type list<t> from list
 			io:as_base<list>:begin;
 		}
 
-		begin ( list_t other [upd] ) -- take
+		begin ( t_list other [upd] ) -- take
 		{
 			io:as_base<list>:begin( *other:as_base<list> );
 		}
 
 
-		begin ( list_t other )  -- with <t> copy
+		begin ( t_list other )  -- with <t> copy
 		{
 			for each ( node1 proxy ~n in other )  
 			{
@@ -377,7 +377,7 @@ type list<t> from list
 			}
 		}
 
-		begin ( list_t other ) with copier ( <t> )( <t> ) -- with copier
+		begin ( t_list other ) with copier ( <t> )( <t> ) -- with copier
 		{
 			for each ( node1 proxy ~n in other ) 
 			{
@@ -418,6 +418,16 @@ type list<t> from list
 			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
+		remove_next [upd] ()( <t> next )  -- with <t> copy
+		{
+			io:as_base<list>:get_next()( link1 nl );
+			if ( "is_not_null?( nl )" ) 
+			{
+				next:begin( nl:deref:as<<t>> );
+				io:as_base<list>:remove_next;
+			}
+		}
+
 		remove_next [upd] ()( <t> next ) with copier ( <t> )( <t> )
 		{
 			io:as_base<list>:get_next()( link1 nl );
@@ -441,7 +451,7 @@ type list<t> from list
 }
 
 
-type stack<t> 
+type <t>stack 
 {{
 	last-in-first-out (lifo) list
 
@@ -454,7 +464,7 @@ type stack<t>
 	pop = remove first
 }}
 {
-	nom type stack_t = stack<<t>>;
+	nom type t_stack = <<t>>stack;
 
 	general method
 	{
@@ -463,12 +473,12 @@ type stack<t>
 			io.list:begin;
 		}
 
-		begin ( stack_t other [upd] ) -- take
+		begin ( t_stack other [upd] ) -- take
 		{
 			io.list:begin( *other.list );
 		}
 
-		begin ( stack_t other ) with copier ( <t> )( <t> ) -- copy
+		begin ( t_stack other ) with copier ( <t> )( <t> ) -- copy
 		{
 			io.list:begin( other.list ) with copier;
 		}
@@ -497,13 +507,13 @@ type stack<t>
 
 	instance
 	{
-		list<<t>> list;
+		<<t>>list list;
 	}
 }
 
 
 
-type queue<t> 
+type <t>queue 
 {{
 	first-in-first-out (fifo) list
 
@@ -513,7 +523,7 @@ type queue<t>
 
 }}
 {
-	nom type queue_t = queue<<t>>;
+	nom type t_queue = <<t>>queue;
 
 	general method
 	{
@@ -522,12 +532,12 @@ type queue<t>
 			io.list:begin;
 		}
 
-		begin ( queue_t other [upd] ) -- take
+		begin ( t_queue other [upd] ) -- take
 		{
 			io.list:begin( *other.list );
 		}
 
-		begin ( queue_t other ) with copier ( <t> )( <t> ) -- copy
+		begin ( t_queue other ) with copier ( <t> )( <t> ) -- copy
 		{
 			io.list:begin( other.list ) with copier;
 		}
@@ -542,6 +552,12 @@ type queue<t>
 			~t -> io.list:go_last:insert;
 		}
 
+
+		pull [upd]()( <t> first ) -- with <t> copy
+		{
+			if ( io.list:is_empty?()( =bool ):not )
+				io.list:go_front:remove_next()( first );
+		}
 
 		pull [upd]()( <t> first ) with copier ( <t> )( <t> )
 		{
@@ -563,7 +579,7 @@ type queue<t>
 
 	instance
 	{
-		list<<t>> list;
+		<<t>>list list;
 	}
 }
 

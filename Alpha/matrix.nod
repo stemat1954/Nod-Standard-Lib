@@ -25,9 +25,9 @@ type matrix<t><#r><#c>
 
 	nom type col_vector = vector<<t>><<#r>>;
 
-	nom type co_matrix<#n> = matrix<<t>><<#c>><<#n>>; --  #n cols
+	nom type co_matrix<#n> = matrix<<t>><<#c>><<#n>>; --  #c rows, #n cols
 
-	nom type dot_matrix<#n> = matrix<<t>><<#r>><<#n>>;  -- #n cols
+	nom type dot_matrix<#n> = matrix<<t>><<#r>><<#n>>;  -- #r rows, #n cols
 
 
 
@@ -38,7 +38,7 @@ type matrix<t><#r><#c>
 
 		begin ( same_type other );				-- copy
 
-		begin<xt><c> ( serial_access<<xt>><<c>> source ); -- fill, see notes
+		begin<xt><c> ( sequential<<xt>><<c>> source ); -- fill, see notes
 		
 		begin ( mediator m [upd], expr fex );	-- mediation
 
@@ -106,7 +106,7 @@ type sq_matrix<t><#> from matrix<<t>><<#>><<#>>
 
 		begin ( same_type other );			-- copy
 
-		begin<xt><c> ( serial_access<<xt>><<c>> source );	-- fill
+		begin<xt><c> ( sequential<<xt>><<c>> source );	-- fill
 
 		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
 

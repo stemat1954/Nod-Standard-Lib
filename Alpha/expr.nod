@@ -79,7 +79,7 @@ type expr -- intrinsic, conventional
 	Several forms pf delimitiation are supported.
 }}
 {
-	nom type serial<c> = serial_access<ascii><<c>>;
+	nom type serial<c> = sequential<ascii><<c>>;
 
 	general 	
 	{
