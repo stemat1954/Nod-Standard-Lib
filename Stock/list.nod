@@ -9,9 +9,11 @@ page list in StockByNod
 
 	list  
 
-	list<t>  - typed list
-	stack<t>  - typed stack	
-	queue<t>  -	typed queue
+	<t>list  - typed list
+	<t>stack  - typed stack	
+	<t>queue  -	typed queue
+
+
 }}
 
 
@@ -462,6 +464,11 @@ type <t>stack
 	push = insert after front, access new first member
 
 	pop = remove first
+
+
+	Consider using array<t> as a contiguous alternative to
+	a list-based stack.  Insertion and deletion at the end
+	of an array is fast and efficient.
 }}
 {
 	nom type t_stack = <<t>>stack;
