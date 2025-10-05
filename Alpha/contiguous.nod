@@ -28,10 +28,10 @@ type contiguous<t> [incomplete] from sequential<<t>><int>  -- intrinsic
 	index.
 
 	Any contiguous collection is also a sequential collection
-	that can be accessed serially through an integer cursor. 
-	This allows a  contiguous collection to be used wherever 
-	a sequential collection is required.  In particular, any
-	contiguous collection can be scanned in a for-each loop.
+	that can be accessed by an integer cursor.  This allows a
+	contiguous collection to be used wherever a sequential 
+	collection is required.  In particular, any contiguous 
+	collection can be scanned in a for-each loop.
 
 }}
 {

@@ -4,13 +4,13 @@ page math in AlphaByNod
 {{
 	The subroutines on this page are potentially hardware accelerated. 
 	
-	This page is a work in progress
+	This page is a WORK IN PROGRESS
 }}
 
 
 enum type coord2_tag ( 'cartesian', 'polar' );
 
-enum type coord3_tag ( 'cartesion', 'cylindrical', 'spherical' );  -- for now
+enum type coord3_tag ( 'cartesion', 'cylindrical', 'spherical' );  -- more tbd
 
 
 
@@ -21,18 +21,16 @@ common  -- fundamental constants
 	fp2 euler [const];
 
 	-- <t> euler-mascheroni gamma 
+
+	-- more tbd
 }
 	
 
 subroutine  -- cross-type powers and roots
 {
-	fp2_pow<t> ( <t> a, int n, int d )( fp2 y );		-- any base, rational exponent, fp2 result
+	pow<t><r> ( <t> a, int n, int d )( <r> y );		-- rational exponent
 
-	fp2_pow<t><u> ( <t> a, <u> x )( fp2 y );			-- any base, any exponent, fp2 result
-
-	cplx_pow<t> ( <t> a, int n, int d )( cplx y );		-- any base, rational exponent, cplx result
-
-	cplx_pow<t><u> ( <t> a, <u> x )( cplx y );			-- any base, any exponent, cplx result
+	pow<t><u><r> ( <t> a, <u> x )( <r> y );			-- any exponent
 }
 
 

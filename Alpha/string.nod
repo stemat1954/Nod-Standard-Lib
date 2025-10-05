@@ -1,7 +1,7 @@
 
 page string in AlphaByNod
 
-type string
+type string from contiguous<unicode>
 {{
 	A string is a static unicode character sequence.
 	
@@ -22,7 +22,7 @@ type string
 	(2) from sequential collection of characters:
 
 		encoding must be specified, length is determined
-		by the array count.
+		by the sequential cursor.
 
 	(3) from ascii expr (literal):
 
@@ -44,15 +44,19 @@ type string
 		and null-delimitation, making it a platform compat-
 		ible c string.
 
+	A string is a contiguous subtype, but any attempt to 
+	modify the value (with :use[upd] or :use[init] ) will
+	disrupt the app.
+
 }}
 {
-	nom type serial<c> = sequential<unicode><<c>>;
+	nom type sequential<c> = sequential<unicode><<c>>;
 
 	general method
 	{
 		begin ( addr, utf, endian, int len [opt] );  -- sequence in mem
 
-		begin<c> ( serial<<c>> source, utf, endian );  -- serial collection
+		begin<c> ( sequential<<c>> source, utf, endian );  -- sequential collection
 		
 		begin ( expr, utf [opt], endian [opt] );  -- expr/literal conversion
 
@@ -82,5 +86,12 @@ type string
 		find ( string other, int i [upd] )( bool );
 
 		scan ( int i [upd] ) with stop? ( string, int i )( bool );
+	}
+
+	abstract in contiguous<unicode>
+	{
+		[final] ~count ()( int );	
+
+		[final] ~use ( int i ) = unicode proxy; 
 	}
 }

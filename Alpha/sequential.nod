@@ -5,7 +5,7 @@ page sequential in AlphaByNod
 type sequential<t><c> [incomplete] -- intrinsic
 {{
 	sequential<t><c> is a base type for any object 
-	collection that can be accessed serially using a
+	collection that can be accessed step-wise using a
 	bespoke cursor.
 		
 	<t> is the symbolic object type and <c> is the symbolic 

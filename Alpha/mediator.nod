@@ -80,10 +80,10 @@ type mediator
 	
 	If an application chooses to write custom methods, 
 	it can usually do so by simply reading and writing sub-
-	objects in a straight forward serial access fashion. 
-	However, more advanced applications may need to format
-	data in a random access fashion, which requires knowing
-	the precise size of formatted data, moving the position 
+	objects in a straight forward serial fashion.  However, 
+	more advanced applications may need to format data in a
+	random access fashion, which requires knowing the 
+	precise size of formatted data, moving the position 
 	cursors, keeping track of unformatted regions, and 
 	generally managing the overall size of external memory.
 		

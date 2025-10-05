@@ -12,11 +12,12 @@ type matrix<t><#r><#c>
 
 	Use sq_matrix<t><#n> when <#r> and <#c> are same.
 
-	When filling a matrix from a serial source, columns are
-	filled row-wise (row-by-row).  If the source is exhaust-
-	ed before the matrix is filled, remaining entries will
-	be zero.  The source type must be numeric. If it differs
-	from the matrix type, it's converted and possibly rounded.
+	When filling a matrix from a sequential source, columns 
+	are	filled row-wise (row-by-row).  If the source is 
+	exhausted before the matrix is filled, remaining entries
+	will be zero.  The source type must be numeric. If it 
+	differs from the matrix type, it's converted and possibly
+	rounded.
 }}
 {
 	nom type same_type = matrix<<t>><<#r>><<#c>>;  

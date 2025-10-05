@@ -293,24 +293,24 @@ type text_mediator from mediator
 
 		read [upd]( unicode delim )( array<unicode> arr )
 		{
-			io:read_sequence( delim )( arr );
+			io:read_to( delim )( arr );
 		}
 
 		read [upd]( ascii delim )( array<ascii> arr )  
 		{
-			io:read_sequence( delim )( arr );
+			io:read_to( delim )( arr );
 		}
 
 		read [upd]( unicode delim )( string )
 		{
-			io:read_sequence( delim )( array<unicode> arr );
+			io:read_to( delim )( array<unicode> arr );
 			io:get_utf()( utf f ):get_endian()( endian e );
 			given\string:begin( arr, f, e );
 		}
 				
 		read [upd]( ascii delim )( expr )
 		{
-			io:read_sequence( delim )( array<ascii> arr );
+			io:read_to( delim )( array<ascii> arr );
 			given\expr:begin( arr );
 		}
 
@@ -487,20 +487,6 @@ type text_mediator from mediator
 			c:begin( int:begin( *io, io.codepoint_fex ) ); -- int:fread
 		}
 
-		read_sequence<t> [upd]( <t> delim )( array<<t>> arr ) -- <t> ascii or unicode
-		{
-			arr:begin;
-			if ( "rp_end?( io )" ) return;
-			int dn:begin( delim:use_code );
-			loop
-			{
-				int xn:begin( *io, io.codepoint_fex );  -- int:fread
-				if ( "xn |=| dn" ) return;
-				arr:insert:begin( xn );
-				if ( "rp_end?( io )" ) return;
-			}
-		}
-
 		read_sequence<t> [upd]( int q [opt] )( array<<t>> arr ) -- <t> ascii or unicode
 		{
 			arr:begin;
@@ -516,7 +502,19 @@ type text_mediator from mediator
 			}
 		}
 
-
+		read_to<t> [upd]( <t> delim )( array<<t>> arr ) -- <t> ascii or unicode
+		{
+			arr:begin;
+			if ( "rp_end?( io )" ) return;
+			int dn:begin( delim:use_code );
+			loop
+			{
+				int xn:begin( *io, io.codepoint_fex );  -- int:fread
+				if ( "xn |=| dn" ) return;
+				arr:insert:begin( xn );
+				if ( "rp_end?( io )" ) return;
+			}
+		}
 
 		seek_chr [upd]( int cn, sign d [opt] )( bool ok ) 
 		{

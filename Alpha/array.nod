@@ -54,50 +54,50 @@ type array<t> from contiguous<<t>> -- compatible and conventional per <t>
 {
 	nom type same_type = array<<t>>;
 
-	nom type serial<c> = sequential<<t>><<c>>;
+	nom type sequent<c> = sequential<<t>><<c>>;
 
-	nom type direct = contiguous<<t>>;
+	nom type contig = contiguous<<t>>;
 
 
 	general method 
 	{
 		begin ( int reserve [opt] ); 
 
-		begin ( same_type other [upd] );		-- take 
+		begin ( same_type other [upd] );				-- take 
 				
-		count [eval]()( int q );				-- not abstract
+		count [eval]()( int q );						-- not abstract
 
-		use [eval]( int i ) = <t> proxy [eval,init];  -- not abstract
+		use [eval]( int i ) = <t> proxy [eval,init];	-- not abstract
 
-		insert [upd]( int i [opt], int q );		-- q null objs at i (end)
+		insert [upd]( int i [opt], int q );				-- q null objs at i (end)
 
 		insert [upd]( int i [opt] ) = <t> proxy [init];	-- one null obj at i (end), return access
 
 		delete [upd]( int i [opt], int q [opt] );		-- q (1) objs at i (end)
 
-		resize [upd]( int q );			-- insert or delete at end, new count = q
+		resize [upd]( int q );							-- insert or delete at end, new count = q
 
-		shrink [upd];					-- release unused memory
+		shrink [upd];									-- release unused memory
 	}
 	
 
 	general method  -- <t> dependent
 	{
-		begin<c> ( serial<<c>> source );							-- with <t> copy
-		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );	-- with copier
+		begin<c> ( sequent<<c>> source );										-- with <t> copy
+		begin<c> ( sequent<<c>> source ) with copier ( <t> )( <t> );			-- with copier
 
-		begin ( mediator [upd], expr fex )()( extra );			-- mediate
-		store [eval]( mediator [upd], expr fex )()( extra );	-- mediate
+		begin ( mediator [upd], expr fex )()( extra );							-- mediate
+		store [eval]( mediator [upd], expr fex )()( extra );					-- mediate
 
-		insert [upd]( direct source, int i [opt], int q [opt], int j [opt] );									-- with <t> copy: q (all) objs from source at j (0) to i (end) 
-		insert [upd]( direct source, int i [opt], int q [opt], int j [opt] ) with copier ( <t> )( <t> );		-- with copier:  ditto
-		insert [upd]( direct source [upd], int i [opt], int q [opt], int j [opt] );								-- with <t> take: ditto
-		insert [upd]( direct source [upd], int i [opt], int q [opt], int j [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
+		insert [upd]( contig source, int i [opt], int q [opt], int j [opt] );									-- with <t> copy: q (all) objs from source at j (0) to i (end) 
+		insert [upd]( contig source, int i [opt], int q [opt], int j [opt] ) with copier ( <t> )( <t> );		-- with copier:  ditto
+		insert [upd]( contig source [upd], int i [opt], int q [opt], int j [opt] );								-- with <t> take: ditto
+		insert [upd]( contig source [upd], int i [opt], int q [opt], int j [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
 
-		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] );									-- with <t> copy: q (all) objs from source to i (end) 
-		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] ) with copier ( <t> )( <t> );			-- with copier:  ditto
-		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] );								-- with <t> take: ditto
-		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
+		insert<c> [upd]( sequent<<c>> source, int i [opt], int q [opt] );										-- with <t> copy: q (all) objs from source to i (end) 
+		insert<c> [upd]( sequent<<c>> source, int i [opt], int q [opt] ) with copier ( <t> )( <t> );			-- with copier:  ditto
+		insert<c> [upd]( sequent<<c>> source [upd], int i [opt], int q [opt] );									-- with <t> take: ditto
+		insert<c> [upd]( sequent<<c>> source [upd], int i [opt], int q [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
 
 		copy [eval]( int i [opt] )( <t> obj );									-- with <t> copy: one obj at i (end) to obj
 		copy [eval]( int i [opt] )( <t> obj ) with copier ( <t> )( <t> );		-- with copier: ditto
@@ -128,32 +128,32 @@ type array<t><#> from contiguous<<t>> -- compatible and conventional per <t>
 {
 	nom type same_type = array<<t>><<#>>;
 
-	nom type serial<c> = sequential<<t>><<c>>;
+	nom type sequent<c> = sequential<<t>><<c>>;
 
 	general 
 	{
-		begin;	-- all objects null
+		begin;									-- all objects null
 		
-		begin ( same_type other [upd] );  -- take 
+		begin ( same_type other [upd] );		-- take 
 
 		use ( int i ) = <t> proxy [eval,init];  -- not abstract
 	}
 
 	general -- <t> dependent
 	{
-		begin ( <t> seed );								-- with <t> copy
-		begin ( <t> seed ) with copier ( <t> )( <t> );	-- with copier
+		begin ( <t> seed );												-- with <t> copy
+		begin ( <t> seed ) with copier ( <t> )( <t> );					-- with copier
 
-		begin<c> ( serial<<c>> source );							-- with <t> copy
-		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );	-- with copier
+		begin<c> ( sequent<<c>> source );							-- with <t> copy
+		begin<c> ( sequent<<c>> source ) with copier ( <t> )( <t> );	-- with copier
 
-		begin ( mediator [upd], expr fex )()( extra );	-- mediate
-		store ( mediator [upd], expr fex )()( extra );	-- mediate
+		begin ( mediator [upd], expr fex )()( extra );					-- mediate
+		store ( mediator [upd], expr fex )()( extra );					-- mediate
 	}
 
 	abstract method in contiguous<<t>>
 	{
-		[final] ~count ()( int n );			-- n <= #n
+		[final] ~count ()( int n );	-- n <= #n
 		
 		[final] ~use ( int i ) = <t> proxy;	 
 	}
