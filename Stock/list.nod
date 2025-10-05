@@ -56,7 +56,7 @@ type node1 [incomplete]
 }
 
 
-[page] type list_cursor
+[page] type cursor1
 {{
 	cursor is inoperable if io.link1 is null.
 }}
@@ -98,7 +98,7 @@ type node1 [incomplete]
 
 
 
-type list from sequential<node1><list_cursor>
+type list from sequential<node1><cursor1>
 {{
 	One-way linked list with untyped nodes.
 
@@ -141,15 +141,9 @@ type list from sequential<node1><list_cursor>
 	point to a new (unlinked) node, but the method clears
 	the node link just in case.
 
-	NOTE! It's possible to re-insert (move) a node in the
-	list if it's removed before reinserting.  Failure to
-	properly unlink a node that was previously linked in
-	the same (or any other) list will make a real mess of
-	things.
-
 	:remove_next removes the next node from the list if it
-	exists. It does this by linking the current node to 
-	the node after the next node, if it exists.  current 
+	exists. It does this by linking the current node to	the
+	node after the next node, if it exists.  The current 
 	position doesn't change.
 	
 	A constant list can be traversed using :get	methods.
@@ -160,15 +154,32 @@ type list from sequential<node1><list_cursor>
 
 	until next is null.
 
-	Note: A list can also be traversed using a serial_
-	access cursor or Nod for-loop.
+	Note: A list can also be traversed using a Nod for-loop.
+
+	
+	It's possible to re-insert (move) a node in the list if
+	it's removed before reinserting. Here is a proper move
+	pattern:
+
+		go_xxx:get_next:remove_next:go_yyy:insert
+
+	Failure to properly unlink a node that was previously 
+	linked in the same (or any other) list will make a real 
+	mess of things.  
+	
+	Also, note that since :insert always clears a given 
+	node's link before it's linked into the list, it's not 
+	possible to create a cyclic list using list methods.
+	However, it's always possible to corrupt a list by 
+	assigning node links manually.
+	
 }}
 {
 	general method
 	{
 		begin  -- original empty
 		{
-			io:as_base<sequential<node1><list_cursor>>:begin;
+			io:as_base<sequential<node1><cursor1>>:begin;
 		}
 
 		begin ( list other [upd] )  -- take 
@@ -301,24 +312,24 @@ type list from sequential<node1><list_cursor>
 	}
 
 
-	abstract in sequential<node1><list_cursor>
+	abstract in sequential<node1><cursor1>
 	{
-		[final] ~open_cursor ( int step )( list_cursor c )
+		[final] ~open_cursor ( int step )( cursor1 c )
 		{	
 			if ( "step |=| one" ) c:begin( io.first ) else c:begin;
 		}  
 
-		[final] ~move_cursor ( list_cursor c [upd] )
+		[final] ~move_cursor ( cursor1 c [upd] )
 		{
 			c:move;
 		}
 
-		[final] ~flip_cursor ( list_cursor c [upd] )
+		[final] ~flip_cursor ( cursor1 c [upd] )
 		{
 			c:flip;
 		}
 
-		[final] ~use ( list_cursor c ) = node1 proxy ~n   
+		[final] ~use ( cursor1 c ) = node1 proxy ~n   
 		{
 			~n -> c:use;
 		}
@@ -459,7 +470,7 @@ type <t>stack
 
 	front is current and doesn't change.
 
-	first is on top.
+	first is top of stack.
 
 	push = insert after front, access new first member
 
@@ -467,8 +478,8 @@ type <t>stack
 
 
 	Consider using array<t> as a contiguous alternative to
-	a list-based stack.  Insertion and deletion at the end
-	of an array is fast and efficient.
+	a list-based stack.  Insertion and deletion (push and 
+	pop) at the end of an array is fast and efficient.
 }}
 {
 	nom type t_stack = <<t>>stack;
