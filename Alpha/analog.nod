@@ -14,7 +14,7 @@ type analog  -- intrinsic,restricted
 	analog captures the proxy's state at the point of 
 	creation and it may change.
 
-	There are no :begin methods.  The HGM initializes an
+	There are no :begin methods.  The HNM initializes an
 	analog when it's created.
 }}
 {

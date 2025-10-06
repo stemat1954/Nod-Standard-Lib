@@ -61,7 +61,7 @@ type utc  -- conventional
 
 	Accuracy of a tick is only as good as the underlying 
 	platform clock and Nod applications can only assume 
-	that accuracy is "Nod enough" to distinguish real
+	that accuracy is "good enough" to distinguish real
 	times for practical purposes, i.e. times that can be 
 	distinguished by humans (conciously or subconciously).
 	

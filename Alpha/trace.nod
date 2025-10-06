@@ -11,7 +11,7 @@ type trace -- instrisic,restricted
 
 	Trace objects are created by the compiler when an
 	application quits.  If an application specifies an 
-	object type in the quit	expression, the HGM creates
+	object type in the quit	expression, the HNM creates
 	the specified object and attaches it to the trace
 	object along with source location info.
 
