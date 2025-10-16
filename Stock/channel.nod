@@ -285,7 +285,7 @@ type channel [incomplete]
 		execute_sync [upd]( etm wait [opt], ascii action, int seek [opt], addr pdata, int offset, int size )( int deficit, channel_report report, string note )
 		{
 			io:check()( note );
-			if ( "is_null?( note )" ) -- if not closed
+			if ( "null?( note )" ) -- if not closed
 			{
 				fix( wait, int_max as etm ) is ~wait;
 				format_request( request:begin( action, pdata, offset, size, seek, null ) )( addr pr );
@@ -302,7 +302,7 @@ type channel [incomplete]
 		execute_async [upd]( int id, handle hq, ascii action, int seek [opt], addr pdata, int offset, int size )( int deficit, channel_report report, string note )
 		{
 			io:check()( note );
-			if ( "is_null?( note )" ) -- if not closed
+			if ( "null?( note )" ) -- if not closed
 			{
 				format_request( request:begin( action, pdata, offset, size, seek, id ) )( addr pr );
 				kernel\channel_async_io( io.hch, pr, hq );
@@ -347,7 +347,7 @@ type channel [incomplete]
 			{
 				fix( note, unspecified_error ) is ~note;
 				io:internal_close( ~note )( string og_note );
-				if ( "is_not_null?( og_note )" ) note <= og_note;
+				if ( "not_null?( og_note )" ) note <= og_note;
 			}
 		}
 	}
@@ -401,7 +401,7 @@ type sync_channel_reader [incomplete]
 	{
 		begin ( etm wait [opt] )
 		{
-			if ( "is_not_null?( wait )" ) io.wait:begin( wait );
+			if ( "not_null?( wait )" ) io.wait:begin( wait );
 		}
 	
 		read [upd]( mediator med [upd], int seek [opt], etm wait [opt] )( channel_report report, string note ) 
@@ -462,7 +462,7 @@ type sync_channel_writer [incomplete]
 	{
 		begin ( etm wait [opt] )
 		{
-			if ( "is_not_null?( wait )" ) io.wait:begin( wait );
+			if ( "not_null?( wait )" ) io.wait:begin( wait );
 		}
 	
 		write [upd]( mediator med [upd], int seek [opt], etm wait [opt] )( channel_report report, string note ) 

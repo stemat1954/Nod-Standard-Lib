@@ -38,7 +38,7 @@ type vector<t><#n> from contiguous<<t>>
 		store ( mediator m [upd], expr fex )()( extra );	-- mediation
 
 	
-		is_equal? ( same_type v )( bool );
+		equal? ( same_type v )( bool );
 
 		is_zero? ()( bool );
 

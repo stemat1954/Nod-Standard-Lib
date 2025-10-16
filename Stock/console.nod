@@ -22,7 +22,7 @@ type console
 			kernel\console_identify( no_addr, *handle hcon:begin );
 			if ( "hcon |=| no_handle" ) quit with fault:begin( 'platform', 'no system console' );
 			io:configure( hcon )( string err );
-			if ( "is_not_null?( err )" ) quit with fault:begin( 'platform', 'system console broken' );
+			if ( "not_null?( err )" ) quit with fault:begin( 'platform', 'system console broken' );
 		}
 
 		begin ( string name )( string error )  -- named console
@@ -61,7 +61,7 @@ type console
 			{
 				text_mediator tm:begin( io.utf, io.endian );
 				io.channel:read( *tm, q )( error );
-				if ( "is_null?( error )" ) tm:read()( input ); -- all
+				if ( "null?( error )" ) tm:read()( input ); -- all
 			}
 			else
 				error:begin( not_ready );
@@ -85,7 +85,7 @@ type console
 			{
 				text_mediator tm:begin( io.utf, io.endian );
 				io.channel:read( *tm, ~c )( error );
-				if ( "is_null?( error )" ) tm:read()( input ); -- all
+				if ( "null?( error )" ) tm:read()( input ); -- all
 			}
 			else
 				error:begin( not_ready );

@@ -53,14 +53,14 @@ type foo from enumerated  -- fabricated from enum type def
 			given\expr:begin( io.expr );
 		}
 
-		is_before? ( foo )( bool )
+		before? ( foo )( bool )
 		{
-			io:use_code:is_before?( given\foo:use_code )( given\bool );
+			io:use_code:before?( given\foo:use_code )( given\bool );
 		}
 
-		is_equal? ( foo )( bool )
+		equal? ( foo )( bool )
 		{
-			io:use_code:is_equal?( given\foo:use_code )( given\bool );
+			io:use_code:equal?( given\foo:use_code )( given\bool );
 		}
 	}
 

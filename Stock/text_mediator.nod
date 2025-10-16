@@ -170,7 +170,7 @@ type text_mediator from mediator
 		compare ( text_mediator other [opt] )( bool same ) -- compare encoding (with platform)
 		{
 			utf f; endian e; 
-			if ( "is_null?( other )" )
+			if ( "null?( other )" )
 			{
 				f:begin( platform_utf );
 				e:begin( platform_endian );
@@ -420,7 +420,7 @@ type text_mediator from mediator
 
 				if ( ok ) return after io:set_rp( mark );
 
-				if ( "is_null?( rp )" ) return after q <= zero; -- end
+				if ( "null?( rp )" ) return after q <= zero; -- end
 
 				-- here: not ok and not end
 
@@ -583,12 +583,12 @@ type text_mediator from mediator
 					io:get_rp()( int mark ):read()( c ):set_rp( mark ):dec_rp;  
 
 				helper( *ptm, c, d, io.codepoint_fex )( ok ); 
-				if ( "is_not_null?( ok )" ) escape;   
+				if ( "not_null?( ok )" ) escape;   
 
 				q:inc; -- result pending
 			}
 
-			if ( "is_null?( ok )" ) ok:begin( false )
+			if ( "null?( ok )" ) ok:begin( false )
 			else if ( ok ) q:inc; -- account for final match
 		}
 		

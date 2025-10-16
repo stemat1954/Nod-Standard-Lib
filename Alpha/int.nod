@@ -61,11 +61,11 @@ type int -- elementary, compatible, conventional
 		store ( mediator [upd], expr fex );		-- ditto
 
 
-		is_equal? ( int n )( bool );			-- equality
+		equal? ( int n )( bool );			-- equality
 				
-		is_before? ( int n )( bool );			-- ordinality ( same as is_less? )
+		before? ( int n )( bool );			-- ordinality ( same as less? )
 
-		is_less? ( int n )( bool );				-- cardinality ( same as is_before? )
+		less? ( int n )( bool );				-- cardinality ( same as before? )
 
 
 		set [upd]( int n );						-- intrinsic replace

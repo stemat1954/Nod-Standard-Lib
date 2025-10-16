@@ -78,11 +78,11 @@ type word<#> -- elementary, compatible (up to word32), conventional
 		store ( mediator [upd], expr fex ) ;	
 		
 
-		is_equal? ( word<<#>> w )( bool );
+		equal? ( word<<#>> w )( bool );
 
-		is_before? ( word<<#>> w )( bool );
+		before? ( word<<#>> w )( bool );
 
-		is_less? ( word<<#>> w )( bool );
+		less? ( word<<#>> w )( bool );
 	
 		is_zero? ()( bool );
 

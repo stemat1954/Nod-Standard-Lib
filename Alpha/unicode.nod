@@ -3,7 +3,7 @@ page unicode in AlphaByNod
 
 type unicode from enumerated
 {{
-	label = 'U+xxxxxx' where x is hex digit
+	notation = 'U+xxxxxx' where x is hex digit
 
 	Unicode properties are standardized and defined in a
 	public Unicode Character Database (UCD).  The UCD is 
@@ -39,8 +39,8 @@ type unicode from enumerated
 
 		get_notation ()( expr );
 
-		is_before? ( unicode )( bool );
+		before? ( unicode )( bool );
 
-		is_equal? ( unicode )( bool );
+		equal? ( unicode )( bool );
 	}
 }

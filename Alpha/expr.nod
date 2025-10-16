@@ -67,7 +67,7 @@ type expr from contiguous<ascii> -- intrinsic, conventional
 	been initialized, it cannot be changed.
 
 	Several methods are provided for expr analysis: 
-	:get_length(), :is_equal? and :is_before?, :extract, 
+	:get_length(), :equal? and :before?, :extract, 
 	:find, and :scan.
 	
 	:extract methods extract ascii character objects. See
@@ -96,9 +96,9 @@ type expr from contiguous<ascii> -- intrinsic, conventional
 
 		store ( mediator [upd], expr fex ) ;
 
-		is_equal? ( expr other, int q [opt] )( bool ); 
+		equal? ( expr other, int q [opt] )( bool ); 
 
-		is_before? ( expr other )( bool );
+		before? ( expr other )( bool );
 
 		get_length ()( int );
 

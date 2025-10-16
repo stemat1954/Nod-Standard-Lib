@@ -20,7 +20,7 @@ type analog  -- intrinsic,restricted
 {
 	general
 	{
-		is_void? ()( bool );
+		void? ()( bool );
 
 		is_not_void? ()( bool );
 

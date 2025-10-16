@@ -39,9 +39,9 @@ type addr 	-- compatible
 
 		store ( mediator [upd], expr fex [opt] );	 
 
-		is_equal? ( addr other )( bool );
+		equal? ( addr other )( bool );
 
-		is_before? ( addr other )( bool );
+		before? ( addr other )( bool );
 	}
 }
 

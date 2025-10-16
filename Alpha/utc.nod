@@ -145,11 +145,11 @@ type utc  -- conventional
 		store ( mediator [upd], expr fex );
 
 
-		is_equal? ( utc t )( bool );
+		equal? ( utc t )( bool );
 
-		is_before? ( utc t )( bool );
+		before? ( utc t )( bool );
 
-		is_less? ( utc t )( bool );	
+		less? ( utc t )( bool );	
 
 	
 		update [upd];		-- "now"

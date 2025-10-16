@@ -63,11 +63,11 @@ type fp2 -- elementary, compatible, conventional
 		store ( mediator [upd], expr fex );		-- mediation
 
 
-		is_equal? ( fp2 n )( bool );			-- equality
+		equal? ( fp2 n )( bool );			-- equality
 		
-		is_before? ( fp2 n )( bool );			-- ordinality (same as is_less?)
+		before? ( fp2 n )( bool );			-- ordinality (same as less?)
 
-		is_less? ( fp2 n )( bool );				-- cardinality (same as is_before?)
+		less? ( fp2 n )( bool );				-- cardinality (same as before?)
 
 
 		set [upd]( fp2 n );						-- intrinsic replace
@@ -176,11 +176,11 @@ type fp10 -- elementary, compatible, conventional
 		store ( mediator [upd], expr fex );		-- mediation
 
 
-		is_equal? ( fp10 n )( bool );			-- equality
+		equal? ( fp10 n )( bool );			-- equality
 		
-		is_before? ( fp10 n )( bool );			-- ordinality (same as is_less?)
+		before? ( fp10 n )( bool );			-- ordinality (same as less?)
 
-		is_less? ( fp10 n )( bool );			-- cardinality (same as is_before?)
+		less? ( fp10 n )( bool );			-- cardinality (same as before?)
 
 		
 		set [upd]( fp10 n );					-- intrinsic replace

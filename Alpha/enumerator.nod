@@ -12,7 +12,7 @@ type <t>enumerator  -- intrinsic, restricted
 	an associated compiler object that defines individual
 	mappings from <t> to int for every enumerated item. The
 	<t> values must be unique and rankable using standard 
-	method :is_before?;
+	method :before?;
 	
 	At runtime, the HNM calls :enumerate to get a corre-
 	sponding integer value for a given object.

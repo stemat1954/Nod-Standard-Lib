@@ -30,11 +30,11 @@ type cplx
 		store ( mediator [upd], expr fex );	-- mediation
 
 
-		is_equal? ( cplx n )( bool );		-- equality
+		equal? ( cplx n )( bool );		-- equality
 						
-		is_before? ( cplx n )( bool );		-- ordinality (same as is_less?)
+		before? ( cplx n )( bool );		-- ordinality (same as less?)
 
-		is_less? ( cplx n )( bool );		-- cardinality (same as is_before?)
+		less? ( cplx n )( bool );		-- cardinality (same as before?)
 
 		is_zero? ()( bool );
 

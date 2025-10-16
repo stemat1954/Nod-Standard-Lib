@@ -75,11 +75,11 @@ type etm  -- conventional
 		begin ( mediator [upd], expr fex );			
 		store ( mediator [upd], expr fex );	
 
-		is_equal? ( etm other )( bool );
+		equal? ( etm other )( bool );
 
-		is_before? ( etm other )( bool );
+		before? ( etm other )( bool );
 		
-		is_less? ( etm other )( bool );
+		less? ( etm other )( bool );
 	
 		as_int = int proxy [eval];	-- may be void
 

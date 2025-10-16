@@ -143,7 +143,7 @@ subroutine -- selectors
 		  fix( offset, zero ) ~offset;
 	}}
 	{
-		if ( "is_not_null?( a )" ) ~o -> a else ~o -> b;
+		if ( "not_null?( a )" ) ~o -> a else ~o -> b;
 	}
 }
 
@@ -181,9 +181,9 @@ subroutine  --  coroutines
 		b:begin( *a );
 	}
 
-	std_before<t> ( <t> a, <t> b )( bool yes ) -- a before b ? using <t> is_before?
+	std_before<t> ( <t> a, <t> b )( bool yes ) -- a before b ? using <t> before?
 	{
-		a:is_before?( b )( yes );
+		a:before?( b )( yes );
 	}
 
 }
@@ -191,11 +191,11 @@ subroutine  --  coroutines
 
 
 {{
-	Equality operators are backed by :is_equal?.
+	Equality operators are backed by :equal?.
 
-	Ordinal operators are backed by :is_before?.
+	Ordinal operators are backed by :before?.
 
-	Cardinal operators are backed by :is_less?.
+	Cardinal operators are backed by :less?.
 
 	Logical operators are backed by :and, :or, :xor, :not.
 
@@ -220,29 +220,29 @@ subroutine  --  coroutines
 
 operation	-- equality  
 {
-	"a |=| b"		= "is_equal?( a, b )";
-	"a |not=| b"	= "not( is_equal?( a, b ) )";
+	"a |=| b"		= "equal?( a, b )";
+	"a |not=| b"	= "not( equal?( a, b ) )";
 }
 
 
 operation	-- ordinality
 {
-	"a |before| b"		= "is_before?( a, b )";		
-	"a |after| b"		= "is_before?( b, a )";
-	"a |par| b"			= "not( or( is_before?( a, b ), is_before?( b, a ) ) )";
+	"a |before| b"		= "before?( a, b )";		
+	"a |after| b"		= "before?( b, a )";
+	"a |par| b"			= "not( or( before?( a, b ), before?( b, a ) ) )";
 }
 
 
 operation	-- cardinality 
 {
-	"a |<| b"		= "is_less?( a, b )";
-	"a |>| b"		= "is_less?( b, a )";
+	"a |<| b"		= "less?( a, b )";
+	"a |>| b"		= "less?( b, a )";
 
-	"a |not<| b"	= "not( is_less?( a, b ) )";
-	"a |>=| b"		= "not( is_less?( a, b ) )";
+	"a |not<| b"	= "not( less?( a, b ) )";
+	"a |>=| b"		= "not( less?( a, b ) )";
 
-	"a |not>| b"	= "not( is_less?( b, a ) )";
-	"a |<=| b"		= "not( is_less?( b, a ) )";  
+	"a |not>| b"	= "not( less?( b, a ) )";
+	"a |<=| b"		= "not( less?( b, a ) )";  
 }
 
 

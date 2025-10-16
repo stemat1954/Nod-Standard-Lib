@@ -31,7 +31,7 @@ page text_channel in StockByNod
 		loop
 		{
 			read_channel_chr( *reader, *tm )( error );
-			if ( "is_not_null?( error )" ) escape;
+			if ( "not_null?( error )" ) escape;
 
 			need:dec;
 			if ( "need |=| zero" ) escape;
@@ -44,7 +44,7 @@ page text_channel in StockByNod
 		loop
 		{
 			read_channel_chr( *reader, *tm )( error );
-			if ( "is_not_null?( error )" ) escape;
+			if ( "not_null?( error )" ) escape;
 
 			tm:read()( unicode c2 );  -- last char
 			if ( "c2 |=| c" ) escape;
@@ -57,7 +57,7 @@ page text_channel in StockByNod
 	{
 		tm:reserve;  -- one code point
 		read_channel( *reader, *tm )( error );
-		if ( "is_null?( error )" )
+		if ( "null?( error )" )
 		{
 			tm:reserve()( bool again );
 			if ( again ) read_channel( *reader, *tm )( error );
@@ -74,7 +74,7 @@ page text_channel in StockByNod
 			if ( "report |=| 'good'" ) escape;
 			
 			evaluate_transfer( report, note )( error );
-			if ( "is_not_null?( error)" ) escape;
+			if ( "not_null?( error)" ) escape;
 		}
 	}
 
@@ -87,7 +87,7 @@ page text_channel in StockByNod
 			if ( "report |=| 'good'" ) escape;
 			
 			evaluate_transfer( report, note )( error );
-			if ( "is_not_null?( error)" ) escape;
+			if ( "not_null?( error)" ) escape;
 		}
 	}
 
@@ -105,7 +105,7 @@ page text_channel in StockByNod
 			value ( 'error' )
 			{	
 				text_mediator tm:begin( 'channel error [' );
-				if ( "is_not_null?( note )" ) tm:write( note );
+				if ( "not_null?( note )" ) tm:write( note );
 				tm:write( ']' );
 				tm:detach()( error );
 			}

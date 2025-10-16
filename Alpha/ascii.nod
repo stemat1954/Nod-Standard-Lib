@@ -119,9 +119,9 @@ type ascii from enumerated
 
 		get_notation ()( expr );
 
-		is_before? ( ascii )( bool );
+		before? ( ascii )( bool );
 
-		is_equal? ( ascii )( bool );
+		equal? ( ascii )( bool );
 
 		is_standard? ()( bool );		-- not extended
 

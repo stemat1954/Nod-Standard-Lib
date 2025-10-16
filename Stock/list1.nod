@@ -1,13 +1,12 @@
 
-page list in StockByNod
+page list1 in StockByNod
 
 {{
 	public types on this page...
 
 	link1	
 	node1
-
-	list  
+	list1  
 
 	<t>list  - typed list
 	<t>stack  - typed stack	
@@ -35,7 +34,7 @@ type node1 [incomplete]
 
 		get_next ()( link1 )
 		{
-			if ( "is_not_null?( io.next )" ) given\link1:begin( io.next );
+			if ( "not_null?( io.next )" ) given\link1:begin( io.next );
 		}
 
 		set_next [upd]( link1 )
@@ -66,16 +65,16 @@ type node1 [incomplete]
 	{
 		begin ( link1 [opt] )
 		{
-			if ( "is_not_null?( given\link1 )" ) io.link1:begin( given\link1 );
+			if ( "not_null?( given\link1 )" ) io.link1:begin( given\link1 );
 		}
 
 		move [upd]
 		{
-			if ( "is_not_null?( io.link1 )" ) 
+			if ( "not_null?( io.link1 )" ) 
 			{
 				io.link1:deref:get_next()( link1 next );
 				io.link1:recycle;
-				if ( "is_not_null?( next )" ) io.link1:begin( next );
+				if ( "not_null?( next )" ) io.link1:begin( next );
 			}
 		}
 
@@ -86,7 +85,7 @@ type node1 [incomplete]
 
 		use = node1 proxy  ~n
 		{
-			if ( "is_not_null?( io.link1 )" ) ~n -> io.link1:deref; 
+			if ( "not_null?( io.link1 )" ) ~n -> io.link1:deref; 
 		}
 	}
 
@@ -98,7 +97,7 @@ type node1 [incomplete]
 
 
 
-type list from sequential<node1><cursor1>
+type list1 from sequential<node1><cursor1>
 {{
 	One-way linked list with untyped nodes.
 
@@ -182,9 +181,9 @@ type list from sequential<node1><cursor1>
 			io:as_base<sequential<node1><cursor1>>:begin;
 		}
 
-		begin ( list other [upd] )  -- take 
+		begin ( list1 other [upd] )  -- take 
 		{
-			if ( "is_not_null?( other.first )" )
+			if ( "not_null?( other.first )" )
 			{
 				-- ignore current in other
 				io.first:begin( *other.first );  
@@ -195,27 +194,27 @@ type list from sequential<node1><cursor1>
 
 		is_empty? ()( bool yes )
 		{
-			io.first:is_null?()( yes );
+			io.first:null?()( yes );
 		}
 		
 		get_first ()( link1 )
 		{
-			if ( "is_not_null?( io.first )" ) given\link1:begin( io.first );
+			if ( "not_null?( io.first )" ) given\link1:begin( io.first );
 		}
 
 		get_last ()( link1 )
 		{
-			if ( "is_not_null?( io.last )" ) given\link1:begin( io.last );
+			if ( "not_null?( io.last )" ) given\link1:begin( io.last );
 		}
 
 		get_current ()( link1 )
 		{
-			if ( "is_not_null?( io.current )" ) given\link1:begin( io.current );
+			if ( "not_null?( io.current )" ) given\link1:begin( io.current );
 		}
 
 		get_next ()( link1 ) 
 		{
-			if ( "is_not_null?( io.current )" ) io.current:deref:get_next()( given\link1 );
+			if ( "not_null?( io.current )" ) io.current:deref:get_next()( given\link1 );
 		}
 		
 
@@ -226,24 +225,24 @@ type list from sequential<node1><cursor1>
 
 		go_first [upd]
 		{
-			if ( "is_not_null?( io.first )" ) io.current <= io.first;
+			if ( "not_null?( io.first )" ) io.current <= io.first;
 		}
 
 		go_last [upd]
 		{
-			if ( "is_not_null?( io.last )" ) io.current <= io.last;
+			if ( "not_null?( io.last )" ) io.current <= io.last;
 		}
 
 		go_next [upd]
 		{
-			if ( "is_null?( io.current )" )
+			if ( "null?( io.current )" )
 			{
-				if ( "is_not_null?( io.first )" ) io.current <= io.first;
+				if ( "not_null?( io.first )" ) io.current <= io.first;
 			}
 			else
 			{
 				io.current:deref:get_next()( link1 nl ); 
-				if ( "is_not_null?( nl )" ) io.current <= nl;
+				if ( "not_null?( nl )" ) io.current <= nl;
 			}
 		}
 
@@ -251,20 +250,32 @@ type list from sequential<node1><cursor1>
 		{
 			io.current <= given\link1;
 		}
+
+		go_more [upd]( int qi )( int qo )
+		{
+			qo:begin;
+			loop
+			{
+				io:get_next()( link1 nl );
+				if ( "null?( nl )" ) escape;
+				io.current <= nl;
+				if ( qo:inc:equal?( qi )( =bool ) ) escape;
+			}
+		}
 				
 		insert [upd]( link1 )  -- after current  
 		{
 			given\link1:deref[upd]:unlink;  -- just in case
-			if ( "is_not_null?( io.current )" )  
+			if ( "not_null?( io.current )" )  
 			{
 				-- after current
 				io.current:deref[upd]:get_next()( link1 before ):set_next( given\link1 ); 
-				if ( "is_null?( before )" )
+				if ( "null?( before )" )
 					io.last <= given\link1 
 				else
 					given\link1:deref[upd]:set_next( before );
 			}
-			else if ( "is_not_null?( io.first )" )
+			else if ( "not_null?( io.first )" )
 			{
 				-- front (before first)
 				given\link1:deref[upd]:set_next( io.first );
@@ -280,24 +291,24 @@ type list from sequential<node1><cursor1>
 
 		remove_next [upd]
 		{
-			if ( "is_not_null?( io.current )" ) 
+			if ( "not_null?( io.current )" ) 
 			{
 				-- node after current
 				io.current:deref:get_next()( link1 next );
-				if ( "is_not_null?( next )" ) 
+				if ( "not_null?( next )" ) 
 				{
 					next:deref[upd]:get_next()( link1 next_next ):unlink;
-					if ( "is_null?( next_next )" )
+					if ( "null?( next_next )" )
 						io.last <= io.current -- new last
 					else 
 						io.current:deref[upd]:set_next( next_next );
 				}
 			}
-			else if ( "is_not_null?( io.first )" ) 
+			else if ( "not_null?( io.first )" ) 
 			{
 				-- first node
 				io.first:deref[upd]:get_next()( link1 next_next ):unlink;
-				if ( "is_null?( next_next )" )
+				if ( "null?( next_next )" )
 				{
 					-- list is empty now
 					io.first:recycle;
@@ -360,7 +371,7 @@ type list from sequential<node1><cursor1>
 }
 
 
-type <t>list from list
+type <t>list from list1
 {
 	nom type t_list = <<t>>list;
 
@@ -371,12 +382,12 @@ type <t>list from list
 	{
 		begin  -- empty
 		{
-			io:as_base<list>:begin;
+			io:as_base<list1>:begin;
 		}
 
 		begin ( t_list other [upd] ) -- take
 		{
-			io:as_base<list>:begin( *other:as_base<list> );
+			io:as_base<list1>:begin( *other:as_base<list1> );
 		}
 
 
@@ -386,7 +397,7 @@ type <t>list from list
 			{
 				link1 nl:begin<t_node1>:begin is <t> proxy [init] ~new_t;
 				~new_t:begin( ~n:as<<t>> );  
-				io:as_base<list>:insert( nl ):go_next;
+				io:as_base<list1>:insert( nl ):go_next;
 			}
 		}
 
@@ -397,67 +408,67 @@ type <t>list from list
 				link1 nl:begin<t_node1>:begin is <t> proxy [init] ~new_t;  
 				
 				copier( ~n:as<<t>> )( ~new_t );
-				io:as_base<list>:insert( nl ):go_next;
+				io:as_base<list1>:insert( nl ):go_next;
 			}
 		}
 
 		insert [upd] = <t> proxy [init] ~t  -- after current
 		{
 			~t -> link1 nl:begin<t_node1>:begin; -- null
-			io:as_base<list>:insert( nl );
+			io:as_base<list1>:insert( nl );
 		}
 
 		use_first = <t> proxy [eval,init] ~t  -- may be void
 		{
-			io:as_base<list>:get_first()( link1 nl );
-			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			io:as_base<list1>:get_first()( link1 nl );
+			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		use_last = <t> proxy [eval,init] ~t -- may be void
 		{
-			io:as_base<list>:get_last()( link1 nl );
-			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			io:as_base<list1>:get_last()( link1 nl );
+			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		use_current = <t> proxy [eval,init] ~t -- may be void
 		{
-			io:as_base<list>:get_current()( link1 nl );
-			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			io:as_base<list1>:get_current()( link1 nl );
+			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		use_next = <t> proxy [eval,init] ~t -- may be void
 		{
-			io:as_base<list>:get_next()( link1 nl );
-			if ( "is_not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			io:as_base<list1>:get_next()( link1 nl );
+			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		remove_next [upd] ()( <t> next )  -- with <t> copy
 		{
-			io:as_base<list>:get_next()( link1 nl );
-			if ( "is_not_null?( nl )" ) 
+			io:as_base<list1>:get_next()( link1 nl );
+			if ( "not_null?( nl )" ) 
 			{
 				next:begin( nl:deref:as<<t>> );
-				io:as_base<list>:remove_next;
+				io:as_base<list1>:remove_next;
 			}
 		}
 
 		remove_next [upd] ()( <t> next ) with copier ( <t> )( <t> )
 		{
-			io:as_base<list>:get_next()( link1 nl );
-			if ( "is_not_null?( nl )" ) 
+			io:as_base<list1>:get_next()( link1 nl );
+			if ( "not_null?( nl )" ) 
 			{
 				copier( nl:deref:as<<t>> )( next );
-				io:as_base<list>:remove_next;
+				io:as_base<list1>:remove_next;
 			}
 		}
 				
 		remove_next [upd] ()( <t> next ) with taker ( <t> [upd] )( <t> )
 		{
-			io:as_base<list>:get_next()( link1 nl );
-			if ( "is_not_null?( nl )" ) 
+			io:as_base<list1>:get_next()( link1 nl );
+			if ( "not_null?( nl )" ) 
 			{
 				taker( *nl:deref:as<<t>> )( next );
-				io:as_base<list>:remove_next;
+				io:as_base<list1>:remove_next;
 			}
 		}
 	}
@@ -466,7 +477,7 @@ type <t>list from list
 
 type <t>stack 
 {{
-	last-in-first-out (lifo) list
+	last-in-first-out (lifo) list1
 
 	front is current and doesn't change.
 

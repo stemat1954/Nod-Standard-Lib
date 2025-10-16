@@ -29,7 +29,7 @@ type bool  -- elementary, intrinsic, compatible, conventional
 		begin ( mediator [upd], expr fex );	
 		store ( mediator [upd], expr fex );
 
-		is_equal? ( bool other )( bool );
+		equal? ( bool other )( bool );
 	
 		and [upd]( bool other );
 		and	[eval]( bool other )( bool );

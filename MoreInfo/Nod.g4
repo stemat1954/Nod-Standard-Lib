@@ -260,7 +260,7 @@ conversion				: conversion_obj conversion_chain
 						;
 
 
-assignment_obj			: LITERAL
+assignment_input		: LITERAL
 						| FID
 						| formula
 						| method_call_sequence
@@ -268,10 +268,12 @@ assignment_obj			: LITERAL
 						| conversion
 						;
 
-assignment_ref			: FID	
+assignment_obj			: FID	
+						| method_call_sequence
+						| subroutine_call
 						;
 
-assignment				: assignment_ref ASSIGN ASTERISK? assignment_obj 
+assignment				: assignment_obj ASSIGN ASTERISK? assignment_input 
 						;
 
 

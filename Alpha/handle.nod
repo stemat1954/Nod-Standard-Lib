@@ -28,7 +28,7 @@ type handle -- compatible
 
 		store ( mediator [upd], expr fex [opt ] );
 
-		is_equal? ( handle other )( bool );
+		equal? ( handle other )( bool );
 	}
 }
 

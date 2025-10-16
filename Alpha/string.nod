@@ -72,9 +72,9 @@ type string from contiguous<unicode>
 		get_length ()( int );
 
 
-		is_equal? ( string other, int q [opt] )( bool ); 
+		equal? ( string other, int q [opt] )( bool ); 
 
-		is_before? ( string other )( bool );
+		before? ( string other )( bool );
 
 
 		extract ( int i, int q )( string );	-- sub-expression
