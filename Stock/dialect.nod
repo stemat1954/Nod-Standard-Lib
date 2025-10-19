@@ -1,5 +1,5 @@
 
-page conventional in StockByNod
+page dialect in StockByNod
 
 {{
 	Useful types, subroutines, operations, and constants
@@ -12,7 +12,6 @@ page conventional in StockByNod
 common -- compatible pseudo null 
 {
 	addr no_addr:begin [const];	 
-	
 	handle no_handle:begin [const];		
 }
 
@@ -20,7 +19,6 @@ common -- compatible pseudo null
 common -- bool
 {
 	bool true:begin( 'true' ) [const];
-
 	bool false:begin( 'false' ) [const];
 }
 
@@ -28,29 +26,18 @@ common -- bool
 common -- int
 {
 	int int_min:begin( 'min' ) [const];
-
 	int int_max:begin( 'max' ) [const];
 
 	int zero:begin( '0' ) [const];
-
 	int one:begin( '1' ) [const];
-
 	int two:begin( '2' ) [const];
-
 	int three:begin( '3' ) [const];
-
 	int four:begin( '4' ) [const];
-
 	int five:begin( '5' ) [const];
-
 	int six:begin( '6' ) [const];
-
 	int seven:begin( '7' ) [const];
-
 	int eight:begin( '8' ) [const];
-
 	int nine:begin( '9' ) [const];
-
 	int ten:begin( '10' ) [const];
 
 	int neg_one:begin( '-1' ) [const];
@@ -59,13 +46,9 @@ common -- int
 common -- fp2
 {
 	fp2 fp2_max:begin( 'max' ) [const];
-
 	fp2 fp2_min:begin( 'min' ) [const];
-
 	fp2 fp2_epsilon:begin( 'epsilon' ) [const];
-
 	fp2 fp2_nan:begin( 'nan' ) [const];
-
 	fp2 fp2_infinity:begin( '+infinity' ) [const];
 }
 
@@ -73,13 +56,9 @@ common -- fp2
 common -- fp10
 {
 	fp10 fp10_max:begin( 'max' ) [const];
-
 	fp10 fp10_min:begin( 'min' ) [const];
-
 	fp10 fp10_epsilon:begin( 'epsilon' ) [const];
-
 	fp10 fp10_nan:begin( 'nan' ) [const];
-
 	fp10 fp10_infinity:begin( '+infinity' ) [const];
 }
 
@@ -99,37 +78,11 @@ nom type
 }
 
 
-
 enum type sign ( 'zero', 'positive', 'negative' );
 
 
 subroutine -- selectors
 {
-	choose ( bool a?, object a [opt], object b [opt] ) = object proxy ~o 
-	{{
-		This subroutine selector chooses from two given
-		inputs a and b based on the value of a given bool
-		a?.  If a? is true, then a is chosen.  Otherwise, 
-		b is chosen.
-
-		a nd b are not evaluated and may be null.
-
-		The result proxy is indefinite and virtual, so type
-		and access must be resolved on the call-side. This
-		allows for general utility at the expense of runtime 
-		validation.
-		
-		Example:
-
-		  choose( citrus?, apple, orange )[eval]:as<fruit>
-
-		  choose( ok?, 'no error', 'failed' ):as_actual<expr>
-	}}
-	{
-		if ( a? ) ~o -> a else ~o -> b;
-	}
-
-
 	fix<t> ( <t> a [opt], <t> b [opt] ) = <t> proxy [eval] ~o
 	{{
 		This subroutine selector is used to "fix" inputs
@@ -144,6 +97,29 @@ subroutine -- selectors
 	}}
 	{
 		if ( "not_null?( a )" ) ~o -> a else ~o -> b;
+	}
+
+
+	choose<t> ( bool a?, <t> a [opt], <t> b [opt] ) = <t> proxy ~o 
+	{{
+		This subroutine selector chooses from two given
+		inputs a and b based on the value of a given bool
+		a?.  If a? is true, then a is chosen.  Otherwise, 
+		b is chosen.
+
+		a nnd b are not evaluated and may be null.
+
+		The result proxy is indefinite, so access must be 
+		resolved on the call-side. 
+		
+		Example:
+
+		  choose<fruit>( citrus?, apple, orange )[upd]:set_something
+
+		  choose<expr>( ok?, 'no error', 'failed' )
+	}}
+	{
+		if ( a? ) ~o -> a else ~o -> b;
 	}
 }
 
@@ -200,8 +176,8 @@ subroutine  --  coroutines
 	Logical operators are backed by :and, :or, :xor, :not.
 
 	Arithmetic operators are backed by :add, :sub, :mul,
-	:div, :neg, :pow, :dot.
-
+	:div, :neg, :pow, :dot.  Note the five universal
+	operators that don't require delimiters.
 
 	Following example demonstrates how operations and 
 	formulas reduce code.  These are equivalent bool
