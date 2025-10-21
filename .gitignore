@@ -363,8 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #Nod
-/build.bat
-/rebuild.bat
-/make.ddl.txt
+build.bat
+rebuild.bat
+make.ddl.txt
 output/
 
