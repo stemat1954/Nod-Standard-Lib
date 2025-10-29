@@ -1,0 +1,75 @@
+page leetcode_health in ExamplesByNod
+
+nom type field =  array< array<int> >;  -- not a good public name
+
+subroutine determine_health_needed ( field f )( int need )
+{{
+	https://leetcode.com/problems/dungeon-game/
+
+	Given a 2D field of integers where each position con-
+	tributes a value (positive or negative) to the "health"
+	of a hypothetical player. 
+
+	By problem definition, paths are strictly increasing in 
+	one dimension only. That is, each step increments a 
+	single index (player moves right or down in each step).
+	
+	Find the best path through the field to get from (0,0)
+	to (m,n) where m and n are max indices.
+	
+	The best path is the path that requires least starting
+	value and never goes below one.  The result is stated
+	as the value needed to traverse the field without going
+	below one.
+
+	Solution: Recursively walk every path in the field
+	keeping track of sum and drawdown. The best path is the 
+	path with the least drawdown D, and the result is 1 - D.
+}}
+{
+	walk_field( f, zero, zero, zero, zero )( int drawdown ); 
+	need:begin( one ):sub( drawdown );
+}
+
+
+[page] subroutine walk_field ( field f, int i, int j, int sum, int drawdown )( int sub_drawdown ) -- recursive
+{{
+	This routine recursively walks given field f starting
+	at cell (i,j).  i and j are valid indices in f.
+	
+	Conceptually, the routine walks a binary tree with right
+	and down branches, calculating sum and drawdown on the 
+	descent, while summarizing on the return ascent.
+	
+	Output sub_drawdown in the "better" drawdown between the
+	two branches.  Better means less "cost," which is the
+	greater arithmetic value (drawdown is always negative).
+}}
+{
+	f:use( i ) is ~row;
+	~row:use( j ) is ~cell;
+
+	int new_sum:begin( sum ):add( ~cell );
+	choose<int>( "new_sum |<| drawdown", new_sum, drawdown ) is ~new_drawdown;
+
+	f:count()( =int imax ):sub( one ); -- max down
+	~row:count()( =int jmax ):sub( one );  -- max right
+
+	int drawdown_i;
+	int drawdown_j;
+
+	if ( "i |<| imax" ) walk_field( f, "i + one", j, new_sum, ~new_drawdown )( drawdown_i );  -- recursion
+	if ( "j |<| jmax" ) walk_field( f, i, "j + one", new_sum, ~new_drawdown )( drawdown_j );	-- recursion
+
+	drawdown_i:not_null?()( bool use_i );
+	drawdown_j:not_null?()( bool use_j );
+
+	if ( "use_i |and| use_j" )
+		sub_drawdown:begin( choose<int>( "drawdown_i |>| drawdown_j", drawdown_i, drawdown_j ) )  -- lesser drawdown = greater of i and j 
+	else if ( "not( use_i ) |and| not( use_j )" )
+		sub_drawdown:begin( ~new_drawdown )		-- final cell
+	else if ( use_i )
+		sub_drawdown:begin( drawdown_i )		-- no j branch
+	else  -- use_j
+		sub_drawdown:begin( drawdown_j );		-- no i branch
+}

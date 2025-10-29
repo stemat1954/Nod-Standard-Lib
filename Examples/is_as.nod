@@ -1,0 +1,99 @@
+page is_as in ExamplesByNod
+
+[page] type thing
+{
+	general method
+	{
+		begin
+		{
+			io.x:begin;
+		}
+
+		use_x = int proxy [eval,init] ~x
+		{
+			~x -> io.x;
+		}
+	}
+
+	instance
+	{
+		int x;
+	}
+}
+
+
+[page] type widget from thing
+{
+	general method 
+	{
+		begin
+		{
+			io:as_base<thing>:begin;
+			io.y:begin;
+		}
+
+		use_y = int proxy [eval,init] ~y
+		{
+			~y -> io.y;
+		}
+	}
+
+	instance
+	{
+		int y;
+	}
+}
+
+
+[page] type gadget from widget
+{
+	general method begin
+	{
+		io.z:begin;
+	}
+
+	instance
+	{
+		int z;
+	}
+}
+
+
+[page] subroutine demo ( thing t, widget w )
+{
+	t:is<object>?()( =bool );			-- warning: always true
+	t:is_actual<thing>?()( =bool );		-- warning: always true
+	t:is<widget>?()( =bool );			-- warning: always false
+	w:is_actual<thing>?()( =bool );		-- warning: always false
+	w:is<thing>?()( =bool );			-- warning: always true
+	w:is<int>?()( =bool );				-- warning: always false
+
+	t:as<object>;						-- warning: replaced with base type
+
+	{{
+		t:as<widget>;					-- error: can't translate direct obj ref to subtype 
+		w:as<widget>;					-- error: extraneous translation to same type
+		w:as_actual<widget>;			-- error: extraneous translation to same type
+		w:as_base<int>;					-- error: adhoc type is not a base of lead
+	}}
+	
+	w:as_base<thing>;					-- ok 
+
+	thing proxy ~t -> w;				-- ok (eval permission)
+
+	~t:is<object>?()( =bool );			-- warning: always true
+	~t:is<widget>?()( =bool );			-- ok, runtime true
+	~t:is_actual<object>?()( =bool );	-- warning: always false
+	~t:is<int>?()( =bool );				-- ok, runtime false
+
+	{{
+		~t:as_actual<int>;				-- error: lead type not related to adhoc type
+	}}
+	
+	~t:as<widget>;						-- ok, runtime good
+	~t:as_actual<widget>;				-- ok, runtime good
+	~t:as<gadget>;						-- ok, runtime void
+	~t:as_actual<gadget>;				-- ok, runtime void
+	
+}
+

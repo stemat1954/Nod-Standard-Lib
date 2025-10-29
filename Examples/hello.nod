@@ -13,7 +13,7 @@ subroutine hello
 
 
 
-subroutine main ( signal active [upd], signal stop )()( extra )
+subroutine run ( signal active [upd], signal stop )()( extra )
 {{
 	This is an example of a general subroutine entry point. 
 	
@@ -90,7 +90,7 @@ type main_thread from entry
 				-- unremark one of these calls:
 
 				--hello;  
-				--main( *active, stop );  
+				--run( *active, stop );  
 
 				report:begin( 'normal exit' );
 			}
