@@ -16,7 +16,7 @@ type disruption from contiguous<trace>  -- intrinsic, restricted
 
 	Note:  See alpha\trace for details.
 
-	trace objects can be counted and accessed using direct_
+	trace objects can be counted and accessed using contiguous
 	access methods.
 		
 	The current disruption object can only be referenced 

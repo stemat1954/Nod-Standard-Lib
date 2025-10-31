@@ -8,29 +8,32 @@ subroutine
 {
 	exact_match? ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool yes )
 	{{
-		This coroutine works for all character sets. Characters
+		This routine works for all character sets. Characters
 		in the pattern mediator and input characters are matched 
 		one-for-one	exactly by code-point value.
 
 		If output is null, the match is pending.
 	}}
 	{
+		-- to do
 	}
 
 
 	similar_match? ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool yes )
 	{{
-		This coroutine matches consecutive white-space in the 
+		This routine matches consecutive white-space in the 
 		pattern mediator to consecutive input white-space, and 
 		matches pattern letters	to input letters regardless	of
 		case.
 	}}
 	{
+		-- to do
 	}
 
 
 	regex_match? ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool yes )
 	{
+		-- to do
 	}
 
 }
@@ -406,7 +409,7 @@ type text_mediator from mediator
 			}
 		}
 			
-		seek [upd]( text_mediator ptm [upd], sign d [opt] )( int q ) -- compatible pattern with coroutine, q = chars matched (zero = no match)
+		seek [upd]( text_mediator ptm [upd], sign d [opt] )( int q ) -- compatible pattern with helper, q = chars matched (zero = no match)
 		 with helper ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool )
 		{
 			if ( "not( compare( io, ptm ) )" ) quit with fault:begin( 'bug', 'incompatible pattern mediator' );

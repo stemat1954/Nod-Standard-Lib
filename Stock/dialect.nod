@@ -145,7 +145,7 @@ subroutine	-- string conversion
 }
 
 
-subroutine  --  coroutines
+subroutine  --  standard subroutine wrappers
 {
 	std_copy<t> ( <t> a )( <t> b ) -- from a to b using <t> copy
 	{
