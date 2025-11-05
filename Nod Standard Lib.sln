@@ -57,8 +57,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stock", "Stock", "{F427C3C9
 	ProjectSection(SolutionItems) = preProject
 		Stock\channel.nod = Stock\channel.nod
 		Stock\console.nod = Stock\console.nod
-		Stock\list1.nod = Stock\list1.nod
 		Stock\dialect.nod = Stock\dialect.nod
+		Stock\list1.nod = Stock\list1.nod
 		Stock\system.nod = Stock\system.nod
 		Stock\text_channel.nod = Stock\text_channel.nod
 		Stock\text_mediator.nod = Stock\text_mediator.nod
@@ -75,8 +75,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MoreInfo", "MoreInfo", "{B6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{11914058-D381-4A57-9417-C19AC0267AE9}"
 	ProjectSection(SolutionItems) = preProject
-		Examples\demo1.nod = Examples\demo1.nod
+		Examples\codechef_reverse.nod = Examples\codechef_reverse.nod
 		Examples\hello.nod = Examples\hello.nod
+		Examples\is_as.nod = Examples\is_as.nod
+		Examples\leetcode_health.nod = Examples\leetcode_health.nod
+		Examples\leetcode_index.nod = Examples\leetcode_index.nod
+		Examples\leetcode_median.nod = Examples\leetcode_median.nod
+		Examples\leetcode_reverse.nod = Examples\leetcode_reverse.nod
+		Examples\portability.nod = Examples\portability.nod
+		Examples\public_const.nod = Examples\public_const.nod
+		Examples\stack&queue.nod = Examples\stack&queue.nod
 	EndProjectSection
 EndProject
 Global
