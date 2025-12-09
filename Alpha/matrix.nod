@@ -66,24 +66,24 @@ type matrix<t><#r><#c>
 		use_entry [eval]( int i, int j ) = <t> proxy [eval,init];
 
 
-		add [upd]( same_type m );					-- add:  io <= io + m 
+		add [upd]( same_type m );					-- add:  io := io + m 
 		add [eval]( same_type m1 )( same_type m2 );
 
-		sub [upd]( same_type m );					-- subtract: io <= io - m
+		sub [upd]( same_type m );					-- subtract: io := io - m
 		sub [eval]( same_type m1 )( same_type m2 );
 
-		mul [upd]( <t> n );							-- multiply: io <= io * n 
+		mul [upd]( <t> n );							-- multiply: io := io * n 
 		mul [eval]( <t> n )( same_type m );
 
-		div [upd]( <t> n );							-- divide: io <= io / n 
+		div [upd]( <t> n );							-- divide: io := io / n 
 		div [eval]( <t> n )( same_type m ); 
 
-		neg [upd];									-- negate: io <= -io
+		neg [upd];									-- negate: io := -io
 		neg [eval]()( same_type m );
 				
-		dot<#n> [eval]( co_matrix<<#n>> m1 )( dot_matrix<<#n>> m2 );  -- dot product: m2 <= io dot m1 
+		dot<#n> [eval]( co_matrix<<#n>> m1 )( dot_matrix<<#n>> m2 );  -- dot product: m2 := io dot m1 
 
-		dot [eval]( row_vector v1 )( col_vector v2 );  -- dot product: v2 <= io dot v1 
+		dot [eval]( row_vector v1 )( col_vector v2 );  -- dot product: v2 := io dot v1 
 
 	}
 

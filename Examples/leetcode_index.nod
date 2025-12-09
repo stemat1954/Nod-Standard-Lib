@@ -76,6 +76,6 @@ subroutine index_substrings ( string s, array<string> match )( array<int> map )
 {
 	yes:begin( 'true' ); 
 	for each ( ~s in match ) if ( "token |=| ~s" ) return; -- yes is true
-	yes <= false; 
+	yes := false; 
 }
 

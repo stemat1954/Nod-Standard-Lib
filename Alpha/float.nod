@@ -75,48 +75,48 @@ type fp2 -- elementary, compatible, conventional
 		
 		-- arithmetic
 		
-		add [upd]( fp2 n );						-- add: io <= io + n 
+		add [upd]( fp2 n );						-- add: io := io + n 
 		add [eval]( fp2 n )( fp2 x );	
 
-		sub [upd]( fp2 n );						-- subtract: io <= io - n 
+		sub [upd]( fp2 n );						-- subtract: io := io - n 
 		sub [eval]( fp2 n )( fp2 x );
 
-		mul [upd]( fp2 n );						-- multiply: io <= io * n
+		mul [upd]( fp2 n );						-- multiply: io := io * n
 		mul [eval]( fp2 n )( fp2 x );		
 
-		div [upd]( fp2 n );						-- divide: io <= io / n 
+		div [upd]( fp2 n );						-- divide: io := io / n 
 		div [eval]( fp2 n )( fp2 x );
 			
-		neg [upd];								-- negate: io <= -io 
+		neg [upd];								-- negate: io := -io 
 		neg [eval]()( fp2 x );
 		
 		
 		-- common 
 	
-		sgn [eval]()( int n );					-- sign:  n <= {-1,0,1}
+		sgn [eval]()( int n );					-- sign:  n := {-1,0,1}
 
-		abs [upd];								-- abs value: io <= |io|
+		abs [upd];								-- abs value: io := |io|
 		abs [eval]()( fp2 y );
 
-		dis [upd]( fp2 n );						-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [upd]( fp2 n );						-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( fp2 n )( fp2 y );
 
-		ltr [upd]( fp2 m, fp2 b );				-- linear transform: io <= ( m * io ) + b  (aka fused multiply add) 
+		ltr [upd]( fp2 m, fp2 b );				-- linear transform: io := ( m * io ) + b  (aka fused multiply add) 
 		ltr [eval]( fp2 m, fp2 b )( fp2 y );
 
-		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ (n/d) (rational exponent) (default d = 1)
+		pow [upd]( int n, int d [opt] );		-- power: io := io ^ (n/d) (rational exponent) (default d = 1)
 		pow [eval]( int n, int d [opt] )( fp2 y );
 
-		pow [upd]( fp2 n );						-- power: io <= io ^ n (real exponent) 
+		pow [upd]( fp2 n );						-- power: io := io ^ n (real exponent) 
 		pow [eval]( fp2 n )( fp2 y );
 
-		log [upd]( fp2 b [opt] );				-- log: io <= log base b of io ( default b = euler's number, i.e. natural log)
+		log [upd]( fp2 b [opt] );				-- log: io := log base b of io ( default b = euler's number, i.e. natural log)
 		log [eval]( fp2 b [opt] )( fp2 y );
 
 
 		-- other
 
-		sp2 [upd]( int n );						-- scale by power 2: io <= io * ( 2 ^ n ) 
+		sp2 [upd]( int n );						-- scale by power 2: io := io * ( 2 ^ n ) 
 		sp2 [eval]( int n )( fp2 x );
 
 		rpu [upd]( fp2 p [opt] );				-- round to precision, adjust up (more) (default p = 1.0)
@@ -188,48 +188,48 @@ type fp10 -- elementary, compatible, conventional
 		
 		-- arithmetic
 
-		add [upd]( fp10 n );					-- add: io <= io + n 
+		add [upd]( fp10 n );					-- add: io := io + n 
 		add [eval]( fp10 n )( fp10 x );	
 
-		sub [upd]( fp10 n );					-- subtract: io <= io - n 
+		sub [upd]( fp10 n );					-- subtract: io := io - n 
 		sub [eval]( fp10 n )( fp10 x );
 
-		mul [upd]( fp10 n );					-- multiply: io <= io * n
+		mul [upd]( fp10 n );					-- multiply: io := io * n
 		mul [eval]( fp10 n )( fp10 x );		
 
-		div [upd]( fp10 n );					-- divide: io <= io / n 
+		div [upd]( fp10 n );					-- divide: io := io / n 
 		div [eval]( fp10 n )( fp10 x );
 			
-		neg [upd];								-- negate: io <= -io 
+		neg [upd];								-- negate: io := -io 
 		neg [eval]()( fp10 x );
 				
 
 		-- common
 
-		sgn [eval]()( int n );					-- sign:  n <= {-1,0,1}
+		sgn [eval]()( int n );					-- sign:  n := {-1,0,1}
 
-		abs [upd];								-- abs value: io <= |io|
+		abs [upd];								-- abs value: io := |io|
 		abs [eval]()( fp10 y );
 
-		dis [upd]( fp10 n );					-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [upd]( fp10 n );					-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( fp10 n )( fp10 y );
 
-		ltr [upd]( fp10 m, fp10 b );			-- linear transform: io <= ( m * io ) + b  (aka fused multiply add) 
+		ltr [upd]( fp10 m, fp10 b );			-- linear transform: io := ( m * io ) + b  (aka fused multiply add) 
 		ltr [eval]( fp10 m, fp10 b )( fp10 y );
 
-		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ (n/d) (rational exponent) (default d = 1)
+		pow [upd]( int n, int d [opt] );		-- power: io := io ^ (n/d) (rational exponent) (default d = 1)
 		pow [eval]( int n, int d [opt] )( fp10 y );
 
-		pow [upd]( fp10 n );					-- power: io <= io ^ n (real exponent)
+		pow [upd]( fp10 n );					-- power: io := io ^ n (real exponent)
 		pow [eval]( fp10 n )( fp10 y );
 
-		log [upd]( fp10 b [opt] );				-- log: io <= log base b of io (default b = euler's number, e.g, natural log)
+		log [upd]( fp10 b [opt] );				-- log: io := log base b of io (default b = euler's number, e.g, natural log)
 		log [eval]( fp10 b [opt] )( fp10 y );
 		
 
 		-- other
 
-		sp10 [upd]( int n );					-- scale by power of 10: io <= io * ( 10 ^ n ) 
+		sp10 [upd]( int n );					-- scale by power of 10: io := io * ( 10 ^ n ) 
 		sp10 [eval]( int n )( fp10 x );
 
 		rpu [upd]( fp10 p [opt] );				-- round to precision, adjust up (more) (default p = 1.0)

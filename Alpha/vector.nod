@@ -52,22 +52,22 @@ type vector<t><#n> from contiguous<<t>>
 		get_coords [eval]()( array<<t>><<#n>> );			
 
 
-		add [upd]( same_type v );					-- add: io.xi <= io.xi + v.xi 
+		add [upd]( same_type v );					-- add: io.xi := io.xi + v.xi 
 		add [eval]( same_type v )( same_type v2 );		
 
-		sub [upd]( same_type v );					-- subtract: io.xi <= io.xi - v.xi 
+		sub [upd]( same_type v );					-- subtract: io.xi := io.xi - v.xi 
 		sub [eval]( same_type v )( same_type v2 );
 
-		mul [upd]( <t> n );							-- multiply: io.xi <= io.xi * n 
+		mul [upd]( <t> n );							-- multiply: io.xi := io.xi * n 
 		mul [eval]( <t> n )( same_type v );
 
-		div [upd]( <t> n );							-- divide: io.xi <= io.xi / n 
+		div [upd]( <t> n );							-- divide: io.xi := io.xi / n 
 		div [eval]( <t> n )( same_type v ); 
 
-		neg [upd];									-- negate: io.xi <= -io.xi 
+		neg [upd];									-- negate: io.xi := -io.xi 
 		neg [eval]()( same_type v );
 
-		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n <= sum(io.xi * v.xi) ( default v = io )
+		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n := sum(io.xi * v.xi) ( default v = io )
 
 		ltr [upd]( sq_matrix );						-- linear transform #n -> #n
 		ltr [eval]( sq_matrix )( same_type );	
@@ -78,7 +78,7 @@ type vector<t><#n> from contiguous<<t>>
 
 	abstract method in contiguous<<t>>
 	{
-		[final]	~count ()( int q );					-- q <= #n
+		[final]	~count ()( int q );					-- q := #n
 
 		[final] ~use ( int i ) = <t> proxy;			-- use_coord(i)
 	}

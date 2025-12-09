@@ -77,28 +77,28 @@ type cplx
 
 		-- common 
 
-		abs [upd];								-- abs value: io <= |io| (aka modulus)
+		abs [upd];								-- abs value: io := |io| (aka modulus)
 		abs [eval]()( cplx y );					-- imaginary part = 0
 
-		dis [upd]( cplx n );					-- distance: io <= |(io - n)| (aka absolute diff)
+		dis [upd]( cplx n );					-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( cplx n )( cplx y );			-- imaginary part = 0
 
-		ltr [upd]( cplx m, cplx b );			-- linear transform: io <= ( m * io ) + b  (aka fused multiply add) 
+		ltr [upd]( cplx m, cplx b );			-- linear transform: io := ( m * io ) + b  (aka fused multiply add) 
 		ltr [eval]( cplx m, cplx b )( cplx y );
 
-		pow [upd]( int n, int d [opt] );		-- power: io <= io ^ (n/d) (rational exponent) (default d = 1)
+		pow [upd]( int n, int d [opt] );		-- power: io := io ^ (n/d) (rational exponent) (default d = 1)
 		pow [eval]( int n, int d [opt] )( cplx y );
 
-		pow [upd]( fp2 n );						-- power: io <= io ^ n (real exponent)
+		pow [upd]( fp2 n );						-- power: io := io ^ n (real exponent)
 		pow [eval]( fp2 n )( cplx y );
 
-		pow [upd]( cplx n );					-- power: io <= io ^ n (complex exponent)
+		pow [upd]( cplx n );					-- power: io := io ^ n (complex exponent)
 		pow [eval]( cplx n )( cplx y );
 
-		log [upd]( fp2 b [opt] );				-- log: io <= log base b of io  (default b = euler's number, ie. natural log)
+		log [upd]( fp2 b [opt] );				-- log: io := log base b of io  (default b = euler's number, ie. natural log)
 		log [eval]( fp2 b [opt] )( cplx y );
 
-		log [upd]( cplx b );					-- log: io <= log base b of io  (cplx base)
+		log [upd]( cplx b );					-- log: io := log base b of io  (cplx base)
 		log [eval]( cplx b )( cplx y );
 
 

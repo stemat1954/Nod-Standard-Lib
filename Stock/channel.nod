@@ -91,7 +91,7 @@ page channel in StockByNod
 			if ( "io.pnote |not=| no_addr" )
 			{
 				cstr_to_alpha( io.pnote )( note );
-				io.pnote <= no_addr;  -- disown
+				io.pnote := no_addr;  -- disown
 			}
 		}
 	}
@@ -347,7 +347,7 @@ type channel [incomplete]
 			{
 				fix( note, unspecified_error ) is ~note;
 				io:internal_close( ~note )( string og_note );
-				if ( "not_null?( og_note )" ) note <= og_note;
+				if ( "not_null?( og_note )" ) note := og_note;
 			}
 		}
 	}

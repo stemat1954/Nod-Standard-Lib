@@ -29,6 +29,6 @@ subroutine reverse_nodes ( <int>list list [upd], int k )
 			if ( q:dec:equal?( zero )( =bool ) ) escape;
 		}
 
-		before <= last;
+		before := last;
 	}
 }

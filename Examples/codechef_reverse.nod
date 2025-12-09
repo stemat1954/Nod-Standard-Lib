@@ -122,8 +122,8 @@ subroutine reverse_array_2 ( array<int> arr [upd] )
 		arr:use( j ) is [init] ~nj;
 
 		int ni:begin( ~ni );  -- copy
-		~ni <= ~nj;
-		~nj <= ni;
+		~ni := ~nj;
+		~nj := ni;
 
 		i:inc;
 		j:dec;

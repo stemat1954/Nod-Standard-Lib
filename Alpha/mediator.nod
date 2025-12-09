@@ -328,24 +328,24 @@ type mediator
 		enable_auto_align [upd];		-- binary formats
 
 
-		set_size [upd]( int );			-- size <= given
+		set_size [upd]( int );			-- size := given
 
-		set_size_wp [upd];				-- size <= wp
+		set_size_wp [upd];				-- size := wp
 
-		set_size_rp [upd];				-- size <= rp
+		set_size_rp [upd];				-- size := rp
 
-		get_size ()( int );				-- out <= size
+		get_size ()( int );				-- out := size
 
 
-		set_rp [upd]( int n );			-- rp <= n
+		set_rp [upd]( int n );			-- rp := n
 
-		set_rp_last [upd];				-- rp <= size - 1
+		set_rp_last [upd];				-- rp := size - 1
 
-		set_rp_end [upd];				-- rp <= size
+		set_rp_end [upd];				-- rp := size
 
-		set_rp_mod [upd]( int n );		-- rp <= next n-byte boundary
+		set_rp_mod [upd]( int n );		-- rp := next n-byte boundary
 
-		get_rp ()( int n );				-- n <= rp
+		get_rp ()( int n );				-- n := rp
 
 		rp_first? ()( bool );			-- rp |=| zero  
 
@@ -354,22 +354,22 @@ type mediator
 		rp_end? ()( bool );				-- rp |=| size 
 
 
-		set_wp [upd]( int n );			-- wp <= n
+		set_wp [upd]( int n );			-- wp := n
 
-		set_wp_end [upd];				-- wp <= size
+		set_wp_end [upd];				-- wp := size
 
-		set_wp_mod [upd]( int n );		-- wp <= next n-byte boundary
+		set_wp_mod [upd]( int n );		-- wp := next n-byte boundary
 
-		get_wp ()( int n );				-- n <= wp
+		get_wp ()( int n );				-- n := wp
 
 		wp_end? ()( bool );				-- wp |=| size 
 
 
-		inc_indent [upd];				-- indent <= indent + 1
+		inc_indent [upd];				-- indent := indent + 1
 
-		dec_indent [upd];				-- indent <= indent - 1
+		dec_indent [upd];				-- indent := indent - 1
 
-		get_indent ()( int n );			-- n <= indent
+		get_indent ()( int n );			-- n := indent
 
 
 		write_new_line [upd]( expr label );	-- ascii (CR) LF label (platform dependent)

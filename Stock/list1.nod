@@ -39,7 +39,7 @@ type node1 [incomplete]
 
 		set_next [upd]( link1 )
 		{
-			io.next <= given\link1;
+			io.next := given\link1;
 		}
 
 		unlink [upd]
@@ -225,30 +225,30 @@ type list1 from sequential<node1><cursor1>
 
 		go_first [upd]
 		{
-			if ( "not_null?( io.first )" ) io.current <= io.first;
+			if ( "not_null?( io.first )" ) io.current := io.first;
 		}
 
 		go_last [upd]
 		{
-			if ( "not_null?( io.last )" ) io.current <= io.last;
+			if ( "not_null?( io.last )" ) io.current := io.last;
 		}
 
 		go_next [upd]
 		{
 			if ( "null?( io.current )" )
 			{
-				if ( "not_null?( io.first )" ) io.current <= io.first;
+				if ( "not_null?( io.first )" ) io.current := io.first;
 			}
 			else
 			{
 				io.current:deref:get_next()( link1 nl ); 
-				if ( "not_null?( nl )" ) io.current <= nl;
+				if ( "not_null?( nl )" ) io.current := nl;
 			}
 		}
 
 		go_here [upd]( link1 )  
 		{
-			io.current <= given\link1;
+			io.current := given\link1;
 		}
 
 		go_more [upd]( int qi )( int qo )
@@ -258,7 +258,7 @@ type list1 from sequential<node1><cursor1>
 			{
 				io:get_next()( link1 nl );
 				if ( "null?( nl )" ) escape;
-				io.current <= nl;
+				io.current := nl;
 				if ( qo:inc:equal?( qi )( =bool ) ) escape;
 			}
 		}
@@ -271,7 +271,7 @@ type list1 from sequential<node1><cursor1>
 				-- after current
 				io.current:deref[upd]:get_next()( link1 before ):set_next( given\link1 ); 
 				if ( "null?( before )" )
-					io.last <= given\link1 
+					io.last := given\link1 
 				else
 					given\link1:deref[upd]:set_next( before );
 			}
@@ -279,7 +279,7 @@ type list1 from sequential<node1><cursor1>
 			{
 				-- front (before first)
 				given\link1:deref[upd]:set_next( io.first );
-				io.first <= given\link1;
+				io.first := given\link1;
 			}
 			else 
 			{
@@ -299,7 +299,7 @@ type list1 from sequential<node1><cursor1>
 				{
 					next:deref[upd]:get_next()( link1 next_next ):unlink;
 					if ( "null?( next_next )" )
-						io.last <= io.current -- new last
+						io.last := io.current -- new last
 					else 
 						io.current:deref[upd]:set_next( next_next );
 				}
@@ -316,7 +316,7 @@ type list1 from sequential<node1><cursor1>
 				}
 				else
 				{
-					io.first <= next_next;  -- new first
+					io.first := next_next;  -- new first
 				}
 			}
 		}

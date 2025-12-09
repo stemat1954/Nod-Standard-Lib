@@ -159,7 +159,7 @@ type utc  -- conventional
 		add [upd]( etm t );
 		add [eval]( etm t )( utc );
 
-		sub ( utc t )( etm d );		-- d <= v - t
+		sub ( utc t )( etm d );		-- d := v - t
 	}
 }
 

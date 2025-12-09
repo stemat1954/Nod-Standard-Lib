@@ -423,7 +423,7 @@ type text_mediator from mediator
 
 				if ( ok ) return after io:set_rp( mark );
 
-				if ( "null?( rp )" ) return after q <= zero; -- end
+				if ( "null?( rp )" ) return after q := zero; -- end
 
 				-- here: not ok and not end
 
