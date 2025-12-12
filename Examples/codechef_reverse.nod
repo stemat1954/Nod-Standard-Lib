@@ -104,8 +104,8 @@ subroutine reverse_array_1 ( array<int> arr [upd] )
 	loop ( "i |<| j" )
 	{
 		int ni:begin( arr:use( i ) );
-		arr:use( i ):recycle:begin( arr:use( j ) );
-		arr:use( j ):recycle:begin( ni );
+		arr:use( i ) := arr:use( j );
+		arr:use( j ) := ni;
 		i:inc;
 		j:dec;
 	}

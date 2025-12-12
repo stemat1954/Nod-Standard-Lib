@@ -10,7 +10,7 @@ type unicode from enumerated
 	large and complex, and it's not practical to encapsul-
 	ate it behind property methods in this type.
 
-	Instead, the UCD will be provided in a GDK book which
+	Instead, the UCD will be provided in a NDK book which
 	has the necessary types and subroutines to look up 
 	properties for a given unicode object.
 	

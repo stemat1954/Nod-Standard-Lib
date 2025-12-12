@@ -89,7 +89,7 @@ ASTERISK			:	'*'				;		// also used for MULTIPLY
 // native operator
 
 JOIN				:	'->'			;
-ASSIGN				:	'<='			;	
+ASSIGN				:	':='			;	
 
 
 // formula operator
@@ -393,10 +393,10 @@ aux_given_obj_list		: LEFT_PAREN input_obj_list RIGHT_PAREN
 
 
 
-call_coroutine_ref		: FID
+call_with_ref			: FID
 						;
 
-call_coroutine			: WITH call_coroutine_ref aux_given_obj_list?	
+call_with				: WITH call_with_ref aux_given_obj_list?	
 						;
 
 
@@ -409,7 +409,7 @@ call_overt_proxy		: proxy_attribution
 						;
 
 
-call_provision			: reg_given_obj_list? call_coroutine? call_overt_proxy?
+call_provision			: reg_given_obj_list? call_with? call_overt_proxy?
 						;
 
 
@@ -693,17 +693,17 @@ aux_obj_spec_list		: LEFT_PAREN input_spec_list RIGHT_PAREN
 						;
 
 
-coroutine_name			: FID
+with_spec_name			: FID
 						;
 
-coroutine_spec			: WITH coroutine_name reg_obj_spec_list?
+with_spec				: WITH with_spec_name reg_obj_spec_list?
 						;
 
 
-proxy_result_name		: FID
+proxy_spec_name			: FID
 						;
 
-proxy_result			: EQUAL proxy_header proxy_attribution? proxy_result_name?
+proxy_spec				: EQUAL proxy_header proxy_attribution? proxy_spec_name?
 						;
 
 
@@ -714,7 +714,7 @@ subroutine_name			: FID
 subroutine_attribution	: LEFT_SQUARE NAF RIGHT_SQUARE
 						;
 
-subroutine_interface	: subroutine_attribution? aux_obj_spec_list? reg_obj_spec_list? coroutine_spec? proxy_result?
+subroutine_interface	: subroutine_attribution? aux_obj_spec_list? reg_obj_spec_list? with_spec? proxy_spec?
 						;
 
 subroutine_def			: subroutine_name subroutine_interface ( proc_block | SEMI_COLON )
@@ -735,7 +735,7 @@ method_attribute		: ( EVAL | UPD | INIT | TERM ) ( COMMA NAF )?
 method_attribution		: LEFT_SQUARE method_attribute RIGHT_SQUARE
 						;
 
-method_interface		: method_attribution? reg_obj_spec_list? coroutine_spec? proxy_result? 
+method_interface		: method_attribution? reg_obj_spec_list? with_spec? proxy_spec? 
 						;
 
 method_name				: FID

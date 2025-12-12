@@ -5,18 +5,18 @@ type object  -- virtual, restricted
 {{
 	This is a special virtual type definition. 
 	
-	This definition also serves as a domain for primary
+	This definition also serves as a domain for essential
 	methods.
 	
-	Primary methods and virtual type object have special 
+	Essential methods and virtual type object have special 
 	status in Nod.  
 	
 	Conceptually, type object is a virtual base type from
-	which all other types derive, while primary methods	
+	which all other types derive, while essential methods	
 	automatically belong to every type definition (includ-
 	ing this one).
 	
-	Technically, primary methods aren't inherited from
+	Technically, essential methods aren't inherited from
 	type object.  Rather, they're "included" by the com-
 	piler, as if they were written explicitly in the type
 	definition.
