@@ -10,7 +10,7 @@ __Kernel__ contains pages in a book of system routines.  Kernel routines provide
 
 __Stock__ contains pages in a book of useful and indispensable types and objects. Stock pages are written in __Nod__ and provide a good look into __Nod__ programming.
 
-You can find the __Nod PDF Design Reference__ here:  https://drive.google.com/file/d/1Kv6-Jv9uvsKS8tQcFzsryOwvN0Fr_EH-/view?usp=drive_link
+You can find the __Nod PDF Design Reference__ here:  https://drive.google.com/file/d/11m9IEDjXCbyudYy4i_SpdtwWF2pQ4n59/view?usp=drive_link
 
 To orient for a quick peek, here are some notes to help make sense of the code:
 
