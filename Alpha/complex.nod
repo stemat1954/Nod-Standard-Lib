@@ -83,8 +83,8 @@ type cplx
 		dis [upd]( cplx n );					-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( cplx n )( cplx y );			-- imaginary part = 0
 
-		ltr [upd]( cplx m, cplx b );			-- linear transform: io := ( m * io ) + b  (aka fused multiply add) 
-		ltr [eval]( cplx m, cplx b )( cplx y );
+		atr [upd]( cplx m, cplx b );			-- affine transform: io := ( m * io ) + b  (aka fused multiply add) 
+		atr [eval]( cplx m, cplx b )( cplx y );
 
 		pow [upd]( int n, int d [opt] );		-- power: io := io ^ (n/d) (rational exponent) (default d = 1)
 		pow [eval]( int n, int d [opt] )( cplx y );

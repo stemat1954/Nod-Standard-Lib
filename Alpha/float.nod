@@ -101,8 +101,8 @@ type fp2 -- elementary, compatible, conventional
 		dis [upd]( fp2 n );						-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( fp2 n )( fp2 y );
 
-		ltr [upd]( fp2 m, fp2 b );				-- linear transform: io := ( m * io ) + b  (aka fused multiply add) 
-		ltr [eval]( fp2 m, fp2 b )( fp2 y );
+		atr [upd]( fp2 m, fp2 b );				-- affine transform: io := ( m * io ) + b  (aka fused multiply add) 
+		atr [eval]( fp2 m, fp2 b )( fp2 y );
 
 		pow [upd]( int n, int d [opt] );		-- power: io := io ^ (n/d) (rational exponent) (default d = 1)
 		pow [eval]( int n, int d [opt] )( fp2 y );
@@ -214,8 +214,8 @@ type fp10 -- elementary, compatible, conventional
 		dis [upd]( fp10 n );					-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( fp10 n )( fp10 y );
 
-		ltr [upd]( fp10 m, fp10 b );			-- linear transform: io := ( m * io ) + b  (aka fused multiply add) 
-		ltr [eval]( fp10 m, fp10 b )( fp10 y );
+		atr [upd]( fp10 m, fp10 b );			-- affine transform: io := ( m * io ) + b  (aka fused multiply add) 
+		atr [eval]( fp10 m, fp10 b )( fp10 y );
 
 		pow [upd]( int n, int d [opt] );		-- power: io := io ^ (n/d) (rational exponent) (default d = 1)
 		pow [eval]( int n, int d [opt] )( fp10 y );

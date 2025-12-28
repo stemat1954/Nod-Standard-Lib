@@ -15,10 +15,6 @@ type vector<t><#n> from contiguous<<t>>
 
 	nom type sq_matrix = sq_matrix<<t>><<#n>>;  -- same dimensions as this vector
 
-	nom type ltr_matrix<#r> = matrix<<t>><<#r>><<#n>>; -- same width as this vector, #r rows
-
-	nom type ltr_vector<#r> = vector<<t>><<#r>>; -- result of ltr
-
 
 	general method
 	{
@@ -69,10 +65,10 @@ type vector<t><#n> from contiguous<<t>>
 
 		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n := sum(io.xi * v.xi) ( default v = io )
 
-		ltr [upd]( sq_matrix );						-- linear transform #n -> #n
+		ltr [upd]( sq_matrix );						-- linear transform 
 		ltr [eval]( sq_matrix )( same_type );	
 
-		ltr<#r> [eval]( ltr_matrix<<#r>> )( ltr_vector<<#r>> );	-- linear transform #n -> #r
+		atr [eval]( sq_matrix, same_type t )( same_type );	-- affine transform 
 	}
 
 

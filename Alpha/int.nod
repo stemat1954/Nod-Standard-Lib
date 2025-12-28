@@ -101,8 +101,8 @@ type int -- elementary, compatible, conventional
 		dis [upd]( int n );						-- distance: io := |(io - n)| (aka absolute diff)
 		dis [eval]( int n )( int y );
 
-		ltr [upd]( int m, int b );				-- linear transform:  io := m * io + b (aka fused multiply add)
-		ltr [eval]( int m, int b )( int y );
+		atr [upd]( int m, int b );				-- affine transform:  io := m * io + b (aka fused multiply add)
+		atr [eval]( int m, int b )( int y );
 
 		pow [upd]( int n, int d [opt] );		-- power: io := io ^ n/d (default d = 1)
 		pow [eval]( int n, int d [opt] )( int y );  
