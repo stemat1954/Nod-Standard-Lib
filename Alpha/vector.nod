@@ -9,11 +9,19 @@ type vector<t><#n> from contiguous<<t>>
 	numeric type <t> = int,	fp2, fp10, cplx
 
 	<#n> dimension (number of coordinates)
+
+	Affine matrix must have dims #r x #n where #r = #n + 1.
+	Translation terms are in the last row.  Thus an affine
+	transform post multiplies io by a given af_matrix after
+	extending io with a value of one in the last coordinate.
+	The value of #r can't be verified until runtime.
 }}
 {
 	nom type same_type = vector<<t>><<#n>>;
 
 	nom type sq_matrix = sq_matrix<<t>><<#n>>;  -- same dimensions as this vector
+
+	nom type af_matrix<#r> = matrix<<t>><<#r>><<#n>>;  -- #r = #n + 1 (see notes)
 
 
 	general method
@@ -68,7 +76,11 @@ type vector<t><#n> from contiguous<<t>>
 		ltr [upd]( sq_matrix );						-- linear transform 
 		ltr [eval]( sq_matrix )( same_type );	
 
-		atr [eval]( sq_matrix, same_type t )( same_type );	-- affine transform 
+		atr [upd]( sq_matrix, same_type t );		-- affine transform 
+		atr [eval]( sq_matrix, same_type t )( same_type v );	
+
+		atr<#r> [upd]( af_matrix<<#r>> );	   
+		atr<#r> [eval]( af_matrix<<#r>> )( same_type v );	   
 	}
 
 
