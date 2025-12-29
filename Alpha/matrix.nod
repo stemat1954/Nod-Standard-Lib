@@ -127,3 +127,40 @@ type sq_matrix<t><#> from matrix<<t>><<#>><<#>>
 		invert [eval]()( same_type m );		-- null if not invertible
 	}
 }
+
+
+type af_matrix<t><#>
+{{
+	affine algebraic matrix = square linear matrix + translation vector
+
+	Like other alpha types, internal representation is opaque.
+	It's not possible, or necessary, to know representation in
+	order to access individual entries or transform vectors (see
+	vector.nod)
+}}
+{
+	nom type same_type = af_matrix<<t>><<#>>;
+
+	nom type sub_matrix = sq_matrix<<t>><<#>>;  -- linear matrix
+
+	nom type sub_vector = vector<<t>><<#>>;  -- translation vector
+
+
+	general method
+	{
+		begin;								-- identity
+
+		begin ( same_type other );			-- copy
+
+		begin ( sub_matrix, sub_vector );		-- composition
+
+		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
+
+		store ( mediator m [upd], expr fex )()( extra );	-- mediation
+				
+		use_linear_part [eval] = sub_matrix proxy [eval,init];
+
+		use_translation_part [eval] = sub_vector proxy [eval,init];
+
+	}
+}

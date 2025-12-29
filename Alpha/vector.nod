@@ -10,18 +10,13 @@ type vector<t><#n> from contiguous<<t>>
 
 	<#n> dimension (number of coordinates)
 
-	Affine matrix must have dims #r x #n where #r = #n + 1.
-	Translation terms are in the last row.  Thus an affine
-	transform post multiplies io by a given af_matrix after
-	extending io with a value of one in the last coordinate.
-	The value of #r can't be verified until runtime.
 }}
 {
 	nom type same_type = vector<<t>><<#n>>;
 
 	nom type sq_matrix = sq_matrix<<t>><<#n>>;  -- same dimensions as this vector
 
-	nom type af_matrix<#r> = matrix<<t>><<#r>><<#n>>;  -- #r = #n + 1 (see notes)
+	nom type af_matrix = af_matrix<<t>><<#n>>;	-- ditto
 
 
 	general method
@@ -63,24 +58,23 @@ type vector<t><#n> from contiguous<<t>>
 		sub [eval]( same_type v )( same_type v2 );
 
 		mul [upd]( <t> n );							-- multiply: io.xi := io.xi * n 
-		mul [eval]( <t> n )( same_type v );
+		mul [eval]( <t> n )( same_type );
 
 		div [upd]( <t> n );							-- divide: io.xi := io.xi / n 
-		div [eval]( <t> n )( same_type v ); 
+		div [eval]( <t> n )( same_type ); 
 
 		neg [upd];									-- negate: io.xi := -io.xi 
-		neg [eval]()( same_type v );
+		neg [eval]()( same_type );
 
 		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n := sum(io.xi * v.xi) ( default v = io )
 
 		ltr [upd]( sq_matrix );						-- linear transform 
 		ltr [eval]( sq_matrix )( same_type );	
 
-		atr [upd]( sq_matrix, same_type t );		-- affine transform 
+		atr [upd]( sq_matrix, same_type );			-- affine transform  
 		atr [eval]( sq_matrix, same_type t )( same_type v );	
-
-		atr<#r> [upd]( af_matrix<<#r>> );	   
-		atr<#r> [eval]( af_matrix<<#r>> )( same_type v );	   
+		atr [upd]( af_matrix );						
+		atr [eval]( af_matrix )( same_type );	   
 	}
 
 
