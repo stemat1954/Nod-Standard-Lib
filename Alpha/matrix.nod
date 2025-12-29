@@ -133,16 +133,19 @@ type af_matrix<t><#>
 {{
 	affine algebraic matrix
 	
-	af_matrix is the logical composition of a square linear
-	matrix and a translation vector.  It is NOT a matrix subtype.
+	An affine matrix is a logical composition of square linear
+	matrix and a translation vector.  It is NOT a matrix proper
+	(subtype).
 	
 	Like other alpha types, internal representation is opaque.
 	It's not necessary to know the internal representation in 
-	order to access individual entries or transform vectors 
-	(see vector.nod). 
+	order to access individual entries or transform vectors.
+	
+	To transform a vector, the affine matrix must have cor-
+	responding type and dimension (see vector.nod).
 	
 	:use methods in this type provide access to constituents 
-	which can then be accessed by type-specific constituent
+	which can then be accessed using specific constituent type
 	methods.
 }}
 {
