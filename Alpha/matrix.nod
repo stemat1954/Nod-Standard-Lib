@@ -131,12 +131,19 @@ type sq_matrix<t><#> from matrix<<t>><<#>><<#>>
 
 type af_matrix<t><#>
 {{
-	affine algebraic matrix = square linear matrix + translation vector
-
+	affine algebraic matrix
+	
+	af_matrix is the logical composition of a square linear
+	matrix and a translation vector.  It is NOT a matrix subtype.
+	
 	Like other alpha types, internal representation is opaque.
-	It's not possible, or necessary, to know representation in
-	order to access individual entries or transform vectors (see
-	vector.nod)
+	It's not necessary to know the internal representation in 
+	order to access individual entries or transform vectors 
+	(see vector.nod). 
+	
+	:use methods in this type provide access to constituents 
+	which can then be accessed by type-specific constituent
+	methods.
 }}
 {
 	nom type same_type = af_matrix<<t>><<#>>;
@@ -158,9 +165,9 @@ type af_matrix<t><#>
 
 		store ( mediator m [upd], expr fex )()( extra );	-- mediation
 				
-		use_linear_part [eval] = sub_matrix proxy [eval,init];
+		use_linear_part = sub_matrix proxy [eval,init];
 
-		use_translation_part [eval] = sub_vector proxy [eval,init];
+		use_translation_part = sub_vector proxy [eval,init];
 
 	}
 }
