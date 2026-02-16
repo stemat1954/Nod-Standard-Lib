@@ -194,9 +194,9 @@ type op<t>   -- intrinsic
 
 		deref = <t> proxy [upd];			-- always works (never void)
 
-		is_equal<xt>? ( op<<xt>> )( bool );
+		equal<xt>? ( op<<xt>> )( bool );
 
-		is_before<xt>? ( op<<xt>> )( bool );
+		before<xt>? ( op<<xt>> )( bool );
 	}
 }
 
