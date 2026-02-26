@@ -10,7 +10,7 @@ __Kernel__ contains pages in a book of system routines.  Kernel routines provide
 
 __Stock__ contains pages in a book of useful and indispensable types and objects. Stock pages are written in __Nod__ and provide a good look into __Nod__ programming.
 
-You can find the __Nod PDF Design Reference__ here:  https://drive.google.com/file/d/11m9IEDjXCbyudYy4i_SpdtwWF2pQ4n59/view?usp=drive_link
+You can find the __Nod PDF Design Reference__ [here](https://drive.google.com/file/d/11m9IEDjXCbyudYy4i_SpdtwWF2pQ4n59/view?usp=drive_link).
 
 To orient for a quick peek, here are some notes to help make sense of the code:
 
@@ -31,5 +31,5 @@ To orient for a quick peek, here are some notes to help make sense of the code:
 15. Formula operators are extensible and delimited by vertical bars ||.  Non-formula operators are mostly eschewed, but __Nod__ has 3 intrinsic operators:  _join_ ( lexical token -> ), _assign_ ( lexical token := ), and _as_ ( lexical keyword ). Of the three, only _join_ can't be written as an equivalent method call sequence.
 16. __Nod__ supports generic programming using special rules for names and references.  An identifier that has embedded angle brackets <> is a generic name or adhoc reference that incorporates configurable definition factors.  This is an advanced topic that resists summary, but the main take-away is that angle-brackets in the code indicate generic definition or compile-time configuration. 
 
-That's it.  For language details, dive into the Design Reference. For examples and other resources, browse the __Nod Explore__ repo here: https://github.com/stemat1954/Nod-Explore.  
+That's it.  For language details, dive into the Design Reference. For examples and other resources, browse the __Nod Explore__ repo [here](https://github.com/stemat1954/Nod-Explore).  
 
