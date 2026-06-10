@@ -135,7 +135,7 @@ subroutine	-- string conversion
 {
 	alpha_to_cstr ( string )( addr )  -- orphan addr
 	{
-		text_mediator:begin( platform_utf, platform_endian ):write( given\string ):add_zero():detach()( given\addr );  -- ignore size
+		editor:begin( platform_utf, platform_endian ):write( given\string ):add_zero():detach()( given\addr );  -- ignore size
 	}
 
 	cstr_to_alpha ( addr )( string ) -- string owns addr

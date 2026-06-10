@@ -33,7 +33,7 @@ type console
 
 			if ( "hcon |=| no_handle" )
 			{
-				text_mediator:begin( 'unknown console: ' ):write( name ):detach()( error );
+				editor:begin( 'unknown console: ' ):write( name ):detach()( error );
 				io.ready:begin( false );
 			}
 			else
@@ -47,10 +47,10 @@ type console
 		}
 		
 			
-		read [upd]( text_mediator tm [upd], int q )( string error ) -- q chars into mediator @wp
+		read [upd]( editor ed [upd], int q )( string error ) -- q chars into editor @wp
 		{
 			if ( io.ready )
-				io.channel:read( *tm, q )( error )
+				io.channel:read( *ed, q )( error )
 			else
 				error:begin( not_ready );
 		}
@@ -59,20 +59,20 @@ type console
 		{
 			if ( io.ready )
 			{
-				text_mediator tm:begin( io.utf, io.endian );
-				io.channel:read( *tm, q )( error );
-				if ( "null?( error )" ) tm:read()( input ); -- all
+				editor ed:begin( io.utf, io.endian );
+				io.channel:read( *ed, q )( error );
+				if ( "null?( error )" ) ed:read()( input ); -- all
 			}
 			else
 				error:begin( not_ready );
 		}
 
 		
-		read [upd]( text_mediator tm [upd], unicode c [opt] )( string error ) -- delimited by c (eol) into mediator @wp
+		read [upd]( editor ed [upd], unicode c [opt] )( string error ) -- delimited by c (eol) into editor @wp
 		{
 			fix( c, io.eol ) is ~c;
 			if ( io.ready )
-				io.channel:read( *tm, ~c )( error )
+				io.channel:read( *ed, ~c )( error )
 			else
 				error:begin( not_ready );
 		}
@@ -83,9 +83,9 @@ type console
 			fix( c, io.eol ) is ~c;
 			if ( io.ready )
 			{
-				text_mediator tm:begin( io.utf, io.endian );
-				io.channel:read( *tm, ~c )( error );
-				if ( "null?( error )" ) tm:read()( input ); -- all
+				editor ed:begin( io.utf, io.endian );
+				io.channel:read( *ed, ~c )( error );
+				if ( "null?( error )" ) ed:read()( input ); -- all
 			}
 			else
 				error:begin( not_ready );
@@ -94,20 +94,20 @@ type console
 
 		write [upd]( string )( string error )  -- string
 		{
-			text_mediator tm:begin( given\string );
-			io:write( *tm )( error );
+			editor ed:begin( given\string );
+			io:write( *ed )( error );
 		}
 
 		write [upd]( expr )( string error )  -- expr
 		{
-			text_mediator tm:begin( given\expr );
-			io:write( *tm )( error );
+			editor ed:begin( given\expr );
+			io:write( *ed )( error );
 		}
 
-		write [upd]( text_mediator tm [upd] )( string error ) -- from mediator @rp
+		write [upd]( editor ed [upd] )( string error ) -- from editor @rp
 		{
 			if ( io.ready )
-				io.channel:write( *tm )( error )
+				io.channel:write( *ed )( error )
 			else
 				error:begin( not_ready );
 		}
@@ -148,9 +148,9 @@ type console
 			{
 				io.ready:begin( false );
 
-				text_mediator tm:begin( 'could not open console channel [' );
-				if ( "pnote |not=| no_addr" ) tm:write( cstr_to_alpha( pnote )( =string ) );  -- zero terminated
-				tm:write( ']' ):detach()( err );
+				editor ed:begin( 'could not open console channel [' );
+				if ( "pnote |not=| no_addr" ) ed:write( cstr_to_alpha( pnote )( =string ) );  -- zero terminated
+				ed:write( ']' ):detach()( err );
 			}
 
 			kernel\heap_free( *pnote );

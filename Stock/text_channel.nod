@@ -3,9 +3,9 @@ page text_channel in StockByNod
 
 {{
 	A text channel is a synchronous i/o channel specialized
-	for unicode	data transfer through a text mediator.
+	for unicode	data transfer through a text editor.
 	
-	i/o text encoding is device dependent. The text mediator
+	i/o text encoding is device dependent. The text editor
 	must be configured with compatible encoding.
 	
 	Text channels read and write without a time limit. A
@@ -25,12 +25,12 @@ page text_channel in StockByNod
 
 [page] subroutine
 {
-	read_channel_str ( sync_channel_reader reader [upd], text_mediator tm [upd], int q )( string error )  -- q chars
+	read_channel_str ( sync_channel_reader reader [upd], editor ed [upd], int q )( string error )  -- q chars
 	{
 		int need:begin( q );
 		loop
 		{
-			read_channel_chr( *reader, *tm )( error );
+			read_channel_chr( *reader, *ed )( error );
 			if ( "not_null?( error )" ) escape;
 
 			need:dec;
@@ -38,38 +38,38 @@ page text_channel in StockByNod
 		}
 	}
 
-	read_channel_str ( sync_channel_reader reader [upd], text_mediator tm [upd], unicode c )( string error )  -- delimited by c
+	read_channel_str ( sync_channel_reader reader [upd], editor ed [upd], unicode c )( string error )  -- delimited by c
 	{
-		tm:get_rp()( int mark ):set_rp_end;
+		ed:get_rp()( int mark ):set_rp_end;
 		loop
 		{
-			read_channel_chr( *reader, *tm )( error );
+			read_channel_chr( *reader, *ed )( error );
 			if ( "not_null?( error )" ) escape;
 
-			tm:read()( unicode c2 );  -- last char
+			ed:read()( unicode c2 );  -- last char
 			if ( "c2 |=| c" ) escape;
 		}
-		tm:set_rp( mark ); -- start of new data
+		ed:set_rp( mark ); -- start of new data
 	}
 
 
-	read_channel_chr ( sync_channel_reader reader [upd], text_mediator tm [upd] )( string error )
+	read_channel_chr ( sync_channel_reader reader [upd], editor ed [upd] )( string error )
 	{
-		tm:reserve;  -- one code point
-		read_channel( *reader, *tm )( error );
+		ed:reserve;  -- one code point
+		read_channel( *reader, *ed )( error );
 		if ( "null?( error )" )
 		{
-			tm:reserve()( bool again );
-			if ( again ) read_channel( *reader, *tm )( error );
+			ed:reserve()( bool again );
+			if ( again ) read_channel( *reader, *ed )( error );
 		}
 	}
 
 
-	read_channel ( sync_channel_reader reader [upd], text_mediator tm [upd] )( string error )
+	read_channel ( sync_channel_reader reader [upd], editor ed [upd] )( string error )
 	{
 		loop
 		{
-			reader:read( *tm )( channel_report report, string note );
+			reader:read( *ed )( channel_report report, string note );
 			
 			if ( "report |=| 'good'" ) escape;
 			
@@ -78,11 +78,11 @@ page text_channel in StockByNod
 		}
 	}
 
-	write_channel ( sync_channel_writer writer [upd], text_mediator tm [upd] )( string error )
+	write_channel ( sync_channel_writer writer [upd], editor ed [upd] )( string error )
 	{
 		loop
 		{
-			writer:write( *tm )( channel_report report, string note );
+			writer:write( *ed )( channel_report report, string note );
 			
 			if ( "report |=| 'good'" ) escape;
 			
@@ -104,15 +104,15 @@ page text_channel in StockByNod
 
 			value ( 'error' )
 			{	
-				text_mediator tm:begin( 'channel error [' );
-				if ( "not_null?( note )" ) tm:write( note );
-				tm:write( ']' );
-				tm:detach()( error );
+				editor ed:begin( 'channel error [' );
+				if ( "not_null?( note )" ) ed:write( note );
+				ed:write( ']' );
+				ed:detach()( error );
 			}
 
 			else -- 'pending', 'busy', 'end', 'other'
 			{
-				text_mediator:begin( 'unexpected channel report [' ):write( cr:use_token ):write( ']' ):detach()( error );
+				editor:begin( 'unexpected channel report [' ):write( cr:use_token ):write( ']' ):detach()( error );
 			}
 		}
 	}
@@ -129,14 +129,14 @@ type read_only_text_channel from sync_read_only_channel
 			io:as_base<sync_read_only_channel>:begin( h );
 		}
 
-		read [upd]( text_mediator tm [upd], int q )( string error )  -- q chars
+		read [upd]( editor ed [upd], int q )( string error )  -- q chars
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *tm, q )( error );
+			read_channel_str( *io:as_base<sync_channel_reader>, *ed, q )( error );
 		}
 
-		read [upd]( text_mediator tm [upd], unicode c )( string error ) -- delimiter c
+		read [upd]( editor ed [upd], unicode c )( string error ) -- delimiter c
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *tm, c)( error );
+			read_channel_str( *io:as_base<sync_channel_reader>, *ed, c)( error );
 		}
 	}
 }
@@ -151,19 +151,19 @@ type read_write_text_channel from sync_read_write_channel
 			io:as_base<sync_read_write_channel>:begin( given\handle );
 		}
 
-		read [upd]( text_mediator tm [upd], int q )( string error ) -- q chars
+		read [upd]( editor ed [upd], int q )( string error ) -- q chars
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *tm, q )( error );
+			read_channel_str( *io:as_base<sync_channel_reader>, *ed, q )( error );
 		}
 
-		read [upd]( text_mediator tm [upd], unicode c )( string error ) -- delimiter c
+		read [upd]( editor ed [upd], unicode c )( string error ) -- delimiter c
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *tm, c )( error );
+			read_channel_str( *io:as_base<sync_channel_reader>, *ed, c )( error );
 		}
 
-		write [upd]( text_mediator tm [upd] )( string error )
+		write [upd]( editor ed [upd] )( string error )
 		{
-			write_channel( *io:as_base<sync_channel_writer>, *tm )( error );
+			write_channel( *io:as_base<sync_channel_writer>, *ed )( error );
 		}
 	}
 }

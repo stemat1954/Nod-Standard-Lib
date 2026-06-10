@@ -59,9 +59,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stock", "Stock", "{F427C3C9
 		Stock\console.nod = Stock\console.nod
 		Stock\dialect.nod = Stock\dialect.nod
 		Stock\list1.nod = Stock\list1.nod
+		Stock\editor.nod = Stock\editor.nod
 		Stock\system.nod = Stock\system.nod
 		Stock\text_channel.nod = Stock\text_channel.nod
-		Stock\text_mediator.nod = Stock\text_mediator.nod
 		Stock\toggle.nod = Stock\toggle.nod
 		Stock\ucdb.nod = Stock\ucdb.nod
 	EndProjectSection

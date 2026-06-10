@@ -1,15 +1,15 @@
 
-page text_mediator in StockByNod
+page editor in StockByNod
 
 
 enum type match_mode ( 'exact', 'similar', 'regex' );
 
 subroutine
 {
-	exact_match? ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool yes )
+	exact_match? ( editor ped [upd], unicode c, sign d, expr fex )( bool yes )
 	{{
 		This routine works for all character sets. Characters
-		in the pattern mediator and input characters are matched 
+		in the pattern editor and input characters are matched 
 		one-for-one	exactly by code-point value.
 
 		If output is null, the match is pending.
@@ -19,10 +19,10 @@ subroutine
 	}
 
 
-	similar_match? ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool yes )
+	similar_match? ( editor ped [upd], unicode c, sign d, expr fex )( bool yes )
 	{{
 		This routine matches consecutive white-space in the 
-		pattern mediator to consecutive input white-space, and 
+		pattern editor to consecutive input white-space, and 
 		matches pattern letters	to input letters regardless	of
 		case.
 	}}
@@ -31,7 +31,7 @@ subroutine
 	}
 
 
-	regex_match? ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool yes )
+	regex_match? ( editor ped [upd], unicode c, sign d, expr fex )( bool yes )
 	{
 		-- to do
 	}
@@ -40,13 +40,13 @@ subroutine
 
 
 
-type text_mediator from mediator
+type editor from mediator
 {{
-	A text_mediator is a specialized unicode mediator.
+	An editor is a specialized unicode mediator.
 	It formats and parses external unicode images.  
 
-	Most applications can use text mediator methods alone
-	to accomplish common serial formatting and parsing tasks.
+	Most applications can use editor methods alone to 
+	accomplish common serial formatting and parsing tasks.
 	However, more advanced applications will need access to
 	the base mediator read/write cursors.
 	
@@ -85,9 +85,9 @@ type text_mediator from mediator
 
 	Unformatted transfers copy codepoints as integer values 
 	and apply encoding conversions as necessary.  In par-
-	ticular, exprs generally need conversion: ascii <-> mediator
+	ticular, exprs generally need conversion: ascii <-> editor
 	encoding, and strings may need conversion: string encoding 
-	<-> mediator encoding.
+	<-> editor encoding.
 
 	Unformatted reads of more than one char require a delim-
 	iter char spec. The delimiter is not transferred and
@@ -96,8 +96,8 @@ type text_mediator from mediator
 	
 	seek methods move rp until it matches a pattern
 
-	:detach transfers mediator memory to an output string.
-	Once detached, the mediator is logically empty.
+	:detach transfers editor memory to an output string.
+	Once detached, the editor is logically empty.
 
 }}
 {
@@ -170,7 +170,7 @@ type text_mediator from mediator
 
 		-- cross compatability
 
-		compare ( text_mediator other [opt] )( bool same ) -- compare encoding (with platform)
+		compare ( editor other [opt] )( bool same ) -- compare encoding (with platform)
 		{
 			utf f; endian e; 
 			if ( "null?( other )" )
@@ -187,7 +187,7 @@ type text_mediator from mediator
 			same:and( "get_endian( io ) |=| e" );
 		}
 
-		spawn ()( text_mediator other )
+		spawn ()( editor other )
 		{
 			io:get_utf()( utf f ):get_endian()( endian e );
 			other:begin( f,e );
@@ -196,7 +196,7 @@ type text_mediator from mediator
 
 		-- cross copy with conversion (using current pointers)
 
-		import [upd]( text_mediator other [upd], int q [opt] ) 
+		import [upd]( editor other [upd], int q [opt] ) 
 		{
 			fix( q, int_max ) is ~q;
 			other:set_rp( zero );
@@ -209,7 +209,7 @@ type text_mediator from mediator
 			}
 		}
 
-		export [upd]( text_mediator other [upd], int q [opt] )
+		export [upd]( editor other [upd], int q [opt] )
 		{
 			fix( q, int_max ) is ~q;
 			io:set_rp( zero );
@@ -388,38 +388,38 @@ type text_mediator from mediator
 
 		seek [upd]( expr pattern, sign d [opt], match_mode [opt] )( int q ) -- expr pattern per mode, q = chars matched (zero = no match)
 		{
-			io:copy_pattern( pattern )( text_mediator ptm );
-			io:seek( *ptm, d, given\match_mode )( q );
+			io:copy_pattern( pattern )( editor ped );
+			io:seek( *ped, d, given\match_mode )( q );
 		}
 
 		seek [upd]( string pattern, sign d [opt], match_mode [opt] )( int q ) -- string pattern per mode, q = chars matched (zero = no match)
 		{
-			io:copy_pattern( pattern )( text_mediator ptm );
-			io:seek( *ptm, d, given\match_mode )( q );
+			io:copy_pattern( pattern )( editor ped );
+			io:seek( *ped, d, given\match_mode )( q );
 		}
 
-		seek [upd]( text_mediator ptm [upd], sign d [opt], match_mode [opt] )( int q ) -- compatible pattern per mode, q = chars matched (zero = no match)
+		seek [upd]( editor ped [upd], sign d [opt], match_mode [opt] )( int q ) -- compatible pattern per mode, q = chars matched (zero = no match)
 		{
 			fix( given\match_mode, 'exact' as match_mode ) is ~mode;
 			select ( ~mode  )
 			{
-				value ( 'exact' )   io:seek( *ptm, d )( q ) with exact_match?;
-				value ( 'similar' ) io:seek( *ptm, d )( q ) with similar_match?;
-				value ( 'regex' )   io:seek( *ptm, d )( q ) with regex_match?;
+				value ( 'exact' )   io:seek( *ped, d )( q ) with exact_match?;
+				value ( 'similar' ) io:seek( *ped, d )( q ) with similar_match?;
+				value ( 'regex' )   io:seek( *ped, d )( q ) with regex_match?;
 			}
 		}
 			
-		seek [upd]( text_mediator ptm [upd], sign d [opt] )( int q ) -- compatible pattern with helper, q = chars matched (zero = no match)
-		 with helper ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool )
+		seek [upd]( editor ped [upd], sign d [opt] )( int q ) -- compatible pattern with helper, q = chars matched (zero = no match)
+		 with helper ( editor ped [upd], unicode c, sign d, expr fex )( bool )
 		{
-			if ( "not( compare( io, ptm ) )" ) quit with fault:begin( 'bug', 'incompatible pattern mediator' );
+			if ( "not( compare( io, ped ) )" ) quit with fault:begin( 'bug', 'incompatible pattern editor' );
 			fix<sign>( d, 'positive' ) is ~d;
 
 			loop 
 			{
 				io:get_rp()( int mark );
 
-				io:match( *ptm, ~d )( bool ok, q:recycle, int rp ) with helper;
+				io:match( *ped, ~d )( bool ok, q:recycle, int rp ) with helper;
 
 				if ( ok ) return after io:set_rp( mark );
 
@@ -436,17 +436,17 @@ type text_mediator from mediator
 		}
 
 
-		-- cut & paste using compatible text mediator (to-do)
+		-- cut & paste using compatible editor (to-do)
 
-		copy [upd]( int q )( text_mediator );
+		copy [upd]( int q )( editor );
 
 		delete [upd]( int q );
 				
-		insert [upd]( text_mediator [upd] ); 
+		insert [upd]( editor [upd] ); 
 
 		insert [upd]( unicode c );
 
-		replace [upd]( int q, text_mediator [upd] );  -- more efficient than :delete(q):insert(t)
+		replace [upd]( int q, editor [upd] );  -- more efficient than :delete(q):insert(t)
 
 		replace [upd]( unicode c );
 	
@@ -547,19 +547,19 @@ type text_mediator from mediator
 		}
 			
 
-		copy_pattern<t> [upd]( <t> pattern )( text_mediator tm ) -- <t> string or expr
+		copy_pattern<t> [upd]( <t> pattern )( editor ed ) -- <t> string or expr
 		{
 			if ( "get_length( pattern ) |=| zero" ) quit with fault:begin( 'bug', 'no pattern' );  
-			io:spawn()( tm ); -- compatible 
-			tm:write( pattern );
+			io:spawn()( ed ); -- compatible 
+			ed:write( pattern );
 		}
 
 
-		match [upd]( text_mediator ptm [upd], sign d )( bool ok, int q, int rp ) 
-		 with helper ( text_mediator ptm [upd], unicode c, sign d, expr fex )( bool ) 
+		match [upd]( editor ped [upd], sign d )( bool ok, int q, int rp ) 
+		 with helper ( editor ped [upd], unicode c, sign d, expr fex )( bool ) 
 		{{
-			If sign is 'negative', ptm rp and io rp decrement. 	Otherwise, 
-			sign is 'positive' and ptm rp and io rp increment.
+			If sign is 'negative', ped rp and io rp decrement. 	Otherwise, 
+			sign is 'positive' and ped rp and io rp increment.
 
 			Output ok is true if entire pattern is matched, otherwise false.
 
@@ -568,12 +568,12 @@ type text_mediator from mediator
 			Output rp points to "next" char before/after last matching 
 			char, unless it's null. Null means scan reached the end.
 
-			mediator rp points to last matching char.
+			editor rp points to last matching char.
 
 			helper output is null if match is tbd
 		}}
 		{
-			if ( "d |=| 'positive'" ) ptm:set_rp( zero ) else ptm:set_rp_last;
+			if ( "d |=| 'positive'" ) ped:set_rp( zero ) else ped:set_rp_last;
 
 			q:begin;
 
@@ -585,7 +585,7 @@ type text_mediator from mediator
 				else -- 'negative'
 					io:get_rp()( int mark ):read()( c ):set_rp( mark ):dec_rp;  
 
-				helper( *ptm, c, d, io.codepoint_fex )( ok ); 
+				helper( *ped, c, d, io.codepoint_fex )( ok ); 
 				if ( "not_null?( ok )" ) escape;   
 
 				q:inc; -- result pending
@@ -604,7 +604,7 @@ type text_mediator from mediator
 
 		dec_rp [upd] -- prev code point
 		{{
-			This method moves mediator rp one code point backward.  It 
+			This method moves editor rp one code point backward.  It 
 			assumes rp is currently aligned on a code point.  If rp is
 			initially zero, it "wraps" to the end.  This means that 
 			rp_end? can be used to test limit in either direction.
