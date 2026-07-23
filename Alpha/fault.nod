@@ -96,11 +96,11 @@ type fault  -- intrinsic
 	{
 		begin ( fault_category [opt], expr comment [opt] );
 
-		use_category = fault_category proxy [eval];
+		use_category = fault_category prox [eval];
 
 		get_category ()( fault_category );
 
-		use_comment = expr proxy [eval];
+		use_comment = expr prox [eval];
 
 		get_comment ()( expr );
 	}

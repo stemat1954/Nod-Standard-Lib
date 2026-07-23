@@ -11,7 +11,7 @@ type unicode from enumerated
 	ate it behind property methods in this type.
 
 	Instead, the UCD will be provided in a NDK book which
-	has the necessary types and subroutines to look up 
+	has the necessary types and routines to look up 
 	properties for a given unicode object.
 	
 
@@ -35,7 +35,7 @@ type unicode from enumerated
 
 		store ( mediator m [upd], expr fex )()( extra ); 
 
-		use_notation = expr proxy [eval];
+		use_notation = expr prox [eval];
 
 		get_notation ()( expr );
 

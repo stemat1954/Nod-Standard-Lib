@@ -126,7 +126,7 @@ type mediator
 	as data is transferred to the mediator. Output data is 
 	naturally intended for external consumption, so at some 
 	point the memory must be detached from the mediator and
-	given to some compatible subroutine (e.g.kernel sub-
+	given to some compatible routine (e.g.kernel sub-
 	routine) for final disposition.  
 	
 	Detaching memory creates a detached mediator and an 
@@ -138,7 +138,7 @@ type mediator
 
 	External heap memory can be attached (or reattached) to 
 	a detached mediator.  The memory usually originates from 
-	another mediator or from a compatible subroutine. The 
+	another mediator or from a compatible routine. The 
 	memory block may or may not contain	formatted data. Once 
 	external memory is attached to a mediator, the mediator
 	owns the memory and applications must not allow the given
@@ -200,7 +200,7 @@ type mediator
 	than the logical size, so applications must immediately
 	locate the logical end of formatted data and set logical 
 	size.  This is a common scenario for example, when
-	primitive subroutines return null-terminated strings
+	primitive routines return null-terminated strings
 	with no size information.
 
 	:set_rp_mod and :set_wp_mod align their respective pos-

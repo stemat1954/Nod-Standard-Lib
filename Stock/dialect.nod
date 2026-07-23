@@ -2,7 +2,7 @@
 page dialect in StockByNod
 
 {{
-	Useful types, subroutines, operations, and constants
+	Useful types, routines, operations, and constants
 	that comprise a conventional Nod dialect. 
 }}
 
@@ -81,11 +81,11 @@ nom type
 enum type sign ( 'zero', 'positive', 'negative' );
 
 
-subroutine -- selectors
+routine -- selectors
 {
-	fix<t> ( <t> a [opt], <t> b [opt] ) = <t> proxy [eval] ~o
+	fix<t> ( <t> a [opt], <t> b [opt] ) = <t> prox [eval] ~o
 	{{
-		This subroutine selector is used to "fix" inputs
+		This selector routine is used to "fix" inputs
 		that may be	null. Conceptually, the second input 
 		fixes the first input if it's null.  However, the
 		second input can also be null, so the result proxy
@@ -100,9 +100,9 @@ subroutine -- selectors
 	}
 
 
-	choose<t> ( bool a?, <t> a [opt], <t> b [opt] ) = <t> proxy ~o 
+	choose<t> ( bool a?, <t> a [opt], <t> b [opt] ) = <t> prox ~o 
 	{{
-		This subroutine selector chooses from two given
+		This selector routine chooses from two given
 		inputs a and b based on the value of a given bool
 		a?.  If a? is true, then a is chosen.  Otherwise, 
 		b is chosen.
@@ -124,9 +124,9 @@ subroutine -- selectors
 }
 
 
-subroutine	-- string conversion
+routine	-- string conversion
 {{
-	These subroutines convert between alpha strings and 
+	These routines convert between alpha strings and 
 	c-compatible strings.
 	
 	c-compatible strings are null-terminated, use platform 
@@ -145,7 +145,7 @@ subroutine	-- string conversion
 }
 
 
-subroutine  --  standard subroutine wrappers
+routine  --  standard wrapper routines
 {
 	std_copy<t> ( <t> a )( <t> b ) -- from a to b using <t> copy
 	{

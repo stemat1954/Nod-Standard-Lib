@@ -28,7 +28,7 @@ type enumerated  -- intrinsic
 	{
 		begin ( int );
 
-		use_code = int proxy [eval];
+		use_code = int prox [eval];
 		
 		get_code ()( int );
 	}

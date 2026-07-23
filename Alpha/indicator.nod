@@ -61,7 +61,7 @@ type indicator  -- restricted
 	by types that don't automatically reset.
 
 	:use_handle returns the indicator's internal system
-	resource handle for transfer to kernel subroutines.
+	resource handle for transfer to kernel routines.
 }}
 {
 	general 
@@ -72,7 +72,7 @@ type indicator  -- restricted
 
 		reset [upd];
 
-		use_handle = handle proxy [eval];
+		use_handle = handle prox [eval];
 	}
 }
 

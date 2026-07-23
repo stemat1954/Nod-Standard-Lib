@@ -2,7 +2,7 @@
 page math in AlphaByNod
 
 {{
-	The subroutines on this page are potentially hardware accelerated. 
+	The routines on this page are potentially hardware accelerated. 
 	
 	This page is a WORK IN PROGRESS
 }}
@@ -26,7 +26,7 @@ common  -- fundamental constants
 }
 	
 
-subroutine  -- cross-type powers and roots
+routine  -- cross-type powers and roots
 {
 	pow<t><r> ( <t> a, int n, int d )( <r> y );		-- rational exponent
 
@@ -34,7 +34,7 @@ subroutine  -- cross-type powers and roots
 }
 
 
-subroutine  -- natural trig functions
+routine  -- natural trig functions
 {{
 	angles measured in circular radians 
 
@@ -67,7 +67,7 @@ subroutine  -- natural trig functions
 }
 
 
-subroutine  -- hyperbolic trig functions
+routine  -- hyperbolic trig functions
 {{
 	angles measured in hyperbolic radians
 

@@ -1,9 +1,9 @@
 
 page console in KernelByNod [compatible]
 
-subroutine  
+routine  
 {{
-	This subroutine group provides low-level access to
+	This routine group provides low-level access to
 	platform consoles.  A console is an interactive text 
 	peripheral.
 

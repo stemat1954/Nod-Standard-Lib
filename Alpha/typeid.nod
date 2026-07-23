@@ -2,7 +2,7 @@
 page typeid in AlphaByNod
 
 
-subroutine get_typeid<t>( <t> obj )( typeid );
+routine get_typeid<t>( <t> obj )( typeid );
 
 
 type typeid -- intrinsic

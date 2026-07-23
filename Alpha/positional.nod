@@ -1,15 +1,15 @@
 
-page contiguous in AlphaByNod
+page positional in AlphaByNod
 
-type contiguous<t> [incomplete] from sequential<<t>><int>  -- intrinsic
+type positional<t> [incomplete] from serial<<t>><int>  -- intrinsic
 {{
-	contiguous<t> is a base type for any object collection
+	positional<t> is a base type for any object collection
 	that can be counted and accessed by a random position 
 	index.
 		
 	<t> is the symbolic object type. 
 
-	Objects in a contiguous collection can be counted, and
+	Objects in a positional collection can be counted, and
 	individual objects can be directly and randomly accessed
 	using a numeric position index.
 
@@ -22,15 +22,15 @@ type contiguous<t> [incomplete] from sequential<<t>><int>  -- intrinsic
 	Note:  access permission is specified by caller and 
 	verified at runtime.
 
-	Contiguous collections are naturally ordered by index,
+	Positional collections are naturally ordered by index,
 	but there is no	presumption that objects with a lesser 
 	index compare less than or before objects with a greater
 	index.
 
-	Any contiguous collection is also a sequential collection
+	Any positional collection is also a serial collection
 	that can be accessed by an integer cursor.  This allows a
-	contiguous collection to be used wherever a sequential 
-	collection is required.  In particular, any contiguous 
+	positional collection to be used wherever a serial 
+	collection is required.  In particular, any positional 
 	collection can be scanned in a for-each loop.
 
 }}
@@ -41,17 +41,17 @@ type contiguous<t> [incomplete] from sequential<<t>><int>  -- intrinsic
 
 		count ()( int n );
 
-		use ( int i ) = <t> proxy;
+		use ( int i ) = <t> prox;
 	}
 
 	abstract -- recap as [tbd]
 	{
 		~count ()( int );	
 
-		~use ( int i ) = <t> proxy; 
+		~use ( int i ) = <t> prox; 
 	}
 
-	abstract in sequential<<t>><int>
+	abstract in serial<<t>><int>
 	{
 		[final] ~open_cursor ( int )( int );  
 
@@ -59,7 +59,7 @@ type contiguous<t> [incomplete] from sequential<<t>><int>  -- intrinsic
 
 		[final] ~flip_cursor ( int [upd] );
 
-		[final] ~use ( int ) = <t> proxy; 
+		[final] ~use ( int ) = <t> prox; 
 	}
 }
 

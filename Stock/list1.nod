@@ -83,7 +83,7 @@ type node1 [incomplete]
 			io.link1:recycle;  
 		}
 
-		use = node1 proxy  ~n
+		use = node1 prox  ~n
 		{
 			if ( "not_null?( io.link1 )" ) ~n -> io.link1:deref; 
 		}
@@ -97,7 +97,7 @@ type node1 [incomplete]
 
 
 
-type list1 from sequential<node1><cursor1>
+type list1 from serial<node1><cursor1>
 {{
 	One-way linked list with untyped nodes.
 
@@ -178,7 +178,7 @@ type list1 from sequential<node1><cursor1>
 	{
 		begin  -- original empty
 		{
-			io:as_base<sequential<node1><cursor1>>:begin;
+			io:as_base<serial<node1><cursor1>>:begin;
 		}
 
 		begin ( list1 other [upd] )  -- take 
@@ -323,7 +323,7 @@ type list1 from sequential<node1><cursor1>
 	}
 
 
-	abstract in sequential<node1><cursor1>
+	abstract in serial<node1><cursor1>
 	{
 		[final] ~open_cursor ( int step )( cursor1 c )
 		{	
@@ -340,7 +340,7 @@ type list1 from sequential<node1><cursor1>
 			c:flip;
 		}
 
-		[final] ~use ( cursor1 c ) = node1 proxy ~n   
+		[final] ~use ( cursor1 c ) = node1 prox ~n   
 		{
 			~n -> c:use;
 		}
@@ -363,7 +363,7 @@ type list1 from sequential<node1><cursor1>
 	synthetic typed node1
 }}
 {
-	general method	begin = <t> proxy [init] ~base
+	general method	begin = <t> prox [init] ~base
 	{
 		io:as_base<node1>:begin;
 		~base -> io:as_base<<t>>;
@@ -393,9 +393,9 @@ type <t>list from list1
 
 		begin ( t_list other )  -- with <t> copy
 		{
-			for each ( node1 proxy ~n in other )  
+			for each ( node1 prox ~n in other )  
 			{
-				link1 nl:begin<t_node1>:begin is <t> proxy [init] ~new_t;
+				link1 nl:begin<t_node1>:begin is <t> prox [init] ~new_t;
 				~new_t:begin( ~n:as<<t>> );  
 				io:as_base<list1>:insert( nl ):go_next;
 			}
@@ -403,40 +403,40 @@ type <t>list from list1
 
 		begin ( t_list other ) with copier ( <t> )( <t> ) -- with copier
 		{
-			for each ( node1 proxy ~n in other ) 
+			for each ( node1 prox ~n in other ) 
 			{
-				link1 nl:begin<t_node1>:begin is <t> proxy [init] ~new_t;  
+				link1 nl:begin<t_node1>:begin is <t> prox [init] ~new_t;  
 				
 				copier( ~n:as<<t>> )( ~new_t );
 				io:as_base<list1>:insert( nl ):go_next;
 			}
 		}
 
-		insert [upd] = <t> proxy [init] ~t  -- after current
+		insert [upd] = <t> prox [init] ~t  -- after current
 		{
 			~t -> link1 nl:begin<t_node1>:begin; -- null
 			io:as_base<list1>:insert( nl );
 		}
 
-		use_first = <t> proxy [eval,init] ~t  -- may be void
+		use_first = <t> prox [eval,init] ~t  -- may be void
 		{
 			io:as_base<list1>:get_first()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
-		use_last = <t> proxy [eval,init] ~t -- may be void
+		use_last = <t> prox [eval,init] ~t -- may be void
 		{
 			io:as_base<list1>:get_last()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
-		use_current = <t> proxy [eval,init] ~t -- may be void
+		use_current = <t> prox [eval,init] ~t -- may be void
 		{
 			io:as_base<list1>:get_current()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
-		use_next = <t> proxy [eval,init] ~t -- may be void
+		use_next = <t> prox [eval,init] ~t -- may be void
 		{
 			io:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
@@ -518,7 +518,7 @@ type <t>stack
 			io.list:is_empty?()( yes );
 		}
 
-		push [upd] = <t> proxy [init]  ~t
+		push [upd] = <t> prox [init]  ~t
 		{
 			~t -> io.list:insert;
 		}
@@ -528,7 +528,7 @@ type <t>stack
 			io.list:remove_next;
 		}
 		
-		use_top = <t> proxy [eval,init] ~t  -- top 
+		use_top = <t> prox [eval,init] ~t  -- top 
 		{
 			~t -> io.list:use_first;
 		}
@@ -576,7 +576,7 @@ type <t>queue
 			io.list:is_empty?()( yes );
 		}
 
-		push [upd] = <t> proxy [init] ~t 
+		push [upd] = <t> prox [init] ~t 
 		{
 			~t -> io.list:go_last:insert;
 		}
@@ -600,7 +600,7 @@ type <t>queue
 				io.list:go_front:remove_next()( first ) with taker;
 		}
 
-		use_first = <t> proxy [eval,init] ~t 
+		use_first = <t> prox [eval,init] ~t 
 		{
 			~t -> io.list:use_first;
 		}

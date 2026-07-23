@@ -14,11 +14,11 @@ type utc_offset
 	{
 		begin ( int first, int second );
 
-		use_first = int proxy [eval,init];
+		use_first = int prox [eval,init];
 
 		get_first ()( int );
 
-		use_second = int proxy [eval,init];
+		use_second = int prox [eval,init];
 
 		get_second ()( int );
 	}
@@ -67,14 +67,14 @@ type utc  -- conventional
 	
 	Other specialized high-precision clocks may be avail-
 	able in the kernel, or the application can write 
-	compatible subroutines.
+	compatible routines.
 
 	Given utc_origin, a utc, and a time zone, an equivalent
 	calendar date and clock time can be derived for that
 	utc in that time zone.
 		
 	Note: This functionality is not Alpha. See stock
-	conversion subroutines.
+	conversion routines.
 		
 	To support derivation of calendar dates and clock times,
 	:analyze converts a utc value to an int pair (d,t) where

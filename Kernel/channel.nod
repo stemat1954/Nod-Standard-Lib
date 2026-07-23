@@ -1,9 +1,9 @@
 
 page channel in KernelByNod [compatible]
 
-subroutine
+routine
 {{
-	This subroutine group provides a queueing facility for
+	This routine group provides a queueing facility for
 	asynchronous channel i/o.
 
 	See channel i/o group on this page for async routines.
@@ -19,7 +19,7 @@ subroutine
 	Channel queues are required for asynchronous input and
 	output. To initiate asynchronous i/o, an application
 	formats an i/o request record and gives it to the read 
-	or write subroutine.  When the i/o completes, the 
+	or write routine.  When the i/o completes, the 
 	request record is queued and the queue signal is raised. 
 
 	channel_queue_read reads a channel queue.  If the queue
@@ -35,9 +35,9 @@ subroutine
 
 
 
-subroutine
+routine
 {{
-	This subroutine group provides a common, low-level 
+	This routine group provides a common, low-level 
 	channel i/o facility.
 	
 	Given:
@@ -53,14 +53,14 @@ subroutine
 	channels to communicate with the file system.  Other
 	unnamed channels, e.g. network channels, are usually
 	supported too.  Since channel support is varied and
-	extensible, subroutines that create and control specific
+	extensible, routines that create and control specific
 	kinds of channels are found on other channel-specific
 	pages.  
 	
 	Channel i/o is either synchronous or asynchronus.
 	To initiate either kind of i/o, the application formats
 	an i/o request and submits it using a specific sync or 
-	async subroutine.
+	async routine.
 
 	channel_sync_io returns when the request has been 
 	processed.  Calls are serialized against the underlying

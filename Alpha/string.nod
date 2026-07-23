@@ -1,7 +1,7 @@
 
 page string in AlphaByNod
 
-type string from contiguous<unicode>
+type string from positional<unicode>
 {{
 	A string is a static unicode character sequence.
 	
@@ -16,13 +16,13 @@ type string from contiguous<unicode>
 		specified, the caracter sequence must be delimited
 		by a zero char (aka "null-terminated").  Encoding
 		must be specified.  Note: a mediator or compatible
-		subroutine is usually the source for this initial-
+		routine is usually the source for this initial-
 		izer.
 	
-	(2) from sequential collection of characters:
+	(2) from serial collection of characters:
 
 		encoding must be specified, length is determined
-		by the sequential cursor.
+		by the serial cursor.
 
 	(3) from ascii expr (literal):
 
@@ -44,19 +44,19 @@ type string from contiguous<unicode>
 		and null-delimitation, making it a platform compat-
 		ible c string.
 
-	A string is a contiguous subtype, but any attempt to 
+	A string is a positional subtype, but any attempt to 
 	modify the value (with :use[upd] or :use[init] ) will
 	disrupt the app.
 
 }}
 {
-	nom type sequential<c> = sequential<unicode><<c>>;
+	nom type serial<c> = serial<unicode><<c>>;
 
 	general method
 	{
 		begin ( addr, utf, endian, int len [opt] );  -- sequence in mem
 
-		begin<c> ( sequential<<c>> source, utf, endian );  -- sequential collection
+		begin<c> ( serial<<c>> source, utf, endian );  -- serial collection
 		
 		begin ( expr, utf [opt], endian [opt] );  -- expr/literal conversion
 
@@ -88,10 +88,10 @@ type string from contiguous<unicode>
 		scan ( int i [upd] ) with stop? ( string, int i )( bool );
 	}
 
-	abstract in contiguous<unicode>
+	abstract in positional<unicode>
 	{
 		[final] ~count ()( int );	
 
-		[final] ~use ( int i ) = unicode proxy; 
+		[final] ~use ( int i ) = unicode prox; 
 	}
 }

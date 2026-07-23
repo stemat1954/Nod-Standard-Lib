@@ -23,7 +23,7 @@ page text_channel in StockByNod
 }}
 
 
-[page] subroutine
+[page] routine
 {
 	read_channel_str ( sync_channel_reader reader [upd], editor ed [upd], int q )( string error )  -- q chars
 	{

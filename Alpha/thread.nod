@@ -61,13 +61,13 @@ type thread -- intrinsic
 
 		get_id ()( expr );
 
-		use_handle = handle proxy [eval];
+		use_handle = handle prox [eval];
 	}
 }
 
 
 
-subroutine
+routine
 {
 	get_thread_id ()( expr ); -- of caller
 
@@ -75,7 +75,7 @@ subroutine
 
 	start_thread<ept> ( op<object> [opt] )( op<thread> ); 
 	{{
-		This subroutine creates an entry point object of 
+		This routine creates an entry point object of 
 		type <ept> which derives from alpha\entry, then 
 		calls adaptable entry method :run on a new thread,
 		forwarding the given object pointer. The entry 

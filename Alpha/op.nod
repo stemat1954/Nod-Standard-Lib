@@ -52,7 +52,7 @@ type op<t>   -- intrinsic
 	Here are the equivalent expressions written out:
 	
 		op<thing> pt;	-- define null pt
-		pt:begin is thing proxy [init] ~t; -- init pt
+		pt:begin is thing prox [init] ~t; -- init pt
 		~t:begin;	-- init ~t
 
 	The overt proxy spec is optional clarification.
@@ -96,7 +96,7 @@ type op<t>   -- intrinsic
 		general method goo [eval];
 	}
 
-	subroutine foo
+	routine foo
 	{
 		op<widget> wp:begin:begin; -- new op to actual widget
 		op<thing> tp:begin( wp );  -- copy wp
@@ -178,9 +178,9 @@ type op<t>   -- intrinsic
 {
 	general 
 	{
-		begin = <t> proxy [init];			-- access new <t> object, complete <t> (may quit)
+		begin = <t> prox [init];			-- access new <t> object, complete <t> (may quit)
 		
-		begin<xt> = <xt> proxy [init];		-- access new <xt> object, <xt> related to <t> (may quit)
+		begin<xt> = <xt> prox [init];		-- access new <xt> object, <xt> related to <t> (may quit)
 
 		begin<xt> ( op<<xt>> );				-- copy compatible op, <xt> related to <t> (may quit)
 
@@ -192,7 +192,7 @@ type op<t>   -- intrinsic
 		store ( mediator [upd], expr fex )()( extra );  -- requires adapted mediator (may quit)
 
 
-		deref = <t> proxy [upd];			-- always works (never void)
+		deref = <t> prox [upd];			-- always works (never void)
 
 		equal<xt>? ( op<<xt>> )( bool );
 

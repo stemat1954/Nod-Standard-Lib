@@ -39,24 +39,24 @@ type object  -- virtual, restricted
 		recycle [term];	 
 
 
-		use_typeid [eval] = typeid proxy [eval];  -- access 
+		use_typeid [eval] = typeid prox [eval];  -- access 
 
 		get_typeid [eval]()( typeid );	-- copy
 
 		get_addr [eval]()( addr );  -- copy
 
 
-		as_base<t> [eval] = <t> proxy [eval,upd,init];  -- see notes
+		as_base<t> [eval] = <t> prox [eval,upd,init];  -- see notes
 	}
 
 	general -- by proxy 
 	{
 		is<t>? [eval]()( bool );  
 
-		as<t> [eval] = <t> proxy [eval,upd];	-- may be void
+		as<t> [eval] = <t> prox [eval,upd];	-- may be void
 
 		is_actual<t>? [eval]()( bool );
 
-		as_actual<t> [eval] = <t> proxy [eval,init];  -- may be void
+		as_actual<t> [eval] = <t> prox [eval,init];  -- may be void
 	}
 }

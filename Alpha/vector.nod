@@ -2,7 +2,7 @@
 page vector in AlphaByNod
 
 
-type vector<t><#n> from contiguous<<t>>
+type vector<t><#n> from positional<<t>>
 {{
 	algebraic vector.
 	
@@ -29,7 +29,7 @@ type vector<t><#n> from contiguous<<t>>
 
 		begin ( <t> x, <t> y, <t> z [opt], <t> w [opt] )()( extra );	-- synthesis
 
-		begin<xt><c> ( sequential<<xt>><<c>> source );	-- fill
+		begin<xt><c> ( serial<<xt>><<c>> source );	-- fill
 
 
 		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
@@ -46,7 +46,7 @@ type vector<t><#n> from contiguous<<t>>
 
 		get_coord [eval]( int i )( <t> n );
 
-		use_coord [eval]( int i ) = <t> proxy [eval,init];
+		use_coord [eval]( int i ) = <t> prox [eval,init];
 
 		get_coords [eval]()( array<<t>><<#n>> );			
 
@@ -78,11 +78,11 @@ type vector<t><#n> from contiguous<<t>>
 	}
 
 
-	abstract method in contiguous<<t>>
+	abstract method in positional<<t>>
 	{
 		[final]	~count ()( int q );					-- q := #n
 
-		[final] ~use ( int i ) = <t> proxy;			-- use_coord(i)
+		[final] ~use ( int i ) = <t> prox;			-- use_coord(i)
 	}
 
 }

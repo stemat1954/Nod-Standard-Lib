@@ -182,7 +182,7 @@ type lock
 		release [eval];
 
 
-		use_handle = handle proxy [eval];
+		use_handle = handle prox [eval];
 	}
 }
 

@@ -38,7 +38,7 @@ type etm  -- conventional
 	can be represented by an int.  :as_int returns access to
 	int etm if it exists.  Otherwise the result is void.
 
-	Note: Compatible subroutines require integer time-outs,
+	Note: Compatible routines require integer time-outs,
 	so this is one application of :as_int. As a practical
 	matter, :as_int is platform dependent.
 
@@ -81,7 +81,7 @@ type etm  -- conventional
 		
 		less? ( etm other )( bool );
 	
-		as_int = int proxy [eval];	-- may be void
+		as_int = int prox [eval];	-- may be void
 
 		set [upd]( etm other );	 -- immediate replace
 

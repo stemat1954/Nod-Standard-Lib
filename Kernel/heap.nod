@@ -2,9 +2,9 @@
 page heap in KernelByNod [compatible]
 
 
-subroutine
+routine
 {{
-	This subroutine group provides low-level access	to the 
+	This routine group provides low-level access	to the 
 	application global memory heap.
 
 	Given:

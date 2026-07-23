@@ -2,7 +2,7 @@
 page disruption in AlphaByNod
 
 
-type disruption from contiguous<trace>  -- intrinsic, restricted
+type disruption from positional<trace>  -- intrinsic, restricted
 {{
 	A disruption is a trap information object.
 
@@ -16,7 +16,7 @@ type disruption from contiguous<trace>  -- intrinsic, restricted
 
 	Note:  See alpha\trace for details.
 
-	trace objects can be counted and accessed using contiguous
+	trace objects can be counted and accessed using positional
 	access methods.
 		
 	The current disruption object can only be referenced 
@@ -35,17 +35,17 @@ type disruption from contiguous<trace>  -- intrinsic, restricted
 	
 }}
 {
-	general  -- similar in contiguous<trace>
+	general  -- similar in positional<trace>
 	{
 		count ()( int );
 
-		use_trace ( int i ) = trace proxy [eval]; 
+		use_trace ( int i ) = trace prox [eval]; 
 	}
 
-	abstract in contiguous<trace>
+	abstract in positional<trace>
 	{
 		[final] ~count ()( int n );
 
-		[final] ~use_trace ( int i ) = object proxy;
+		[final] ~use_trace ( int i ) = object prox;
 	}
 }

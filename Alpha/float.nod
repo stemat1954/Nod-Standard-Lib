@@ -29,7 +29,7 @@ page float in AlphaByNod
 	Methods that have undefined results yield 'nan' or one
 	of the infinity values.
 	
-	See math.nod for built-in functional subroutines
+	See math.nod for built-in functional routines
 	for numeric types.
 
 }}

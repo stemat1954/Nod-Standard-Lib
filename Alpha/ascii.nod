@@ -115,7 +115,7 @@ type ascii from enumerated
 
 		store ( mediator [upd], expr fex )()( extra );
 
-		use_notation = expr proxy [eval];
+		use_notation = expr prox [eval];
 
 		get_notation ()( expr );
 

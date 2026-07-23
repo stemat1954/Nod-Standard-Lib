@@ -4,7 +4,7 @@ page editor in StockByNod
 
 enum type match_mode ( 'exact', 'similar', 'regex' );
 
-subroutine
+routine
 {
 	exact_match? ( editor ped [upd], unicode c, sign d, expr fex )( bool yes )
 	{{
@@ -52,7 +52,7 @@ type editor from mediator
 	
 	Encoding of the unicode image is specified to :begin.
 
-	Note:  Generally, stock methods and subroutines use 
+	Note:  Generally, stock methods and routines use 
 	default encoding to edit unicode text.  Default encod-
 	ing is defined by well-known alpha\default_utf and 
 	alpha\default_endian.
@@ -248,12 +248,12 @@ type editor from mediator
 			io:write_one( c );
 		}
 				
-		write<c> [upd]( sequential<unicode><<c>> source )
+		write<c> [upd]( serial<unicode><<c>> source )
 		{
 			io:write_sequence( source );
 		}
 
-		write<c> [upd]( sequential<ascii><<c>> source )
+		write<c> [upd]( serial<ascii><<c>> source )
 		{
 			io:write_sequence( source );
 		}
@@ -480,7 +480,7 @@ type editor from mediator
 			c:use_code:store( *io, io.codepoint_fex );
 		}
 
-		write_sequence<t><c> [upd]( sequential<<t>><<c>> source ) -- <t> ascii or unicode
+		write_sequence<t><c> [upd]( serial<<t>><<c>> source ) -- <t> ascii or unicode
 		{
 			for each ( ~c in source ) ~c:use_code:store( *io, io.codepoint_fex );
 		}
@@ -681,7 +681,7 @@ type editor from mediator
 	}
 
 
-	subroutine describe_utf ( utf )( int unit, expr fex )
+	routine describe_utf ( utf )( int unit, expr fex )
 	{
 		select ( given\utf )
 		{	

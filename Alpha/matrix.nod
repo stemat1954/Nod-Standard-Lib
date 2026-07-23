@@ -12,7 +12,7 @@ type matrix<t><#r><#c>
 
 	Use sq_matrix<t><#n> when <#r> and <#c> are same.
 
-	When filling a matrix from a sequential source, columns 
+	When filling a matrix from a serial source, columns 
 	are	filled row-wise (row-by-row).  If the source is 
 	exhausted before the matrix is filled, remaining entries
 	will be zero.  The source type must be numeric. If it 
@@ -39,7 +39,7 @@ type matrix<t><#r><#c>
 
 		begin ( same_type other );				-- copy
 
-		begin<xt><c> ( sequential<<xt>><<c>> source ); -- fill, see notes
+		begin<xt><c> ( serial<<xt>><<c>> source ); -- fill, see notes
 		
 		begin ( mediator m [upd], expr fex );	-- mediation
 
@@ -63,7 +63,7 @@ type matrix<t><#r><#c>
 
 		get_entry [eval]( int i, int j )( <t> n );
 
-		use_entry [eval]( int i, int j ) = <t> proxy [eval,init];
+		use_entry [eval]( int i, int j ) = <t> prox [eval,init];
 
 
 		add [upd]( same_type m );					-- add:  io := io + m 
@@ -107,7 +107,7 @@ type sq_matrix<t><#> from matrix<<t>><<#>><<#>>
 
 		begin ( same_type other );			-- copy
 
-		begin<xt><c> ( sequential<<xt>><<c>> source );	-- fill
+		begin<xt><c> ( serial<<xt>><<c>> source );	-- fill
 
 		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
 
@@ -168,9 +168,9 @@ type af_matrix<t><#>
 
 		store ( mediator m [upd], expr fex )()( extra );	-- mediation
 				
-		use_linear_part = sub_matrix proxy [eval,init];
+		use_linear_part = sub_matrix prox [eval,init];
 
-		use_translation_part = sub_vector proxy [eval,init];
+		use_translation_part = sub_vector prox [eval,init];
 
 	}
 }

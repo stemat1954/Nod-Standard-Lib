@@ -13,7 +13,7 @@ type system
 			io.console:begin;  -- system console
 		}
 
-		use_console = console proxy [eval,upd] ~c
+		use_console = console prox [eval,upd] ~c
 		{
 			~c -> io.console;
 		}

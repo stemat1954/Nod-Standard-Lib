@@ -2,7 +2,7 @@
 page expr in AlphaByNod
 
 
-type expr from contiguous<ascii> -- intrinsic, conventional
+type expr from positional<ascii> -- intrinsic, conventional
 {{
 	An expr is a source code literal.
 		
@@ -46,7 +46,7 @@ type expr from contiguous<ascii> -- intrinsic, conventional
 	should be avoided because they ARE retained and	mimic
 	tabs when displayed at the start of a new line.
 
-	An expr can be created from any sequential<ascii>
+	An expr can be created from any serial<ascii>
 	source.
 		
 	In a very general way, exprs provide a way to extend
@@ -73,7 +73,7 @@ type expr from contiguous<ascii> -- intrinsic, conventional
 	:extract methods extract ascii character objects. See
 	alpha\ascii for details.
 
-	An expr is a contiguous subtype, but any attempt to 
+	An expr is a positional subtype, but any attempt to 
 	modify the value (with :use[upd] or :use[init] ) will
 	disrupt the app.
 	 
@@ -84,11 +84,11 @@ type expr from contiguous<ascii> -- intrinsic, conventional
 	Several forms pf delimitiation are supported.
 }}
 {
-	nom type sequential<c> = sequential<ascii><<c>>;
+	nom type serial<c> = serial<ascii><<c>>;
 
 	general 	
 	{
-		begin<c> ( sequential<<c>> source );  -- synthetic
+		begin<c> ( serial<<c>> source );  -- synthetic
 
 		begin ( expr other );	-- copy
 
@@ -113,11 +113,11 @@ type expr from contiguous<ascii> -- intrinsic, conventional
 		scan ( int i [upd] ) with stop? ( expr, int i )( bool );
 	}
 
-	abstract in contiguous<ascii>
+	abstract in positional<ascii>
 	{
 		[final] ~count ()( int );	
 
-		[final] ~use ( int i ) = ascii proxy; 
+		[final] ~use ( int i ) = ascii prox; 
 	}
 }
 

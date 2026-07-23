@@ -1,18 +1,18 @@
 
-page sequential in AlphaByNod
+page serial in AlphaByNod
 
 
-type sequential<t><c> [incomplete] -- intrinsic
+type serial<t><c> [incomplete] -- intrinsic
 {{
-	sequential<t><c> is a base type for any object 
-	collection that can be accessed step-wise using a
+	serial<t><c> is a base type for any object 
+	collection that can be accessed serially using a
 	bespoke cursor.
 		
 	<t> is the symbolic object type and <c> is the symbolic 
 	cursor type. 
 	
-	Individual objects in a sequential collection are 
-	accessed in order using a bespoke cursor.
+	Individual objects in a serial collection are accessed
+	in order using a bespoke cursor.
 
 	Access to the collection starts by opening a cursor	
 	positioned at one end of the collection. The cursor moves
@@ -20,11 +20,10 @@ type sequential<t><c> [incomplete] -- intrinsic
 	or negative step determines direction and resolution of
 	the cursor. 
 	
-	Generally, a sequential cursor must have a final 
-	inoperable state that doesn't provide access to any
-	object. The inoperable state must be distinguishable
-	from null and an inoperable cursor must be accepted by
-	all	methods.
+	Generally, a serial cursor must have a final inoperable 
+	state that doesn't provide access to any object. The 
+	inoperable state must be distinguishable from null and 
+	an inoperable cursor must be accepted by all methods.
 
 	:open_cursor( step ) creates an original cursor placed 
 	at one end of the collection.  If step is positive, the 
@@ -51,8 +50,7 @@ type sequential<t><c> [incomplete] -- intrinsic
 	Permission must be specified in the call and it's 
 	verified at runtime.
 
-	A sequential collection can be scanned in a Nod 
-	for loop.
+	A serial collection can be scanned in a Nod	for loop.
 }}
 {
 	general
@@ -65,7 +63,7 @@ type sequential<t><c> [incomplete] -- intrinsic
 
 		flip_cursor ( <c> [upd] );
 
-		use ( <c> ) = <t> proxy;
+		use ( <c> ) = <t> prox;
 	}
 
 
@@ -77,7 +75,7 @@ type sequential<t><c> [incomplete] -- intrinsic
 
 		~flip_cursor ( <c> [upd]);
 
-		~use ( <c> ) = <t> proxy; 
+		~use ( <c> ) = <t> prox; 
 	}
 
 }

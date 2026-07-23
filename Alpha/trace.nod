@@ -29,11 +29,11 @@ type trace -- instrisic,restricted
 {
 	general 
 	{
-		use_location = expr proxy [eval];
+		use_location = expr prox [eval];
 
 		get_location ()( expr );
 
-		use_quit_object = object proxy [eval];
+		use_quit_object = object prox [eval];
 	}
 }
 

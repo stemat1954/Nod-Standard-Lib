@@ -2,7 +2,7 @@
 page extra in AlphaByNod
 
 
-type extra from contiguous<object> -- intrinsic, restricted
+type extra from positional<object> -- intrinsic, restricted
 {{
 	extra is a collective type that represents a uniform
 	set of unspecified objects given in a procedure call
@@ -43,17 +43,17 @@ type extra from contiguous<object> -- intrinsic, restricted
 		delete [upd]( int q [opt] );  -- q objects from front
 	}
 
-	general  -- similar in contiguous<object>
+	general  -- similar in positional<object>
 	{
 		count ()( int );
 
-		use ( int i ) = object proxy; 
+		use ( int i ) = object prox; 
 	}
 
-	abstract in contiguous<object>
+	abstract in positional<object>
 	{
 		[final] ~count ()( int n );
 
-		[final] ~use ( int i ) = object proxy;
+		[final] ~use ( int i ) = object prox;
 	}
 }

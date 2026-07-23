@@ -97,7 +97,7 @@ page channel in StockByNod
 	}
 
 
-	subroutine
+	routine
 	{
 		word_to_ascii ( word8 w )( ascii a )
 		{
@@ -132,7 +132,7 @@ page channel in StockByNod
 }
 
 
-[page] subroutine 
+[page] routine 
 {
 	format_request ( request r )( addr pr )  -- orphan pr
 	{
@@ -180,7 +180,7 @@ enum type channel_report ( 'good', 'pending', 'busy', 'closed', 'retry', 'end', 
 	
 
 
-subroutine update_mediator_async ( addr preq, mediator med [upd] )( int id, channel_report report, string note ) -- adopt preq
+routine update_mediator_async ( addr preq, mediator med [upd] )( int id, channel_report report, string note ) -- adopt preq
 {
 	restore_request( preq )( request req ); -- adopt preq
 	req:get_group1()( ascii action, addr pdata, int offset, int size, int seek, id ); -- ignore seek
