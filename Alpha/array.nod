@@ -67,7 +67,7 @@ type array<t> from positional<<t>> -- compatible and conventional per <t>
 				
 		count [eval]()( int q );						-- not abstract
 
-		use [eval]( int i ) = <t> prox [eval,init];	-- not abstract
+		use [eval]( int i ) = <t> prox [eval,init];		-- not abstract
 
 		insert [upd]( int i [opt], int q );				-- q null objs at i (end)
 
@@ -83,7 +83,7 @@ type array<t> from positional<<t>> -- compatible and conventional per <t>
 
 	general method  -- <t> dependent
 	{
-		begin<c> ( serial<<c>> source );										-- with <t> copy
+		begin<c> ( serial<<c>> source );									-- with <t> copy
 		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );			-- with copier
 
 		begin ( mediator [upd], expr fex )()( extra );							-- mediate
@@ -95,7 +95,7 @@ type array<t> from positional<<t>> -- compatible and conventional per <t>
 		insert [upd]( positional source [upd], int i [opt], int q [opt], int j [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
 
 		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] );										-- with <t> copy: q (all) objs from source to i (end) 
-		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] ) with copier ( <t> )( <t> );			-- with copier:  ditto
+		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] ) with copier ( <t> )( <t> );				-- with copier:  ditto
 		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] );									-- with <t> take: ditto
 		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
 

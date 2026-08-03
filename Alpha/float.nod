@@ -63,9 +63,9 @@ type fp2 -- elementary, compatible, conventional
 		store ( mediator [upd], expr fex );		-- mediation
 
 
-		equal? ( fp2 n )( bool );			-- equality
+		equal? ( fp2 n )( bool );				-- equality
 		
-		before? ( fp2 n )( bool );			-- ordinality (same as less?)
+		before? ( fp2 n )( bool );				-- ordinality (same as less?)
 
 		less? ( fp2 n )( bool );				-- cardinality (same as before?)
 

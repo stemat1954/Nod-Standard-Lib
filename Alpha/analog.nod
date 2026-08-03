@@ -20,14 +20,14 @@ type analog  -- intrinsic,restricted
 {
 	general
 	{
-		is_void? ()( bool );
+		void? ()( bool );
 
-		is_not_void? ()( bool );
+		not_void? ()( bool );
 
-		is_stale? ()( bool );
+		stale? ()( bool );
 
-		is_not_stale? ()( bool );
+		not_stale? ()( bool );
 
-		is_valid? ()( bool );	-- is_not_void |and| is_not_stale
+		valid? ()( bool );	-- "not_void? |and| not_stale?"
 	}
 }
