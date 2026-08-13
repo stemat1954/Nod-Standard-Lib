@@ -89,15 +89,15 @@ type array<t> from positional<<t>> -- compatible and conventional per <t>
 		begin ( mediator [upd], expr fex )()( extra );							-- mediate
 		store [eval]( mediator [upd], expr fex )()( extra );					-- mediate
 
-		insert [upd]( positional source, int i [opt], int q [opt], int j [opt] );									-- with <t> copy: q (all) objs from source at j (0) to i (end) 
-		insert [upd]( positional source, int i [opt], int q [opt], int j [opt] ) with copier ( <t> )( <t> );		-- with copier:  ditto
-		insert [upd]( positional source [upd], int i [opt], int q [opt], int j [opt] );								-- with <t> take: ditto
-		insert [upd]( positional source [upd], int i [opt], int q [opt], int j [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
+		insert [upd]( int i [opt], positional source, int q [opt], int j [opt] );								-- with <t> copy: at i (end), q (all) objs from source at j (zero) 
+		insert [upd]( int i [opt], positional source, int q [opt],int j [opt] ) with copier ( <t> )( <t> );		-- with copier:  ditto
+		insert [upd]( int i [opt], positional source [upd], int q [opt], int j [opt] );							-- with <t> take: ditto
+		insert [upd]( int i [opt], positional source [upd], int q [opt], int j [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
 
-		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] );										-- with <t> copy: q (all) objs from source to i (end) 
-		insert<c> [upd]( serial<<c>> source, int i [opt], int q [opt] ) with copier ( <t> )( <t> );				-- with copier:  ditto
-		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] );									-- with <t> take: ditto
-		insert<c> [upd]( serial<<c>> source [upd], int i [opt], int q [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
+		insert<c> [upd]( int i [opt], serial<<c>> source, int q [opt] );										-- with <t> copy: at i (end), q (all) objs from source 
+		insert<c> [upd]( int i [opt], serial<<c>> source, int q [opt] ) with copier ( <t> )( <t> );				-- with copier:  ditto
+		insert<c> [upd]( int i [opt], serial<<c>> source [upd], int q [opt] );									-- with <t> take: ditto
+		insert<c> [upd]( int i [opt], serial<<c>> source [upd], int q [opt] ) with taker ( <t> [upd] )( <t> );	-- with taker:  ditto
 
 		copy [eval]( int i [opt] )( <t> obj );									-- with <t> copy: one obj at i (end) to obj
 		copy [eval]( int i [opt] )( <t> obj ) with copier ( <t> )( <t> );		-- with copier: ditto
@@ -105,7 +105,8 @@ type array<t> from positional<<t>> -- compatible and conventional per <t>
 		take [upd]( int i [opt] )( <t> obj );									-- with <t> taker: one obj at i (end) to obj
 		take [upd]( int i [opt] )( <t> obj ) with taker ( <t> [upd] )( <t> );	-- with taker: ditto
 
-		rank ( <t> )( int i, bool unique ) with sorter ( <t> a, <t> b )( bool ); -- find ordered insertion point
+		rank ( <t> )( int i, bool unique );										 -- find ordered insertion point, with <t> :before?
+		rank ( <t> )( int i, bool unique ) with sorter ( <t> a, <t> b )( bool ); -- ditto, with sorter
 	}
 
 	abstract method in positional<<t>>
