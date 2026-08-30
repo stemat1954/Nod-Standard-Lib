@@ -21,7 +21,7 @@ type console
 		{
 			kernel\console_identify( no_addr, *handle hcon:begin );
 			if ( "hcon |=| no_handle" ) quit with fault:begin( 'platform', 'no system console' );
-			io:configure( hcon )( string err );
+			imo:configure( hcon )( string err );
 			if ( "not_null?( err )" ) quit with fault:begin( 'platform', 'system console broken' );
 		}
 
@@ -34,33 +34,33 @@ type console
 			if ( "hcon |=| no_handle" )
 			{
 				editor:begin( 'unknown console: ' ):write( name ):detach()( error );
-				io.ready:begin( false );
+				imo.ready:begin( false );
 			}
 			else
-				io:configure( hcon )( error );
+				imo:configure( hcon )( error );
 		}
 
 		get_encoding ()( utf f, endian e )
 		{
-			f:begin( io.utf );
-			e:begin( io.endian );
+			f:begin( imo.utf );
+			e:begin( imo.endian );
 		}
 		
 			
 		read [upd]( editor ed [upd], int q )( string error ) -- q chars into editor @wp
 		{
-			if ( io.ready )
-				io.channel:read( *ed, q )( error )
+			if ( imo.ready )
+				imo.channel:read( *ed, q )( error )
 			else
 				error:begin( not_ready );
 		}
 
 		read [upd]( int q )( string input, string error ) -- q chars into string
 		{
-			if ( io.ready )
+			if ( imo.ready )
 			{
-				editor ed:begin( io.utf, io.endian );
-				io.channel:read( *ed, q )( error );
+				editor ed:begin( imo.utf, imo.endian );
+				imo.channel:read( *ed, q )( error );
 				if ( "null?( error )" ) ed:read()( input ); -- all
 			}
 			else
@@ -70,9 +70,9 @@ type console
 		
 		read [upd]( editor ed [upd], unicode c [opt] )( string error ) -- delimited by c (eol) into editor @wp
 		{
-			fix( c, io.eol ) is ~c;
-			if ( io.ready )
-				io.channel:read( *ed, ~c )( error )
+			fix( c, imo.eol ) is ~c;
+			if ( imo.ready )
+				imo.channel:read( *ed, ~c )( error )
 			else
 				error:begin( not_ready );
 		}
@@ -80,11 +80,11 @@ type console
 		
 		read [upd]( unicode c [opt] )( string input, string error ) -- delimited by c (eol) into string
 		{
-			fix( c, io.eol ) is ~c;
-			if ( io.ready )
+			fix( c, imo.eol ) is ~c;
+			if ( imo.ready )
 			{
-				editor ed:begin( io.utf, io.endian );
-				io.channel:read( *ed, ~c )( error );
+				editor ed:begin( imo.utf, imo.endian );
+				imo.channel:read( *ed, ~c )( error );
 				if ( "null?( error )" ) ed:read()( input ); -- all
 			}
 			else
@@ -95,19 +95,19 @@ type console
 		write [upd]( string )( string error )  -- string
 		{
 			editor ed:begin( given\string );
-			io:write( *ed )( error );
+			imo:write( *ed )( error );
 		}
 
 		write [upd]( expr )( string error )  -- expr
 		{
 			editor ed:begin( given\expr );
-			io:write( *ed )( error );
+			imo:write( *ed )( error );
 		}
 
 		write [upd]( editor ed [upd] )( string error ) -- from editor @rp
 		{
-			if ( io.ready )
-				io.channel:write( *ed )( error )
+			if ( imo.ready )
+				imo.channel:write( *ed )( error )
 			else
 				error:begin( not_ready );
 		}
@@ -124,29 +124,29 @@ type console
 			
 			if ( "hch |not=| no_handle" )
 			{
-				io.channel:begin( hch ); 
+				imo.channel:begin( hch ); 
 
 				kernel\console_get_protocol( hcon, *int unit:begin, *word16 bom:begin, *int eol:begin );
 
-				io.eol:begin( eol );
+				imo.eol:begin( eol );
 
 				select ( unit )
 				{
-					value ( '1' ) io.utf:begin ( 'UTF-8' );
-					value ( '2' ) io.utf:begin ( 'UTF-16' );
-					value ( '4' ) io.utf:begin ( 'UTF-32' );
+					value ( '1' ) imo.utf:begin ( 'UTF-8' );
+					value ( '2' ) imo.utf:begin ( 'UTF-16' );
+					value ( '4' ) imo.utf:begin ( 'UTF-32' );
 					else quit with fault:begin( 'bug', 'unexpected code unit value' );
 				}
 
-				if ( "bom |=| unicode_bom_FEFF" ) io.endian:begin ( 'big-endian' )
-				else if ( "bom |=| unicode_bom_FFFE" ) io.endian:begin ( 'little-endian' )
+				if ( "bom |=| unicode_bom_FEFF" ) imo.endian:begin ( 'big-endian' )
+				else if ( "bom |=| unicode_bom_FFFE" ) imo.endian:begin ( 'little-endian' )
 				else if ( "not( is_zero?( bom ) )" ) quit with fault:begin( 'bug', 'invalid byte order mark' );
 
-				io.ready:begin( true );
+				imo.ready:begin( true );
 			}
 			else 
 			{
-				io.ready:begin( false );
+				imo.ready:begin( false );
 
 				editor ed:begin( 'could not open console channel [' );
 				if ( "pnote |not=| no_addr" ) ed:write( cstr_to_alpha( pnote )( =string ) );  -- zero terminated

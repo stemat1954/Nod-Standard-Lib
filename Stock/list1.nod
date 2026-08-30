@@ -34,17 +34,17 @@ type node1 [incomplete]
 
 		get_next ()( link1 )
 		{
-			if ( "not_null?( io.next )" ) given\link1:begin( io.next );
+			if ( "not_null?( imo.next )" ) given\link1:begin( imo.next );
 		}
 
 		set_next [upd]( link1 )
 		{
-			io.next := given\link1;
+			imo.next := given\link1;
 		}
 
 		unlink [upd]
 		{
-			io.next:recycle;
+			imo.next:recycle;
 		}
 	}
 
@@ -57,7 +57,7 @@ type node1 [incomplete]
 
 [page] type cursor1
 {{
-	cursor is inoperable if io.link1 is null.
+	cursor is inoperable if imo.link1 is null.
 }}
 {
 
@@ -65,27 +65,27 @@ type node1 [incomplete]
 	{
 		begin ( link1 [opt] )
 		{
-			if ( "not_null?( given\link1 )" ) io.link1:begin( given\link1 );
+			if ( "not_null?( given\link1 )" ) imo.link1:begin( given\link1 );
 		}
 
 		move [upd]
 		{
-			if ( "not_null?( io.link1 )" ) 
+			if ( "not_null?( imo.link1 )" ) 
 			{
-				io.link1:deref:get_next()( link1 next );
-				io.link1:recycle;
-				if ( "not_null?( next )" ) io.link1:begin( next );
+				imo.link1:deref:get_next()( link1 next );
+				imo.link1:recycle;
+				if ( "not_null?( next )" ) imo.link1:begin( next );
 			}
 		}
 
 		flip [upd]  -- not supported
 		{
-			io.link1:recycle;  
+			imo.link1:recycle;  
 		}
 
 		use = node1 prox  ~n
 		{
-			if ( "not_null?( io.link1 )" ) ~n -> io.link1:deref; 
+			if ( "not_null?( imo.link1 )" ) ~n -> imo.link1:deref; 
 		}
 	}
 
@@ -178,7 +178,7 @@ type list1 from serial<node1><cursor1>
 	{
 		begin  -- original empty
 		{
-			io:as_base<serial<node1><cursor1>>:begin;
+			imo:as_base<serial<node1><cursor1>>:begin;
 		}
 
 		begin ( list1 other [upd] )  -- take 
@@ -186,69 +186,69 @@ type list1 from serial<node1><cursor1>
 			if ( "not_null?( other.first )" )
 			{
 				-- ignore current in other
-				io.first:begin( *other.first );  
-				io.last:begin( *other.last );
+				imo.first:begin( *other.first );  
+				imo.last:begin( *other.last );
 				other.current:recycle;  -- go front
 			}
 		}
 
 		is_empty? ()( bool yes )
 		{
-			io.first:null?()( yes );
+			imo.first:null?()( yes );
 		}
 		
 		get_first ()( link1 )
 		{
-			if ( "not_null?( io.first )" ) given\link1:begin( io.first );
+			if ( "not_null?( imo.first )" ) given\link1:begin( imo.first );
 		}
 
 		get_last ()( link1 )
 		{
-			if ( "not_null?( io.last )" ) given\link1:begin( io.last );
+			if ( "not_null?( imo.last )" ) given\link1:begin( imo.last );
 		}
 
 		get_current ()( link1 )
 		{
-			if ( "not_null?( io.current )" ) given\link1:begin( io.current );
+			if ( "not_null?( imo.current )" ) given\link1:begin( imo.current );
 		}
 
 		get_next ()( link1 ) 
 		{
-			if ( "not_null?( io.current )" ) io.current:deref:get_next()( given\link1 );
+			if ( "not_null?( imo.current )" ) imo.current:deref:get_next()( given\link1 );
 		}
 		
 
 		go_front [upd]  -- before first
 		{
-			io.current:recycle;
+			imo.current:recycle;
 		}
 
 		go_first [upd]
 		{
-			if ( "not_null?( io.first )" ) io.current := io.first;
+			if ( "not_null?( imo.first )" ) imo.current := imo.first;
 		}
 
 		go_last [upd]
 		{
-			if ( "not_null?( io.last )" ) io.current := io.last;
+			if ( "not_null?( imo.last )" ) imo.current := imo.last;
 		}
 
 		go_next [upd]
 		{
-			if ( "null?( io.current )" )
+			if ( "null?( imo.current )" )
 			{
-				if ( "not_null?( io.first )" ) io.current := io.first;
+				if ( "not_null?( imo.first )" ) imo.current := imo.first;
 			}
 			else
 			{
-				io.current:deref:get_next()( link1 nl ); 
-				if ( "not_null?( nl )" ) io.current := nl;
+				imo.current:deref:get_next()( link1 nl ); 
+				if ( "not_null?( nl )" ) imo.current := nl;
 			}
 		}
 
 		go_here [upd]( link1 )  
 		{
-			io.current := given\link1;
+			imo.current := given\link1;
 		}
 
 		go_more [upd]( int qi )( int qo )
@@ -256,9 +256,9 @@ type list1 from serial<node1><cursor1>
 			qo:begin;
 			loop
 			{
-				io:get_next()( link1 nl );
+				imo:get_next()( link1 nl );
 				if ( "null?( nl )" ) escape;
-				io.current := nl;
+				imo.current := nl;
 				if ( qo:inc:equal?( qi )( =bool ) ) escape;
 			}
 		}
@@ -266,57 +266,57 @@ type list1 from serial<node1><cursor1>
 		insert [upd]( link1 )  -- after current  
 		{
 			given\link1:deref[upd]:unlink;  -- just in case
-			if ( "not_null?( io.current )" )  
+			if ( "not_null?( imo.current )" )  
 			{
 				-- after current
-				io.current:deref[upd]:get_next()( link1 before ):set_next( given\link1 ); 
+				imo.current:deref[upd]:get_next()( link1 before ):set_next( given\link1 ); 
 				if ( "null?( before )" )
-					io.last := given\link1 
+					imo.last := given\link1 
 				else
 					given\link1:deref[upd]:set_next( before );
 			}
-			else if ( "not_null?( io.first )" )
+			else if ( "not_null?( imo.first )" )
 			{
 				-- front (before first)
-				given\link1:deref[upd]:set_next( io.first );
-				io.first := given\link1;
+				given\link1:deref[upd]:set_next( imo.first );
+				imo.first := given\link1;
 			}
 			else 
 			{
 				-- first and only node
-				io.first:begin( given\link1 );
-				io.last:begin( given\link1 );
+				imo.first:begin( given\link1 );
+				imo.last:begin( given\link1 );
 			}
 		}
 
 		remove_next [upd]
 		{
-			if ( "not_null?( io.current )" ) 
+			if ( "not_null?( imo.current )" ) 
 			{
 				-- node after current
-				io.current:deref:get_next()( link1 next );
+				imo.current:deref:get_next()( link1 next );
 				if ( "not_null?( next )" ) 
 				{
 					next:deref[upd]:get_next()( link1 next_next ):unlink;
 					if ( "null?( next_next )" )
-						io.last := io.current -- new last
+						imo.last := imo.current -- new last
 					else 
-						io.current:deref[upd]:set_next( next_next );
+						imo.current:deref[upd]:set_next( next_next );
 				}
 			}
-			else if ( "not_null?( io.first )" ) 
+			else if ( "not_null?( imo.first )" ) 
 			{
 				-- first node
-				io.first:deref[upd]:get_next()( link1 next_next ):unlink;
+				imo.first:deref[upd]:get_next()( link1 next_next ):unlink;
 				if ( "null?( next_next )" )
 				{
 					-- list is empty now
-					io.first:recycle;
-					io.last:recycle;
+					imo.first:recycle;
+					imo.last:recycle;
 				}
 				else
 				{
-					io.first := next_next;  -- new first
+					imo.first := next_next;  -- new first
 				}
 			}
 		}
@@ -327,7 +327,7 @@ type list1 from serial<node1><cursor1>
 	{
 		[final] ~open_cursor ( int step )( cursor1 c )
 		{	
-			if ( "step |=| one" ) c:begin( io.first ) else c:begin;
+			if ( "step |=| one" ) c:begin( imo.first ) else c:begin;
 		}  
 
 		[final] ~move_cursor ( cursor1 c [upd] )
@@ -365,8 +365,8 @@ type list1 from serial<node1><cursor1>
 {
 	general method	begin = <t> prox [init] ~base
 	{
-		io:as_base<node1>:begin;
-		~base -> io:as_base<<t>>;
+		imo:as_base<node1>:begin;
+		~base -> imo:as_base<<t>>;
 	}
 }
 
@@ -382,12 +382,12 @@ type <t>list from list1
 	{
 		begin  -- empty
 		{
-			io:as_base<list1>:begin;
+			imo:as_base<list1>:begin;
 		}
 
 		begin ( t_list other [upd] ) -- take
 		{
-			io:as_base<list1>:begin( *other:as_base<list1> );
+			imo:as_base<list1>:begin( *other:as_base<list1> );
 		}
 
 
@@ -397,7 +397,7 @@ type <t>list from list1
 			{
 				link1 nl:begin<t_node1>:begin is <t> prox [init] ~new_t;
 				~new_t:begin( ~n:as<<t>> );  
-				io:as_base<list1>:insert( nl ):go_next;
+				imo:as_base<list1>:insert( nl ):go_next;
 			}
 		}
 
@@ -408,67 +408,67 @@ type <t>list from list1
 				link1 nl:begin<t_node1>:begin is <t> prox [init] ~new_t;  
 				
 				copier( ~n:as<<t>> )( ~new_t );
-				io:as_base<list1>:insert( nl ):go_next;
+				imo:as_base<list1>:insert( nl ):go_next;
 			}
 		}
 
 		insert [upd] = <t> prox [init] ~t  -- after current
 		{
 			~t -> link1 nl:begin<t_node1>:begin; -- null
-			io:as_base<list1>:insert( nl );
+			imo:as_base<list1>:insert( nl );
 		}
 
 		use_first = <t> prox [eval,init] ~t  -- may be void
 		{
-			io:as_base<list1>:get_first()( link1 nl );
+			imo:as_base<list1>:get_first()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		use_last = <t> prox [eval,init] ~t -- may be void
 		{
-			io:as_base<list1>:get_last()( link1 nl );
+			imo:as_base<list1>:get_last()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		use_current = <t> prox [eval,init] ~t -- may be void
 		{
-			io:as_base<list1>:get_current()( link1 nl );
+			imo:as_base<list1>:get_current()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		use_next = <t> prox [eval,init] ~t -- may be void
 		{
-			io:as_base<list1>:get_next()( link1 nl );
+			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
 		}
 
 		remove_next [upd] ()( <t> next )  -- with <t> copy
 		{
-			io:as_base<list1>:get_next()( link1 nl );
+			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) 
 			{
 				next:begin( nl:deref:as<<t>> );
-				io:as_base<list1>:remove_next;
+				imo:as_base<list1>:remove_next;
 			}
 		}
 
 		remove_next [upd] ()( <t> next ) with copier ( <t> )( <t> )
 		{
-			io:as_base<list1>:get_next()( link1 nl );
+			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) 
 			{
 				copier( nl:deref:as<<t>> )( next );
-				io:as_base<list1>:remove_next;
+				imo:as_base<list1>:remove_next;
 			}
 		}
 				
 		remove_next [upd] ()( <t> next ) with taker ( <t> [upd] )( <t> )
 		{
-			io:as_base<list1>:get_next()( link1 nl );
+			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) 
 			{
 				taker( *nl:deref:as<<t>> )( next );
-				io:as_base<list1>:remove_next;
+				imo:as_base<list1>:remove_next;
 			}
 		}
 	}
@@ -499,38 +499,38 @@ type <t>stack
 	{
 		begin  -- empty
 		{
-			io.list:begin;
+			imo.list:begin;
 		}
 
 		begin ( t_stack other [upd] ) -- take
 		{
-			io.list:begin( *other.list );
+			imo.list:begin( *other.list );
 		}
 
 		begin ( t_stack other ) with copier ( <t> )( <t> ) -- copy
 		{
-			io.list:begin( other.list ) with copier;
+			imo.list:begin( other.list ) with copier;
 		}
 
 
 		is_empty? ()( bool yes )
 		{
-			io.list:is_empty?()( yes );
+			imo.list:is_empty?()( yes );
 		}
 
 		push [upd] = <t> prox [init]  ~t
 		{
-			~t -> io.list:insert;
+			~t -> imo.list:insert;
 		}
 
 		pop [upd ]
 		{
-			io.list:remove_next;
+			imo.list:remove_next;
 		}
 		
 		use_top = <t> prox [eval,init] ~t  -- top 
 		{
-			~t -> io.list:use_first;
+			~t -> imo.list:use_first;
 		}
 	}
 
@@ -558,51 +558,51 @@ type <t>queue
 	{
 		begin  -- empty
 		{
-			io.list:begin;
+			imo.list:begin;
 		}
 
 		begin ( t_queue other [upd] ) -- take
 		{
-			io.list:begin( *other.list );
+			imo.list:begin( *other.list );
 		}
 
 		begin ( t_queue other ) with copier ( <t> )( <t> ) -- copy
 		{
-			io.list:begin( other.list ) with copier;
+			imo.list:begin( other.list ) with copier;
 		}
 
 		is_empty? ()( bool yes )
 		{
-			io.list:is_empty?()( yes );
+			imo.list:is_empty?()( yes );
 		}
 
 		push [upd] = <t> prox [init] ~t 
 		{
-			~t -> io.list:go_last:insert;
+			~t -> imo.list:go_last:insert;
 		}
 
 
 		pull [upd]()( <t> first ) -- with <t> copy
 		{
-			if ( io.list:is_empty?()( =bool ):not )
-				io.list:go_front:remove_next()( first );
+			if ( imo.list:is_empty?()( =bool ):not )
+				imo.list:go_front:remove_next()( first );
 		}
 
 		pull [upd]()( <t> first ) with copier ( <t> )( <t> )
 		{
-			if ( io.list:is_empty?()( =bool ):not )
-				io.list:go_front:remove_next()( first ) with copier;
+			if ( imo.list:is_empty?()( =bool ):not )
+				imo.list:go_front:remove_next()( first ) with copier;
 		}
 
 		pull [upd]()( <t> first ) with taker ( <t> [upd] )( <t> )
 		{
-			if ( io.list:is_empty?()( =bool ):not )
-				io.list:go_front:remove_next()( first ) with taker;
+			if ( imo.list:is_empty?()( =bool ):not )
+				imo.list:go_front:remove_next()( first ) with taker;
 		}
 
 		use_first = <t> prox [eval,init] ~t 
 		{
-			~t -> io.list:use_first;
+			~t -> imo.list:use_first;
 		}
 	}
 

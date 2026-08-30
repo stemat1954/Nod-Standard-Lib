@@ -51,22 +51,22 @@ type vector<t><#n> from positional<<t>>
 		get_coords [eval]()( array<<t>><<#n>> );			
 
 
-		add [upd]( same_type v );					-- add: io.xi := io.xi + v.xi 
+		add [upd]( same_type v );					-- add: imo.xi := imo.xi + v.xi 
 		add [eval]( same_type v )( same_type v2 );		
 
-		sub [upd]( same_type v );					-- subtract: io.xi := io.xi - v.xi 
+		sub [upd]( same_type v );					-- subtract: imo.xi := imo.xi - v.xi 
 		sub [eval]( same_type v )( same_type v2 );
 
-		mul [upd]( <t> n );							-- multiply: io.xi := io.xi * n 
+		mul [upd]( <t> n );							-- multiply: imo.xi := imo.xi * n 
 		mul [eval]( <t> n )( same_type );
 
-		div [upd]( <t> n );							-- divide: io.xi := io.xi / n 
+		div [upd]( <t> n );							-- divide: imo.xi := imo.xi / n 
 		div [eval]( <t> n )( same_type ); 
 
-		neg [upd];									-- negate: io.xi := -io.xi 
+		neg [upd];									-- negate: imo.xi := -imo.xi 
 		neg [eval]()( same_type );
 
-		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n := sum(io.xi * v.xi) ( default v = io )
+		dot [eval]( same_type v [opt] )( <t> n );	-- dot product: n := sum(imo.xi * v.xi) ( default v = imo )
 
 		ltr [upd]( sq_matrix );						-- linear transform 
 		ltr [eval]( sq_matrix )( same_type );	

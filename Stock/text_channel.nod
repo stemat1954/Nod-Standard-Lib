@@ -126,17 +126,17 @@ type read_only_text_channel from sync_read_only_channel
 	{
 		begin ( handle h )
 		{
-			io:as_base<sync_read_only_channel>:begin( h );
+			imo:as_base<sync_read_only_channel>:begin( h );
 		}
 
 		read [upd]( editor ed [upd], int q )( string error )  -- q chars
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *ed, q )( error );
+			read_channel_str( *imo:as_base<sync_channel_reader>, *ed, q )( error );
 		}
 
 		read [upd]( editor ed [upd], unicode c )( string error ) -- delimiter c
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *ed, c)( error );
+			read_channel_str( *imo:as_base<sync_channel_reader>, *ed, c)( error );
 		}
 	}
 }
@@ -148,22 +148,22 @@ type read_write_text_channel from sync_read_write_channel
 	{
 		begin ( handle )
 		{
-			io:as_base<sync_read_write_channel>:begin( given\handle );
+			imo:as_base<sync_read_write_channel>:begin( given\handle );
 		}
 
 		read [upd]( editor ed [upd], int q )( string error ) -- q chars
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *ed, q )( error );
+			read_channel_str( *imo:as_base<sync_channel_reader>, *ed, q )( error );
 		}
 
 		read [upd]( editor ed [upd], unicode c )( string error ) -- delimiter c
 		{
-			read_channel_str( *io:as_base<sync_channel_reader>, *ed, c )( error );
+			read_channel_str( *imo:as_base<sync_channel_reader>, *ed, c )( error );
 		}
 
 		write [upd]( editor ed [upd] )( string error )
 		{
-			write_channel( *io:as_base<sync_channel_writer>, *ed )( error );
+			write_channel( *imo:as_base<sync_channel_writer>, *ed )( error );
 		}
 	}
 }

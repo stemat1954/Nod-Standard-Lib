@@ -73,62 +73,62 @@ type int -- elementary, compatible, conventional
 
 		-- arithmetic
 
-		add [upd]( int n );						-- add:  io := io + n 
+		add [upd]( int n );						-- add:  imo := imo + n 
 		add [eval] ( int n )( int x );			
 
-		sub [upd]( int n );						-- subtract: io := io - n
+		sub [upd]( int n );						-- subtract: imo := imo - n
 		sub [eval] ( int n )( int x );
 
-		mul [upd]( int n );						-- multiply: io := io * n  
+		mul [upd]( int n );						-- multiply: imo := imo * n  
 		mul [eval] ( int n )( int x );	
 
-		div [upd]( int n );						-- divide: io := io\n (round-in)
-		div [upd]( int n )( int r );			-- divide: io := io\n, r := mod(io,n) 
-		div [eval]( int n )( int x, int r );	-- divide: x := io\n (round-in), r := mod(io,n)
+		div [upd]( int n );						-- divide: imo := imo\n (round-in)
+		div [upd]( int n )( int r );			-- divide: imo := imo\n, r := mod(imo,n) 
+		div [eval]( int n )( int x, int r );	-- divide: x := imo\n (round-in), r := mod(imo,n)
 
-		neg [upd];								-- negate: io := -io 
+		neg [upd];								-- negate: imo := -imo 
 		neg [eval]()( int x );
 
 				
 		-- common  
 
-		sgn [upd];								-- sign: io := {-1,0,1}
+		sgn [upd];								-- sign: imo := {-1,0,1}
 		sgn [eval]()( int s );
 
-		abs [upd];								-- absolute value:  io := |io|
+		abs [upd];								-- absolute value:  imo := |imo|
 		abs [eval]()( int y );	
 
-		dis [upd]( int n );						-- distance: io := |(io - n)| (aka absolute diff)
+		dis [upd]( int n );						-- distance: imo := |(imo - n)| (aka absolute diff)
 		dis [eval]( int n )( int y );
 
-		atr [upd]( int m, int b );				-- affine transform:  io := m * io + b (aka fused multiply add)
+		atr [upd]( int m, int b );				-- affine transform:  imo := m * imo + b (aka fused multiply add)
 		atr [eval]( int m, int b )( int y );
 
-		pow [upd]( int n, int d [opt] );		-- power: io := io ^ n/d (default d = 1)
+		pow [upd]( int n, int d [opt] );		-- power: imo := imo ^ n/d (default d = 1)
 		pow [eval]( int n, int d [opt] )( int y );  
 
-		log [upd]( int b );						-- log: io := log base b of io
+		log [upd]( int b );						-- log: imo := log base b of imo
 		log [eval]( int b )( int y );
 
 
 		-- other
 		
-		inc [upd];								-- increment: io := io + 1 
+		inc [upd];								-- increment: imo := imo + 1 
 		inc [eval]()( int x );	
 
-		dec [upd];								-- decrement: io := io - 1 
+		dec [upd];								-- decrement: imo := imo - 1 
 		dec [eval]()( int x );
 
-		inf [upd];								-- inflate: io := io + sgn(io) (to infinity)
+		inf [upd];								-- inflate: imo := imo + sgn(imo) (to infinity)
 		inf [eval]()( int x );
 
-		def [upd];								-- deflate: io := io - sgn(io) (to zero)
+		def [upd];								-- deflate: imo := imo - sgn(imo) (to zero)
 		def [eval]()( int x );
 
-		mod [upd]( int n );						-- modulo: io := remainder of io \ n
+		mod [upd]( int n );						-- modulo: imo := remainder of imo \ n
 		mod [eval]( int n )( int y );	
 
-		sp2 [upd]( int n );						-- scale by power of 2: io := "io * pow( 2, n )" 
+		sp2 [upd]( int n );						-- scale by power of 2: imo := "imo * pow( 2, n )" 
 		sp2 [eval]( int n )( int x );
 
 	}

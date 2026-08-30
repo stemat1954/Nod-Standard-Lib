@@ -10,12 +10,12 @@ type system
 	{
 		begin 
 		{
-			io.console:begin;  -- system console
+			imo.console:begin;  -- system console
 		}
 
 		use_console = console prox [eval,upd] ~c
 		{
-			~c -> io.console;
+			~c -> imo.console;
 		}
 	}
 

@@ -105,31 +105,31 @@ type editor from mediator
 	{
 		begin ( utf f [opt], endian e [opt] )  -- original, empty
 		{
-			io:as_base<mediator>:begin( e, f );
-			describe_utf( f )( io.codepoint_unit, io.codepoint_fex );
+			imo:as_base<mediator>:begin( e, f );
+			describe_utf( f )( imo.codepoint_unit, imo.codepoint_fex );
 		}
 
 		begin ( string )  -- string copy conversion, use string encoding
 		{
 			given\string:get_encoding()( utf f, endian e );
-			io:as_base<mediator>:begin( e, f );
-			describe_utf( f )( io.codepoint_unit, io.codepoint_fex );
-			io:write( given\string );
+			imo:as_base<mediator>:begin( e, f );
+			describe_utf( f )( imo.codepoint_unit, imo.codepoint_fex );
+			imo:write( given\string );
 		}
 
 		begin ( expr ) -- expr copy conversion, use default encoding 
 		{
-			io:as_base<mediator>:begin;  -- default encoding
-			describe_utf( default_utf )( io.codepoint_unit, io.codepoint_fex );
-			io:write( given\expr );
+			imo:as_base<mediator>:begin;  -- default encoding
+			describe_utf( default_utf )( imo.codepoint_unit, imo.codepoint_fex );
+			imo:write( given\expr );
 		}
 
 		detach [upd]()( string )
 		{
-			io:get_utf()( utf f ):get_endian()( endian e );
-			io:detach()( addr a, int n ); 
+			imo:get_utf()( utf f ):get_endian()( endian e );
+			imo:detach()( addr a, int n ); 
 			given\string:begin( a, f, e, n );
-			io:set_size( zero );
+			imo:set_size( zero );
 		}
 
 		
@@ -143,7 +143,7 @@ type editor from mediator
 			additional space for characters that are longer than one unit.
 		}}
 		{
-			io:get_size()( int size ):set_size( "size + io.codepoint_unit" );
+			imo:get_size()( int size ):set_size( "size + imo.codepoint_unit" );
 		}
 
 		reserve [upd]()( bool ok ) 
@@ -160,11 +160,11 @@ type editor from mediator
 			not necessary.
 		}}
 		{
-			io:get_size()( int size ):set_rp( "size - io.codepoint_unit" );
-			io:predict_next_rp()( int new_size );
-			io:set_rp( size ); 
+			imo:get_size()( int size ):set_rp( "size - imo.codepoint_unit" );
+			imo:predict_next_rp()( int new_size );
+			imo:set_rp( size ); 
 			ok:begin( "new_size |>| size" );
-			if ( ok ) io:set_size( new_size );
+			if ( ok ) imo:set_size( new_size );
 		}
 
 
@@ -182,14 +182,14 @@ type editor from mediator
 			{
 				other:get_utf()( f ):get_endian()( e );
 			}
-			same:begin( "get_utf( io ) |=| f" );
+			same:begin( "get_utf( imo ) |=| f" );
 			if ( "not( same )" ) return; 
-			same:and( "get_endian( io ) |=| e" );
+			same:and( "get_endian( imo ) |=| e" );
 		}
 
 		spawn ()( editor other )
 		{
-			io:get_utf()( utf f ):get_endian()( endian e );
+			imo:get_utf()( utf f ):get_endian()( endian e );
 			other:begin( f,e );
 		}
 		
@@ -200,11 +200,11 @@ type editor from mediator
 		{
 			fix( q, int_max ) is ~q;
 			other:set_rp( zero );
-			io:set_wp( zero );
+			imo:set_wp( zero );
 			int q2:begin;
 			loop ( "( q2 |<| ~q ) |and| not( rp_end?( other ) )" )
 			{
-				int n:begin( *other, other.codepoint_fex ):store( *io, io.codepoint_fex );
+				int n:begin( *other, other.codepoint_fex ):store( *imo, imo.codepoint_fex );
 				q2:inc;
 			}
 		}
@@ -212,12 +212,12 @@ type editor from mediator
 		export [upd]( editor other [upd], int q [opt] )
 		{
 			fix( q, int_max ) is ~q;
-			io:set_rp( zero );
+			imo:set_rp( zero );
 			other:set_wp( zero );
 			int q2:begin;
-			loop ( "( q2 |<| ~q ) |and| not( rp_end?( io ) )" )
+			loop ( "( q2 |<| ~q ) |and| not( rp_end?( imo ) )" )
 			{
-				int n:begin( *io, io.codepoint_fex ):store( *other, other.codepoint_fex );
+				int n:begin( *imo, imo.codepoint_fex ):store( *other, other.codepoint_fex );
 				q2:inc;
 			}
 		}
@@ -227,12 +227,12 @@ type editor from mediator
 		 
 		add_zero [upd] -- at current wp
 		{
-			zero:store( *io, io.codepoint_fex );
+			zero:store( *imo, imo.codepoint_fex );
 		}
 				
 		trim_zero [upd]
 		{
-			io:set_rp( zero ):seek_chr( zero, 'positive' ):set_size_rp;
+			imo:set_rp( zero ):seek_chr( zero, 'positive' ):set_size_rp;
 		}
 		
 			
@@ -240,45 +240,45 @@ type editor from mediator
 
 		write [upd]( unicode c )
 		{
-			io:write_one( c );
+			imo:write_one( c );
 		}
 		
 		write [upd]( ascii c )
 		{
-			io:write_one( c );
+			imo:write_one( c );
 		}
 				
 		write<c> [upd]( serial<unicode><<c>> source )
 		{
-			io:write_sequence( source );
+			imo:write_sequence( source );
 		}
 
 		write<c> [upd]( serial<ascii><<c>> source )
 		{
-			io:write_sequence( source );
+			imo:write_sequence( source );
 		}
 
 		write [upd]( string s ) 
 		{
-			io:write_sequence( s:extract()( =array<unicode> ) );
+			imo:write_sequence( s:extract()( =array<unicode> ) );
 		}
 
 		write [upd]( expr e ) 
 		{
-			io:write_sequence( e:extract()( =array<ascii> ) );
+			imo:write_sequence( e:extract()( =array<ascii> ) );
 		}
 			
 			
 		fwrite<t> [upd]( <t> obj, expr fex [opt] )		-- single fex
 		{
 			fix( fex, 't' ) is ~fex;	
-			io:as_base<mediator>:fwrite<<t>>( obj, ~fex );
+			imo:as_base<mediator>:fwrite<<t>>( obj, ~fex );
 		}
 
 		fwrite<t> [upd]( <t> obj, expr fex [opt] )()( extra etc )  -- multiple fex
 		{
 			fix( fex, 't' ) is ~fex;
-			io:as_base<mediator>:fwrite<<t>>( obj, ~fex )()( etc );
+			imo:as_base<mediator>:fwrite<<t>>( obj, ~fex )()( etc );
 		}
 							
 			
@@ -286,57 +286,57 @@ type editor from mediator
 
 		read [upd]()( unicode c )  
 		{
-			io:read_one()( c );
+			imo:read_one()( c );
 		}
 
 		read [upd]()( ascii c )  
 		{
-			io:read_one()( c );
+			imo:read_one()( c );
 		}
 
 		read [upd]( unicode delim )( array<unicode> arr )
 		{
-			io:read_to( delim )( arr );
+			imo:read_to( delim )( arr );
 		}
 
 		read [upd]( ascii delim )( array<ascii> arr )  
 		{
-			io:read_to( delim )( arr );
+			imo:read_to( delim )( arr );
 		}
 
 		read [upd]( unicode delim )( string )
 		{
-			io:read_to( delim )( array<unicode> arr );
-			io:get_utf()( utf f ):get_endian()( endian e );
+			imo:read_to( delim )( array<unicode> arr );
+			imo:get_utf()( utf f ):get_endian()( endian e );
 			given\string:begin( arr, f, e );
 		}
 				
 		read [upd]( ascii delim )( expr )
 		{
-			io:read_to( delim )( array<ascii> arr );
+			imo:read_to( delim )( array<ascii> arr );
 			given\expr:begin( arr );
 		}
 
 		read [upd]( int q [opt] )( array<unicode> arr ) -- null q -> all
 		{
-			io:read_sequence( q )( arr );
+			imo:read_sequence( q )( arr );
 		}
 
 		read [upd]( int q [opt] )( array<ascii> arr )  
 		{
-			io:read_sequence( q )( arr );
+			imo:read_sequence( q )( arr );
 		}
 
 		read [upd]( int q [opt] )( string )
 		{
-			io:read_sequence( q )( array<unicode> arr );
-			io:get_utf()( utf f ):get_endian()( endian e );
+			imo:read_sequence( q )( array<unicode> arr );
+			imo:get_utf()( utf f ):get_endian()( endian e );
 			given\string:begin( arr, f, e );
 		}
 
 		read [upd]( int q [opt] )( expr )
 		{
-			io:read_sequence( q )( array<ascii> arr );
+			imo:read_sequence( q )( array<ascii> arr );
 			given\expr:begin( arr );
 		}
 
@@ -344,13 +344,13 @@ type editor from mediator
 		fread<t> [upd]( expr fex [opt] )( <t> x )	-- single fex
 		{
 			fix( fex, 't' ) is ~fex;
-			io:as_base<mediator>:fread<<t>>( ~fex )( x );
+			imo:as_base<mediator>:fread<<t>>( ~fex )( x );
 		}
 
 		fread<t> [upd]( expr fex [opt] )( <t> x )( extra etc ) -- multiple fex
 		{
 			fix( fex, 't' ) is ~fex;
-			io:as_base<mediator>:fread<<t>>( ~fex )( x )( etc );
+			imo:as_base<mediator>:fread<<t>>( ~fex )( x )( etc );
 		}
 	
 		
@@ -359,18 +359,18 @@ type editor from mediator
 			n2:begin;
 			if ( "n |>| zero" )
 			{
-				loop ( "( n2 |<| n ) |and| not( rp_end?( io ) )" )
+				loop ( "( n2 |<| n ) |and| not( rp_end?( imo ) )" )
 				{	
 					n2:inc;
-					io:inc_rp;
+					imo:inc_rp;
 				}
 			}
 			else if ( "n |<| zero" )
 			{
-				loop ( "( n2 |>| n ) |and| not( rp_end?( io ) )" )
+				loop ( "( n2 |>| n ) |and| not( rp_end?( imo ) )" )
 				{	
 					n2:dec;
-					io:dec_rp;
+					imo:dec_rp;
 				}
 			}
 		}
@@ -378,24 +378,24 @@ type editor from mediator
 
 		seek [upd]( unicode c )( bool ok )
 		{
-			io:seek_chr( c:use_code )( ok );
+			imo:seek_chr( c:use_code )( ok );
 		}
 
 		seek [upd]( ascii c )( bool ok )
 		{
-			io:seek_chr( c:use_code )( ok );
+			imo:seek_chr( c:use_code )( ok );
 		}
 
 		seek [upd]( expr pattern, sign d [opt], match_mode [opt] )( int q ) -- expr pattern per mode, q = chars matched (zero = no match)
 		{
-			io:copy_pattern( pattern )( editor ped );
-			io:seek( *ped, d, given\match_mode )( q );
+			imo:copy_pattern( pattern )( editor ped );
+			imo:seek( *ped, d, given\match_mode )( q );
 		}
 
 		seek [upd]( string pattern, sign d [opt], match_mode [opt] )( int q ) -- string pattern per mode, q = chars matched (zero = no match)
 		{
-			io:copy_pattern( pattern )( editor ped );
-			io:seek( *ped, d, given\match_mode )( q );
+			imo:copy_pattern( pattern )( editor ped );
+			imo:seek( *ped, d, given\match_mode )( q );
 		}
 
 		seek [upd]( editor ped [upd], sign d [opt], match_mode [opt] )( int q ) -- compatible pattern per mode, q = chars matched (zero = no match)
@@ -403,35 +403,35 @@ type editor from mediator
 			fix( given\match_mode, 'exact' as match_mode ) is ~mode;
 			select ( ~mode  )
 			{
-				value ( 'exact' )   io:seek( *ped, d )( q ) with exact_match?;
-				value ( 'similar' ) io:seek( *ped, d )( q ) with similar_match?;
-				value ( 'regex' )   io:seek( *ped, d )( q ) with regex_match?;
+				value ( 'exact' )   imo:seek( *ped, d )( q ) with exact_match?;
+				value ( 'similar' ) imo:seek( *ped, d )( q ) with similar_match?;
+				value ( 'regex' )   imo:seek( *ped, d )( q ) with regex_match?;
 			}
 		}
 			
 		seek [upd]( editor ped [upd], sign d [opt] )( int q ) -- compatible pattern with helper, q = chars matched (zero = no match)
 		 with helper ( editor ped [upd], unicode c, sign d, expr fex )( bool )
 		{
-			if ( "not( compare( io, ped ) )" ) quit with fault:begin( 'bug', 'incompatible pattern editor' );
+			if ( "not( compare( imo, ped ) )" ) quit with fault:begin( 'bug', 'incompatible pattern editor' );
 			fix<sign>( d, 'positive' ) is ~d;
 
 			loop 
 			{
-				io:get_rp()( int mark );
+				imo:get_rp()( int mark );
 
-				io:match( *ped, ~d )( bool ok, q:recycle, int rp ) with helper;
+				imo:match( *ped, ~d )( bool ok, q:recycle, int rp ) with helper;
 
-				if ( ok ) return after io:set_rp( mark );
+				if ( ok ) return after imo:set_rp( mark );
 
 				if ( "null?( rp )" ) return after q := zero; -- end
 
 				-- here: not ok and not end
 
-				io:set_rp( mark );
+				imo:set_rp( mark );
 				if ( "~d |=| 'positive'" )
-					io:inc_rp 
+					imo:inc_rp 
 				else 
-					io:dec_rp;
+					imo:dec_rp;
 			}
 		}
 
@@ -477,30 +477,30 @@ type editor from mediator
 	{
 		write_one<t> [upd]( <t> c ) -- <t> ascii or unicode
 		{
-			c:use_code:store( *io, io.codepoint_fex );
+			c:use_code:store( *imo, imo.codepoint_fex );
 		}
 
 		write_sequence<t><c> [upd]( serial<<t>><<c>> source ) -- <t> ascii or unicode
 		{
-			for each ( ~c in source ) ~c:use_code:store( *io, io.codepoint_fex );
+			for each ( ~c in source ) ~c:use_code:store( *imo, imo.codepoint_fex );
 		}
 
 		read_one<t> [upd]()( <t> c ) -- <t> ascii or unicode
 		{
-			c:begin( int:begin( *io, io.codepoint_fex ) ); -- int:fread
+			c:begin( int:begin( *imo, imo.codepoint_fex ) ); -- int:fread
 		}
 
 		read_sequence<t> [upd]( int q [opt] )( array<<t>> arr ) -- <t> ascii or unicode
 		{
 			arr:begin;
-			if ( "rp_end?( io )" ) return;
+			if ( "rp_end?( imo )" ) return;
 			fix( q, int_max ) is ~q;
 			int n:begin;
 			loop ( "n |<| ~q" )
 			{
-				int xn:begin( *io, io.codepoint_fex );  -- int:fread
+				int xn:begin( *imo, imo.codepoint_fex );  -- int:fread
 				arr:insert:begin( xn );
-				if ( "rp_end?( io )" ) return;
+				if ( "rp_end?( imo )" ) return;
 				n:inc;
 			}
 		}
@@ -508,40 +508,40 @@ type editor from mediator
 		read_to<t> [upd]( <t> delim )( array<<t>> arr ) -- <t> ascii or unicode
 		{
 			arr:begin;
-			if ( "rp_end?( io )" ) return;
+			if ( "rp_end?( imo )" ) return;
 			int dn:begin( delim:use_code );
 			loop
 			{
-				int xn:begin( *io, io.codepoint_fex );  -- int:fread
+				int xn:begin( *imo, imo.codepoint_fex );  -- int:fread
 				if ( "xn |=| dn" ) return;
 				arr:insert:begin( xn );
-				if ( "rp_end?( io )" ) return;
+				if ( "rp_end?( imo )" ) return;
 			}
 		}
 
 		seek_chr [upd]( int cn, sign d [opt] )( bool ok ) 
 		{
-			if ( "rp_end?( io )" ) return after ok:begin( false );
+			if ( "rp_end?( imo )" ) return after ok:begin( false );
 			fix( d, 'positive' as sign ) is ~d;
 			if ( "~d |=| 'positive'" )
 			{
 				loop
 				{
-					int xn:begin( *io, io.codepoint_fex );  -- int:fread
+					int xn:begin( *imo, imo.codepoint_fex );  -- int:fread
 					if ( "xn |=| cn" ) return after ok:begin( 'true' );
-					if ( "rp_end?( io )" ) return after ok:begin( 'false' );
+					if ( "rp_end?( imo )" ) return after ok:begin( 'false' );
 				}
 			}
 			else -- 'negative'
 			{
 				loop
 				{
-					io:get_rp()( int mark );
-					int xn:begin( *io, io.codepoint_fex );  -- int:fread
+					imo:get_rp()( int mark );
+					int xn:begin( *imo, imo.codepoint_fex );  -- int:fread
 					if ( "xn |=| cn" ) return after ok:begin( 'true' );
-					if ( "rp_end?( io )" ) return after ok:begin( 'false' );
-					io:set_rp( mark );
-					io:dec_rp;
+					if ( "rp_end?( imo )" ) return after ok:begin( 'false' );
+					imo:set_rp( mark );
+					imo:dec_rp;
 				}
 			}
 		}
@@ -550,7 +550,7 @@ type editor from mediator
 		copy_pattern<t> [upd]( <t> pattern )( editor ed ) -- <t> string or expr
 		{
 			if ( "get_length( pattern ) |=| zero" ) quit with fault:begin( 'bug', 'no pattern' );  
-			io:spawn()( ed ); -- compatible 
+			imo:spawn()( ed ); -- compatible 
 			ed:write( pattern );
 		}
 
@@ -558,8 +558,8 @@ type editor from mediator
 		match [upd]( editor ped [upd], sign d )( bool ok, int q, int rp ) 
 		 with helper ( editor ped [upd], unicode c, sign d, expr fex )( bool ) 
 		{{
-			If sign is 'negative', ped rp and io rp decrement. 	Otherwise, 
-			sign is 'positive' and ped rp and io rp increment.
+			If sign is 'negative', ped rp and imo rp decrement. 	Otherwise, 
+			sign is 'positive' and ped rp and imo rp increment.
 
 			Output ok is true if entire pattern is matched, otherwise false.
 
@@ -577,15 +577,15 @@ type editor from mediator
 
 			q:begin;
 
-			loop ( "not( rp_end?( io ) )" )
+			loop ( "not( rp_end?( imo ) )" )
 			{
 				unicode c;
 				if ( "d |=| 'positive'" )
-					io:read()( c )
+					imo:read()( c )
 				else -- 'negative'
-					io:get_rp()( int mark ):read()( c ):set_rp( mark ):dec_rp;  
+					imo:get_rp()( int mark ):read()( c ):set_rp( mark ):dec_rp;  
 
-				helper( *ped, c, d, io.codepoint_fex )( ok ); 
+				helper( *ped, c, d, imo.codepoint_fex )( ok ); 
 				if ( "not_null?( ok )" ) escape;   
 
 				q:inc; -- result pending
@@ -598,7 +598,7 @@ type editor from mediator
 
 		inc_rp [upd] -- next code point
 		{
-			io:set_rp( io:predict_next_rp()( =int ) );
+			imo:set_rp( imo:predict_next_rp()( =int ) );
 		}
 
 
@@ -610,35 +610,35 @@ type editor from mediator
 			rp_end? can be used to test limit in either direction.
 		}}
 		{
-			io:get_rp()( int rp ); 
+			imo:get_rp()( int rp ); 
 			if ( "rp |=| zero" )
 			{
-				io:set_rp_end;
+				imo:set_rp_end;
 			}
-			else if ( "io.codepoint_unit |=| two" )
+			else if ( "imo.codepoint_unit |=| two" )
 			{
-				io:set_rp( rp:sub( two ) );  -- prev code point
+				imo:set_rp( rp:sub( two ) );  -- prev code point
 
-				word16 w:begin( *io, 'b' );  
+				word16 w:begin( *imo, 'b' );  
 				if ( "(w |>=| xDC00 ) |and| ( w |<=| xDFFF )" ) rp:sub( two );  -- sub 2 more if surrogate
 
-				io:set_rp( rp ); 
+				imo:set_rp( rp ); 
 			}
-			else if ( "io.codepoint_unit |=| one" )
+			else if ( "imo.codepoint_unit |=| one" )
 			{
 				loop
 				{
-					io:set_rp( rp:dec );
+					imo:set_rp( rp:dec );
 
-					word8 w:begin( *io, 'b' );
+					word8 w:begin( *imo, 'b' );
 					if ( "( w |and| xC0 ) |not=| x80" ) escape;		-- if not 10xx xxxx
 
-					io:set_rp( rp ); -- go back
+					imo:set_rp( rp ); -- go back
 				}
 			}
-			else -- "io.codepoint_unit |=| four"
+			else -- "imo.codepoint_unit |=| four"
 			{
-				io:set_rp( rp:sub( four ) ); 
+				imo:set_rp( rp:sub( four ) ); 
 			}
 		}
 
@@ -646,24 +646,24 @@ type editor from mediator
 		predict_next_rp [upd]()( int rp ) 
 		{{
 			This method predicts next properly aligned rp. It assumes 
-			io:as_base<mediator> rp is currently aligned and rp may be moved one
-			code unit to evaulate next position.  Thus, io:as_base<mediator> rp
+			imo:as_base<mediator> rp is currently aligned and rp may be moved one
+			code unit to evaulate next position.  Thus, imo:as_base<mediator> rp
 			SHOULD ALWAYS BE REALIGNED after calling this method (using 
 			predicted output rp or original mediator rp).
 		}}
 		{
-			io:get_rp()( rp ); 
-			if ( "io.codepoint_unit |=| two" )
+			imo:get_rp()( rp ); 
+			if ( "imo.codepoint_unit |=| two" )
 			{
-				word16 w:begin( *io, 'b' );
+				word16 w:begin( *imo, 'b' );
 				if ( "(w |<| xD800 ) |or| ( w |>| xDFFF )" )
 					rp:add( two )
 				else
 					rp:add( four );
 			}
-			else if ( "io.codepoint_unit |=| one" )
+			else if ( "imo.codepoint_unit |=| one" )
 			{
-				word8 w:begin( *io, 'b' );
+				word8 w:begin( *imo, 'b' );
 				if ( "w |<| x80" )					-- 0xxx xxxx
 					rp:inc
 				else if ( "is_zero?( w |and| x20 )" )	-- 110x xxxx
@@ -673,7 +673,7 @@ type editor from mediator
 				else								-- 1111 0xxx
 					rp:add( four );
 			}
-			else -- "io.codepoint_unit |=| four"
+			else -- "imo.codepoint_unit |=| four"
 			{
 				rp:add( four );
 			}
