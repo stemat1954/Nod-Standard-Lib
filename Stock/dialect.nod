@@ -93,7 +93,7 @@ routine -- selectors
 
 		Example:
 
-		  fix( offset, zero ) ~offset;
+		  fix( offset, zero ) is ~offset;
 	}}
 	{
 		if ( "not_null?( a )" ) ~o -> a else ~o -> b;
@@ -116,7 +116,7 @@ routine -- selectors
 
 		  choose<fruit>( citrus?, apple, orange )[upd]:set_something
 
-		  choose<expr>( ok?, 'no error', 'failed' )
+		  choose<expr>( ok?, 'no error', 'failed' ) is ~reason;
 	}}
 	{
 		if ( a? ) ~o -> a else ~o -> b;

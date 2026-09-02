@@ -443,8 +443,8 @@ type sync_channel_writer [incomplete]
 
 	Note: request size = mediator size - rp
 	
-	Mediator wp is updated to reflect the amount of data
-	actually transferred.  The application can compare wp
+	Mediator rp is updated to reflect the amount of data
+	actually transferred.  The application can compare rp
 	to size to calculate a deficit.
 
 	Output report is always well-defined.  If there is no

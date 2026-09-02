@@ -32,7 +32,7 @@ type toggle
 	wait and react, while other threads indicate (release).
 }}
 {
-	general
+	general method
 	{
 		begin
 		{

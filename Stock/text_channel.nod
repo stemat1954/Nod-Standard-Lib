@@ -3,14 +3,13 @@ page text_channel in StockByNod
 
 {{
 	A text channel is a synchronous i/o channel specialized
-	for unicode	data transfer through a text editor.
+	for unicode	data transfer through a text mediator (editor).
 	
-	i/o text encoding is device dependent. The text editor
-	must be configured with compatible encoding.
+	i/o text encoding is device dependent. The editor must be
+	configured with compatible encoding.
 	
 	Text channels read and write without a time limit. A
-	transfer was successful if an output error string is
-	null.
+	transfer was successful if an output error string is null.
 
 	Writing is straightforward.  The base channel write 
 	method is called in a loop until the whole message is 
@@ -124,9 +123,9 @@ type read_only_text_channel from sync_read_only_channel
 {
 	general
 	{
-		begin ( handle h )
+		begin ( handle hch )
 		{
-			imo:as_base<sync_read_only_channel>:begin( h );
+			imo:as_base<sync_read_only_channel>:begin( hch );
 		}
 
 		read [upd]( editor ed [upd], int q )( string error )  -- q chars
@@ -146,9 +145,9 @@ type read_write_text_channel from sync_read_write_channel
 {
 	general
 	{
-		begin ( handle )
+		begin ( handle hch )
 		{
-			imo:as_base<sync_read_write_channel>:begin( given\handle );
+			imo:as_base<sync_read_write_channel>:begin( hch );
 		}
 
 		read [upd]( editor ed [upd], int q )( string error ) -- q chars

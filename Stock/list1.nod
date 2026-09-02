@@ -323,7 +323,7 @@ type list1 from serial<node1><cursor1>
 	}
 
 
-	abstract in serial<node1><cursor1>
+	abstract method in serial<node1><cursor1>
 	{
 		[final] ~open_cursor ( int step )( cursor1 c )
 		{	
@@ -488,7 +488,7 @@ type <t>stack
 	pop = remove first
 
 
-	Consider using array<t> as a contiguous alternative to
+	Consider using array<t> as a positional alternative to
 	a list-based stack.  Insertion and deletion (push and 
 	pop) at the end of an array is fast and efficient.
 }}
