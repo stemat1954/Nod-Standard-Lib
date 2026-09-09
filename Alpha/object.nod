@@ -25,9 +25,9 @@ type object  -- virtual, restricted
 	returns a void proxy because the type ref can always
 	be verified at compile time.
 
-	The other generic type methods require an implicit
-	object accessed by proxy. 
-
+	The other generic type methods are used to traverse
+	the type structure of an object by proxy.  That is,
+	a proxy always leads the call. 
 }}
 {
 	general 

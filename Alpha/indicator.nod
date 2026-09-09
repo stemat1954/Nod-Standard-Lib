@@ -28,8 +28,7 @@ type indicator  -- restricted
 	state when the method is called.
 
 	If given wait time is null, a default time is used.
-	Default times are specified when the derived indicator 
-	is initialized.
+	Default times are set by the subtype :begin method.
 
 	Note: The default time for derived inidicators is
 	also null, which implies "no time-out".  If :wait is

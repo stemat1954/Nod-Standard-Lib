@@ -50,7 +50,7 @@ type fault  -- intrinsic
 {{
 	A fault is an intrinsic quit object.
 
-	Alpha types send fault objects when they quit.
+	Alpha types create fault objects when they quit.
 	Applications can and should send faults wherever it 
 	makes sense.
 

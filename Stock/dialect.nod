@@ -100,12 +100,12 @@ routine -- selectors
 	}
 
 
-	choose<t> ( bool a?, <t> a [opt], <t> b [opt] ) = <t> prox ~o 
+	choose<t> ( bool x?, <t> a [opt], <t> b [opt] ) = <t> prox ~o 
 	{{
-		This selector routine chooses from two given
-		inputs a and b based on the value of a given bool
-		a?.  If a? is true, then a is chosen.  Otherwise, 
-		b is chosen.
+		This selector routine chooses from two given inputs
+		a and b based on the value of a given bool x?. If
+		x? is true, then a is chosen.  Otherwise, b is 
+		chosen.
 
 		a nnd b are not evaluated and may be null.
 
@@ -114,12 +114,12 @@ routine -- selectors
 		
 		Example:
 
-		  choose<fruit>( citrus?, apple, orange )[upd]:set_something
+		  choose<fruit>( citrus?, 'orange', 'apple' )[upd]:set_something
 
 		  choose<expr>( ok?, 'no error', 'failed' ) is ~reason;
 	}}
 	{
-		if ( a? ) ~o -> a else ~o -> b;
+		if ( x? ) ~o -> a else ~o -> b;
 	}
 }
 

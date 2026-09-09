@@ -9,13 +9,12 @@ type <t>enumerator  -- intrinsic, restricted
 
 	enumerators are allocated in common storage and 
 	automatically initialized at startup by the HNM using
-	an associated compiler object that defines individual
-	mappings from <t> to int for every enumerated item. The
-	<t> values must be unique and rankable using standard 
-	method :before?;
+	a compiler-generated mapping of <t> to int for every 
+	enumerated item. The <t> values must be unique and rank-
+	able using standard method :before?;
 	
-	At runtime, the HNM calls :enumerate to get a corre-
-	sponding integer value for a given object.
+	At runtime, :enumerate is called to get a corresponding 
+	integer value for a given object.
 }}
 {
 	general 

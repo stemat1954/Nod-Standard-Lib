@@ -81,9 +81,8 @@ type utc  -- conventional
 	d is a count of days from utc_origin and t is a count of
 	millisecs in the day, where 0 < t < 86,401,000.  
 
-	d and t incorporate leap days and known leap seconds.
-	Any value t >= 86,400,000 is within a leap second on
-	day d. 
+	d and t incorporate known leap seconds. Any value
+	t >= 86,400,000 is within a leap second on day d. 
 		
 	Leap seconds are not regular and any leap second intro-
 	duced after release of a Nod implementation may or
@@ -134,7 +133,7 @@ type utc  -- conventional
 
 	general
 	{
-		begin ( expr vex [opt] );	-- default = "now"
+		begin ( expr vex [opt] );	-- default = real time 
 
 		begin ( utc_offset );	-- (days,ticks) from utc_origin
 
@@ -152,7 +151,7 @@ type utc  -- conventional
 		less? ( utc t )( bool );	
 
 	
-		update [upd];		-- "now"
+		update [upd];		-- real time
 
 		analyze ()( utc_offset );	-- (days,ticks) from utc origin
 
