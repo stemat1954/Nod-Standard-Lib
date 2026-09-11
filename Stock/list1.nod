@@ -406,7 +406,6 @@ type <t>list from list1
 			for each ( node1 prox ~n in other ) 
 			{
 				link1 nl:begin<t_node1>:begin is <t> prox [init] ~new_t;  
-				
 				copier( ~n:as<<t>> )( ~new_t );
 				imo:as_base<list1>:insert( nl ):go_next;
 			}
