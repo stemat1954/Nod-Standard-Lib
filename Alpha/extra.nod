@@ -25,17 +25,17 @@ type extra from positional<object> -- intrinsic, restricted
 	another call, the compiler will consolidate the collection
 	with other extras in the call.  
 
-	:use gives unspecified access permission to an extra
-	object in given order. Access permission must be stated
-	in the call and it's verified at runtime.
-
 	Some applications may need to delete extra objects 
 	before forwarding.  :delete removes a specified number 
 	of objects in given order (left-to-right).  
 
-	given\extra:use( i )[eval]:as<thing>
-	given\extra:use( i )[upd]:as<thing>
-	given\extra:use( i )[init]:as_actual<thing> 
+	:use gives transient access to an extra object in given
+	order. Access is fixed by the caller and it's verified at 
+	runtime. The default fix is [eval]. 
+
+	given\extra:use( i ):as_eval<thing>
+	given\extra:use( i ):as_upd<thing>
+	given\extra:use( i ):as_init<thing> 
 }}
 {
 	general
@@ -47,7 +47,7 @@ type extra from positional<object> -- intrinsic, restricted
 	{
 		count ()( int );
 
-		use ( int i ) = object prox; 
+		use ( int i ) = object prox;  -- transient
 	}
 
 	abstract in positional<object>

@@ -44,7 +44,7 @@ type node1 [incomplete]
 
 		unlink [upd]
 		{
-			imo.next:recycle;
+			imo.next:renew;
 		}
 	}
 
@@ -73,17 +73,17 @@ type node1 [incomplete]
 			if ( "not_null?( imo.link1 )" ) 
 			{
 				imo.link1:deref:get_next()( link1 next );
-				imo.link1:recycle;
+				imo.link1:renew;
 				if ( "not_null?( next )" ) imo.link1:begin( next );
 			}
 		}
 
 		flip [upd]  -- not supported
 		{
-			imo.link1:recycle;  
+			imo.link1:renew;  
 		}
 
-		use = node1 prox  ~n
+		use = node1 prox  ~n  -- transient
 		{
 			if ( "not_null?( imo.link1 )" ) ~n -> imo.link1:deref; 
 		}
@@ -188,7 +188,7 @@ type list1 from serial<node1><cursor1>
 				-- ignore current in other
 				imo.first:begin( *other.first );  
 				imo.last:begin( *other.last );
-				other.current:recycle;  -- go front
+				other.current:renew;  -- go front
 			}
 		}
 
@@ -220,7 +220,7 @@ type list1 from serial<node1><cursor1>
 
 		go_front [upd]  -- before first
 		{
-			imo.current:recycle;
+			imo.current:renew;
 		}
 
 		go_first [upd]
@@ -311,8 +311,8 @@ type list1 from serial<node1><cursor1>
 				if ( "null?( next_next )" )
 				{
 					-- list is empty now
-					imo.first:recycle;
-					imo.last:recycle;
+					imo.first:renew;
+					imo.last:renew;
 				}
 				else
 				{
@@ -358,15 +358,28 @@ type list1 from serial<node1><cursor1>
 -- typed lists
 
 	
-[page] type <t>node1 from ( <t>, node1 )
+[page] type <t>node1 from node1
 {{
 	synthetic typed node1
 }}
 {
-	general method	begin = <t> prox [init] ~base
+	general method	
 	{
-		imo:as_base<node1>:begin;
-		~base -> imo:as_base<<t>>;
+		begin = <t> prox [init] ~content
+		{
+			imo:as_base<node1>:begin;
+			~content -> imo.content;
+		}
+
+		use_content = <t> prox [eval,init] ~content
+		{
+			~content -> imo.content;
+		}
+	}
+
+	instance
+	{
+		<t> content [opt];
 	}
 }
 
@@ -374,9 +387,7 @@ type list1 from serial<node1><cursor1>
 type <t>list from list1
 {
 	nom type t_list = <<t>>list;
-
 	nom type t_node1 = <<t>>node1;
-
 
 	general method
 	{
@@ -401,7 +412,7 @@ type <t>list from list1
 			}
 		}
 
-		begin ( t_list other ) with copier ( <t> )( <t> ) -- with copier
+		begin ( t_list other ) with copier ( <t> )( <t> )
 		{
 			for each ( node1 prox ~n in other ) 
 			{
@@ -413,32 +424,32 @@ type <t>list from list1
 
 		insert [upd] = <t> prox [init] ~t  -- after current
 		{
-			~t -> link1 nl:begin<t_node1>:begin; -- null
+			~t -> link1 nl:begin<t_node1>:begin; -- content is null
 			imo:as_base<list1>:insert( nl );
 		}
 
-		use_first = <t> prox [eval,init] ~t  -- may be void
+		use_first [eval] = <t> prox [init] ~t  -- may be void
 		{
 			imo:as_base<list1>:get_first()( link1 nl );
-			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			if ( "not_null?( nl )" ) ~t -> nl:deref<t_node1>[upd]:use_content;
 		}
 
-		use_last = <t> prox [eval,init] ~t -- may be void
+		use_last = <t> prox [init] ~t -- may be void
 		{
 			imo:as_base<list1>:get_last()( link1 nl );
-			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			if ( "not_null?( nl )" ) ~t -> nl:deref<t_node1>[upd]:use_content;
 		}
 
-		use_current = <t> prox [eval,init] ~t -- may be void
+		use_current = <t> prox [init] ~t -- may be void
 		{
 			imo:as_base<list1>:get_current()( link1 nl );
-			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			if ( "not_null?( nl )" ) ~t -> nl:deref<t_node1>[upd]:use_content;
 		}
 
-		use_next = <t> prox [eval,init] ~t -- may be void
+		use_next = <t> prox [init] ~t -- may be void
 		{
 			imo:as_base<list1>:get_next()( link1 nl );
-			if ( "not_null?( nl )" ) ~t -> nl:deref:as<<t>>;
+			if ( "not_null?( nl )" ) ~t -> nl:deref<t_node1>[upd]:use_content;
 		}
 
 		remove_next [upd] ()( <t> next )  -- with <t> copy
@@ -446,7 +457,7 @@ type <t>list from list1
 			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) 
 			{
-				next:begin( nl:deref:as<<t>> );
+				next:begin( nl:deref<t_node1>:use_content );
 				imo:as_base<list1>:remove_next;
 			}
 		}
@@ -456,7 +467,7 @@ type <t>list from list1
 			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) 
 			{
-				copier( nl:deref:as<<t>> )( next );
+				copier( nl:deref<t_node1>:use_content )( next );
 				imo:as_base<list1>:remove_next;
 			}
 		}
@@ -466,7 +477,7 @@ type <t>list from list1
 			imo:as_base<list1>:get_next()( link1 nl );
 			if ( "not_null?( nl )" ) 
 			{
-				taker( *nl:deref:as<<t>> )( next );
+				taker( *nl:deref<t_node1>[upd]:use_content )( next );
 				imo:as_base<list1>:remove_next;
 			}
 		}
@@ -486,56 +497,61 @@ type <t>stack
 
 	pop = remove first
 
-
 	Consider using array<t> as a positional alternative to
 	a list-based stack.  Insertion and deletion (push and 
 	pop) at the end of an array is fast and efficient.
 }}
 {
 	nom type t_stack = <<t>>stack;
+	nom type t_list = <<t>>list;
 
 	general method
 	{
 		begin  -- empty
 		{
-			imo.list:begin;
+			imo.t_list:begin;
 		}
 
 		begin ( t_stack other [upd] ) -- take
 		{
-			imo.list:begin( *other.list );
+			imo.t_list:begin( *other.t_list );
+		}
+
+		begin ( t_stack other )  -- copy
+		{
+			imo.t_list:begin( other.t_list );
 		}
 
 		begin ( t_stack other ) with copier ( <t> )( <t> ) -- copy
 		{
-			imo.list:begin( other.list ) with copier;
+			imo.t_list:begin( other.t_list ) with copier;
 		}
 
 
 		is_empty? ()( bool yes )
 		{
-			imo.list:is_empty?()( yes );
+			imo.t_list:is_empty?()( yes );
 		}
 
 		push [upd] = <t> prox [init]  ~t
 		{
-			~t -> imo.list:insert;
+			~t -> imo.t_list:insert;
 		}
 
 		pop [upd ]
 		{
-			imo.list:remove_next;
+			imo.t_list:remove_next;
 		}
 		
-		use_top = <t> prox [eval,init] ~t  -- top 
+		use_top = <t> prox [init] ~t  -- top 
 		{
-			~t -> imo.list:use_first;
+			~t -> imo.t_list:use_first;
 		}
 	}
 
 	instance
 	{
-		<<t>>list list;
+		t_list;
 	}
 }
 
@@ -552,62 +568,68 @@ type <t>queue
 }}
 {
 	nom type t_queue = <<t>>queue;
+	nom type t_list = <<t>>list;
 
 	general method
 	{
 		begin  -- empty
 		{
-			imo.list:begin;
+			imo.t_list:begin;
 		}
 
 		begin ( t_queue other [upd] ) -- take
 		{
-			imo.list:begin( *other.list );
+			imo.t_list:begin( *other.t_list );
+		}
+
+		begin ( t_queue other ) -- copy
+		{
+			imo.t_list:begin( other.t_list );
 		}
 
 		begin ( t_queue other ) with copier ( <t> )( <t> ) -- copy
 		{
-			imo.list:begin( other.list ) with copier;
+			imo.t_list:begin( other.t_list ) with copier;
 		}
 
 		is_empty? ()( bool yes )
 		{
-			imo.list:is_empty?()( yes );
+			imo.t_list:is_empty?()( yes );
 		}
 
 		push [upd] = <t> prox [init] ~t 
 		{
-			~t -> imo.list:go_last:insert;
+			~t -> imo.t_list:go_last:insert;
 		}
 
 
 		pull [upd]()( <t> first ) -- with <t> copy
 		{
-			if ( imo.list:is_empty?()( =bool ):not )
-				imo.list:go_front:remove_next()( first );
+			if ( imo.t_list:is_empty?()( =bool ):not )
+				imo.t_list:go_front:remove_next()( first );
 		}
 
 		pull [upd]()( <t> first ) with copier ( <t> )( <t> )
 		{
-			if ( imo.list:is_empty?()( =bool ):not )
-				imo.list:go_front:remove_next()( first ) with copier;
+			if ( imo.t_list:is_empty?()( =bool ):not )
+				imo.t_list:go_front:remove_next()( first ) with copier;
 		}
 
 		pull [upd]()( <t> first ) with taker ( <t> [upd] )( <t> )
 		{
-			if ( imo.list:is_empty?()( =bool ):not )
-				imo.list:go_front:remove_next()( first ) with taker;
+			if ( imo.t_list:is_empty?()( =bool ):not )
+				imo.t_list:go_front:remove_next()( first ) with taker;
 		}
 
-		use_first = <t> prox [eval,init] ~t 
+		use_first = <t> prox [init] ~t 
 		{
-			~t -> imo.list:use_first;
+			~t -> imo.t_list:use_first;
 		}
 	}
 
 	instance
 	{
-		<<t>>list list;
+		t_list;
 	}
 }
 

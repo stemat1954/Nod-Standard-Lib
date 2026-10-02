@@ -419,7 +419,7 @@ type editor from mediator
 			{
 				imo:get_rp()( int mark );
 
-				imo:match( *ped, ~d )( bool ok, q:recycle, int rp ) with helper;
+				imo:match( *ped, ~d )( bool ok, q:renew, int rp ) with helper;
 
 				if ( ok ) return after imo:set_rp( mark );
 

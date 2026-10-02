@@ -20,43 +20,110 @@ type object  -- virtual, restricted
 	type object.  Rather, they're "included" by the com-
 	piler, as if they were written explicitly in the type
 	definition.
-	
-	:as_base<> has reserved permission syntax and never
-	returns a void proxy because the type ref can always
-	be verified at compile time.
 
-	The other generic type methods are used to traverse
-	the type structure of an object by proxy.  That is,
-	a proxy always leads the call. 
+	:null? and :not_null? assign an output consistent with
+	imo null state.
+	
+	:renew terminates imo and prepares it for initializat-
+	ion. imo is null after calling :renew.
+
+	:eval_only? returns true if imo has a runtime [eval] 
+	constraint.
+
+	:constrained? returns true if imo has a runtime [eval] 
+	or [upd] constraint. 
+
+	Note: an unconstrained object can be initialized.
+
+	:is<t>? returns true if imo actual type	derives from <t>.
+	
+	:is_actual<t>? returns true if imo actual type is <t>.
+	
+	:as_base<t> is a base sub-object translator with re-
+	served permission syntax. It never returns a void proxy
+	because	type is verified at compile time. 
+	
+	Permission is reduced to [eval,init] if the lead object 
+	type is typical, or [eval,upd] otherwise. Then the re-
+	duced dual permission is resolved in the usual way.  
+
+	Note: This allows base type initialization within a
+	typical method, but prevents it otherwise. :as_base<t>
+	won't won't fail from runtime verification of permission.
+
+	:as<t> is a random sub-object translator. It returns a 
+	transient proxy if imo actual type is <t> or derives 
+	from <t>. Otherwise the result is void.
+
+	A transient proxy must be authorized before it can be
+	used to update or initialize it's joined object. 
+	Typically that's accomplished by specifying an overt 
+	permission in the call expression. However, if the 
+	result is void, runtime authorization will cause a 
+	disruption.
+	
+	x:as<thing>[upd] -- disruption if actual type of x 
+					 -- doesn't derive from thing
+	
+	The application shouldn't depend on a void :as<t> result
+	to test object type when it also specifies an overt 
+	permission in the call. If an overt permission is not 
+	specified, the result can be tested for void, but it's
+	still transient and can	only be used to evaluate it's 
+	joined object. 
+
+	Best practice is to pretest object type using :is<t>?
+	if :as<t> might return a void result.
+
+	:as<t> cannot be used to increase access to an object.
+
+	If the lead object permission is known (not transient), 
+	the compiler verifies that overt permission doesn't
+	increase access. Furthermore, if the overt permission 
+	is [init] and doesn't increase access, the lead object
+	permission must also be [init], which means <t> and 
+	lead object type are both actual types, which means 
+	:as<t>[init] is extraneous.
+	
+	The only time :as<t>[init] is useful is when the lead 
+	object is a transient proxy. In that case, permission
+	is verified at runtime. Thus, if :as<t>[init] doesn't
+	disrupt, the result proxy is good.
+
+	Calling :as<t> without an overt proxy spec, removes
+	any known lead object permission and makes the result
+	transient.
 }}
 {
 	general 
 	{
-		null? [eval]()( bool );
+		null? ()( bool );
 
-		not_null? [eval]()( bool );
+		not_null? ()( bool );
 
-		recycle [term];	 
+		renew [term];	 
+
+		
+		use_typeid = typeid prox [eval];  -- access 
+
+		get_typeid ()( typeid );	-- copy
+
+		get_addr ()( addr );		-- copy
 
 
-		use_typeid [eval] = typeid prox [eval];  -- access 
+		eval_only? ()( bool );
 
-		get_typeid [eval]()( typeid );	-- copy
-
-		get_addr [eval]()( addr );  -- copy
+		constrained? ()( bool);
 
 
-		as_base<t> [eval] = <t> prox [eval,upd,init];  -- see notes
-	}
+		is<t>? ()( bool );  
 
-	general -- by proxy 
-	{
-		is<t>? [eval]()( bool );  
+		is_actual<t>? ()( bool );
 
-		as<t> [eval] = <t> prox [eval,upd];	-- may be void
 
-		is_actual<t>? [eval]()( bool );
+		as_base<t> = <t> prox [eval,upd,init]; -- reserved syntax
 
-		as_actual<t> [eval] = <t> prox [eval,init];  -- may be void
+		as<t> = <t> prox;	-- transient, may be void
+
 	}
 }

@@ -22,19 +22,7 @@ type op<t>   -- intrinsic
 	always bound to an object in heap memory, while a proxy
 	may be bound to any object.
 	
-	The op<t> object accessor method is called :deref. Like 
-	other accessors, :deref returns a result proxy which
-	can be used in any object context as a reference to 
-	the heap object. Thus, logically, there are two levels
-	of indirection to get to the object.
 	
-	Note:  In a sense, :deref converts an op<t> into a proxy. 
-	The conversion is optimized and may in fact be nominal.
-	
- 	The proxy returned by :deref has [upd] permission and 
-	is often followed by :as<t> or as_actual<t> to access
-	the bound object as a subtype.  However, as_actual<t>
-	will only be good if <t> is the original object type.
 
 	The heap object bound to an op<t> is created when the 
 	op<t> is initialized. The new object is null and it must
@@ -82,33 +70,6 @@ type op<t>   -- intrinsic
 
 	An existing op<t> is compatible with another op<u>
 	if the two adhoc types are related.
-	
-	For example:
-
-
-	type thing
-	{
-		general method foo [eval];
-	}
-
-	type widget from thing
-	{
-		general method goo [eval];
-	}
-
-	routine foo
-	{
-		op<widget> wp:begin:begin; -- new op to actual widget
-		op<thing> tp:begin( wp );  -- copy wp
-
-		wp:deref:foo;	-- ok (foo is inherited)
-		wp:deref:goo;	-- ok
-
-		tp:deref:foo;	-- ok
-		tp:deref:goo;	-- error! (goo not a thing method)
-		tp:deref:as<widget>:goo;  -- ok after type translation
-	}
-		
 
 	In general, two types are related and compatible if 
 	they occur in a common type hierarchy.
@@ -135,25 +96,25 @@ type op<t>   -- intrinsic
 
 	are all legit and refer to the same actual object bound
 	to ap.
+	
 
-	This works because 
+	:deref accesses the bound object. The result proxy is
+	transient but never void. 
 
-	  ap:deref:as_base<B>
-	  ap:deref:as_base<C>
-	  bp:deref:as<A>
-	  cp:deref:as<A>
-	  bp:deref:as<C>
-	  cp:deref:as<B>
+	:deref<xt> incorporates translation. The result will be
+	void if the translation is void. 
 
-	are all legit and return valid proxies.
+	Note:  Call-side overt permission is verified at run-
+	time.  If the result type is not the object's actual 
+	type, asserting [init] permission will disrupt the app.
+	
 
-	op<t> can be used to create logically heterogenous arrays.
-	They're also essential for creating dynamically linked
+
+	op<> can be used to create logically heterogenous arrays.	
+	They're also essential for creating dynamically linked 
 	object collections like trees, lists, and networks.
 	
-	op<t> is generally portable if <t> is portable.  The 
-	given mediator must be adapted to implement a specific 
-	sharing scheme.
+
 
 	op<t> can be compared using standard methods. Cross type
 	comparisions are allowed, even if the op<t> is copy-
@@ -174,6 +135,11 @@ type op<t>   -- intrinsic
 	type that encapsulates an op<t> and provides the desired
 	pass-through methods.
 
+
+	op<t> is generally portable if <t> is portable.  The 
+	given mediator must be adapted to implement a specific 
+	sharing scheme.
+
 }}
 {
 	general 
@@ -192,7 +158,10 @@ type op<t>   -- intrinsic
 		store ( mediator [upd], expr fex )()( extra );  -- requires adapted mediator (may quit)
 
 
-		deref = <t> prox [upd];			-- always works (never void)
+		deref = <t> prox;					-- transient, never void
+
+		deref<xt> = <xt> prox;				-- transient, may be void
+
 
 		equal<xt>? ( op<<xt>> )( bool );
 

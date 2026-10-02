@@ -46,9 +46,8 @@ type serial<t><c> [incomplete] -- intrinsic
 	cursor. If the cursor is inoperable, the proxy will be
 	void.
 
-	The proxy returned by :use has unspecified access.
-	Permission must be specified in the call and it's 
-	verified at runtime.
+	:use returns a transient proxy that must be fixed by 
+	caller.
 
 	A serial collection can be scanned in a Nod	for loop.
 }}
@@ -63,7 +62,7 @@ type serial<t><c> [incomplete] -- intrinsic
 
 		flip_cursor ( <c> [upd] );
 
-		use ( <c> ) = <t> prox;
+		use ( <c> ) = <t> prox;  -- transient
 	}
 
 
