@@ -14,24 +14,21 @@ type analog  -- intrinsic,restricted
 	
 	Analogs are anonymous, so they must be evaluated
 	immediately. Thus, an analog expression always leads
-	a method call:
+	a method call.
 	
-		[~thing]:good?()( =bool )
-
-		"good?( [~thing] )" 		
-
+	Generally, a proxy should be tested for good? before
+	it is used when there is a chance that it may be void, 
+	stale, or dead.
 }}
 {
 	general
 	{
 		void? ()( bool );
 
-		not_void? ()( bool );
-
 		stale? ()( bool );
 
-		not_stale? ()( bool );
+		dead? ()( bool )
 
-		good? ()( bool );	-- "not_void? |and| not_stale?"
+		good? ()( bool );	-- "not(void? |or| stale? |or| dead? )"
 	}
 }

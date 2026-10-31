@@ -2,9 +2,16 @@
 page fault in AlphaByNod
 
 
-enum type fault_category ( 'bug', 'format', 'timeout', 'resource', 'platform', 'system' );
+enum type fault_category ( 'codegen', 'bug', 'format', 'timeout', 'resource', 'platform', 'system' );
 {{
-	'bug' - a programming error was detected
+	'codegen' - a code generation error was detected. 
+	
+		This category is used by alpha procedures when an
+		internal inconsistency is detected at runtime. This
+		is not an app fault per se, and the only fix is a 
+		compiler update or a clever work-around.
+
+	'bug' - an app programming error was detected
 
 		Use 'bug' to categorize invalid inputs and logical 
 		inconsistencies.  In a perfect world, bugs will

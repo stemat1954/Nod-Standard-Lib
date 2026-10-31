@@ -46,6 +46,6 @@ type disruption from positional<trace>  -- intrinsic, restricted
 	{
 		[final] ~count ()( int n );
 
-		[final] ~use_trace ( int i ) = object prox;
+		[final] ~use ( int i ) = object prox;
 	}
 }

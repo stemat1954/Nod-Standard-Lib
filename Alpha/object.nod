@@ -27,13 +27,13 @@ type object  -- virtual, restricted
 	:renew terminates imo and prepares it for initializat-
 	ion. imo is null after calling :renew.
 
-	:eval_only? returns true if imo has a runtime [eval] 
-	constraint.
+	:can_upd? returns true if imo doesn't have a runtime
+	[eval] constraint.
 
-	:constrained? returns true if imo has a runtime [eval] 
-	or [upd] constraint. 
+	:can_init? returns true if imo doesn't have a runtime
+	constraint.  If can_init? is true, imo is an original
+	type.
 
-	Note: an unconstrained object can be initialized.
 
 	:is<t>? returns true if imo actual type	derives from <t>.
 	
@@ -93,6 +93,9 @@ type object  -- virtual, restricted
 	Calling :as<t> without an overt proxy spec, removes
 	any known lead object permission and makes the result
 	transient.
+
+	Note:  Generic methods use reserved [app] syntax to 
+	override standard lean calling convention.
 }}
 {
 	general 
@@ -101,29 +104,22 @@ type object  -- virtual, restricted
 
 		not_null? ()( bool );
 
-		renew [term];	 
-
+		renew [term,app];	 
 		
-		use_typeid = typeid prox [eval];  -- access 
 
 		get_typeid ()( typeid );	-- copy
 
 		get_addr ()( addr );		-- copy
 
 
-		eval_only? ()( bool );
+		is<t>? [app]()( bool );  
 
-		constrained? ()( bool);
-
-
-		is<t>? ()( bool );  
-
-		is_actual<t>? ()( bool );
+		is_actual<t>? [app]()( bool ); 
 
 
-		as_base<t> = <t> prox [eval,upd,init]; -- reserved syntax
+		as_base<t> = <t> prox [eval,upd,init]; -- compile-time
 
-		as<t> = <t> prox;	-- transient, may be void
+		as<t> [app] = <t> prox;	-- transient, may be void
 
 	}
 }

@@ -44,13 +44,13 @@ type typeid -- intrinsic
 {
 	general
 	{
-		begin ( typeid other );				-- copy
+		begin ( typeid other );		-- copy
 
 		begin ( mediator [upd], expr fex );		
 
 		store ( mediator [upd], expr fex );
 
-		selects<t>? ()( bool );		-- iff actual <t>
+		identifies<t>? ()( bool );		
 
 		equal? ( typeid other )( bool );
 

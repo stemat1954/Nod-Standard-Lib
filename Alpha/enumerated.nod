@@ -28,6 +28,8 @@ type enumerated  -- intrinsic
 	{
 		begin ( int );
 
+		begin ( enumerated other );
+
 		use_code = int prox [eval];
 		
 		get_code ()( int );

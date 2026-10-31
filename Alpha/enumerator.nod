@@ -3,18 +3,19 @@ page enumerator in AlphaByNod
 
 type <t>enumerator  -- intrinsic, restricted
 {{
-	An enumerator is a restricted internal object used in
-	the compilation of enum type definitions and select 
-	expressions.
+	An enumerator is a restricted internal object used by
+	HNM SELECT.
 
-	enumerators are allocated in common storage and 
-	automatically initialized at startup by the HNM using
-	a compiler-generated mapping of <t> to int for every 
-	enumerated item. The <t> values must be unique and rank-
-	able using standard method :before?;
+	Enumerators are allocated in common storage and auto-
+	matically initiated by the HNM at startup.
 	
-	At runtime, :enumerate is called to get a corresponding 
-	integer value for a given object.
+	<t> must have methods :begin( expr vex ) and 
+	:before?( <t> )( bool ).
+
+	Note: The HNM code generator emits an internal enum-
+	eration that maps a select value expr (vex) into an
+	select branch index. The internal enumeration is used 
+	to initiate the enumerator.
 }}
 {
 	general 

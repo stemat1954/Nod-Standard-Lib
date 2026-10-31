@@ -144,7 +144,7 @@ type op<t>   -- intrinsic
 {
 	general 
 	{
-		begin = <t> prox [init];			-- access new <t> object, complete <t> (may quit)
+		begin = <t> prox [init];			-- access new <t> object, complete <t> (verified)
 		
 		begin<xt> = <xt> prox [init];		-- access new <xt> object, <xt> related to <t> (may quit)
 

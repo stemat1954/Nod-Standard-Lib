@@ -6,16 +6,20 @@ type trace -- instrisic,restricted
 {{	
 	A trace is a source code locator.
 
-	Type trace is restricted.  It can't be created,
-	subtyped, or used in another type instance. 
+	Type trace is restricted.  It can't be created, sub-
+	typed, or used in another type instance. 
 
-	Trace objects are created by the compiler when an
-	application quits.  If an application specifies an 
-	object type in the quit	expression, the HNM creates
-	the specified object and attaches it to the trace
-	object along with source location info.
+	Trace objects are created when an application quits. If
+	an application specifies an object definition in the
+	quit expression (using "with"), the HNM creates the
+	object and attaches it to the trace object along with
+	location info. 
 
-	Note: See alpha\fault for example of quit object type.
+	If a trace doesn't have an object, :use_object returns
+	a void proxy.
+
+	Note: See alpha\fault for an example quit object type.
+	Alpha disruptions always quit with a fault object.
 
 	location is a formatted expr that includes book name,
 	page name, and line number.  Currently, the precise
@@ -33,7 +37,7 @@ type trace -- instrisic,restricted
 
 		get_location ()( expr );
 
-		use_quit_object = object prox [eval];
+		use_object = object prox [eval]; // may be void
 	}
 }
 
