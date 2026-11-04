@@ -49,11 +49,13 @@ type int -- elementary, compatible, conventional
 {
 	general 		
 	{
-		begin ( expr vex [opt] );				-- description, default '0'
+		begin ( expr vex [opt] );				-- default '0'
 
 		begin ( int other );					-- copy
 
 		begin<#> ( word<<#>> w, expr fex );		-- word conversion
+
+		begin ( enumerated e );					-- enumerated conversion
 
 		
 		begin ( mediator [upd], expr fex );		-- mediation
@@ -61,11 +63,11 @@ type int -- elementary, compatible, conventional
 		store ( mediator [upd], expr fex );		-- ditto
 
 
-		equal? ( int n )( bool );			-- equality
+		equal? ( int n )( bool );				-- equality
 				
-		before? ( int n )( bool );			-- ordinality ( same as less? )
+		before? ( int n )( bool );				-- ordinality ( same as less )
 
-		less? ( int n )( bool );				-- cardinality ( same as before? )
+		less? ( int n )( bool );				-- cardinality ( same as before )
 
 
 		set [upd]( int n );						-- intrinsic replace

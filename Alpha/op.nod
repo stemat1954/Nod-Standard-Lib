@@ -9,8 +9,8 @@ type op<t>   -- intrinsic
 
 	An op<t> is used to create an object at runtime in heap
 	memory. The type of object created must be a complete
-	type, but in general, the op adhoc type can be any 
-	related (possibly incomplete) type.  
+	and unrestricted type, but in general, the adhoc type 
+	can be any related (possibly incomplete) type.  
 
 	Logically, an op<t> is a runtime reference object. That
 	is, the binding of op<t> to object is made at runtime.
@@ -144,7 +144,7 @@ type op<t>   -- intrinsic
 {
 	general 
 	{
-		begin = <t> prox [init];			-- access new <t> object, complete <t> (verified)
+		begin = <t> prox [init];			-- access new <t> object, complete <t> (may quit)
 		
 		begin<xt> = <xt> prox [init];		-- access new <xt> object, <xt> related to <t> (may quit)
 
