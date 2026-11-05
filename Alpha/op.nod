@@ -150,8 +150,6 @@ type op<t>   -- intrinsic
 
 		begin<xt> ( op<<xt>> );				-- copy compatible op, <xt> related to <t> (may quit)
 
-		begin<xt> ( op<<xt>> [upd] );		-- take compatible op, <xt> related to <t> (may quit)
-
 
 		begin ( mediator [upd], expr fex )()( extra );	-- requires adapted mediator (may quit)
 
