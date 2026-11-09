@@ -63,8 +63,6 @@ type matrix<t><#r><#c>
 
 		get_entry [eval]( int i, int j )( <t> n );
 
-		use_entry [eval]( int i, int j ) = <t> prox [eval,init];
-
 
 		add [upd]( same_type m );					-- add:  imo := imo + m 
 		add [eval]( same_type m1 )( same_type m2 );

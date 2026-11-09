@@ -46,8 +46,6 @@ type vector<t><#n> from positional<<t>>
 
 		get_coord [eval]( int i )( <t> n );
 
-		use_coord [eval]( int i ) = <t> prox [eval,init];
-
 		get_coords [eval]()( array<<t>><<#n>> );			
 
 
