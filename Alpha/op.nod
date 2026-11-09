@@ -137,7 +137,7 @@ type op<t>   -- intrinsic
 
 
 	op<t> is generally portable if <t> is portable.  The 
-	given mediator must be adapted to implement a specific 
+	given medium must be adapted to implement a specific 
 	sharing scheme.
 
 }}
@@ -151,9 +151,9 @@ type op<t>   -- intrinsic
 		begin<xt> ( op<<xt>> );				-- copy compatible op, <xt> related to <t> (may quit)
 
 
-		begin ( mediator [upd], expr fex )()( extra );	-- requires adapted mediator (may quit)
+		begin ( medium [upd], expr fex )()( extra );	-- requires adapted medium (may quit)
 
-		store ( mediator [upd], expr fex )()( extra );  -- requires adapted mediator (may quit)
+		store ( medium [upd], expr fex )()( extra );  -- requires adapted medium (may quit)
 
 
 		deref = <t> prox;					-- transient, never void

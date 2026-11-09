@@ -1,5 +1,5 @@
 
-page mediator in AlphaByNod
+page medium in AlphaByNod
 
 
 enum type endian ( 'little-endian', 'big-endian' );		
@@ -18,12 +18,11 @@ common
 
 
 
-type mediator 
+type medium 
 {{
-	A mediator facilitates transfer of object data from 
-	object to external memory and back. 
+	A medium is a storage object for external data.
 	
-	A mediator encapsulates a heap memory addr and provides
+	A medium encapsulates a heap memory addr and provides
 	methods for formatting and parsing arbitrary external
 	data.  
 	
@@ -37,8 +36,8 @@ type mediator
 	data from object to external memory. 
 
 	Reading an object's value is tantamount to object init-
-	ialization, so :fread calls object :begin to coordinate 
-	the transfer.  Thus, the object must have [init] access 
+	iation, so :fread calls object :begin to coordinate the
+	transfer.  Thus, the object must have [init] access 
 	permission.
 	
 	:fwrite simply calls corresponding object :store which
@@ -48,11 +47,11 @@ type mediator
 
 	general method
 	{
-		begin ( mediator [upd], expr fex );
-		begin ( mediator [upd], expr fex )()( extra );
+		begin ( medium [upd], expr fex );
+		begin ( medium [upd], expr fex )()( extra );
 
-		store ( mediator [upd], expr fex );
-		store ( mediator [upd], expr fex )()( extra );
+		store ( medium [upd], expr fex );
+		store ( medium [upd], expr fex )()( extra );
 	}
 
 	A portable type needs at least one conventional :begin
@@ -93,10 +92,10 @@ type mediator
 	standing of usage to avoid creating a corrupt and
 	totally useless product.  So, programmer beware!
 
-	A mediator has two modal formatting options that 
+	A medium has two modal formatting options that 
 	supplement individual format specs:  endianess and
 	UTF (Unicode Transformational Format). Modal format
-	options are specified when a mediator is initialized.
+	options are specified when a medium is initialized.
 
 	Note:  Default modal format is controlled by two common
 	settings. Initial defaults are set at startup to plat-
@@ -106,9 +105,9 @@ type mediator
 		
 	Endianess controls byte order.  For example, if an int
 	fex specifies an 8 byte, twos-complement binary value,
-	and a mediator is initialized with 'little-endian', 
+	and a medium is initialized with 'little-endian', 
 	8 bytes are serially written least-significant to most-
-	significant in memory.  Conversly,  if the mediator is 
+	significant in memory.  Conversly,  if the medium is 
 	initialized with 'big-endian', 8 bytes are serially 
 	written most-significant to least-significant in memory.
 
@@ -122,25 +121,25 @@ type mediator
 	Note: External memory can contain an arbitrary mix of 
 	object data stored using binary and text formats. 
 	
-	An output mediator automatically allocates heap memory
-	as data is transferred to the mediator. Output data is 
+	An output medium automatically allocates heap memory
+	as data is transferred to the medium. Output data is 
 	naturally intended for external consumption, so at some 
-	point the memory must be detached from the mediator and
+	point the memory must be detached from the medium and
 	given to some compatible routine (e.g.kernel sub-
 	routine) for final disposition.  
 	
-	Detaching memory creates a detached mediator and an 
+	Detaching memory creates a detached medium and an 
 	orphan heap pointer that must be reattached to some 
-	mediator or released by some other procedure. Basically,
-	the mediator disowns the detached memory. Detaching 
-	memory does not affect the mediator's internal read/
+	medium or released by some other procedure. Basically,
+	the medium disowns the detached memory. Detaching 
+	memory does not affect the medium's internal read/
 	write position cursors.
 
 	External heap memory can be attached (or reattached) to 
-	a detached mediator.  The memory usually originates from 
-	another mediator or from a compatible routine. The 
+	a detached medium.  The memory usually originates from 
+	another medium or from a compatible routine. The 
 	memory block may or may not contain	formatted data. Once 
-	external memory is attached to a mediator, the mediator
+	external memory is attached to a medium, the medium
 	owns the memory and applications must not allow the given
 	addr to be used by any other procedure.
 	
@@ -200,8 +199,8 @@ type mediator
 	than the logical size, so applications must immediately
 	locate the logical end of formatted data and set logical 
 	size.  This is a common scenario for example, when
-	primitive routines return null-terminated strings
-	with no size information.
+	compatible routines return null-terminated strings with
+	no size information.
 
 	:set_rp_mod and :set_wp_mod align their respective pos-
 	itions on a	specified modulo boundary, if they aren't 
@@ -221,12 +220,12 @@ type mediator
 	If the block is shifted up (positive) beyond size, 
 	size will be increased and wp will be at the end. Other-
 	wise, size is not changed. Shifting memory generally
-	leaves holes in the mediator, so the application must
+	leaves holes in the medium, so the application must
 	adjust size (truncate) and/or fill holes as needed.
 	 
-	:copy copies a q-byte block from a source mediator 
+	:copy copies a q-byte block from a source medium 
 	without changing the source rp.  Thus, the given source 
-	mediator is not modified.
+	medium is not modified.
 	
 	(1) block read up to q bytes from source using given
 		rp or source rp
@@ -234,13 +233,13 @@ type mediator
 	(3) set it rp = it wp
 	(4) block write q2 bytes from it wp
 
-	If rp *is* specified, it overrides the source mediator 
+	If rp *is* specified, it overrides the source medium 
 	rp.  If q is not specified (null), all data is copied 
 	from the source starting at the effective rp.  When the
 	method returns, (this) rp is at the start of copied 
 	data and (this) wp is at the end. Size is increased (or
 	not) as neccessary. Copying	memory may leave holes in
-	the mediator, so the	application must adjust size 
+	the medium, so the	application must adjust size 
 	(truncate) and/or fill holes as necessary.
 
 
@@ -301,7 +300,7 @@ type mediator
 	to implement a scheme to store and restore the pointer
 	and it's object.  There is no general solution that can
 	suffice for all applications, but most solutions will
-	usually involve coordinating multiple mediators to mimic
+	usually involve coordinating multiple mediums to mimic
 	an external heap.
 }}
 {
@@ -310,9 +309,9 @@ type mediator
 	{
 		begin ( endian [opt], utf [opt] ); -- original
 
-		begin ( mediator other [upd] );   -- take 
+		begin ( medium other [upd] );   -- take 
 
-		begin ( mediator other );		   -- copy
+		begin ( medium other );		   -- copy
 
 
 		get_endian ()( endian );
@@ -398,7 +397,7 @@ type mediator
 
 		move [upd]( int q, int n );		-- see notes
 
-		copy [upd]( mediator source, int q [opt], int rp [opt] )( int q2 );	-- see notes
+		copy [upd]( medium source, int q [opt], int rp [opt] )( int q2 );	-- see notes
 	}
 
 

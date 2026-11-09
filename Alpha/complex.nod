@@ -25,9 +25,9 @@ type cplx
 		begin ( fp10 n );					-- fp10 conversion (rx=n,iy=0)
 
 
-		begin ( mediator [upd], expr fex );	-- mediation
+		begin ( medium [upd], expr fex );	-- mediate
 
-		store ( mediator [upd], expr fex );	-- mediation
+		store ( medium [upd], expr fex );	-- mediate
 
 
 		equal? ( cplx n )( bool );		-- equality

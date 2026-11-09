@@ -22,7 +22,7 @@ type addr 	-- compatible
 	An addr must eventually be released back to the heap
 	in order to avoid "leakage."  
 	
-	Note: alpha\mediator and alpha\string incorporate addrs.
+	Note: alpha\medium and alpha\string incorporate addrs.
 	See those pages for more info.
 
 	Generic binary 'b' is the one and only supported 
@@ -35,9 +35,9 @@ type addr 	-- compatible
 
 		begin ( addr other );	-- copy
 
-		begin ( mediator [upd], expr fex [opt] );   
+		begin ( medium [upd], expr fex [opt] );   
 
-		store ( mediator [upd], expr fex [opt] );	 
+		store ( medium [upd], expr fex [opt] );	 
 
 		equal? ( addr other )( bool );
 

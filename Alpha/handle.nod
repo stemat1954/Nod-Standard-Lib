@@ -24,9 +24,9 @@ type handle -- compatible
 
 		begin ( handle other );	-- copy
 
-		begin ( mediator [upd], expr fex [opt] ); 
+		begin ( medium [upd], expr fex [opt] ); 
 
-		store ( mediator [upd], expr fex [opt ] );
+		store ( medium [upd], expr fex [opt ] );
 
 		equal? ( handle other )( bool );
 	}

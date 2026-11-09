@@ -139,9 +139,9 @@ type utc  -- conventional
 
 		begin ( utc other );		-- copy
 
-		begin ( mediator [upd], expr fex );	
+		begin ( medium [upd], expr fex );	
 
-		store ( mediator [upd], expr fex );
+		store ( medium [upd], expr fex );
 
 
 		equal? ( utc t )( bool );

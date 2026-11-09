@@ -58,9 +58,9 @@ type fp2 -- elementary, compatible, conventional
 		begin<#n> ( word<<#n>> w, expr fex );	-- word conversion
 
 
-		begin ( mediator [upd], expr fex );		-- mediation
+		begin ( medium [upd], expr fex );		-- mediate
 
-		store ( mediator [upd], expr fex );		-- mediation
+		store ( medium [upd], expr fex );		-- mediate
 
 
 		equal? ( fp2 n )( bool );				-- equality
@@ -171,9 +171,9 @@ type fp10 -- elementary, compatible, conventional
 		begin<#n> ( word<<#n>> w, expr fex );	-- word conversion
 
 
-		begin ( mediator [upd], expr fex );		-- mediation
+		begin ( medium [upd], expr fex );		-- mediate
 
-		store ( mediator [upd], expr fex );		-- mediation
+		store ( medium [upd], expr fex );		-- mediate
 
 
 		equal? ( fp10 n )( bool );			-- equality

@@ -73,9 +73,9 @@ type word<#> -- elementary, compatible (up to word32), conventional
 		begin ( fp10 r, expr fex );					-- fp10 conversion, fp10 fex for encoding required
 
 
-		begin ( mediator [upd], expr fex );		
+		begin ( medium [upd], expr fex );		
 
-		store ( mediator [upd], expr fex ) ;	
+		store ( medium [upd], expr fex ) ;	
 		
 
 		equal? ( word<<#>> w )( bool );

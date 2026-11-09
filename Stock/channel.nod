@@ -8,7 +8,7 @@ page channel in StockByNod
 
 	begin
 	{
-		mediator:begin:fwrite<request>( request:begin, 'b' ):get_size()( sizeof_request );
+		medium:begin:fwrite<request>( request:begin, 'b' ):get_size()( sizeof_request );
 	}
 }
 
@@ -53,12 +53,12 @@ page channel in StockByNod
 			imo.pnote:begin;
 		}
 
-		begin ( mediator [upd], expr fex )	
+		begin ( medium [upd], expr fex )	
 		{
 			%infer
 		}
 
-		store ( mediator [upd], expr fex )	
+		store ( medium [upd], expr fex )	
 		{
 			%infer
 		}
@@ -136,16 +136,16 @@ page channel in StockByNod
 {
 	format_request ( request r )( addr pr )  -- orphan pr
 	{
-		mediator:begin:fwrite<request>( r, 'b' ):detach()( pr ); 
+		medium:begin:fwrite<request>( r, 'b' ):detach()( pr ); 
 	}
 
 	restore_request ( addr pr )( request r )  -- adopt pr 
 	{
-		mediator m:begin:attach( pr, sizeof_request ); 
+		medium m:begin:attach( pr, sizeof_request ); 
 		r:begin( *m, 'b' );
 	}
 
-	update_mediator ( mediator med [upd], addr pdata, int offset, int size, int deficit, ascii action ) 
+	update_mediator ( medium med [upd], addr pdata, int offset, int size, int deficit, ascii action ) 
 	{
 		int dsize:begin( "offset + size" );  -- data size
 		med:attach( pdata, dsize );
@@ -180,7 +180,7 @@ enum type channel_report ( 'good', 'pending', 'busy', 'closed', 'retry', 'end', 
 	
 
 
-routine update_mediator_async ( addr preq, mediator med [upd] )( int id, channel_report report, string note ) -- adopt preq
+routine update_mediator_async ( addr preq, medium med [upd] )( int id, channel_report report, string note ) -- adopt preq
 {
 	restore_request( preq )( request req ); -- adopt preq
 	req:get_group1()( ascii action, addr pdata, int offset, int size, int seek, id ); -- ignore seek
@@ -193,12 +193,12 @@ routine update_mediator_async ( addr preq, mediator med [upd] )( int id, channel
 type channel [incomplete]  
 {{
 	A channel is an object for communicating with external
-	processes and devices via mediator.
+	processes and devices via medium.
 
 	This is a base type for all channel subtypes. 
 
-	Write methods transfer data from mediator to channel, 
-	and read methods transfer data from channel to mediator. 
+	Write methods transfer data from medium to channel, 
+	and read methods transfer data from channel to medium. 
 	
 	Transfers can be synchronous or asynchronous. A synchro-
 	nous transfer waits for the transfer to complete before
@@ -374,13 +374,13 @@ type sync_channel_reader [incomplete]
 	A sync_channel_reader is an adaptable channel reader.
 	Data is transferred synchronously.
 	
-	:read transfers data from the channel to a given mediator
+	:read transfers data from the channel to a given medium
 	via abstract :~read.
 
-	Data is placed at the current mediator wp. Request size
-	is calculated from current mediator size and wp. 
+	Data is placed at the current medium wp. Request size
+	is calculated from current medium size and wp. 
 
-	Note: request size = mediator size - wp
+	Note: request size = medium size - wp
 	
 	Mediator wp is updated to reflect the amount of data
 	actually transferred.  The application can compare wp
@@ -391,7 +391,7 @@ type sync_channel_reader [incomplete]
 	why	there is a deficit.  Output note is channel dependent
 	and	may or may not be well defined for any report.
 	
-	:read can be called in a loop until	mediator:wp_end? 
+	:read can be called in a loop until	medium:wp_end? 
 	returns true, provided report doesn't imply that another
 	read is pointless.
 }}
@@ -404,7 +404,7 @@ type sync_channel_reader [incomplete]
 			if ( "not_null?( wait )" ) imo.wait:begin( wait );
 		}
 	
-		read [upd]( mediator med [upd], int seek [opt], etm wait [opt] )( channel_report report, string note ) 
+		read [upd]( medium med [upd], int seek [opt], etm wait [opt] )( channel_report report, string note ) 
 		{
 			med:get_wp()( int offset ):get_size()( =int rsize ):sub( offset );
 			if ( "rsize |>| zero" )
@@ -435,13 +435,13 @@ type sync_channel_writer [incomplete]
 	A sync_channel_writer is an adaptable channel writer.
 	data is transferred synchronously.
 	
-	:write transfers data from a given mediator to the channel
+	:write transfers data from a given medium to the channel
 	via :write.
 
-	Data is copied from the current mediator rp. Request size
-	is calculated from mediator size and rp.
+	Data is copied from the current medium rp. Request size
+	is calculated from medium size and rp.
 
-	Note: request size = mediator size - rp
+	Note: request size = medium size - rp
 	
 	Mediator rp is updated to reflect the amount of data
 	actually transferred.  The application can compare rp
@@ -453,7 +453,7 @@ type sync_channel_writer [incomplete]
 	dependent and may or may not be well defined for any
 	report.
 	
-	:write can be called in a loop until mediator:rp_end? 
+	:write can be called in a loop until medium:rp_end? 
 	returns true, provided report doesn't imply that another
 	write is pointless.
 }}
@@ -465,7 +465,7 @@ type sync_channel_writer [incomplete]
 			if ( "not_null?( wait )" ) imo.wait:begin( wait );
 		}
 	
-		write [upd]( mediator med [upd], int seek [opt], etm wait [opt] )( channel_report report, string note ) 
+		write [upd]( medium med [upd], int seek [opt], etm wait [opt] )( channel_report report, string note ) 
 		{
 			med:get_rp()( int offset ):get_size()( =int rsize ):sub( offset );
 			if ( "rsize |>| zero" )
@@ -502,7 +502,7 @@ type async_channel_reader [incomplete]
 		{
 		}
 	
-		read [upd]( int id, handle hq, mediator med [upd], int seek [opt] )( channel_report report, string note ) 
+		read [upd]( int id, handle hq, medium med [upd], int seek [opt] )( channel_report report, string note ) 
 		{
 			med:get_wp()( int offset ):get_size()( =int rsize ):sub( offset );
 			if (" rsize |>| zero ")
@@ -532,7 +532,7 @@ type async_channel_writer [incomplete]
 		{
 		}
 	
-		write [upd]( int id, handle hq, mediator med [upd], int seek [opt] )( channel_report report, string note ) 
+		write [upd]( int id, handle hq, medium med [upd], int seek [opt] )( channel_report report, string note ) 
 		{
 			med:get_rp()( int offset ):get_size()( =int rsize ):sub( offset );
 			if ( "rsize |>| zero" )

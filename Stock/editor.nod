@@ -40,28 +40,28 @@ routine
 
 
 
-type editor from mediator
+type editor from medium
 {{
-	An editor is a specialized unicode mediator.
-	It formats and parses external unicode images.  
+	An editor is a specialized unicode medium. It formats
+	and parses external unicode images.  
 
 	Most applications can use editor methods alone to 
 	accomplish common serial formatting and parsing tasks.
 	However, more advanced applications will need access to
-	the base mediator read/write cursors.
+	the base medium read/write cursors.
 	
 	Encoding of the unicode image is specified to :begin.
 
-	Note:  Generally, stock methods and routines use 
-	default encoding to edit unicode text.  Default encod-
-	ing is defined by well-known alpha\default_utf and 
-	alpha\default_endian.
+	Note:  Generally, stock methods and routines use default
+	encoding to edit unicode text.  Default encoding is de-
+	fined by well-known alpha\default_utf and alpha\default_
+	endian.
 	
 	The external unicode image is stored as a sequence of
-	integer codepoints that represent characters. utf 
-	encoding specified at initialization is mapped into 
-	two values that define the codepoint representation 
-	in memory:
+	integer codepoints that represent characters. utf en-
+	coding specified at initialization is mapped into two 
+	values that define the codepoint representation in mem-
+	ory:
 
 	utf token		int fex			code unit (bytes)
 
@@ -105,21 +105,21 @@ type editor from mediator
 	{
 		begin ( utf f [opt], endian e [opt] )  -- original, empty
 		{
-			imo:as_base<mediator>:begin( e, f );
+			imo:as_base<medium>:begin( e, f );
 			describe_utf( f )( imo.codepoint_unit, imo.codepoint_fex );
 		}
 
 		begin ( string )  -- string copy conversion, use string encoding
 		{
 			given\string:get_encoding()( utf f, endian e );
-			imo:as_base<mediator>:begin( e, f );
+			imo:as_base<medium>:begin( e, f );
 			describe_utf( f )( imo.codepoint_unit, imo.codepoint_fex );
 			imo:write( given\string );
 		}
 
 		begin ( expr ) -- expr copy conversion, use default encoding 
 		{
-			imo:as_base<mediator>:begin;  -- default encoding
+			imo:as_base<medium>:begin;  -- default encoding
 			describe_utf( default_utf )( imo.codepoint_unit, imo.codepoint_fex );
 			imo:write( given\expr );
 		}
@@ -272,13 +272,13 @@ type editor from mediator
 		fwrite<t> [upd]( <t> obj, expr fex [opt] )		-- single fex
 		{
 			fix( fex, 't' ) is ~fex;	
-			imo:as_base<mediator>:fwrite<<t>>( obj, ~fex );
+			imo:as_base<medium>:fwrite<<t>>( obj, ~fex );
 		}
 
 		fwrite<t> [upd]( <t> obj, expr fex [opt] )()( extra etc )  -- multiple fex
 		{
 			fix( fex, 't' ) is ~fex;
-			imo:as_base<mediator>:fwrite<<t>>( obj, ~fex )()( etc );
+			imo:as_base<medium>:fwrite<<t>>( obj, ~fex )()( etc );
 		}
 							
 			
@@ -344,13 +344,13 @@ type editor from mediator
 		fread<t> [upd]( expr fex [opt] )( <t> x )	-- single fex
 		{
 			fix( fex, 't' ) is ~fex;
-			imo:as_base<mediator>:fread<<t>>( ~fex )( x );
+			imo:as_base<medium>:fread<<t>>( ~fex )( x );
 		}
 
 		fread<t> [upd]( expr fex [opt] )( <t> x )( extra etc ) -- multiple fex
 		{
 			fix( fex, 't' ) is ~fex;
-			imo:as_base<mediator>:fread<<t>>( ~fex )( x )( etc );
+			imo:as_base<medium>:fread<<t>>( ~fex )( x )( etc );
 		}
 	
 		
@@ -452,7 +452,7 @@ type editor from mediator
 	
 	}
 
-	abstract in mediator
+	abstract in medium
 	{
 		[pwd,final] ~fread [upd]( expr fex )( op<object> op )( extra );
 
@@ -646,10 +646,10 @@ type editor from mediator
 		predict_next_rp [upd]()( int rp ) 
 		{{
 			This method predicts next properly aligned rp. It assumes 
-			imo:as_base<mediator> rp is currently aligned and rp may be moved one
-			code unit to evaulate next position.  Thus, imo:as_base<mediator> rp
+			imo:as_base<medium> rp is currently aligned and rp may be moved one
+			code unit to evaulate next position.  Thus, imo:as_base<medium> rp
 			SHOULD ALWAYS BE REALIGNED after calling this method (using 
-			predicted output rp or original mediator rp).
+			predicted output rp or original medium rp).
 		}}
 		{
 			imo:get_rp()( rp ); 

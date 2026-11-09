@@ -15,7 +15,7 @@ type string from positional<unicode>
 		string assumes ownership of addr.  If len is not
 		specified, the caracter sequence must be delimited
 		by a zero char (aka "null-terminated").  Encoding
-		must be specified.  Note: a mediator or compatible
+		must be specified.  Note: a medium or compatible
 		routine is usually the source for this initial-
 		izer.
 	
@@ -27,17 +27,17 @@ type string from positional<unicode>
 	(3) from ascii expr (literal):
 
 		If encoding is not specified, platform default 
-		encoding is	used (see alpha\mediator).
+		encoding is	used (see alpha\medium).
 
 	(4) copy another
 
 
-	(5) from mediator
+	(5) from medium
 
 		fex specifies external encoding and delimitation.
 		Binary formats usually use intrinsic string encoding
 		and length or null delimitation. Text formats use 
-		mediator encoding and some kind	of quotation or eol 
+		medium encoding and some kind	of quotation or eol 
 		delimitation.
 
 		Note: generic binary 'b' uses platform encoding and
@@ -62,9 +62,9 @@ type string from positional<unicode>
 
 		begin ( string other );  -- copy 
 
-		begin ( mediator [upd], expr fex );	
+		begin ( medium [upd], expr fex );	
 
-		store ( mediator [upd], expr fex );
+		store ( medium [upd], expr fex );
 		
 
 		get_encoding ()( utf, endian );

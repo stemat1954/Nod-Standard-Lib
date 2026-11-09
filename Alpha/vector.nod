@@ -32,9 +32,9 @@ type vector<t><#n> from positional<<t>>
 		begin<xt><c> ( serial<<xt>><<c>> source );	-- fill
 
 
-		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
+		begin ( medium m [upd], expr fex )()( extra );	-- mediate
 
-		store ( mediator m [upd], expr fex )()( extra );	-- mediation
+		store ( medium m [upd], expr fex )()( extra );	-- mediate
 
 	
 		equal? ( same_type v )( bool );

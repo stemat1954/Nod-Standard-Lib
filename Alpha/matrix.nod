@@ -41,9 +41,9 @@ type matrix<t><#r><#c>
 
 		begin<xt><c> ( serial<<xt>><<c>> source ); -- fill, see notes
 		
-		begin ( mediator m [upd], expr fex );	-- mediation
+		begin ( medium m [upd], expr fex );		-- mediate
 
-		store ( mediator m [upd], expr fex );	-- mediation
+		store ( medium m [upd], expr fex );		-- mediate
 
 	
 		is_zero? ()( bool );
@@ -101,15 +101,15 @@ type sq_matrix<t><#> from matrix<<t>><<#>><<#>>
 
 	general method
 	{
-		begin;								-- zero matrix
+		begin;											-- zero matrix
 
-		begin ( same_type other );			-- copy
+		begin ( same_type other );						-- copy
 
-		begin<xt><c> ( serial<<xt>><<c>> source );	-- fill
+		begin<xt><c> ( serial<<xt>><<c>> source );		-- fill
 
-		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
+		begin ( medium m [upd], expr fex )()( extra );	-- mediate
 
-		store ( mediator m [upd], expr fex )()( extra );	-- mediation
+		store ( medium m [upd], expr fex )()( extra );	-- mediate
 				
 
 		is_diag? ()( bool );
@@ -151,20 +151,20 @@ type af_matrix<t><#>
 
 	nom type sub_matrix = sq_matrix<<t>><<#>>;  -- linear matrix
 
-	nom type sub_vector = vector<<t>><<#>>;  -- translation vector
+	nom type sub_vector = vector<<t>><<#>>;		-- translation vector
 
 
 	general method
 	{
-		begin;								-- identity
+		begin;									-- identity
 
-		begin ( same_type other );			-- copy
+		begin ( same_type other );				-- copy
 
 		begin ( sub_matrix, sub_vector );		-- composition
 
-		begin ( mediator m [upd], expr fex )()( extra );	-- mediation
+		begin ( medium m [upd], expr fex )()( extra );	-- mediate
 
-		store ( mediator m [upd], expr fex )()( extra );	-- mediation
+		store ( medium m [upd], expr fex )()( extra );	-- mediate
 				
 		use_linear_part = sub_matrix prox [eval,init];
 

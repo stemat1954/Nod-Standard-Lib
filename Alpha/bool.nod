@@ -26,8 +26,8 @@ type bool  -- elementary, intrinsic, compatible, conventional
 
 		begin ( bool other );		-- copy
 
-		begin ( mediator [upd], expr fex );	
-		store ( mediator [upd], expr fex );
+		begin ( medium [upd], expr fex );	
+		store ( medium [upd], expr fex );
 
 		equal? ( bool other )( bool );
 	

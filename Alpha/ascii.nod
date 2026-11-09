@@ -111,9 +111,9 @@ type ascii from enumerated
 		
 		begin ( ascii other );	-- copy
 
-		begin ( mediator [upd], expr fex )()( extra );	
+		begin ( medium [upd], expr fex )()( extra );	
 
-		store ( mediator [upd], expr fex )()( extra );
+		store ( medium [upd], expr fex )()( extra );
 
 		use_notation = expr prox [eval];
 

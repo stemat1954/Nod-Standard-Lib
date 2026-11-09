@@ -31,9 +31,9 @@ type unicode from enumerated
 
 		begin ( unicode other );	-- copy
 
-		begin ( mediator m [upd], expr fex )()( extra );  
+		begin ( medium m [upd], expr fex )()( extra );  
 
-		store ( mediator m [upd], expr fex )()( extra ); 
+		store ( medium m [upd], expr fex )()( extra ); 
 
 		use_notation = expr prox [eval];
 

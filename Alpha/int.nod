@@ -58,9 +58,9 @@ type int -- elementary, compatible, conventional
 		begin ( enumerated e );					-- enumerated conversion
 
 		
-		begin ( mediator [upd], expr fex );		-- mediation
+		begin ( medium [upd], expr fex );		-- mediate
 
-		store ( mediator [upd], expr fex );		-- ditto
+		store ( medium [upd], expr fex );		-- ditto
 
 
 		equal? ( int n )( bool );				-- equality

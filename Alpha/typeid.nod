@@ -46,9 +46,9 @@ type typeid -- intrinsic
 	{
 		begin ( typeid other );		-- copy
 
-		begin ( mediator [upd], expr fex );		
+		begin ( medium [upd], expr fex );		
 
-		store ( mediator [upd], expr fex );
+		store ( medium [upd], expr fex );
 
 		identifies<t>? ()( bool );		
 

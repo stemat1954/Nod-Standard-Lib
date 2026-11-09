@@ -80,7 +80,7 @@ type expr from positional<ascii> -- intrinsic, conventional
 	
 	Expressions are portable. The format expr (fex) specifies
 	both encoding and delimitation.  Encoding can be either
-	8-bit ascii (ignore mediator utf) or mediator utf. 
+	8-bit ascii (ignore medium utf) or medium utf. 
 	Several forms pf delimitiation are supported.
 }}
 {
@@ -92,9 +92,9 @@ type expr from positional<ascii> -- intrinsic, conventional
 
 		begin ( expr other );	-- copy
 
-		begin ( mediator [upd], expr fex );	
+		begin ( medium [upd], expr fex );	
 
-		store ( mediator [upd], expr fex ) ;
+		store ( medium [upd], expr fex ) ;
 
 		equal? ( expr other, int q [opt] )( bool ); 
 

@@ -86,8 +86,8 @@ type array<t> from positional<<t>> -- compatible and conventional per <t>
 		begin<c> ( serial<<c>> source );									-- with <t> copy
 		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );			-- with copier
 
-		begin ( mediator [upd], expr fex )()( extra );							-- mediate
-		store [eval]( mediator [upd], expr fex )()( extra );					-- mediate
+		begin ( medium [upd], expr fex )()( extra );						-- mediate
+		store [eval]( medium [upd], expr fex )()( extra );					-- mediate
 
 		insert [upd]( int i [opt], positional source, int q [opt], int j [opt] );								-- with <t> copy: at i (end), q (all) objs from source at j (zero) 
 		insert [upd]( int i [opt], positional source, int q [opt],int j [opt] ) with copier ( <t> )( <t> );		-- with copier:  ditto
@@ -148,8 +148,8 @@ type array<t><#> from positional<<t>> -- compatible and conventional per <t>
 		begin<c> ( serial<<c>> source );							-- with <t> copy
 		begin<c> ( serial<<c>> source ) with copier ( <t> )( <t> );	-- with copier
 
-		begin ( mediator [upd], expr fex )()( extra );				-- mediate
-		store ( mediator [upd], expr fex )()( extra );				-- mediate
+		begin ( medium [upd], expr fex )()( extra );				-- mediate
+		store ( medium [upd], expr fex )()( extra );				-- mediate
 	}
 
 	abstract method in positional<<t>>
