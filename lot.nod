@@ -1,0 +1,76 @@
+page lot in AlphaByNod
+
+type lot<t>  -- compatible, portable
+{{
+	A lot<t> is similar to an array<t> except <t> must be 
+	an elementary alpha type.
+
+	Lots are suitable for holding a large number of element-
+	ary objects	because accessor methods aren't provided and
+	the overhead associated with regular individual objects
+	is eliminated.  
+
+	Note: Copy methods are the only way to transfer regular
+	objects in and out of a lot<t>.  Copying elementary obj-
+	ects is relatively low-cost.
+
+	Elementary types are also compatible types and thus a 
+	lot<t> is also compatible (they correspond to C arrays).
+}}
+{
+	nom type same_type = lot<<t>>;
+
+	nom type serial<c> = serial<<t>><<c>>;
+
+	nom type positional = positional<<t>>;
+
+
+	general method 
+	{
+		begin ( int reserve [opt] ); 
+
+		begin ( same_type other [upd] );				-- take 
+
+		begin<c> ( serial<<c>> source );				-- copy
+
+		
+		begin ( medium [upd], expr fex )()( extra );		-- mediate
+
+		store [eval]( medium [upd], expr fex )()( extra );	-- mediate
+
+				
+		count [eval]()( int q );					
+
+
+		insert [upd]( int i [opt], <<t>> obj );										-- 1 obj at i (end)
+
+		insert [upd]( int i [opt], positional source, int q [opt], int j [opt] );	-- positional copy: at i (end), q (all) objs from source at j (zero) 
+
+		insert<c> [upd]( int i [opt], serial<<c>> source, int q [opt] );			-- serial copy: at i (end), q (all) objs from source 
+
+
+		replace [upd]( int i [opt], <<t>> obj );									-- 1 obj at i (end)
+
+		replace [upd]( int i [opt], positional source, int q [opt], int j [opt] );	-- positional copy: at i (end), q (all) objs from source at j (zero) 
+
+		replace<c> [upd]( int i [opt], serial<<c>> source, int q [opt] );			-- serial copy: at i (end), q (all) objs from source 
+
+		
+		copy [eval]( int i [opt] )( <<t>> obj );		-- 1 obj at i (last)
+
+		copy [eval]( int i, int q )( array<<t>> );		-- q objs at i 
+
+
+		delete [upd]( int i [opt] );					-- 1 obj at i (last)	
+
+		delete [upd]( int i, int q );					-- q objs at i 
+
+		
+		reserve [upd]( int q );							-- reserve memory for expansion
+
+		shrink [upd];									-- release unused memory
+	}
+}
+
+
+

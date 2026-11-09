@@ -186,8 +186,8 @@ type list1 from serial<node1><cursor1>
 			if ( "not_null?( other.first )" )
 			{
 				-- ignore current in other
-				imo.first:begin( *other.first );  
-				imo.last:begin( *other.last );
+				imo.first:begin( other.first );  
+				imo.last:begin( other.last );
 				other.current:renew;  -- go front
 			}
 		}

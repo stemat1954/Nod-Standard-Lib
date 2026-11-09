@@ -30,6 +30,10 @@ page array in AlphaByNod
 
 	Any serial<t> collection can be used as a source
 	for array objects.
+
+	Note:  See alpha\lot<t> for an alternative homo-
+	geneous collection when the number of items is
+	very large.
 }}
 
 

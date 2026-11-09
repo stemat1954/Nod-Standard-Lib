@@ -42,8 +42,7 @@ routine
 
 type editor from medium
 {{
-	An editor is a specialized unicode medium. It formats
-	and parses external unicode images.  
+	An editor formats and parses a unicode medium.
 
 	Most applications can use editor methods alone to 
 	accomplish common serial formatting and parsing tasks.

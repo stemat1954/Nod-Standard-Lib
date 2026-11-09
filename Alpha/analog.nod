@@ -27,7 +27,7 @@ type analog  -- intrinsic,restricted
 
 		stale? ()( bool );
 
-		dead? ()( bool )
+		dead? ()( bool );
 
 		good? ()( bool );	-- "not(void? |or| stale? |or| dead? )"
 	}

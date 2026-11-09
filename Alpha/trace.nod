@@ -37,7 +37,7 @@ type trace -- instrisic,restricted
 
 		get_location ()( expr );
 
-		use_object = object prox [eval]; // may be void
+		use_object = object prox [eval]; -- may be void
 	}
 }
 
